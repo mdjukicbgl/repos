@@ -1,0 +1,8 @@
+copy supplier_remote_load from 'mdj-bucket-001/load/supplier_manifest.json'
+CREDENTIALS 'aws_iam_role=arn:aws:iam::678752479360:role/RedshiftCopyUnload' 
+delimiter '|' 
+COMPUPDATE ON
+ssh
+;
+
+psql --host=mdjcluster.comcbtx9pdcp.us-west-2.redshift.amazonaws.com --port=5439 --username=mdj_marko --dbname=mdjdb
