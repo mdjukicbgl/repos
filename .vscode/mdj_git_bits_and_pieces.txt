@@ -1,0 +1,302 @@
+Using git 2.14.1.windows.1 from C:\Program Files\Git\cmd\git.exe
+git rev-parse --show-toplevel
+git fetch
+git config --get commit.template
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git add -A -- .
+warning: CRLF will be replaced by LF in q_python_scripts/10PythonTricks.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/LoadTransform.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/Redshift_copy_command.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/argparse.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/arithmetic.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/automate_Redshift.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/boto.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/cast.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/come_to_work.html.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/commandLiveArgs.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/comparison.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/condition.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/cuckoo.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/daily_tasks.html.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/data_ec2_instances.json.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/deloitte_export_settings.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/describeInstances.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/dict.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/dict2_with_for_loop_and_if_else.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/error_capture.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/helloWorld.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/if.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/input.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/interview2quest.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/interview3quest.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json.data.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json.data.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json1.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json2.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json3.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json4.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/json5.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/lambdaHelloWorld.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/list.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/list_functions_in_python_module.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/logic.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/mdj_code1.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/mdj_misc.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/mdj_test1.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/mdj_test2.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/misctest.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/multisection.ini.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/nums.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/nums.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/pandas.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/pandas1.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/pickup.html.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/pop.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/readfile.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/return.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/return2.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/s3CreateBucket.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/s3DownloadFile.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/s3ListAllBuckets.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/s3UploadFiles.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/serverlessFunction.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/set.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/simple.ini.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/var.py.
+The file will have its original line endings in your working directory.
+warning: CRLF will be replaced by LF in q_python_scripts/while.py.
+The file will have its original line endings in your working directory.
+
+git commit --quiet --allow-empty-message --file - --all
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mdjuk@DESKTOP-H4RBSE9.(none)')
+
+git config --get-all user.name
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git branch
+git reset -q HEAD -- c:\Users\mdjuk\repos\q_python_scripts\10PythonTricks.py
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git commit --quiet --allow-empty-message --file -
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mdjuk@DESKTOP-H4RBSE9.(none)')
+
+git config --get-all user.name
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git commit --quiet --allow-empty-message --file -
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git config --get commit.template
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git add -A -- c:\Users\mdjuk\repos\q_python_scripts\10PythonTricks.py
+warning: CRLF will be replaced by LF in q_python_scripts/10PythonTricks.py.
+The file will have its original line endings in your working directory.
+
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git commit --quiet --allow-empty-message --file -
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git show :q_python_scripts/10PythonTricks.py
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git push
+To https://github.com/mdjukic/repos.git
+   203afff..6caf627  master -> master
+
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git fetch
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose
+git show :q_python_scripts/10PythonTricks.py
+git show :.vscode/mdj_test.py
+git status -z -u
+git symbolic-ref --short HEAD
+git rev-parse master
+git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+git rev-list --left-right master...origin/master
+git for-each-ref --format %(refname) %(objectname)
+git remote --verbose

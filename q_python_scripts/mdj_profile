@@ -1,0 +1,75 @@
+#!/bin/bash
+
+###SHELL=/usr/bin/ksh
+export SHELL=/bin/bash
+export EDITOR=vi
+set -o vi
+export PS1=$LOGNAME@$(hostname):'$PWD : '
+
+stty erase ^?
+
+PATH=$PATH:/usr/local/bin:/home/markod
+
+alias b='banner'
+alias bs='b start from here $(date +%H:%M:%S)'
+alias diff='diff -y'
+
+alias git_help='echo "#======================================="
+                echo "#IT commands of interest"
+                echo "#======================================"
+                echo "#cd ~/repos/bigdata"
+                echo "#OLD repository --> git clone git@bitbucket.org:redshiftbievolution/testframework.git testframework-local"
+                echo "### C&W --> git clone git@bitbucket.org:redshiftbievolution/redshiftbitest.git"
+                echo "#git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/bigdata"
+                echo "#git config --global user.name "Marko Djukic" "
+                echo "#git config --global user.email markodjukic@cloudbilimited.com "
+                echo ""
+                echo "#The credentials.helper cache command will stop you from having to enter your credentials, everytime you push to git"
+                echo "# Comment from Neil: I am hoping if you enter your creds one more detail it will cache them - let me know!"
+                echo "#git config --global credential.helper cache"
+                        echo ""
+                        echo "#git add redshift.cfg"
+                echo "#git commit -m <adding redshift.cfg file>"
+                echo "#git push"
+                echo "#see: https://confluence.atlassian.com/display/BITBUCKET/Clone+Your+Git+Repo+and+Add+Source+Files"
+                echo "======================================"
+                echo "= The following command will rename a files to a new label"
+                echo ""
+                echo "#git mv 00012_create_table_sql_server_audit_system.sql 00012_create_table_sql_server_audit_systemdetail.sql"
+                echo "======================================"
+                echo "= The following commands will initialize the mdj_home repostiory, to checkin objects from teh home direcotry"
+                echo ""
+                echo "# git init"
+                echo "# cd $HOME/repos/mdj_home"
+                echo "# git add * "
+                echo "# git commit -m adding_a_comment_here "
+                echo "# git push -u origin master"
+                echo "======================================" '
+
+alias ls='ls --color=none'
+alias CD='cd'
+alias cls='clear'
+alias fiel='file'
+alias ho='hostname'
+alias ll='ls -lt'
+alias lll='ls -lt | grep ^l'
+alias ltd='ls -lt | grep ^d'
+alias ltds='ls -lt | grep ^d | sort -fk9'
+alias ltl='ls -lt | grep ^l'
+alias lth='ls -lt | head -20'
+alias pul="perl -le 'for (\$c=0; \$c<=120; \$c++) {printf "%s", "_"} print; '"
+alias pswww='/usr/ucb/ps -auxwww'
+alias tree='find . -type d | sed "s;[^/]*/;|-->;g;s;-->|; |;g"'
+alias s3ls='aws s3 ls s3://'
+alias sixweeks='b econprodappipad; aws s3 ls s3://economist-analytics-euw1-prd01/adobe/econprodappipad/staging2/; b econdarwinproduction; aws s3 ls s3://economist-analytics-euw1-prd01/adobe/econdarwinproduction/staging2/;'
+alias serverlog='b serverlog files; aws s3 ls s3://economist-analytics-euw1-prd01/economistdotcom/serverlog/staging/;'
+
+
+CDPATH=""
+CDPATH=$CDPATH:/home/markod/repos/bigdata/preprocessor
+CDPATH=$CDPATH:/home/markod/repos/bigdata/redshift/align
+CDPATH=$CDPATH:/home/markod/repos/bigdata/redshift
+CDPATH=$CDPATH:/home/markod/repos/bigdata
+CDPATH=$CDPATH:/home/markod/repos
+CDPATH=$CDPATH:/home/markod
+
