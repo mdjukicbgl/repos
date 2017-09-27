@@ -32,7 +32,7 @@ def main(args):
 
 	# Monkey patching - changing the behaviour of a function from what it was initially designed to do
 	
-def f(*args,**kwargs)
+def f(*args,**kwargs):
 	print(args, kwargs)
 
 	l = [1,2,3]
