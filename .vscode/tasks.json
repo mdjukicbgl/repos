@@ -5,8 +5,112 @@
     "taskName": "python",
     "isShellCommand": true,
     "command": "python",
+    "showOutput": "always",
+    "suppressTaskName": true,
     "args": [
-                "${file}"
-            ]
+        "${file}"
+    ]
 }
- 
+
+
+//{
+//    "tasks": [
+//        {
+//            "taskName": "python",
+//            "version": "0.1.0",
+//            "command": "python",
+//            "isShellCommand": true,
+//            "showOutput": "always",
+//            "suppressTaskName": true,
+//            "args": [
+//                "${file}"
+//            ]
+//        },
+//        {
+//            "taskName": "scala",
+//            "version": "0.1.0",
+//            "command": "scala",
+//            "isShellCommand": true,
+//            "showOutput": "always",
+//            "suppressTaskName": true,
+//            "args": [
+//                "${file}"
+//            ]
+//        }
+//    ]
+//}
+//
+
+
+
+//{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+//    "version": "0.1.0",
+//    "taskName": "scala",
+//    "isShellCommand": true,
+//    "command": "scala",
+//    "showOutput": "always",
+//    "suppressTaskName": true,
+//    "args": [
+//                "${file}"
+//            ]
+//    "tasks": [
+//        {
+//            "taskName": "python",
+//            "command" : "python",
+//            "isShellCommand": true
+//            "args": [
+//                "compile"
+//            ]
+//        },
+//        {
+//            "taskName": "scala",
+//            "command" : "scala",
+//            "isShellCommand": true
+//        }
+//
+//}
+
+
+
+
+//{
+//    // See https://go.microsoft.com/fwlink/?LinkId=733558
+//    // for the documentation about the tasks.json format
+//    "version": "0.1.0",
+//    "taskName": "python",
+//    "isShellCommand": true,
+//    "command": "python",
+//    "args": [
+//                "${file}"
+//            ]
+//}
+
+//{
+//    "version": "0.1.0",
+//    "command": "scala",
+//    "isShellCommand": true,
+//    "showOutput": "always",
+//    "suppressTaskName": true,
+//    "tasks": [
+//        {
+//            "taskName": "build",
+//            "args": [
+//                "compile"
+//            ]
+//        },
+//        {
+//            "taskName": "test",
+//            "args": [
+//                "test"
+//            ]
+//        },
+//        {
+//            "taskName": "run",
+//            "args": [
+//                "run"
+//            ]
+//        }
+//    ]
+//}
