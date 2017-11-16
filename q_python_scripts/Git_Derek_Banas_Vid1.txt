@@ -1,0 +1,83 @@
+
+- the line, will allow us to track who exactly made changes to git objects:
+git config --global user.name "Marko Djukic"
+
+- need also to define a user email address:
+git config --global user.email mdjukic@dsl.pipex.com
+
+- To use a specific editor, ie. testwrangler
+  the following command has to be entered on a mac:
+git config --global core.editor "edit -w"
+
+- To use vim, enter the following config line, similar to above:
+git config --global core.editor "vim"
+
+- To list config, run the command:
+git config --list
+- output is
+(activate) @DESKTOP-H4RBSE9:/c/Users/mdjuk/repos : git config --list
+core.symlinks=false
+core.autocrlf=input
+core.fscache=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+help.format=html
+diff.astextplain.textconv=astextplain
+rebase.autosquash=true
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.required=true
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+http.sslbackend=openssl
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.required=true
+filter.lfs.process=git-lfs filter-process
+credential.helper=manager
+user.email=mdjukic@dsl.pipex.com
+user.name=marko djukic
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/mdjukic/repos.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.master.remote=origin
+branch.master.merge=refs/heads/master
+
+- To get help, simply enter:
+git help
+
+- or if detailed help is required on say, add, enter:
+git help add
+
+- if you want to git to track changes made, to a specific directory,
+go to that directory, and enter the git --init command:
+cd repos
+cd q_python_scripts
+git init
+
+- To track say, all java files, enter the following:
+git add *.java
+
+- To IGNORE files and directories, create a .gitignore file, and define file types
+and directories to ignore
+# IGNORE file types
+*.log
+*.log00
+
+# IGNORE complete directories
+q_docs/
+
+
+
+
+
+
+
+
