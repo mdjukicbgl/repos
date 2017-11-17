@@ -1,0 +1,181 @@
+#
+# Git, Repote repositories, GitHub, Push, Pull, Aliases, and Tags
+#
+- To logon to githum account, enter:
+https://github.com/markodjukic/
+this will take you straigh there.
+
+This repository created, after creating new repo via '+':
+https://github.com/mdjukic/dbananas.git
+
+…or create a new repository on the command line
+
+# mdj added these 2 lines.....
+mkdir /c/Users/mdjuk/dbananas 
+cd /c/Users/mdjuk/dbananas
+
+echo "# dbananas" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/mdjukic/dbananas.git
+git push -u origin master
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/mdjukic/dbananas.git
+git push -u origin master
+
+- list files on the remote
+git remote -v
+
+- to rename the origin on GitHub
+run the following command to get the http of the repository:
+(activate) @DESKTOP-H4RBSE9:/c/Users/mdjuk/dbananas : git remote -v
+origin  https://github.com/mdjukic/dbananas.git (fetch)
+origin  https://github.com/mdjukic/dbananas.git (push)
+
+- to rename origin to db, run:
+git remote rename origin db
+
+to confirm, run:
+(activate) @DESKTOP-H4RBSE9:/c/Users/mdjuk/dbananas : git remote -v
+db      https://github.com/mdjukic/dbananas.git (fetch)
+db      https://github.com/mdjukic/dbananas.git (push)
+
+NOTE: origin has been renamed to db
+
+- TAGGING
+to see all of existing tags:
+git tag
+
+- to add a new tag, run:
+git tag -a v0.1 -m "Version 0.1"
+
+to list new tag, run:
+git tag
+## output below-->
+v0.1
+
+- to show all details of objects, wrt to that tag, run:
+git show v0.1
+
+- if we have a previous commit, but we don't have a TAG for it, run:
+say we added a new comment line to .gitignore
+they run, add and commit:
+git add .gitignore
+git commit -m "Added comment line 3 at eof"
+
+git log --pretty=oneline
+00b4556a8a23440cb43ee78f894cec56abe2507c (HEAD -> master) Added comment line 3 at eof
+752bb137e608f5785d9382b4d99ba159691d73db (tag: v0.1, db/master) Added minor change to .gitignore
+461c2011967c75a2c3b92ad107c06a5eb5f5632b Update .gitignore
+c7490923c25e65a0a8191aa22d9fda9ea70cfea6 Added .gitignore
+738e8365ced5f44ddbf37cfa05f77e546363ce5b Create README.md
+a04e80614a9a019ac4c89644ba4e0ecc30cd5422 removed dir 2
+6b4c7961eac2850a7a7eba7257102c08b355d992 renamed dir
+ca1217a8765531ab5b6391f718ad49ceb63f5321 added directory
+eaa120aa50dd70235b332e24178c60822a96cb4b test file
+4dad1c2d8decb8503a38600452041fd12ea02aaa test file
+
+take first 6 chars of first line - 00b455 - and enter:
+git tag -a v0.2 00b455
+
+NOTE: enter some text on line one of the file, for desc of change
+
+to see new tag, run:
+git tag
+v0.1
+v0.2
+
+- to show objects associated with tag v0.2, run:
+git show v0.2
+
+tag v0.2
+Tagger: marko djukic <mdjukic@dsl.pipex.com>
+Date:   Fri Nov 17 17:34:43 2017 +0000
+
+I added the comment line with 3, at end of file
+commit 00b4556a8a23440cb43ee78f894cec56abe2507c (HEAD -> master, tag: v0.2)
+Author: marko djukic <mdjukic@dsl.pipex.com>
+Date:   Fri Nov 17 17:11:14 2017 +0000
+
+    Added comment line 3 at eof
+
+diff --git a/.gitignore b/.gitignore
+index d66f07c..8825afb 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@
+ q_docs/
+
+ # added this line on remote via github2
++# added this line on remote via github3
+
+- to show objects associated with tag v0.1, run:
+git show v0.1
+
+tag v0.1
+Tagger: marko djukic <mdjukic@dsl.pipex.com>
+Date:   Fri Nov 17 17:05:05 2017 +0000
+
+Version 0.1
+
+commit 752bb137e608f5785d9382b4d99ba159691d73db (tag: v0.1, db/master)
+Author: marko djukic <mdjukic@dsl.pipex.com>
+Date:   Fri Nov 17 16:51:46 2017 +0000
+
+    Added minor change to .gitignore
+
+diff --git a/.gitignore b/.gitignore
+index d501d0e..d66f07c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,4 +5,4 @@
+ # Generated files
+ q_docs/
+
+-# added this line on remote via github
++# added this line on remote via github2
+
+- to push say v0.2 to github, run:
+git push db v0.2
+NOTE: we renamed origin to db earlier above.
+
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 471 bytes | 471.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mdjukic/dbananas.git
+ * [new tag]         v0.2 -> v0.2
+
+NOTE: Go to github, and click on Releases, to see the v0.2 tags
+
+
+- To push ALL tags at one time, run:
+git push db --tags
+
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 162 bytes | 162.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To https://github.com/mdjukic/dbananas.git
+ * [new tag]         v0.1 -> v0.1
+
+NOTE: Go to github, and click on Releases, to see all of 
+      the tags, and associated objects
+
+
+- ALIASES
+Instead of typing "git commit", I wanted to type gc instead, run:
+git config --global alias.co commit
+
+To test:
+git add .
+git co  -m "Demo alias"
+[master f07fa12] Demo alias
+ 1 file changed, 1 insertion(+)
+ create mode 160000 q_python_scripts2
+
+
