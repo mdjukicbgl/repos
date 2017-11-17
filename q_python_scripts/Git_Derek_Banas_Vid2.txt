@@ -179,3 +179,4 @@ git co  -m "Demo alias"
  create mode 160000 q_python_scripts2
 
 
+- CLONE a repository

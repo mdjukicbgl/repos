@@ -74,6 +74,59 @@ and directories to ignore
 # IGNORE complete directories
 q_docs/
 
+- Website for gitignore file to download:
+https://github.com/github/gitignore
+
+- To find out what has been changed, run:
+git diff
+
+- To STAGE a file, we use:
+git add <filename>
+
+- Comments when committing without using -m option
+On first line of opened file, enter this description, between
+'---' lines:
+
+-----------------------------------------------------------------
+Client asked me to change a Comment
+
+The client asked for the comment to be added.  I make that 
+change for them.
+
+* Client asked for comment change
+* I don't see this effecting anything
+
+Closes-Bug #129161
+-----------------------------------------------------------------
+
+- Shortcut way of skipping the staging (ie. add) is to run:
+git commit -a -m "Enter description here"
+This will add and commit the changes
+
+- To remove a file, note that mdjDeleteMe.txt has been created. 
+git rm -f mdjDeleteMe.txt
+
+- To unstage a file, which has been staged:
+git add mdjDeleteMe.txt  (this cmd will stage the file)
+git rm --cached mdjDeleteMe.txt (this will unstage the file, but not delete it)
+
+- rename a file, after it has been staged:
+git add mdjDeleteMe.txt
+git commit -m 'Initial project version'
+git mv mdjDeleteMe.txt mdjDeleteMe2.txt
+git status
+
+- LOGS within Git - to show all changes within git, run:
+git log
+or
+git log --pretty=oneline
+
+to fomat the log in a readable format, run:
+git log --pretty=format:"%h : %an : %ar : %s"
+
+
+
+
 
 
 
