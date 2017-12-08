@@ -1,0 +1,13 @@
+﻿{
+  "profile": "ra-md-poc-dcuk039",
+  "region": "eu-west-1",
+  "configuration": "Release",
+  "framework": "netcoreapp1.0",
+  "function-name": "markdown",
+  "function-runtime": "dotnetcore1.0",
+  "function-memory-size": 1536,
+  "function-timeout": 300,
+  "function-handler": "Markdown.App::Markdown.Function.Program::AWSMain",
+  "function-role": "ra-md-poc-lambda",
+  "environment-variables": "ASPNETCORE_ENVIRONMENT=Development"
+}

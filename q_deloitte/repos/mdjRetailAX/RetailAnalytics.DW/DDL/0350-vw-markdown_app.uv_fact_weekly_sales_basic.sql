@@ -1,0 +1,83 @@
+DROP VIEW IF EXISTS markdown_app.uv_fact_weekly_sales_basic;
+
+CREATE VIEW markdown_app.uv_fact_weekly_sales_basic
+	(
+		dim_date_id
+		,dim_retailer_id
+		,dim_product_id
+		,dim_geography_id
+		,dim_currency_id
+		,dim_seasonality_id
+		,dim_junk_id
+		,dim_price_status_id
+		,dim_channel_id
+		,scanned_margin
+		,clearance_sales_value
+		,clearance_sales_quantity
+		,promotion_sales_value
+		,promotion_sales_quantity
+		,store_stock_value_no_negatives
+		,store_stock_quantity_no_negatives
+		,markdown_price
+		,full_price
+		,provided_csp
+		,provided_osp
+		,current_selling_price
+		,original_selling_price
+		,cost_price
+		,store_stock_value
+		,store_stock_quantity
+		,depot_stock_value
+		,depot_stock_quantity
+		,vat
+		,sales_value
+		,sales_quantity
+		,intake_plus_future_commitment_quantity
+		,intake_plus_future_commitment_value
+		,total_stock_value
+		,total_stock_quantity
+		,markdown_cost
+		,optimisation_csp
+		,optimisation_osp
+	)
+AS
+SELECT
+	fwsb.dim_date_id
+	,fwsb.dim_retailer_id
+	,fwsb.dim_product_id
+	,fwsb.dim_geography_id
+	,fwsb.dim_currency_id
+	,fwsb.dim_seasonality_id
+	,fwsb.dim_junk_id
+	,fwsb.dim_price_status_id
+	,fwsb.dim_channel_id
+	,fwsb.scanned_margin
+	,fwsb.clearance_sales_value
+	,fwsb.clearance_sales_quantity
+	,fwsb.promotion_sales_value
+	,fwsb.promotion_sales_quantity
+	,fwsb.store_stock_value_no_negatives
+	,fwsb.store_stock_volume_no_negatives
+	,fwsb.markdown_price
+	,fwsb.full_price
+	,fwsb.provided_csp
+	,fwsb.provided_osp
+	,fwsb.current_selling_price
+	,fwsb.original_selling_price
+	,fwsb.cost_price
+	,fwsb.store_stock_value
+	,fwsb.store_stock_volume
+	,fwsb.depot_stock_value
+	,fwsb.depot_stock_volume
+	,fwsb.vat
+	,fwsb.sales_value
+	,fwsb.sales_volume
+	,fwsb.intake_plus_future_commitment_volume
+	,fwsb.intake_plus_future_commitment_value
+	,fwsb.total_stock_value
+	,fwsb.total_stock_volume
+	,fwsb.markdown_cost
+	,fwsb.optimisation_csp
+	,fwsb.optimisation_osp
+FROM
+	sales.fact_weekly_sales_basic AS fwsb;

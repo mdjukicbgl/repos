@@ -1,0 +1,99 @@
+{
+	"mappingTypeName": "Channel",
+	"tableName": "stage.channel_dim",
+	"columnSep": "|",
+	"headerRecord": [{
+			"srcIndex": 0,
+			"dstIndex": 0,
+			"srcName": "reporting_date",
+			"dstName": "reporting_date"
+		},
+		{
+			"srcIndex": 1,
+			"dstIndex": 1,
+			"srcName": "reporting_date_period_type",
+			"dstName": "reporting_date_period_type"
+		},
+		{
+			"srcIndex": 2,
+			"dstIndex": 2,
+			"isKey": true,
+			"srcName": "channel_bkey",
+			"dstName": "channel_bkey"
+		},
+		{
+			"srcIndex": 3,
+			"dstIndex": 3,
+			"srcName": "channel_name",
+			"dstName": "channel_name"
+		},
+		{
+			"srcIndex": 4,
+			"dstIndex": 4,
+			"srcName": "channel_description",
+			"dstName": "channel_description"
+		},
+		{
+			"srcIndex": 5,
+			"dstIndex": 5,
+			"srcName": "channel_code",
+			"dstName": "channel_code"
+		},
+		{
+			"srcIndex": 6,
+			"dstIndex": 6,
+			"srcName": "row_id",
+			"dstName": "row_id"
+		}
+	],
+
+	"schema": {
+		"title": "Channel",
+		"type": "object",
+		"properties": {
+			"reporting_date": {
+				"description": "Reporting date",
+				"type": "string",
+				"format": "date"
+			},
+			"reporting_date_period_type": {
+				"type": "string",
+				"minLength": 1,
+				"maxLength": 1,
+				"enum": ["0", "1", "2", "3"]
+			},
+			"channel_bkey": {
+				"type": "string",
+				"maxLength": 20,
+				"minLength": 1
+			},
+			"channel_name": {
+				"type": "string",
+				"maxLength": 50,
+				"minLength": 1
+			},
+			"channel_description": {
+				"type": "string",
+				"maxLength": 256
+			},
+			"channel_code": {
+				"type": "string",
+				"maxLength": 10
+			},
+			"row_id": {
+				"type": "string",
+				"maxLength": 10
+			}
+		},
+		"required": [
+			"reporting_date",
+			"reporting_date_period_type",
+			"channel_bkey",
+			"channel_name",
+			"row_id"
+		],
+		"primaryKey": [
+			"channel_bkey"
+		]
+	}
+}

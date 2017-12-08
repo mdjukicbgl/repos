@@ -1,0 +1,16 @@
+// Usage
+// .header {
+//   z-index: map-get($zindex, header);
+// }
+
+
+$zindex: (
+  productGroupRows:     1,
+  productGroupColumns:  2,
+  filterOverlay:        500,
+  header:               1000,
+  footer:               1000
+);
+
+
+

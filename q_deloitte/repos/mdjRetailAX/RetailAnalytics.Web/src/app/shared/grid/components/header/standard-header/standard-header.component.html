@@ -1,0 +1,14 @@
+<div class="header-cell">
+  <div class="header-cell--menu-button" (click)="onMenuClick($event)" *ngIf="!params.suppressMenu"><i class="fa fa-bars"></i></div>
+  <div class="header-cell--label" [ngClass]="{'offset': params.suppressMenu}">{{headerName}}</div>
+  <div class="header-cell--sort" *ngIf="!this.getSort()" (click)="onSortRequested($event)">
+      <i class="fa fa-sort"></i>
+  </div>
+  <div class="header-cell--sort"  *ngIf="this.getSort() === 'asc'" (click)="onSortRequested($event)">
+      <i class="fa fa-sort-asc"></i>
+  </div>
+  <div class="header-cell--sort"  *ngIf="this.getSort() === 'desc'" (click)="onSortRequested($event)">
+      <i class="fa fa-sort-desc"></i>
+  </div>
+</div>
+

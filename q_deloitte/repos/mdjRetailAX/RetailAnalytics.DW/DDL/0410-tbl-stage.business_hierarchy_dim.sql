@@ -1,0 +1,33 @@
+drop table if exists stage.business_hierarchy_dim;
+
+create table stage.business_hierarchy_dim (
+    batch_id int,
+    dim_retailer_id int,
+    reporting_date varchar(10),
+    reporting_date_period_type char(1),
+    hierarchy_name varchar(50),
+    business_key1 varchar(20),
+    business_key2 varchar(20),
+    business_key3 varchar(20),
+    business_key4 varchar(20),
+    business_area varchar(50),
+    node_id_level1 varchar(20),
+    node_name_level1 varchar(50),
+    node_id_level2 varchar(20),
+    node_name_level2 varchar(50),
+    node_id_level3 varchar(20),
+    node_name_level3 varchar(50),
+    node_id_level4 varchar(20),
+    node_name_level4 varchar(50),
+    node_id_level5 varchar(20),
+    node_name_level5 varchar(50),
+    node_id_level6 varchar(20),
+    node_name_level6 varchar(50),
+    node_id_level7 varchar(20),
+    node_name_level7 varchar(50),
+    node_id_level8 varchar(20),
+    node_name_level8 varchar(50),
+    node_id_level9 varchar(20),
+    node_name_level9 varchar(50),
+    row_id bigint identity(1,1) not null
+);

@@ -1,0 +1,4 @@
+reporting_date|reporting_date_period_type|product_key1|product_key2|product_key3|product_key4|geography_type_key|geography_key|seasonality_key|year_seasonality_key|year_seasonality_start_date|year_seasonality_end_date
+2017-05-24|0|32000056||||2|4321|0|0|2017-04-30|2017-06-30
+2017-05-24|0|32000057||||2|4321|0|0|2017-04-30|2017-06-30
+2017-05-24|0|32000065||||2|4378|4|4|2017-04-30|2017-06-30

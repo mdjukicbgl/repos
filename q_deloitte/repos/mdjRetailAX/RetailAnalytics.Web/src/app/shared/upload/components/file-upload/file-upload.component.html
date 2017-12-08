@@ -1,0 +1,22 @@
+<label class="upload" ondragover="return false;"
+    [class.loaded]="loaded"
+    [class.dragging]="dragging"
+    (dragenter)="handleDragEnter()"
+    (dragleave)="handleDragLeave()"
+    (drop)="handleDrop($event)"
+    (click)="clearPreviousFile()">
+    <i class="fa fa-cloud-upload fa-2x" [class.dragging]="dragging"></i>&nbsp;&nbsp;<span i18n>{{ 'UPLOAD.DROP_MESSAGE' | translate }} </span>
+    <input type="file" name="file" #fileUpload (change)="handleInputChange($event)"/>
+</label>
+
+<app-error-group [errors]="errors"></app-error-group>
+<app-success-group [successes]="successes"></app-success-group>
+
+<div *ngIf="loading">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [attr.aria-valuenow]="progressComplete" [style.width]="progressComplete + '%'"></div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-warning" (click)="onCancelUpload()"><i class="fa fa-ban"></i> {{ 'UPLOAD.CANCEL' | translate }}</button>
+  </div>
+</div>

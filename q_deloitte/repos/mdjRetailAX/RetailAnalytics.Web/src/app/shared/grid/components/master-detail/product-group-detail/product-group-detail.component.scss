@@ -1,0 +1,42 @@
+@import '../../../../../../styles/settings/theme';
+@import '../../../../../../styles/tools/z-index';
+
+table {
+  border: none;
+  border-collapse: collapse;
+  & td {
+    border-top: none;
+    border-left: 1px solid $gray-lighter;
+  }
+  & th {
+    border-left: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.columns {
+  width:290px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: map-get($zindex, productGroupColumns);
+  background: $white;
+  font-size: 10px;
+  font-weight: bolder;
+}
+
+.data {
+  z-index: map-get($zindex, productGroupRows);
+  margin-left: 290px;
+  width: calc(100% - 290px);
+  font-size: 10px;
+}
+
+.horizontal-scroll-wrapper {
+  overflow: auto;
+  white-space: nowrap;
+}

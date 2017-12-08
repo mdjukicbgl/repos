@@ -1,0 +1,3 @@
+reporting_date|reporting_date_period_type|status_type_bkey|status_bkey|status_name|is_global_status|is_unknown_member
+2017-06-04|0|4|UNKNOWN|I don't know what this means|Y|N
+2017-06-04|0|4|KNOWN|I do know what this means|N|N

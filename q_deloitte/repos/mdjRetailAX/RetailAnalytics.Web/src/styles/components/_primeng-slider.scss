@@ -1,0 +1,12 @@
+@import '../settings/theme';
+.ui-slider {
+  margin-top: 1.25em;
+  background: $gray-lightest;
+  border: none;
+  &-handle {
+    background: $brand-primary;
+    outline: none;
+    border-radius: 50%;
+    border: none;
+  }
+}

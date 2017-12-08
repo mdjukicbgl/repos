@@ -1,0 +1,29 @@
+@import '../../../../../styles/settings/theme';
+
+.upload {
+  align-items: center;
+  background-color: $gray-lightest;
+  cursor: pointer;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  outline: 3px dashed $gray-lighter;
+  box-shadow:inset 0px 0px 0px 5px $white;
+
+  &.dragging, &.loaded {
+    outline: 3px dashed $brand-primary;
+    i, span {
+      color: $brand-primary;
+      pointer-events: none;
+    }
+  }
+
+  & input {
+    display: none;
+  }
+
+  & .icon {
+    color: $gray;
+    font-size: 5em;
+  }
+}

@@ -1,0 +1,33 @@
+<div class="d-flex">
+  <div class="form-group" style="width:100%" class="pr-2">
+    <span for="duration" i18n>{{ 'SCENARIOS.CALENDAR_WEEKS.DURATION' | translate }}</span><span class="bold">{{ selectedNumberOfWeeks }}</span> <span i18n>{{ 'SCENARIOS.CALENDAR_WEEKS.WEEKS' | translate }}</span>
+    <p-slider [(ngModel)]="selectedNumberOfWeeks" (ngModelChange)="loadCalendarWeeks()" [min]="minNumberOfWeeks" [max]="maxNumberOfWeeks" [step]="1"></p-slider>
+  </div>
+  <div class="form-group" style="width:100%">
+    <label for="startDate" i18n>{{ 'SCENARIOS.CALENDAR_WEEKS.START_DATE' | translate }}</label>
+    <ngbd-datepicker-popup (dateChange)="updateDate($event)" class="ngb-datepicker" [minDate]="today"></ngbd-datepicker-popup>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center flex-row mt-3" *ngIf="(calendarWeeksIsLoading$ | async) || (calendarWeeksHasLoadingFailed$ | async); else calendar">
+  <div *ngIf="calendarWeeksIsLoading$ | async">
+      <sk-cube-grid color="grey"></sk-cube-grid>
+  </div>
+  <div *ngIf="calendarWeeksHasLoadingFailed$ | async" class="alert alert-danger m-3" role="alert">
+    {{ 'SCENARIOS.CALENDAR_WEEKS.ERROR_LOAD_CALENDAR' | translate }}
+  </div>
+</div>
+
+<ng-template #calendar>
+  <div class="d-flex mt-3" *ngIf="calendarWeeks">
+    <div class="form-group" style="width:100%">
+      <label>{{ 'SCENARIOS.CALENDAR_WEEKS.SELECT_WEEKS' | translate }}</label>
+      <div class="btn-group d-flex flex-wrap" data-toggle="buttons">
+        <label class="btn btn-lg btn-secondary" [class.active]="week.selected" *ngFor="let week of calendarWeeks?.weeks" style="flex: 1">
+          <input type="checkbox" [(ngModel)]="week.selected" (change)="onSelectedWeeksChange()"> {{week.friendlyDate | localeDate:locale}}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

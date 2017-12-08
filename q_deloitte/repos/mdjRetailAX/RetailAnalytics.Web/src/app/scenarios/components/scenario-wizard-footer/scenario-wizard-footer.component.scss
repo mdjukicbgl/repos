@@ -1,0 +1,23 @@
+@import '../../../../styles/settings/theme';
+@import '../../../../styles/tools/z-index';
+
+.scenario-wizard-footer {
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  z-index: map-get($zindex, footer);
+  border-top: 1px solid $gray-lighter;
+
+  .action {
+    &:hover {
+      background: $gray-lighter;
+      cursor: pointer;
+    }
+  }
+  .btn {
+    cursor: pointer;
+  }
+}

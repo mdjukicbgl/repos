@@ -1,0 +1,7 @@
+#set($inputRoot = $input.path('$'))
+{
+    "Program": "upload",
+    "ScenarioId" : $inputRoot.ScenarioId,
+    "PartitionId" : $inputRoot.PartitionId,
+    "PartitionCount" : $inputRoot.PartitionCount
+}

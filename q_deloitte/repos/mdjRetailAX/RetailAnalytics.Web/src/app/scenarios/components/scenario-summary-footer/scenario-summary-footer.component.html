@@ -1,0 +1,23 @@
+<footer class="scenario-summary-footer">
+  <div class="d-flex justify-content-between">
+
+    <div class="d-flex justify-content-center w-100">
+
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.PUBLISH' | translate }}</div>
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.DUPLICATE' | translate }}</div>
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.EDIT' | translate }}</div>
+      <div class="p-1 action" (click)="onWorkspaceClick()">{{ 'SCENARIOS.FOOTER.VIEW' | translate }}</div>
+      <div class="p-1 action" (click)="onRunClick()">{{ 'SCENARIOS.FOOTER.RUN' | translate }}</div>
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.APPROVE' | translate }}</div>
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.SAVE' | translate }}</div>
+      <div class="p-1 action disabled">{{ 'SCENARIOS.FOOTER.ACCEPT' | translate }}</div>
+    </div>
+
+    <div class="d-flex">
+      <div class="p-1 action text-muted">{{ 'SCENARIOS.FOOTER.EXPORT' | translate }}</div>
+      <div class="p-1 btn btn-dark">{{ 'SCENARIOS.FOOTER.UPDATE' | translate }}</div>
+      <div class="p-1 btn btn-info">{{ 'SCENARIOS.FOOTER.SUBMIT' | translate }}</div>
+    </div>
+
+  </div>
+</footer>

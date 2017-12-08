@@ -1,0 +1,23 @@
+.header-cell {
+  margin-top: 0.5rem;
+  height: 100%;
+  width: 100%;
+  &--menu-button {
+    float: left;
+    margin-left: 0.5rem;
+  }
+  &--label {
+    float: left;
+    margin-left: 0.5rem;
+  }
+  &--sort {
+    float: left;
+    margin-left: 0.5rem;
+  }
+}
+
+.offset {
+  margin-left: 1.7rem;
+}
+
+.hidden { display:none; }

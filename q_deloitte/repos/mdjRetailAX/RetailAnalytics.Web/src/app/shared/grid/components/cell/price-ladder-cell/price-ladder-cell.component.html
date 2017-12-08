@@ -1,0 +1,11 @@
+<div style="position:relative; height: 100%;" [class.has-error]="hasError">
+  <div class="price-ladder" (click)="onClick()">
+    <div class="price-ladder-value" *ngIf="params.value !== null && params.value !== '' && params.value !== 'NaN'" style="float: left; margin-right: 5px;" [ngClass]="{'muted': showMuted}">
+      {{ params.value | localePercent:locale:'1.0-0' }}
+    </div>
+    <div *ngIf="isMarkdown"><i class="fa fa-pencil" [ngClass]="{'muted': showMuted}" (click)="onClick()"></i></div>
+  </div>
+  <div *ngIf="hasError" (click)="onClick()" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" [ngbPopover]="errorMessage | translate" triggers="mouseenter:mouseleave" container="body"></div>
+</div>
+
+

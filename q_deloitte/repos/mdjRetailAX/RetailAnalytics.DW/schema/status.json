@@ -1,0 +1,157 @@
+{  
+    "mappingTypeName":"Status",
+    "tableName":"stage.status_dim",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        }, 
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "srcName":"status_type_bkey",
+            "dstName":"status_type_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "isKey":true,
+            "srcName":"status_bkey",
+            "dstName":"status_bkey"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"parent_status_bkey",
+            "dstName":"parent_status_bkey"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"status_type",
+            "dstName":"status_type"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"status_name",
+            "dstName":"status_name"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"parent_dim_status_id",
+            "dstName":"parent_dim_status_id"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"status_hierarchy_level",
+            "dstName":"status_hierarchy_level"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"status_breadcrumb",
+            "dstName":"status_breadcrumb"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"is_leaf_node",
+            "dstName":"is_leaf_node"
+        },
+        {
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        }
+                  
+    ],
+
+    "schema":{
+        "title" : "Status",
+        "type" : "object",
+        "properties": {
+               "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "status_type_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "status_bkey" : {
+                "type" : "string",
+                "isKey" : true,
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "parent_status_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "status_type" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "status_name" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "parent_dim_status_id" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "status_hierarchy_level" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "status_breadcrumb" : {
+                "type" : "string",
+                "maxLength" : 512
+            },  
+            "is_leaf_node" : {
+                "type" : "string",
+                "enum" : ["Y", "N", "y", "n"]
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+        },
+        "required": [
+                     "status_type_bkey",
+                     "status_bkey",
+                     "status_type",
+                     "status_name",
+                     "status_hierarchy_level",
+                     "is_leaf_node"
+                     ],
+        "primaryKey": [
+                       "status_bkey"
+                       ]
+    }
+}

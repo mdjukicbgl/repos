@@ -1,0 +1,41 @@
+<ngb-tabset>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-filter'></i></ng-template>
+    <ng-template ngbTabContent>
+      <div class="d-flex justify-content-between header">
+        <div class="header--title">{{ 'WORKSPACE.FILTERS.FILTER' | translate }}</div>
+        <div class="header--icon"><i class="fa fa-filter"></i></div>
+      </div>
+      <div *ngIf="uniqueListsIsLoading$ | async">
+        <sk-cube-grid color="grey"></sk-cube-grid>
+      </div>
+      <div *ngIf="(uniqueListsComplete$ | async) || params.isClientSide" class="list">
+        <div class="form-check" *ngFor="let option of options">
+          <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="option.checked">
+              {{option.value}}
+          </label>
+        </div>
+      </div>
+      <div *ngIf="uniqueListsHasFailed$ | async" class="p-1">
+        {{ 'WORKSPACE.FILTERS.FAILED_TO_LOAD_LIST' | translate }}
+      </div>
+      <div class="d-flex">
+        <button type="btn" class="btn clear-button p-1" (click)="onClear()">{{ 'WORKSPACE.FILTERS.CLEAR' | translate }}</button>
+        <button type="btn" class="btn filter-button p-1" (click)="onFilter()">{{ 'WORKSPACE.FILTERS.FILTER' | translate }}</button>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-columns'></i></ng-template>
+    <ng-template ngbTabContent>
+      <app-freeze-tab [componentParent]="params.context.componentParent" [column]="params.column"></app-freeze-tab>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-eye'></i></ng-template>
+    <ng-template ngbTabContent>
+      <app-showhide-tab [componentParent]="params.context.componentParent"></app-showhide-tab>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

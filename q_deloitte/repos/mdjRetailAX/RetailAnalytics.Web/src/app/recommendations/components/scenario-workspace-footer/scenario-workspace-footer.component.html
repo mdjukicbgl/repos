@@ -1,0 +1,17 @@
+<footer class="scenario-workspace-footer">
+  <div class="overlay" *ngIf="disable"></div>
+  <div class="d-flex justify-content-between">
+
+    <div class="d-flex justify-content-center w-100">
+      <div class="p-1 action" (click)="onAcceptClicked()">{{ 'WORKSPACE.FOOTER.ACCEPT_SELECTED' | translate }}</div>
+      <div class="p-1 action" (click)="onRejectClicked()">{{ 'WORKSPACE.FOOTER.REJECT_SELECTED' | translate }}</div>
+    </div>
+
+    <div class="d-flex">
+      <div class="p-1 action text-muted">{{ 'SCENARIOS.FOOTER.EXPORT' | translate }}</div>
+      <div class="p-1 btn btn-dark" (click)="onUpdateClicked()">{{ 'SCENARIOS.FOOTER.UPDATE' | translate }}</div>
+      <div class="p-1 btn btn-info">{{ 'SCENARIOS.FOOTER.SUBMIT' | translate }}</div>
+    </div>
+
+  </div>
+</footer>

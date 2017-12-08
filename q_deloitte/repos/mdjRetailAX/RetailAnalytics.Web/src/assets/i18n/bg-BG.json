@@ -1,0 +1,239 @@
+{
+    "MENU": {
+      "DASHBOARD": "Табло",
+      "SCENARIOS": "Сценарий",
+      "WORKSPACE": "Работно пространство",
+      "MARKDOWN": "Намаление"
+    },
+
+    "SCENARIOS_SUB_MENU": {
+      "STATUS": "Статус",
+      "SETUP": "Настройки",
+      "TIME": "График",
+      "GOALS": "Цел"
+    },
+
+    "DASHBOARD": {
+        "WELCOME_MESSAGE": "<h1 class='display-3'>Добре дошли в Deloitte Markdown V3</h1><p class='lead'>Продукта за оптимизация на намаления помага на търговците на дребно да управляват своите отстъпки в края на сезона (включително цената, времето и броя на намаленията)</p><hr><p>След период на безпрецедентна промяна, секторът на търговията на дребно е изправен пред среда, в която маржовете все повече се намаляват от нарастващите разходи, по-ниската ценова сила и необходимостта от инвестиране в дигитална трансформация. Търговците на дребно все още се конкурират помежду си, но също така се сблъскват с нови конкуренти, които имат различни оперативни модели и бази на разходите. Тази скорост на изменение показва малко знак за забавяне. Търговците на дребно вече отговарят на редица структурни и оперативни промени на пазара, но дали се движат достатъчно бързо?</p>",
+        "ERROR_LOAD_DASHBOARD": "Таблото не може да се зареди!",
+        "ERROR_LOAD_WIDGETS": "Плочките не могат да се заредят!",
+        "WIDGET_SCENARIOS": {
+          "ERROR_LOAD_SCENARIOS": "Сценарият не може да се зареди!",
+          "RAN_IN_LAST": "проведени през последните 7 дни",
+          "VIEW": "Преглед"
+        }
+    },
+
+    "SCENARIOS": {
+      "SUMMARY": {
+        "HEADER": "Състояние на сценария",
+        "SUB_HEADER": "Изберете сценарий за навигация в детайла",
+        "CREATE_NEW": "Създайте нов сценарий"
+      },
+      "FOOTER": {
+        "ITEMS_SELECTED": "Избраните елементи",
+        "SUBMIT": "Подайте",
+        "PUBLISH": "публикувам",
+        "DUPLICATE": "дубликат",
+        "EDIT": "редактиране",
+        "VIEW": "изглед",
+        "RUN": "тичам",
+        "APPROVE": "одобрявам",
+        "SAVE": "Запази",
+        "ACCEPT": "приемам",
+        "EXPORT": "износ",
+        "UPDATE": "Актуализация"
+      },
+      "STATUS": {
+        "NEW": "нов",
+        "COMPLETE": "завършен",
+        "RUNNING": "Работещи...",
+        "FAILED": "Се провали",
+        "VIEW": "изглед"
+      },
+      "LIST": {
+        "CLEAR_SCENARIO_STATE": "Ясен сценарий",
+        "ERROR_LOAD_SCENARIOS": "Сценарият не може да се зареди!",
+        "REFRESH": "Поднови",
+        "RUN_SCENARIO": "Стартирайте сценарий",
+        "RUN_SCENARIO_QUESTION": "Наистина ли искате да стартирате сценария?",
+        "RUN_SCENARIO_CONFIRM": "ПОТВЪРДИ",
+        "RUN_SCENARIO_CANCEL": "ОТКАЗ"
+      },
+
+      "GRID_HEADERS": {
+        "SCENARIO_ID": "Номер на сценария",
+        "SCENARIO_NAME": "Име на сценария",
+        "PRODUCT_COUNT": "Брой на продукти",
+        "LAST_RUN_DATE": "Последна дата на изпълнение",
+        "STATUS": "Статут",
+        "PERCENTAGE_ACCEPTED": "% общоприет",
+        "PERCENTAGE_REJECTED": "% отхвърлена",
+        "PERCENTAGE_REVISED": "% ревизирана",
+        "ESTIMATED_PROFIT": "Очакваната печалба",
+        "ESTIMATED_SALES": "Очаквани продажби",
+        "AVERAGE_DEPTH": "Средна дълбочина",
+        "TOTAL_MARKDOWN_COST": "Общо разходи за маркировка",
+        "ESTIMATED_TERMINAL_STOCK": "Очакван терминален запас",
+        "STATUS_NEW":"нов",
+        "STATUS_PUBLISHED":"Публикуван",
+        "STATUS_ACCEPTED":"Приемани",
+        "STATUS_REJECTED":"Отхвърлени",
+        "MEASURES":"Мярка"
+      },
+
+      "PRODUCT_SUMMARY_HEADERS": {
+        "MARKDOWN_WEEK": "Маркдад Седмица",
+        "NUMBER_TPN_MARKDOWN_JOURNEY": "Брой на TPN на пътя за маркиране",
+        "NUMBER_TPN_INTO_MARKDOWN": "Брой на TPN, които влизат в Markdown",
+        "AVERAGE_MARKDOWN_MARGIN": "Среден марж на мардкуда (%)",
+        "OVERALL_MARKDOWN_MARGIN": "Общ марджин марджин (%)",
+        "EXPECTED_STOCK_BEFORE_PRICE": "Очаквано ниво на запасите преди промяна на цената",
+        "ESTIMATED_TERMINAL_STOCK_COUNT": "Очакван терминален запас (#)",
+        "ESTIMATED_TERMINAL_STOCK_COST": "Очаквана цена на терминалния фонд (£)",
+        "ESTIMATED_UNITS_SOLD_MARKDOWN_PERIOD": "Очаквани единици продадени през периода на оценяване",
+        "ESTIMATED_SALES_MARKDOWN_PERIOD": "Очаквани продажби през периода на оценяване",
+        "ESTIMATED_MARKDOWN_COST": "Очаквана цена на маркер (£)",
+        "ESTIMATED_PROFIT": "Очаквана печалба (£)",
+        "ACCEPTED": "Прието (%)",
+        "REVISED": "Ревизиран (%)",
+        "REJECTED": "Отхвърлено (%)",
+        "MERCH_DECISION": "Решение за Merch",
+        "CURRENT": "Текущ",
+        "RECOMMENDED": "Препоръчано"
+      },
+
+      "EDIT": {
+        "STEP1": "Първа стъпка...",
+        "STEP1_DETAIL": "Детайли на сценария",
+        "STEP2": "Втора стъпка...",
+        "STEP2_DETAIL": "Изберете продукти",
+        "STEP3": "Трета стъпка...",
+        "STEP3_DETAIL": "Качване на продукти",
+        "STEP4": "Стъпка четири...",
+        "STEP4_DETAIL": "Задайте график",
+        "NAME": "Име",
+        "SELECT_PRODUCT_IDS": "Изберете номера на продуктите",
+        "PROVIDE_SCENARIO_NAME": "Предоставете името на сценария",
+        "ERROR_SCENARIO_NAME_REQUIRED": "Изисква се име на сценарий",
+        "ERROR_NO_WEEKS_SELECTED": "Няма избрани седмици",
+        "ERROR_WEEKS_CONSECUTIVE": "Не се допускат последователни седмици",
+        "ERROR_NO_PRODUCTS_SELECTED": "Няма избрани продукти",
+        "FOOTER": {
+          "PREVIOUS":"предишен",
+          "BACK":"Назад",
+          "SAVE":"Запази",
+          "NEXT":"Напред",
+          "SAVE_AND_RUN":"Спаси и изпълни"
+        }
+      },
+
+      "CALENDAR_WEEKS": {
+        "DURATION": "Продължителност - ",
+        "WEEKS": "Седмици",
+        "ERROR_LOAD_CALENDAR": "Календарът не може да се зареди!",
+        "START_DATE": "Начална дата",
+        "SELECT_WEEKS": "Изберете седмици"
+      },
+
+      "MEASURES": {
+        "NUMBER_OF_PRODUCTS": "Брой продукти",
+        "ESTIMATED_SALES": "Очаквани продажби"
+      }
+    },
+
+    "WORKSPACE": {
+      "ERROR_LOAD_SCENARIOS": "Сценарият не може да се зареди!",
+      "ERROR_SELECT_SCENARIOS": "Моля, изберете сценарий!",
+      "ERROR_ACCEPT_ALL": "Неуспех при приемането на всички препоръки!",
+      "ERROR_REJECT_ALL": "Не можаха да се отхвърлят всички препоръки!",
+      "ERROR_ACCEPT_ONE": "Неуспешно приемане на препоръка!",
+      "ERROR_REJECT_ONE": "Препоръката не бе отхвърлена!",
+      "ERROR_PRICE_LADDER": "Неуспешно извличане на ценова стълба!",
+      "ERROR_REVISE": "Препоръката не бе преработена!",
+      "SUCCESS_ACCEPTED_ALL": "Приема всички препоръки",
+      "SUCCESS_REJECTED_ALL": "Отхвърли всички препоръки",
+      "GRID_HEADERS": {
+        "PRODUCT_ID": "Номер на продукта",
+        "PRODUCT_NAME": "Име на продукта",
+        "HIERARCHY_NAME": "Име на йерархията",
+        "ORIGINAL_SELLING_PRICE": "Оригинална продажна цена",
+        "CURRENT_SELLING_PRICE": "Текуща продажна цена",
+        "MAX_STOCK_TARGET": "Максимална целева сума",
+        "TERMINAL_STOCK": "Терминален инвентар",
+        "TOTAL_REVENUE": "Общи приходи",
+        "MARKDOWN_COST": "Разход на намалението",
+        "STATUS": "Статут",
+        "PRICE": "Цена",
+        "DISCOUNT": "Намаление",
+        "PRICE_REVISION": "Ревизия на цените",
+        "DISCOUNT_REVISION": "Отстъпка за ревизия",
+        "REVISE": "поправям"
+      },
+      "FILTERS": {
+        "CLEAR": "ясно",
+        "FILTER": "филтър",
+        "FREEZE_PANES": "Пазете панелите",
+        "LEFT": "Наляво",
+        "UNFREEZE": "топя",
+        "SHOW_HIDE": "Покажи/скрий",
+        "FAILED_TO_LOAD_LIST": "Списъкът не бе успешно зареден"
+      },
+      "FOOTER": {
+        "ACTIONS": "мерки",
+        "ACCEPT_SELECTED": "Приемам Избрано",
+        "REJECT_SELECTED": "Отхвърляне на избраните"
+      },
+      "WEEK_SELECTOR": "седмица",
+      "TOTALS": {
+        "PREDICTED_OUTCOME": "Предсказаният резултат",
+        "OVERALL": "ОБЩО",
+        "MARKDOWN_COST_ALL": "Разходна стойност за всички продукти",
+        "MARKDOWN_COST_ALL_ACCEPTED": "Разходна стойност за всички приети продукти",
+        "NUMBER_OF_ACCEPTED": "Брой приети продукти",
+        "NUMBER_OF_REJECTED": "Брой отхвърлени продукти"
+      },
+      "PRICE_LADDER": {
+        "REVISE": "поправям",
+        "DISCOUNT_REQUIRED": "Необходима е поне една отстъпка.",
+        "NO_DISCOUNTS": "Няма избрани отстъпки.",
+        "DISCOUNT_SAME_OR_DEEPER_THAN_PREVIOUS": "Отстъпките трябва да бъдат същите или по-дълбоки от предишните.",
+        "DISCOUNT_SAME_OR_DEEPER_THAN_EXISTING": "Отстъпките трябва да бъдат същите или по-дълбоки от съществуващата отстъпка."
+      }
+    },
+
+    "PROFILE": {
+      "SIGN_OUT": "Отписване",
+      "ENGLISH": "Промeни езика на английски",
+      "BULGARIAN": "Промeни езика на български"
+    },
+
+    "UPLOAD": {
+      "DROP_MESSAGE": "Изрежете файлове или кликнете",
+      "CANCEL": "Отказ",
+      "UPLOAD_SUCCESSFUL": "Качване успешно!",
+      "UPLOAD_FAILED": "Качването не бе успешно",
+      "UPLOAD_CANCELLED": "Качването е отменено",
+      "INVALID_FILE_TYPE": "Невалиден тип файл"
+    },
+
+    "MODAL": {
+      "CONFIRM": "потвърждавам",
+      "CANCEL": "Отказ",
+      "CLOSE": "близо",
+      "RUN_TITLE": "Стартирайте сценария",
+      "RUN_BODY":"Наистина ли искате да стартирате сценарий?",
+      "SAVE_FAIL_TITLE": "Запазване на грешката!",
+      "SAVE_FAIL_BODY": "Сценарият не успя да запази."
+    },
+
+    "GRID": {
+      "SEARCH": "Търсене",
+      "CLEAR": "ясно",
+      "FILTER": "филтър",
+      "FREEZE_PANES": "Freeze Panes",
+      "LEFT": "Пазете панелите",
+      "UNFREEZE": "топя",
+      "NO_VALUE_STRING": ""
+    }
+}

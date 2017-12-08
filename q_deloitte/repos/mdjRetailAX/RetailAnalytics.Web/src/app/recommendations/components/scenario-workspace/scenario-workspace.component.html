@@ -1,0 +1,43 @@
+<app-subnav></app-subnav>
+<div class="scenario-container vertical-flex workspace">
+  <app-scenario-workspace-notifications [hasNoSelectedScenario]="hasNoSelectedScenario" (showGridChange)="updateShowGrid($event)"></app-scenario-workspace-notifications>
+  <app-scenario-workspace-footer *ngIf="selectedRecommendations" [disable]="isLoading" [selectedRecommendations]="selectedRecommendations" [gridOptions]="gridOptions"></app-scenario-workspace-footer>
+
+  <div class="d-flex flex-column justify-content-center vertical-flex" [ngClass]="{'hide': !showGrid}">
+    <div class="d-flex flex-column justify-content-center vertical-flex">
+
+    <div class="d-flex justify-content-between">
+      <app-scenario-workspace-totals [selectedScenarioId]="selectedScenarioId"></app-scenario-workspace-totals>
+      <!-- Temporary inlined styles  -->
+      <div class="d-flex flex-column justify-content-center px-1" style="text-align:center; color: #fff; cursor: pointer;" (click)="clearState()">
+        <i class="fa fa-times"></i>
+        <span _ngcontent-c8="" class="text-center">{{ 'SCENARIOS.LIST.CLEAR_SCENARIO_STATE' | translate }}</span>
+      </div>
+    </div>
+
+    <ag-grid-angular *ngIf="hasNoSelectedScenario == false" id="agGrid" #agGrid  class="ag-material vertical-flex focus-enabled" [gridOptions]="gridOptions"
+      enableSorting
+      enableFilter
+      enableColResize
+
+      groupHeaderHeight="0"
+      headerHeight="55"
+      rowHeight="35"
+
+      toolPanelSuppressRowGroups
+      toolPanelSuppressValues
+      toolPanelSuppressPivots
+      toolPanelSuppressPivotMode
+
+      enableServerSideSorting
+      enableServerSideFilter
+
+      suppressClickEdit
+      suppressDragLeaveHidesColumns
+
+      (rowClicked)="onRowClicked($event)"
+      (selectionChanged)="onSelectionChanged($event)">
+    </ag-grid-angular>
+    <div *ngIf="selectedRecommendations" class="spacer vertical-flex"></div>
+  </div>
+</div>

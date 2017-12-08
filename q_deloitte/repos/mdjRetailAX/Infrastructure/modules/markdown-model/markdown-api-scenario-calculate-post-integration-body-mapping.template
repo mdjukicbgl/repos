@@ -1,0 +1,10 @@
+#set($inputRoot = $input.path('$'))
+{
+    "Program": "calc",
+    "ModelId" : $inputRoot.ModelId,
+    "ModelRunId" : $inputRoot.ModelRunId,
+    "ScenarioId" : $inputRoot.ScenarioId,
+    "PartitionId" : $inputRoot.PartitionId,
+    "PartitionCount" : $inputRoot.PartitionCount,
+    "Upload" : $inputRoot.Upload
+}

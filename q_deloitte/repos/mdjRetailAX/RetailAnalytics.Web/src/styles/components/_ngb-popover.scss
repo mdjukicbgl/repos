@@ -1,0 +1,11 @@
+@import '../settings/theme';
+
+.popover {
+  background: $gray-dark;
+  color: $white;
+  &.popover-top {
+    &::after {
+      border-top-color: $gray-dark;
+    }
+  }
+}

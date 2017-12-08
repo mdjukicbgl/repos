@@ -1,0 +1,12 @@
+@import '../../../../../styles/settings/theme';
+
+.btn-group {
+  .active {
+    background-color: $brand-primary;
+    color: $white;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}

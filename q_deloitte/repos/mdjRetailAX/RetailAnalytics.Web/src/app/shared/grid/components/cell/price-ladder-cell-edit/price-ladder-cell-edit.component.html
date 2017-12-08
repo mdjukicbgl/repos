@@ -1,0 +1,7 @@
+<div #container class="form-group" (click)="onClick($event)">
+  <select class="form-control" [(ngModel)]="value" (change)="onChange($event.target.value)" (click)="onSelectClick($event)">
+    <option *ngFor="let val of priceLadderValues" [value]="val">{{val | percent}}</option>
+  </select>
+</div>
+
+

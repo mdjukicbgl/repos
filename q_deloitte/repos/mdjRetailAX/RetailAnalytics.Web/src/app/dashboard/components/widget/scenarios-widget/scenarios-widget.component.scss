@@ -1,0 +1,14 @@
+@import '../../../../../styles/settings/theme';
+.card {
+    border: none;
+    &-header {
+        &--success {
+            background-color: $widget-success;
+            color: $white;
+            padding-left: 1em;
+        }
+    }
+    &-text {
+        margin-bottom: 1em;
+    }
+}

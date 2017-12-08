@@ -1,0 +1,8 @@
+<div *ngIf="showNoValueString; else displayNumber">{{ 'GRID.NO_VALUE_STRING' | translate }}</div>
+<ng-template #displayNumber>
+  <span *ngIf="params.value !== null && params.value !== ''">
+    {{ params.value | localePercent:locale:'1.0-0' }}
+  </span>
+</ng-template>
+
+

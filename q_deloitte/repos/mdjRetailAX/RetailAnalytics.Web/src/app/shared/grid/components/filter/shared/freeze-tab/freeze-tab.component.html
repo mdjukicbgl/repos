@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between header">
+  <div class="header--title">{{ 'WORKSPACE.FILTERS.FREEZE_PANES' | translate }}</div>
+  <div class="header--icon"><i class="fa fa-columns"></i></div>
+</div>
+<div class="btn-group m-1" role="group" aria-label="Freeze columns">
+  <button type="button" class="btn btn-secondary" (click)="onFreeze('left')">{{ 'WORKSPACE.FILTERS.LEFT' | translate }}</button>
+  <button type="button" class="btn btn-secondary" (click)="onFreeze(null)">{{ 'WORKSPACE.FILTERS.UNFREEZE' | translate }}</button>
+</div>
+

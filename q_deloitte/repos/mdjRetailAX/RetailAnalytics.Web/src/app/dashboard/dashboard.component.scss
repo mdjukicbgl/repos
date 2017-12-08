@@ -1,0 +1,17 @@
+@import '../../styles/settings/theme';
+
+.dashboard-container {
+  background: $dashboard-primary;
+  .jumbotron {
+    color: $white;
+    background: transparent;
+  }
+}
+
+.dashboard{
+  &__title{
+    font-size: 18px;
+    color: $white;
+    text-align: center;
+  }
+}

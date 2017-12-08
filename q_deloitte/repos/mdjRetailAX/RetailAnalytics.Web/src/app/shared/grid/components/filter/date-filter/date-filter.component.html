@@ -1,0 +1,35 @@
+<ngb-tabset>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-filter'></i></ng-template>
+    <ng-template ngbTabContent>
+      <div class="d-flex justify-content-between header">
+        <div class="header--title">{{ 'WORKSPACE.FILTERS.FILTER' | translate }}</div>
+        <div class="header--icon"><i class="fa fa-filter"></i></div>
+      </div>
+      <div class="d-flex p-1">
+        <select [(ngModel)]="selectedType" class="custom-select w-100">
+          <option *ngFor="let x of types" [value]="x.value">{{x.name}}</option>
+        </select>
+      </div>
+      <div class="d-flex px-1">
+          <ngbd-datepicker-popup (dateChange)="onUpdateDate($event)" class="ngb-datepicker"></ngbd-datepicker-popup>
+      </div>
+      <div class="d-flex pt-1">
+        <button type="btn" class="btn clear-button p-1" (click)="onClear()">{{ 'WORKSPACE.FILTERS.CLEAR' | translate }}</button>
+        <button type="btn" class="btn filter-button p-1" (click)="onFilter()">{{ 'WORKSPACE.FILTERS.FILTER' | translate }}</button>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-columns'></i></ng-template>
+      <ng-template ngbTabContent>
+      <app-freeze-tab [componentParent]="params.context.componentParent" [column]="params.column"></app-freeze-tab>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><i class='fa fa-eye'></i></ng-template>
+    <ng-template ngbTabContent>
+      <app-showhide-tab [componentParent]="params.context.componentParent"></app-showhide-tab>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

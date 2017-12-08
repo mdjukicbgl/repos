@@ -1,0 +1,22 @@
+<div class="totals d-flex">
+  <div class="d-flex flex-column justify-content-center px-1">
+    <small>{{ 'WORKSPACE.TOTALS.PREDICTED_OUTCOME' | translate }}</small>
+    <div>{{ 'WORKSPACE.TOTALS.OVERALL' | translate }}</div>
+  </div>
+  <div class="d-flex flex-column justify-content-center px-1" [ngbPopover]="'WORKSPACE.TOTALS.MARKDOWN_COST_ALL' | translate" triggers="mouseenter:mouseleave">
+    <i class="fa fa-money"></i>
+    <span class="text-center">£{{ ((selectedScenario$ | async)?.productsCost) | localeDecimal:locale:'1.0-2' }}</span>
+  </div>
+  <div class="d-flex flex-column justify-content-center px-1" [ngbPopover]="'WORKSPACE.TOTALS.MARKDOWN_COST_ALL_ACCEPTED' | translate" triggers="mouseenter:mouseleave">
+    <i class="fa fa-money"></i>
+    <span class="text-center">£{{ ((selectedScenario$ | async)?.productsAcceptedCost) | localeDecimal:locale:'1.0-2' }}</span>
+  </div>
+  <div class="d-flex flex-column justify-content-center px-1" [ngbPopover]="'WORKSPACE.TOTALS.NUMBER_OF_ACCEPTED' | translate" triggers="mouseenter:mouseleave">
+    <i class="fa fa-check"></i>
+    <span class="text-center">{{ ((selectedScenario$ | async)?.productsAcceptedCount) | localeDecimal:locale:'1.0-2' }}</span>
+  </div>
+  <div class="d-flex flex-column justify-content-center px-1" [ngbPopover]="'WORKSPACE.TOTALS.NUMBER_OF_REJECTED' | translate" triggers="mouseenter:mouseleave">
+    <i class="fa fa-times"></i>
+    <span class="text-center">{{ ((selectedScenario$ | async)?.productsRejectedCount) | localeDecimal:locale:'1.0-2' }}</span>
+  </div>
+</div>

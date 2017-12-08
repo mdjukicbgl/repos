@@ -1,0 +1,38 @@
+<div class="full-width-panel horizontal-scroll-wrapper">
+    <table class="table table-sm columns">
+      <tr><th><h6>&nbsp;</h6></th></tr>
+      <tr><th>&nbsp;</th></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.MARKDOWN_WEEK' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.NUMBER_TPN_MARKDOWN_JOURNEY' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.NUMBER_TPN_INTO_MARKDOWN' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.AVERAGE_MARKDOWN_MARGIN' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.OVERALL_MARKDOWN_MARGIN' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.EXPECTED_STOCK_BEFORE_PRICE' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_TERMINAL_STOCK_COUNT' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_TERMINAL_STOCK_COST' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_UNITS_SOLD_MARKDOWN_PERIOD' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_SALES_MARKDOWN_PERIOD' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_MARKDOWN_COST' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ESTIMATED_PROFIT' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.ACCEPTED' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.REVISED' | translate }}</td></tr>
+      <tr><td>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.REJECTED' | translate }}</td></tr>
+
+    </table>
+
+    <table class="table table-sm data">
+        <tr>
+            <th colspan='6' *ngFor="let item of productGroupSummary"><h6><b>{{item.name}}</b></h6></th>
+        </tr>
+        <tr>
+          <ng-template ngFor let-markdowns [ngForOf]="productGroupSummary">
+            <th colspan='2'>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.MERCH_DECISION' | translate }}</th>
+            <th colspan='2'>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.CURRENT' | translate }}</th>
+            <th colspan='2'>{{ 'SCENARIOS.PRODUCT_SUMMARY_HEADERS.RECOMMENDED' | translate }}</th>
+          </ng-template>
+        </tr>
+        <tr *ngFor="let row of rowData">
+          <td *ngFor="let item of row">{{item}}</td>
+        </tr>
+    </table>
+</div>

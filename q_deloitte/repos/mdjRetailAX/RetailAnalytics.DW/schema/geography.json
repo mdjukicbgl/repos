@@ -1,0 +1,259 @@
+{  
+    "mappingTypeName":"Geography",
+    "tableName":"stage.geography_dim",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "isKey":true,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"location_bkey",
+            "dstName":"location_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "isKey":true,
+            "srcName":"location_type_bkey",
+            "dstName":"location_type_bkey"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "isKey":true,
+            "srcName":"location_type",
+            "dstName":"location_type"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "isKey":true,
+            "srcName":"location_name",
+            "dstName":"location_name"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"location_description",
+            "dstName":"location_description"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"location_subtype",
+            "dstName":"location_subtype"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"location_status",
+            "dstName":"location_status"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"city_town",
+            "dstName":"city_town"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"county_state",
+            "dstName":"county_state"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"country",
+            "dstName":"country"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"region",
+            "dstName":"region"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"subregion",
+            "dstName":"subregion"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"longitude_position",
+            "dstName":"longitude_position"
+        }, 
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"latitude_position",
+            "dstName":"latitude_position"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"trading_start_date",
+            "dstName":"trading_start_date"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"trading_end_date",
+            "dstName":"trading_end_date"
+        },
+        {  
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName":"default_cluster",
+            "dstName":"default_cluster"
+        },
+        {  
+            "srcIndex":19,
+            "dstIndex":19,
+            "srcName":"building_floor_space",
+            "dstName":"building_floor_space"
+        },
+        {  
+            "srcIndex":20,
+            "dstIndex":20,
+            "srcName":"stock_allocation_grade",
+            "dstName":"stock_allocation_grade"
+        },
+        {
+            "srcIndex":21,
+            "dstIndex":21,
+            "srcName" :"row_id",
+            "dstName" :"row_id"
+        }
+
+    ],
+
+    "schema":{
+        "title" : "Geography record",
+        "type" : "object",
+        "properties": 
+            {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "location_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "location_type_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "location_type" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "location_name" : {
+                "type" : "string",
+                "maxLength" : 100,
+                "minLength" : 1
+            },
+            "location_description" : {
+                "type" : "string",
+                "maxLength" : 256
+            },
+            "location_subtype" : {
+                "type" : "string",
+                "maxLength" : 30
+            },
+            "location_status" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "city_town" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "county_state" : {
+                "type" : "string",
+                "maxLength" : 100
+            },
+            "country" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "region" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "subregion" : {
+                "type" : "string",
+                "maxLength" : 100
+            },
+            "longitude_position" : {
+                "type" : "string",
+                "maxLength" : 20 
+            },
+            "latitude_position" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "trading_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "trading_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "default_cluster" : {
+                "type" : "string",
+                "maxLength" : 30
+            },
+            "building_floor_space" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "stock_allocation_grade" : {
+                "type" : "string",
+                "maxLength" : 10
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+
+        },
+        "required": [
+                        "reporting_date",
+                        "reporting_date_period_type",
+                        "location_bkey",
+                        "location_name",
+                        "row_id"
+                 ],
+        "primaryKey": [ 
+                        "location_bkey"
+                    ]
+    }
+}

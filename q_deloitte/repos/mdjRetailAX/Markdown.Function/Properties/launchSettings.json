@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Start": {
+      "commandName": "Project",
+      "commandLineArgs": "--Program upload --ScenarioId 100 --PartitionId 1 --PartitionCount 1 --Pause 1",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "vmhost"
+      }
+    }
+  }
+}

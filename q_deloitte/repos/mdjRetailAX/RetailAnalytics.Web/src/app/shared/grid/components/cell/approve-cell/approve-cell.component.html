@@ -1,0 +1,3 @@
+<div class="btn-group" role="group" aria-label="Approve Reject" *ngIf="params.value != null">
+  <app-slide-toggle [state]="state" (valueChange)="stateChange($event)"></app-slide-toggle>
+</div>

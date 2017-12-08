@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center flex-row flex-wrap">
+  <div *ngIf="recommendationsHasFailed$ | async" class="alert alert-danger m-3" role="alert">
+    {{ 'WORKSPACE.ERROR_LOAD_SCENARIOS' | translate }}
+  </div>
+  <div *ngIf="hasNoSelectedScenario" class="alert alert-danger m-3" role="alert">
+    {{ 'WORKSPACE.ERROR_SELECT_SCENARIOS' | translate }}
+  </div>
+  <div *ngIf="acceptAllRecommendationsHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_ACCEPT_ALL' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissAcceptAllRecommendationsHasFailed()"></i></div>
+  </div>
+  <div *ngIf="rejectAllRecommendationsHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_REJECT_ALL' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissRejectAllRecommendationsHasFailed()"></i></div>
+  </div>
+  <div *ngIf="acceptRecommendationHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_ACCEPT_ONE' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissAcceptRecommendationHasFailed()"></i></div>
+  </div>
+  <div *ngIf="rejectRecommendationHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_REJECT_ONE' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissRejectRecommendationHasFailed()"></i></div>
+  </div>
+  <div *ngIf="acceptAllRecommendationsComplete$ | async" class="alert alert-success mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.SUCCESS_ACCEPTED_ALL' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissAcceptAllRecommendationsComplete()"></i></div>
+  </div>
+  <div *ngIf="rejectAllRecommendationsComplete$ | async" class="alert alert-success mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.SUCCESS_REJECTED_ALL' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissRejectAllRecommendationsComplete()"></i></div>
+  </div>
+  <div *ngIf="priceLadderHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_PRICE_LADDER' | translate }}</div>
+  </div>
+  <div *ngIf="reviseHasFailed$ | async" class="alert alert-danger mb-0 w-100 d-flex justify-content-between" role="alert">
+    <div>{{ 'WORKSPACE.ERROR_REVISE' | translate }}</div>
+    <div><i class="fa fa-close" (click)="dismissReviseRecommendationHasFailed()"></i></div>
+  </div>
+
+</div>

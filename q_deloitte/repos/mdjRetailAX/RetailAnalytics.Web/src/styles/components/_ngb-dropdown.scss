@@ -1,0 +1,13 @@
+@import '../settings/theme';
+
+.dropup {
+  .dropdown-menu {
+    background: $gray-dark;
+  }
+  .dropdown-item {
+    color: $white;
+    &:hover {
+      background: darken($gray-dark, 10%);
+    }
+  }
+}

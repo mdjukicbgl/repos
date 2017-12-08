@@ -1,0 +1,120 @@
+<app-subnav>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.STATUS' | translate" [link]="'/markdown/scenarios'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.SETUP' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.TIME' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.GOALS' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+</app-subnav>
+
+<div class="scenario-container vertical-flex">
+  <div class="scenario-inner-container d-flex flex-nowrap">
+
+
+    <div class="scenario-inner-container-content text-center" [class.disabled]="step === 1">
+      <button type="button" class="btn btn-secondary m-3 nav-button arrow arrow-back" style="border:0" (click)="backStep()"  *ngIf="step != 1">
+        <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+        {{ 'SCENARIOS.EDIT.FOOTER.BACK' | translate }}
+      </button>
+    </div>
+
+
+
+    <div class="scenario-inner-container-content">
+      <div class="d-flex flex-column p-1 pt-3 scenario-edit-page" *ngIf="step === 1">
+        <h3>
+          <span i18n class="step__header pr-1">{{ 'SCENARIOS.EDIT.STEP1' | translate }}</span>
+          <span i18n>{{ 'SCENARIOS.EDIT.STEP1_DETAIL' | translate }}</span>
+        </h3>
+        <app-error-group [errors]="errors"></app-error-group>
+        <form class="mt-3">
+          <div class="form-group">
+            <label>{{ 'SCENARIOS.EDIT.NAME' | translate }}</label>
+            <input type="text" [(ngModel)]="scenarioName" class="form-control" name="scenarioName" [placeholder]="'SCENARIOS.EDIT.PROVIDE_SCENARIO_NAME' | translate">
+          </div>
+        </form>
+      </div>
+
+      <div class="d-flex flex-column p-1 pt-3 scenario-edit-page" *ngIf="step === 2">
+        <h3>
+          <span i18n class="step__header pr-1">{{ 'SCENARIOS.EDIT.STEP2' | translate }}</span>
+          <span i18n>{{ 'SCENARIOS.EDIT.STEP2_DETAIL' | translate }}</span>
+        </h3>
+        <app-error-group [errors]="errors"></app-error-group>
+        <form class="mt-3">
+          <div class="form-group">
+            <span i18n>{{ 'SCENARIOS.EDIT.SELECT_PRODUCT_IDS' | translate }}</span>
+            <input type="text" [(ngModel)]="selectedProducts" class="form-control" name="selectedProducts">
+          </div>
+        </form>
+      </div>
+
+      <div class="d-flex flex-column p-1 pt-3 scenario-edit-page" *ngIf="step === 3">
+        <h3>
+          <span i18n class="step__header pr-1">{{ 'SCENARIOS.EDIT.STEP3' | translate }}</span>
+          <span i18n>{{ 'SCENARIOS.EDIT.STEP3_DETAIL' | translate }}</span>
+        </h3>
+        <app-error-group [errors]="errors"></app-error-group>
+        <file-upload class="mt-3" (onFileUploaded)="setUploadedFileGuid($event)"></file-upload>
+      </div>
+
+      <div class="d-flex flex-column p-1 pt-3 scenario-edit-page" *ngIf="step === 4">
+        <h3>
+          <span i18n class="step__header pr-1">{{ 'SCENARIOS.EDIT.STEP4' | translate }}</span>
+          <span i18n>{{ 'SCENARIOS.EDIT.STEP4_DETAIL' | translate }}</span>
+        </h3>
+        <app-error-group [errors]="errors"></app-error-group>
+        <app-calendar-weeks (selectedWeeksChange)="setSelectedWeeks($event)" class="my-3"></app-calendar-weeks>
+      </div>
+    </div>
+
+    <div class="scenario-inner-container-content text-center" [class.disabled]="step === 4">
+      <button type="button" class="btn btn-secondary m-3 nav-button arrow arrow-back" style="border:0" (click)="nextStep()" *ngIf="step != 4">
+        {{ 'SCENARIOS.EDIT.FOOTER.NEXT' | translate }}
+        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+
+
+  </div>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <!-- ERROR if scenario fails to save -->
+  <div *ngIf="scenarioSaveHasFailed$ | async">
+    <div class="alert alert-danger" role="alert">
+      {{ 'MODAL.SAVE_FAIL_TITLE' | translate }}
+    </div>
+    <div class="modal-body">
+      <p>{{ 'MODAL.SAVE_FAIL_BODY' | translate }}</p>
+    </div>
+    <div class="modal-footer d-flex">
+      <button type="button" class="btn btn-success" (click)="c('Close Click')">{{ 'MODAL.CLOSE' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- ELSE display the main modal prompt -->
+  <div *ngIf="(scenarioSaveHasFailed$ | async) == false">
+    <div *ngIf="scenarioIsRunning$ | async">
+      <sk-cube-grid></sk-cube-grid>
+    </div>
+    <div *ngIf="(scenarioIsRunning$ | async) == false">
+      <div class="modal-header">
+        <p class="modal-title text-center">{{ 'MODAL.RUN_TITLE' | translate }}</p>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'MODAL.RUN_BODY' | translate }}</p>
+      </div>
+      <div class="modal-footer d-flex">
+        <button type="button" class="btn btn-success" (click)="modalConfirmButtonClicked(c)">{{ 'MODAL.CONFIRM' | translate }}</button>
+        <button type="button" class="btn btn-secondary" (click)="modalCancelButtonClicked(c)">{{ 'MODAL.CANCEL' | translate }}</button>
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>
+
+<app-scenario-wizard-footer (onSaveClick)="saveScenario(false)" (onSaveAndRunClick)="saveScenario(true)" (onBackClick)="backStep()"
+  (onNextClick)="nextStep()"></app-scenario-wizard-footer>

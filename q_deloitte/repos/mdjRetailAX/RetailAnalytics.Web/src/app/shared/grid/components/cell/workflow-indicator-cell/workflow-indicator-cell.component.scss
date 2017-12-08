@@ -1,0 +1,15 @@
+@import '../../../../../../styles/settings/theme';
+
+span {
+
+  font-size: 18px;
+
+  &.icon-selector {
+    color: $gray-lighter;
+  }
+
+  &.icon-selector-active {
+    color: $brand-success;
+  }
+
+}

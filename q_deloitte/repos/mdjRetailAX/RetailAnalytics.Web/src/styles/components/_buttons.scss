@@ -1,0 +1,74 @@
+.btn {
+
+  &.btn-dark {
+    background: $gray-dark;
+    border-color: $gray-dark;
+    color: $white;
+
+    &:hover {
+      background: darken($gray-dark, 10);
+    }
+  }
+
+  &-bordered {
+    background: $white;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.btn-primary {
+      border-color: $brand-primary;
+      color: $brand-primary;
+
+      &:hover {
+        background: $brand-primary;
+        color: $white;
+      }
+    }
+
+    &.btn-info {
+      border-color: $brand-info;
+      color: $brand-info;
+
+      &:hover {
+        background: $brand-info;
+        color: $white;
+      }
+    }
+
+    &.btn-warning {
+      border-color: $brand-warning;
+      color: $brand-warning;
+
+      &:hover {
+        background: $brand-warning;
+        color: $white;
+      }
+    }
+
+    &.btn-success {
+      border-color: $brand-success;
+      color: $brand-success;
+
+      &:hover {
+        background: $brand-success;
+        color: $white;
+      }
+    }
+
+    &.btn-danger {
+      border-color: $brand-danger;
+      color: $brand-danger;
+
+      &:hover {
+        background: $brand-danger;
+        color: $white;
+      }
+    }
+
+    &.disabled {
+      color: #717171;
+    }
+  }
+}

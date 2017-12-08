@@ -1,0 +1,451 @@
+    {
+    "mappingTypeName": "MarkdownSales",
+    "tableName": "stage.markdown_measures",
+    "columnSep": "|",
+    "headerRecord": [
+        {
+            "srcIndex": 0,
+            "dstIndex": 0,
+            "isKey": true,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        },
+        {
+            "srcIndex": 1,
+            "dstIndex": 1,
+            "srcName": "reporting_date",
+            "dstName": "reporting_date"
+        },
+        {
+            "srcIndex": 2,
+            "dstIndex": 2,
+            "srcName": "reporting_date_period_type",
+            "dstName": "reporting_date_period_type"
+        },
+        {
+            "srcIndex": 3,
+            "dstIndex": 3,
+            "srcName": "product_bkey1",
+            "dstName": "product_bkey1"
+        },
+        {
+            "srcIndex": 4,
+            "dstIndex": 4,
+            "srcName": "product_bkey2",
+            "dstName": "product_bkey2"
+        },
+        {
+            "srcIndex": 5,
+            "dstIndex": 5,
+            "srcName": "product_bkey3",
+            "dstName": "product_bkey3"
+        },
+        {
+            "srcIndex": 6,
+            "dstIndex": 6,
+            "srcName": "product_bkey4",
+            "dstName": "product_bkey4"
+        },
+        {
+            "srcIndex": 7,
+            "dstIndex": 7,
+            "srcName": "location_bkey",
+            "dstName": "location_bkey"
+        },
+        {
+            "srcIndex": 8,
+            "dstIndex": 8,
+            "srcName": "iso_currency_code",
+            "dstName": "iso_currency_code"
+        },
+        {
+            "srcIndex": 9,
+            "dstIndex": 9,
+            "srcName": "year_seasonality_bkey",
+            "dstName": "year_seasonality_bkey"
+        },
+        {
+            "srcIndex": 10,
+            "dstIndex": 10,
+            "srcName": "price_status_bkey",
+            "dstName": "price_status_bkey"
+        },
+        {
+            "srcIndex": 11,
+            "dstIndex": 11,
+            "srcName": "channel_bkey",
+            "dstName": "channel_bkey"
+        },
+        {
+            "srcIndex": 12,
+            "dstIndex": 12,
+            "srcName": "gross_margin",
+            "dstName": "gross_margin"
+        },
+        {
+            "srcIndex": 13,
+            "dstIndex": 13,
+            "srcName": "markdown_price",
+            "dstName": "markdown_price"
+        },
+        {
+            "srcIndex": 14,
+            "dstIndex": 14,
+            "srcName": "markdown_cost",
+            "dstName": "markdown_cost"
+        },
+        {
+            "srcIndex": 15,
+            "dstIndex": 15,
+            "srcName": "cost_price",
+            "dstName": "cost_price"
+        },
+        {
+            "srcIndex": 16,
+            "dstIndex": 16,
+            "srcName": "system_price",
+            "dstName": "system_price"
+        },
+        {
+            "srcIndex": 17,
+            "dstIndex": 17,
+            "srcName": "selling_price",
+            "dstName": "selling_price"
+        },
+        {
+            "srcIndex": 18,
+            "dstIndex": 18,
+            "srcName": "original_selling_price",
+            "dstName": "original_selling_price"
+        },
+        {
+            "srcIndex": 19,
+            "dstIndex": 19,
+            "srcName": "optimisation_original_selling_price",
+            "dstName": "optimisation_original_selling_price"
+        },
+        {
+            "srcIndex": 20,
+            "dstIndex": 20,
+            "srcName": "provided_selling_price",
+            "dstName": "provided_selling_price"
+        },
+        {
+            "srcIndex": 21,
+            "dstIndex": 21,
+            "srcName": "provided_original_selling_price",
+            "dstName": "provided_original_selling_price"
+        },
+        {
+            "srcIndex": 22,
+            "dstIndex": 22,
+            "srcName": "optimisation_selling_price",
+            "dstName": "optimisation_selling_price"
+        },
+        {
+            "srcIndex": 23,
+            "dstIndex": 23,
+            "srcName": "local_tax_rate",
+            "dstName": "local_tax_rate"
+        },
+        {
+            "srcIndex": 24,
+            "dstIndex": 24,
+            "srcName": "sales_value",
+            "dstName": "sales_value"
+        },
+        {
+            "srcIndex": 25,
+            "dstIndex": 25,
+            "srcName": "sales_quantity",
+            "dstName": "sales_quantity"
+        },
+        {
+            "srcIndex": 26,
+            "dstIndex": 26,
+            "srcName": "store_stock_value",
+            "dstName": "store_stock_value"
+        },
+        {
+            "srcIndex": 27,
+            "dstIndex": 27,
+            "srcName": "store_stock_quantity",
+            "dstName": "store_stock_quantity"
+        },
+        {
+            "srcIndex": 28,
+            "dstIndex": 28,
+            "srcName": "depot_stock_value",
+            "dstName": "depot_stock_value"
+        },
+        {
+            "srcIndex": 29,
+            "dstIndex": 29,
+            "srcName": "depot_stock_quantity",
+            "dstName": "depot_stock_quantity"
+        },
+        {
+            "srcIndex": 30,
+            "dstIndex": 30,
+            "srcName": "clearance_sales_value",
+            "dstName": "clearance_sales_value"
+        },
+        {
+            "srcIndex": 31,
+            "dstIndex": 31,
+            "srcName": "clearance_sales_quantity",
+            "dstName": "clearance_sales_quantity"
+        },
+        {
+            "srcIndex": 32,
+            "dstIndex": 32,
+            "srcName": "promotion_sales_value",
+            "dstName": "promotion_sales_value"
+        },
+        {
+            "srcIndex": 33,
+            "dstIndex": 33,
+            "srcName": "promotion_sales_quantity",
+            "dstName": "promotion_sales_quantity"
+        },
+        {
+            "srcIndex": 34,
+            "dstIndex": 34,
+            "srcName": "store_stock_value_no_negatives",
+            "dstName": "store_stock_value_no_negatives"
+        },
+        {
+            "srcIndex": 35,
+            "dstIndex": 35,
+            "srcName": "store_stock_quantity_no_negatives",
+            "dstName": "store_stock_quantity_no_negatives"
+        },
+        {
+            "srcIndex": 36,
+            "dstIndex": 36,
+            "srcName": "intake_plus_future_commitment_quantity",
+            "dstName": "intake_plus_future_commitment_quantity"
+        },
+        {
+            "srcIndex": 37,
+            "dstIndex": 37,
+            "srcName": "intake_plus_future_commitment_value",
+            "dstName": "intake_plus_future_commitment_value"
+        },
+        {
+            "srcIndex": 38,
+            "dstIndex": 38,
+            "srcName": "total_stock_value",
+            "dstName": "total_stock_value"
+        },
+        {
+            "srcIndex": 39,
+            "dstIndex": 39,
+            "srcName": "total_stock_quantity",
+            "dstName": "total_stock_quantity"
+        }
+
+    ],
+
+    "schema": {
+        "title": "MarkdownSales",
+        "type": "object",
+        "properties": {
+            "row_id": {
+                "type": "string",
+                "maxlength": 20
+            },    
+            "reporting_date": {
+                "description": "Calendar date",
+                "type": "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "product_bkey1": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey2": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey3": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey4": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "location_bkey": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "iso_currency_code": {
+                "type": "string",
+                "maxLength" : 3,
+                "minLength" : 3
+            },
+            "year_seasonality_bkey": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "price_status_bkey": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "channel_bkey": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "gross_margin": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "markdown_price": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "markdown_cost": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "cost_price": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "system_price": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "selling_price": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "original_selling_price": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "optimisation_original_selling_price": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "provided_selling_price": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "provided_original_selling_price": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "optimisation_selling_price": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "local_tax_rate": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "sales_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "sales_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "store_stock_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "store_stock_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "depot_stock_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "depot_stock_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "clearance_sales_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "clearance_sales_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "promotion_sales_value": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "promotion_sales_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "store_stock_value_no_negatives": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "store_stock_quantity_no_negatives": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "intake_plus_future_commitment_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            },
+            "intake_plus_future_commitment_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "total_stock_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "total_stock_quantity": {
+                "type": "string",
+                "minimum": 0,
+                "maxlength": 20
+            }
+
+        },
+        "required": [
+            "reporting_date",
+            "reporting_date_period_type",
+            "product_bkey1",
+            "location_bkey",
+            "iso_currency_code",
+            "year_seasonality_bkey",
+            "price_status_bkey",
+            "channel_bkey"
+        ],
+        "primaryKey": [
+            "row_id",
+            "product_bkey1",
+            "product_bkey2",
+            "product_bkey3",
+            "product_bkey4",
+            "location_bkey",
+            "year_seasonality_bkey",
+            "price_status_bkey",
+            "channel_bkey"
+        ]
+    }
+}

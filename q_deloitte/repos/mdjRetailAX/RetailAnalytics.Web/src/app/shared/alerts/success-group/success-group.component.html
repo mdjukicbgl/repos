@@ -1,0 +1,5 @@
+<div *ngIf="successes?.length > 0" class="alert alert-success my-1">
+  <ul *ngFor="let success of successes">
+    <li><i class="fa fa-check" aria-hidden="true"></i> {{success}}</li>
+  </ul>
+</div>

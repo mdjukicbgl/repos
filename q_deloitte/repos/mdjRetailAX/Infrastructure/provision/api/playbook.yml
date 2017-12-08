@@ -1,0 +1,97 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars_prompt:
+
+  - name: "app_db_connection_string"
+    prompt: "Enter App Db connection string"
+    private: yes
+  
+  - name: "model_db_connection_string"
+    prompt: "Enter Model Db connecton string"
+    private: yes
+
+  - name: "cloud_watch_aws_key_id"
+    prompt: "Enter Cloud Watch AWS Key Id"
+    private: no
+
+  - name: "cloud_watch_aws_secret_key"
+    prompt: "Enter Cloud Watch AWS Secret Key"
+    private: yes
+
+  - name: "cors_origin"
+    prompt: "Enter Cors Origin"
+    private: no
+
+  - name: "lambda_function_name"
+    prompt: "Enter lambda function name"
+    private: no
+
+  - name: "deploy_dir"
+    prompt: "Enter deploy directory"
+    private: no
+
+  tasks:    
+  - name: install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+  - name: create dotnetdev.list file
+    file: 
+      path: /etc/apt/sources.list.d/dotnetdev.list 
+      state: touch 
+      owner: root 
+      group: root 
+      mode: 0755
+
+  - name: set apt-get feed Ubuntu Xenial
+    lineinfile: 
+      path: /etc/apt/sources.list.d/dotnetdev.list 
+      line: "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main"     
+
+  - name: apt key add
+    apt_key: 
+      keyserver: apt-mo.trafficmanager.net 
+      id: 417A0893      
+
+  - name: Updating apt cache
+    apt:
+      update_cache: yes
+
+  - name: Install dotnet core SDK
+    apt: 
+      name: dotnet-dev-1.0.4 
+      state: present
+      cache_valid_time: 86400
+
+  - name: Copy Web Api Files
+    synchronize:
+      src: "{{ deploy_dir }}/webapi/"
+      dest: /Markdown.WebApi/
+
+  - name: map the port 80 to 5000
+    iptables:
+      table: nat
+      chain: PREROUTING
+      in_interface: eth0
+      protocol: tcp
+      match: tcp
+      destination_port: 80
+      jump: REDIRECT
+      to_ports: 5000
+
+  - name: Create System Service File
+    template:
+      src: ./service-template.j2
+      dest: /etc/systemd/system/kestrel-markdownwebapi.service
+
+  - name: Enable the markdown api service
+    systemd:
+      name: kestrel-markdownwebapi.service
+      enabled: yes
+
+  - name: Start the markdown api service
+    systemd:
+      name: kestrel-markdownwebapi.service
+      state: restarted
+      daemon-reload: yes      

@@ -1,0 +1,239 @@
+{
+    "MENU": {
+      "DASHBOARD": "Dashboard",
+      "SCENARIOS": "Scenarios",
+      "WORKSPACE": "Workspace",
+      "MARKDOWN": "Markdown"
+    },
+
+    "SCENARIOS_SUB_MENU": {
+      "STATUS": "Status",
+      "SETUP": "Setup",
+      "TIME": "Time",
+      "GOALS": "Goals"
+    },
+
+    "DASHBOARD": {
+        "WELCOME_MESSAGE": "<h1 class='display-3'>Welcome to Deloitte Markdown V3</h1><p class='lead'>Markdown optimisation helps retailers manage their end of season discounts (including price, timing and number of markdowns)</p><hr><p>Following a period of unprecedented change, the retail industry is facing an environment where margins are increasingly under pressure from rising costs, lower pricing power and the need to invest in digital transformation. Retailers are still competing with each other but also face new competitors who have different operating models and cost bases and this rate of change is showing little sign of slowing. Retailers are already responding to a number of structural and operational changes in the market but are they moving fast enough?</p>",
+        "ERROR_LOAD_DASHBOARD": "Could not load dashboard!",
+        "ERROR_LOAD_WIDGETS": "Could not load widgets!",
+        "WIDGET_SCENARIOS": {
+          "ERROR_LOAD_SCENARIOS": "Could not load scenarios!",
+          "RAN_IN_LAST": "ran in the last 7 days",
+          "VIEW": "View"
+        }
+    },
+
+    "SCENARIOS": {
+      "SUMMARY": {
+        "HEADER": "Scenario Status",
+        "SUB_HEADER": "Select a scenario to navigate the detail",
+        "CREATE_NEW": "Create new scenario"
+      },
+      "FOOTER": {
+        "ITEMS_SELECTED": "items selected",
+        "SUBMIT": "Submit",
+        "PUBLISH": "Publish",
+        "DUPLICATE": "Duplicate",
+        "EDIT": "Edit",
+        "VIEW": "View",
+        "RUN": "Run",
+        "APPROVE": "Approve",
+        "SAVE": "Save",
+        "ACCEPT": "Accept",
+        "EXPORT": "Export",
+        "UPDATE": "Update"
+      },
+      "STATUS": {
+        "NEW": "New",
+        "COMPLETE": "Completed",
+        "RUNNING": "Running...",
+        "FAILED": "Failed",
+        "VIEW": "View"
+      },
+      "LIST": {
+        "CLEAR_SCENARIO_STATE": "Clear State",
+        "ERROR_LOAD_SCENARIOS": "Could not load scenarios!",
+        "REFRESH": "Refresh",
+        "RUN_SCENARIO": "Run Scenario",
+        "RUN_SCENARIO_QUESTION": "Are you sure you want to run scenario?",
+        "RUN_SCENARIO_CONFIRM": "CONFIRM",
+        "RUN_SCENARIO_CANCEL": "CANCEL"
+      },
+
+      "GRID_HEADERS": {
+        "SCENARIO_ID": "Scenario Id",
+        "SCENARIO_NAME": "Scenario Name",
+        "PRODUCT_COUNT": "Product Count",
+        "LAST_RUN_DATE": "Last Run Date",
+        "STATUS": "Status",
+        "PERCENTAGE_ACCEPTED": "% Accepted",
+        "PERCENTAGE_REJECTED": "% Rejected",
+        "PERCENTAGE_REVISED": "% Revised",
+        "ESTIMATED_PROFIT": "Estimated Profit",
+        "ESTIMATED_SALES": "Estimated Sales",
+        "AVERAGE_DEPTH": "Average Depth",
+        "TOTAL_MARKDOWN_COST": "Total Markdown Cost",
+        "ESTIMATED_TERMINAL_STOCK": "Estimated Terminal Stock",
+        "STATUS_NEW":"New",
+        "STATUS_PUBLISHED":"Published",
+        "STATUS_ACCEPTED":"Accepted",
+        "STATUS_REJECTED":"Rejected",
+        "MEASURES":"Measure"
+      },
+
+      "PRODUCT_SUMMARY_HEADERS": {
+        "MARKDOWN_WEEK": "Markdown Week",
+        "NUMBER_TPN_MARKDOWN_JOURNEY": "Number of TPNs on Markdown Journey",
+        "NUMBER_TPN_INTO_MARKDOWN": "Number of TPNs going into Markdown",
+        "AVERAGE_MARKDOWN_MARGIN": "Average Markdown Margin (%)",
+        "OVERALL_MARKDOWN_MARGIN": "Overall Markdown Margin (%)",
+        "EXPECTED_STOCK_BEFORE_PRICE": "Expected stock level before price change",
+        "ESTIMATED_TERMINAL_STOCK_COUNT": "Estimated Terminal Stock (#)",
+        "ESTIMATED_TERMINAL_STOCK_COST": "Estimated Terminal Stock Cost (£)",
+        "ESTIMATED_UNITS_SOLD_MARKDOWN_PERIOD": "Estimated Units Sold over Markdown Period",
+        "ESTIMATED_SALES_MARKDOWN_PERIOD": "Estimated Sales over Markdown Period",
+        "ESTIMATED_MARKDOWN_COST": "Estimated Markdown Cost (£)",
+        "ESTIMATED_PROFIT": "Estimated Profit (£)",
+        "ACCEPTED": "Accepted (%)",
+        "REVISED": "Revised (%)",
+        "REJECTED": "Rejected (%)",
+        "MERCH_DECISION": "Merch Decision",
+        "CURRENT": "Current",
+        "RECOMMENDED": "Recommended"
+      },
+
+      "EDIT": {
+        "STEP1": "Step one...",
+        "STEP1_DETAIL": "Scenario Details",
+        "STEP2": "Step two...",
+        "STEP2_DETAIL": "Select Products",
+        "STEP3": "Step three...",
+        "STEP3_DETAIL": "Upload Products",
+        "STEP4": "Step four...",
+        "STEP4_DETAIL": "Set Schedule",
+        "NAME": "Name",
+        "SELECT_PRODUCT_IDS": "Selected Product Ids",
+        "PROVIDE_SCENARIO_NAME": "Provide scenario Name",
+        "ERROR_SCENARIO_NAME_REQUIRED": "Scenario name required",
+        "ERROR_NO_WEEKS_SELECTED": "No weeks selected",
+        "ERROR_WEEKS_CONSECUTIVE": "Consecutive weeks are not allowed",
+        "ERROR_NO_PRODUCTS_SELECTED": "No products selected",
+        "FOOTER": {
+          "PREVIOUS":"Previous",
+          "BACK":"Back",
+          "SAVE":"Save",
+          "NEXT":"Next",
+          "SAVE_AND_RUN":"Save and Run"
+        }
+      },
+
+      "CALENDAR_WEEKS": {
+        "DURATION": "Duration - ",
+        "WEEKS": "weeks",
+        "ERROR_LOAD_CALENDAR": "Could not load calendar!",
+        "START_DATE": "Start Date",
+        "SELECT_WEEKS": "Select Weeks"
+      },
+
+      "MEASURES": {
+        "NUMBER_OF_PRODUCTS": "No. of Products",
+        "ESTIMATED_SALES": "Est. Sales"
+      }
+    },
+
+    "WORKSPACE": {
+      "ERROR_LOAD_SCENARIOS": "Could not load scenarios!",
+      "ERROR_SELECT_SCENARIOS": "Please select scenario!",
+      "ERROR_ACCEPT_ALL": "Failed to accept all recommendations!",
+      "ERROR_REJECT_ALL": "Failed to reject all recommendations!",
+      "ERROR_ACCEPT_ONE": "Failed to accept recommendation!",
+      "ERROR_REJECT_ONE": "Failed to reject recommendation!",
+      "ERROR_PRICE_LADDER": "Failed to fetch price ladder!",
+      "ERROR_REVISE": "Failed to revise recommendation!",
+      "SUCCESS_ACCEPTED_ALL": "Accepted all recommendations",
+      "SUCCESS_REJECTED_ALL": "Rejected all recommendations",
+      "GRID_HEADERS": {
+        "PRODUCT_ID": "Product Id",
+        "PRODUCT_NAME": "Product Name",
+        "HIERARCHY_NAME": "Hierarchy Name",
+        "ORIGINAL_SELLING_PRICE": "Original Selling Price",
+        "CURRENT_SELLING_PRICE": "Current Selling Price",
+        "MAX_STOCK_TARGET": "Max Stock Target",
+        "TERMINAL_STOCK": "Terminal Stock",
+        "TOTAL_REVENUE": "Total Revenue",
+        "MARKDOWN_COST": "Markdown Cost",
+        "STATUS": "Status",
+        "PRICE": "Price",
+        "DISCOUNT": "Discount",
+        "PRICE_REVISION": "Price Revision",
+        "DISCOUNT_REVISION": "Discount Revision",
+        "REVISE": "Revise"
+      },
+      "FILTERS": {
+        "CLEAR": "Clear",
+        "FILTER": "Filter",
+        "FREEZE_PANES": "Freeze Panes",
+        "LEFT": "Left",
+        "UNFREEZE": "Unfreeze",
+        "SHOW_HIDE": "Show/Hide",
+        "FAILED_TO_LOAD_LIST": "Failed to load list"
+      },
+      "FOOTER": {
+        "ACTIONS": "Actions",
+        "ACCEPT_SELECTED": "Accept Selected",
+        "REJECT_SELECTED": "Reject Selected"
+      },
+      "WEEK_SELECTOR": "Week",
+      "TOTALS": {
+        "PREDICTED_OUTCOME": "Predicted Outcome",
+        "OVERALL": "OVERALL",
+        "MARKDOWN_COST_ALL": "Markdown cost for all products",
+        "MARKDOWN_COST_ALL_ACCEPTED": "Markdown cost for all accepted products",
+        "NUMBER_OF_ACCEPTED": "Number of accepted products",
+        "NUMBER_OF_REJECTED": "Number of rejected products"
+      },
+      "PRICE_LADDER": {
+        "REVISE": "Revise",
+        "DISCOUNT_REQUIRED": "At least one discount required.",
+        "NO_DISCOUNTS": "No discounts selected.",
+        "DISCOUNT_SAME_OR_DEEPER_THAN_PREVIOUS": "Discounts must be the same or deeper than the previous.",
+        "DISCOUNT_SAME_OR_DEEPER_THAN_EXISTING": "Discounts must be the same or deeper than the existing discount."
+      }
+    },
+
+    "PROFILE": {
+      "SIGN_OUT": "Sign Out",
+      "ENGLISH": "Change Language to English",
+      "BULGARIAN": "Change Language to Bulgarian"
+    },
+
+    "UPLOAD": {
+      "DROP_MESSAGE": "Drop files or click",
+      "CANCEL": "Cancel",
+      "UPLOAD_SUCCESSFUL": "Upload Successful!",
+      "UPLOAD_FAILED": "Upload Failed",
+      "UPLOAD_CANCELLED": "Upload Cancelled",
+      "INVALID_FILE_TYPE": "Invalid file type"
+    },
+
+    "MODAL": {
+      "CONFIRM": "Confirm",
+      "CANCEL": "Cancel",
+      "CLOSE": "Close",
+      "RUN_TITLE": "Run Scenario",
+      "RUN_BODY":"Are you sure you want to run scenario?",
+      "SAVE_FAIL_TITLE": "Save error!",
+      "SAVE_FAIL_BODY": "Scenario failed to save."
+    },
+
+    "GRID": {
+      "SEARCH": "Search",
+      "CLEAR": "Clear",
+      "FILTER": "Filter",
+      "FREEZE_PANES": "Freeze Panes",
+      "LEFT": "Left",
+      "UNFREEZE": "Unfreeze",
+      "NO_VALUE_STRING": ""
+    }
+}

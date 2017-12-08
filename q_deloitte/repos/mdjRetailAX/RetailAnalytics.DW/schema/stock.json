@@ -1,0 +1,275 @@
+{
+    "mappingTypeName": "Stock",
+    "tableName": "stage.stock_measures",
+    "columnSep": "|",
+    "headerRecord": [
+        {
+            "srcIndex": 0,
+            "dstIndex": 0,
+            "isKey": true,
+            "srcName": "reporting_date",
+            "dstName": "reporting_date"
+        },
+        {
+            "srcIndex": 1,
+            "dstIndex": 1,
+            "srcName": "reporting_date_period_type",
+            "dstName": "reporting_date_period_type"
+        },
+        {
+            "srcIndex": 2,
+            "dstIndex": 2,
+            "isKey": true,
+            "srcName": "location_bkey",
+            "dstName": "location_bkey"
+        },
+        {
+            "srcIndex": 3,
+            "dstIndex": 3,
+            "isKey": true,
+            "srcName": "product_bkey1",
+            "dstName": "product_bkey1"
+        },
+        {
+            "srcIndex": 4,
+            "dstIndex": 4,
+            "isKey": true,
+            "srcName": "product_bkey2",
+            "dstName": "product_bkey2"
+        },
+                {
+            "srcIndex": 5,
+            "dstIndex": 5,
+            "isKey": true,
+            "srcName": "product_bkey3",
+            "dstName": "product_bkey3"
+        },
+                {
+            "srcIndex": 6,
+            "dstIndex": 6,
+            "isKey": true,
+            "srcName": "product_bkey4",
+            "dstName": "product_bkey4"
+        },
+        {
+            "srcIndex": 7,
+            "dstIndex": 7,
+            "srcName": "product_status_key",
+            "dstName": "product_status_key"
+        },
+        {
+            "srcIndex": 8,
+            "dstIndex": 8,
+            "srcName": "iso_currency_code",
+            "dstName": "iso_currency_code"
+        },
+        {
+            "srcIndex": 9,
+            "dstIndex": 9,
+            "srcName": "stock_value",
+            "dstName": "stock_value"
+        },
+        {
+            "srcIndex": 10,
+            "dstIndex": 10,
+            "srcName": "stock_quantity",
+            "dstName": "stock_quantity"
+        },
+        {
+            "srcIndex": 11,
+            "dstIndex": 11,
+            "srcName": "stock_cost",
+            "dstName": "stock_cost"
+        },
+        {
+            "srcIndex": 12,
+            "dstIndex": 12,
+            "srcName": "cost_price",
+            "dstName": "cost_price"
+        },
+        {
+            "srcIndex": 13,
+            "dstIndex": 13,
+            "srcName": "future_commitment_stock_value",
+            "dstName": "future_commitment_stock_value"
+        },
+        {
+            "srcIndex": 14,
+            "dstIndex": 14,
+            "srcName": "future_commitment_stock_quantity",
+            "dstName": "future_commitment_stock_quantity"
+        },        
+        {
+            "srcIndex": 15,
+            "dstIndex": 15,
+            "srcName": "future_commitment_stock_cost",
+            "dstName": "future_commitment_stock_cost"
+        },
+        {
+            "srcIndex": 16,
+            "dstIndex": 16,
+            "srcName": "intake_stock_value",
+            "dstName": "intake_stock_value"
+        },
+        {
+            "srcIndex": 17,
+            "dstIndex": 17,
+            "srcName": "intake_stock_quantity",
+            "dstName": "intake_stock_quantity"
+        },
+        {
+            "srcIndex": 18,
+            "dstIndex": 18,
+            "srcName": "intake_stock_cost",
+            "dstName": "intake_stock_cost"
+        },
+        {
+            "srcIndex": 19,
+            "dstIndex": 19,
+            "srcName": "transit_stock_value",
+            "dstName": "transit_stock_value"
+        },
+        {
+            "srcIndex": 20,
+            "dstIndex": 20,
+            "srcName": "transit_stock_quantity",
+            "dstName": "transit_stock_quantity"
+        },
+        {
+            "srcIndex": 21,
+            "dstIndex": 21,
+            "srcName": "transit_stock_cost",
+            "dstName": "transit_stock_cost"
+        },
+        {
+            "srcIndex": 22,
+            "dstIndex": 22,
+            "isKey": true,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        }
+
+    ],
+
+    "schema": {
+        "title": "Stock",
+        "type": "object",
+        "properties": {
+            "reporting_date": {
+                "description": "calendar_date",
+                "type": "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type": "string",
+                "maxLength": 1,
+                "enum" : ["0", "1", "2", "3"]       
+            },
+            "location_bkey": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey1": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey2": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey3": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_bkey4": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "product_status_key": {
+                "type": "string",
+                "maxLength": 20
+            },                        
+            "iso_currency_code": {
+                "type": "string",
+                "maxLength": 3
+            },
+            "stock_value": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "stock_quantity": {
+                "type": "string",
+                "minimum" : 0,
+                "maxLength": 20
+            },
+            "stock_cost": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "cost_price": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "future_commitment_stock_value": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "future_commitment_stock_quantity": {
+                "type": "string",
+                "minimum" : 0,
+                "maxLength": 20
+            },
+            "future_commitment_stock_cost": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "intake_stock_value": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "intake_stock_quantity": {
+                "type": "string",
+                "minimum" : 0,
+                "maxLength": 20
+            },
+            "intake_stock_cost": {
+                "type": "string",
+                "maxLength": 20
+            },
+            "transit_stock_value": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "transit_stock_quantity": {
+                "type": "string",
+                "minimum" : 0,
+                "maxlength": 20
+            },
+            "transit_stock_cost": {
+                "type": "string",
+                "maxlength": 20
+            },
+            "row_id": {
+                "type": "string",
+                "maxlength": 20
+            }
+
+        },
+        "required": [
+            "row_id",
+            "reporting_date",
+            "reporting_date_period_type",
+            "location_bkey",
+            "product_bkey1"
+        ],
+        "primaryKey": [
+            "row_id",
+            "reporting_date",
+            "location_bkey",
+            "product_bkey1",
+            "product_bkey2",
+            "product_bkey3",
+            "product_bkey4"
+        ]
+    }
+}

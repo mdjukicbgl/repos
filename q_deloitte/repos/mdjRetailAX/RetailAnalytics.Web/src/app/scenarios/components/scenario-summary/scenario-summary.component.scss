@@ -1,0 +1,14 @@
+@import '../../../../styles/settings/theme';
+
+.scenario-container {
+  background: $white;
+}
+
+.spacer {
+  height: 53px;
+  flex: none;
+}
+
+.save-fail-alert {
+	text-align: center;
+}

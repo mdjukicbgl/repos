@@ -1,0 +1,180 @@
+{  
+    "mappingTypeName":"PriceChanges",
+    "tableName":"stage.price_changes_measures",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "isKey":true,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "isKey":true,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "srcName":"location_bkey",
+            "dstName":"location_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"product_bkey1",
+            "dstName":"product_bkey1"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"product_bkey2",
+            "dstName":"product_bkey2"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"product_bkey3",
+            "dstName":"product_bkey3"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"product_bkey4",
+            "dstName":"product_bkey4"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"channel_bkey",
+            "dstName":"channel_bkey"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"year_seasonality_bkey",
+            "dstName":"year_seasonality_bkey"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"iso_currency_code",
+            "dstName":"iso_currency_code"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"price_status_bkey",
+            "dstName":"price_status_bkey"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"system_price",
+            "dstName":"system_price"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"selling_price",
+            "dstName":"selling_price"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"original_selling_price",
+            "dstName":"original_selling_price"
+        },
+        {
+            "srcIndex":14,
+            "dstIndex":14,
+            "isKey": true,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        }
+
+    ],
+
+    "schema":{
+        "title" : "pricechanges",
+        "type" : "object",
+        "properties": {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "location_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "product_bkey1" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "product_bkey2" : {
+                "type" : "string",
+                "maxLength" : 20
+            },            
+            "product_bkey3" : {
+                "type" : "string",
+                "maxLength" : 20
+            },            
+            "product_bkey4" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "channel_bkey" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "year_seasonality_bkey" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "iso_currency_code" : {
+                "type" : "string",
+                "maxLength" : 3
+            },
+            "price_status_bkey" : {
+                "type" : "string",
+                "maxLength" : 10
+            },
+            "system_price" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "selling_price" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "original_selling_price" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "row_id": {
+                "type" : "string",
+                "maxLength" : 20
+            }
+
+        },
+        "required": ["row_id",
+                     "reporting_date",
+                     "reporting_date_period_type"
+                     ],
+        "primaryKey": ["row_id"
+                      ]
+    }
+}

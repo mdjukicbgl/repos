@@ -1,0 +1,13 @@
+boto3
+botocore
+certifi
+chardet
+docutils
+futures
+idna
+jmespath
+python-dateutil
+requests
+s3transfer
+six
+urllib3

@@ -1,0 +1,9 @@
+<div ngbDropdown class="d-flex profile">
+  <div class="profile__image"></div>
+  <a class="profile__dropdown align-self-center" id="profile-dropdown" ngbDropdownToggle>{{ getUsername() }}</a>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profile-dropdown">
+    <button class="dropdown-item" (click)="logout()">{{ 'PROFILE.SIGN_OUT' | translate }}</button>
+    <button *ngIf="translate.currentLang !== 'en-GB'" class="dropdown-item" (click)="changeLanguage('en-GB')">{{ 'PROFILE.ENGLISH' | translate }}</button>
+    <button *ngIf="translate.currentLang !== 'bg-BG'" class="dropdown-item" (click)="changeLanguage('bg-BG')">{{ 'PROFILE.BULGARIAN' | translate }}</button>
+  </div>
+</div>

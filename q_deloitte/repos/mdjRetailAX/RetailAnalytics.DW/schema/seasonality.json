@@ -1,0 +1,98 @@
+{  
+    "mappingTypeName":"Seasonality",
+    "tableName":"stage.seasonality_dim",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"seasonality_bkey",
+            "dstName":"seasonality_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"year_seasonality_bkey",
+            "dstName":"year_seasonality_bkey"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"seasonality_name",
+            "dstName":"seasonality_name"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"year_seasonality_name",
+            "dstName":"year_seasonality_name"
+        },
+        {
+            "srcIndex": 6,
+            "dstIndex": 6,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        }
+    ],
+
+    "schema":{
+        "title" : "ProductSeasonality",
+        "type" : "object",
+        "properties": {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "seasonality_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "year_seasonality_bkey" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "seasonality_name" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "year_seasonality_name" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+        },
+        "required": ["reporting_date",
+                     "reporting_date_period_type",
+                     "seasonality_bkey",
+                     "seasonality_name"
+                     ],
+        "primaryKey": [ 
+                       "seasonality_bkey"
+                       ]
+    }
+}

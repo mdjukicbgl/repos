@@ -1,0 +1,127 @@
+@import '../settings/theme';
+
+#agGrid.ag-material {
+
+  font-family: $font-family-sans-serif;
+  font-size: 12px;
+  .ag {
+    &-row {
+      &-hover {
+        background-color: $table-grid-hover !important;
+      }
+      &-selected {
+        background-color: $table-grid-active !important;
+        color: $gray-lighter;
+        i {
+          color: $white;
+        }
+        span[class^='icon'] {
+          color: $white;
+        }
+      }
+      &-even {
+        background-color: $table-grid-default;
+      }
+      &-odd {
+        background-color: $table-grid-alt;
+      }
+      &-level-1 {
+        background-color: $white;
+        &.ag-row-hover {
+          background-color: $white !important;
+        }
+        &.ag-row-selected {
+          background-color: $white !important;
+          color: $black;
+        }
+      }
+    }
+
+    &-cell {
+      padding: 0.55rem 0.5rem 0 1.7rem;
+      border: none;
+    }
+
+    &-group-cell {
+      font-style: normal;
+    }
+
+    &-header {
+      border: none;
+      background: $white;
+
+      &-container {
+        background: $white;
+      }
+
+      &-row {
+        top: 0.5rem;
+        background: $white;
+      }
+
+      &-cell {
+
+        &-menu-button {
+          color: $gray-lighter;
+
+          &:hover {
+            border: none;
+            color: $gray-dark;
+          }
+        }
+
+        &-text {
+          padding: 0;
+        }
+      }
+    }
+
+    &-header-group {
+      &-cell {
+        border-left: 1px dashed $gray-lighter;
+
+        &-label {
+          margin-top: 0.5rem;
+          padding: 0.5rem;
+        }
+      }
+    }
+    &-paging {
+      &-panel {
+        background: $white;
+        text-align: center;
+      }
+      &-row-summary-panel {
+        width: auto;
+      }
+    }
+
+    &-selection-checkbox {
+      margin-left: -1rem;
+    }
+  }
+
+  &.focus-enabled .ag-cell-focus {
+    box-shadow: inset 0 -1px 0 $table-grid-active;
+    background: lighten($table-grid-active, 50%);
+    color: $black !important;
+    span[class^='icon'] {
+      color: $black;
+    }
+    i {
+      color: $black;
+    }
+    .price-ladder-value {
+      background: white;
+      padding: 2px 5px;
+      border: 1px solid $table-grid-active;
+      border-radius: 10px;
+      margin: -2px -6px;
+    }
+  }
+
+  .ag-pinned-left-cols-container .ag-row-even,
+  .ag-pinned-right-cols-container .ag-row-even {
+    background-color: lighten($table-grid-default, 3%);
+  }
+}

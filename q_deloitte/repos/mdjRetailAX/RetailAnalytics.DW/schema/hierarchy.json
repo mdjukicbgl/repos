@@ -1,0 +1,311 @@
+{  
+    "mappingTypeName":"BusinessHierarchy",
+    "tableName":"stage.business_hierarchy_dim",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "srcName":"hierarchy_name",
+            "dstName":"hierarchy_name"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "isKey":true,
+            "srcName":"business_bkey1",
+            "dstName":"business_bkey1"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "isKey":true,
+            "srcName":"business_bkey2",
+            "dstName":"business_bkey2"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "isKey":true,
+            "srcName":"business_bkey3",
+            "dstName":"business_bkey3"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "isKey":true,
+            "srcName":"business_bkey4",
+            "dstName":"business_bkey4"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"business_area",
+            "dstName":"business_area"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"node_id_level1",
+            "dstName":"node_id_level1"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"node_name_level1",
+            "dstName":"node_name_level1"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"node_id_level2",
+            "dstName":"node_id_level2"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"node_name_level2",
+            "dstName":"node_name_level2"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"node_id_level3",
+            "dstName":"node_id_level3"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"node_name_level3",
+            "dstName":"node_name_level3"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"node_id_level4",
+            "dstName":"node_id_level4"
+        },
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"node_name_level4",
+            "dstName":"node_name_level4"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"node_id_level5",
+            "dstName":"node_id_level5"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"node_name_level5",
+            "dstName":"node_name_level5"
+        },
+        {  
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName":"node_id_level6",
+            "dstName":"node_id_level6"
+        },
+        {  
+            "srcIndex":19,
+            "dstIndex":19,
+            "srcName":"node_name_level6",
+            "dstName":"node_name_level6"
+        },
+        {  
+            "srcIndex":20,
+            "dstIndex":20,
+            "srcName":"node_id_level7",
+            "dstName":"node_id_level7"
+        },
+        {  
+            "srcIndex":21,
+            "dstIndex":21,
+            "srcName":"node_name_level7",
+            "dstName":"node_name_level7"
+        },
+        {  
+            "srcIndex":22,
+            "dstIndex":22,
+            "srcName":"node_id_level8",
+            "dstName":"node_id_level8"
+        },
+        {  
+            "srcIndex":23,
+            "dstIndex":23,
+            "srcName":"node_name_level8",
+            "dstName":"node_name_level8"
+        },
+        {  
+            "srcIndex":24,
+            "dstIndex":24,
+            "srcName":"node_id_level9",
+            "dstName":"node_id_level9"
+        },
+        {  
+            "srcIndex":25,
+            "dstIndex":25,
+            "srcName":"node_name_level9",
+            "dstName":"node_name_level9"
+        }
+    ],
+
+    "schema":{
+        "title" : "Business hierarchy",
+        "type" : "object",
+        "properties": {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "hierarchy_name" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "business_bkey1" : {
+                "type" : "string",
+                "isKey": true,
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "business_bkey2" : {
+                "type" : "string",
+                "isKey": true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "business_bkey3" : {
+                "type" : "string",
+                "isKey": true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "business_bkey4" : {
+                "type" : "string",
+                "isKey": true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "business_area" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 0
+            },
+            "node_id_level1" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level1" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level2" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level2" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level3" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level3" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level4" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level4" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level5" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level5" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level6" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level6" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level7" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level7" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level8" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level8" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "node_id_level9" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "node_name_level9" : {
+                "type" : "string",
+                "maxLength" : 50
+            }
+        },
+        "required": ["reporting_date",
+                     "reporting_date_period_type",
+                     "hierarchy_name",
+                     "business_bkey1",
+                     "business_area",
+                     "node_id_level1",
+                     "node_name_level1"],
+        "primaryKey": ["business_bkey1",
+                       "business_bkey2",
+                       "business_bkey3",
+                       "business_bkey4"]
+    }
+}

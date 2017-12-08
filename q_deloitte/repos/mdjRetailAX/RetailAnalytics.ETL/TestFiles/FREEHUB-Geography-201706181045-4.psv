@@ -1,0 +1,5 @@
+reporting_date|reporting_date_period_type|geography_type_key|geography_key|geographical_location_name|geographical_location_description|geographical_location_status|geographical_location_county_state|geographical_location_country|geographical_location_region|geographical_location_subregion|longitude|latitude
+2017-06-18|0|1|4322|Bobs warehouse too|this field gets ignored|An ignored status field|Nom|Birming-nam|Middle bit|bit|7|8
+2017-06-18|0|1|4330|Freds shed|this field gets ignored|An ignored status field|Bol|ton|Whatever|bit|9|10
+2017-06-18|0|1|4330|Freds shed2|this field gets ignored|An ignored status field|Bol|ton|Whatever|bit|9|10
+2017-06-18|0|2|4321|Bobs depot|Behind Bobs other shed|Shut|Cornwall|Burma|Asia|BobAsia|4|5

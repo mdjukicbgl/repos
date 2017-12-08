@@ -1,0 +1,20 @@
+[Unit]
+Description=Markdown Web Api Service
+
+[Service]
+WorkingDirectory=/Markdown.WebApi
+ExecStart=/usr/bin/dotnet /Markdown.WebApi/Markdown.WebApi.dll
+Restart=always
+RestartSec=10  # Restart service after 10 seconds if dotnet service crashes
+SyslogIdentifier=dotnet-markdownwebapi
+User=ubuntu
+Environment=AWS_ACCESS_KEY_ID={{ cloud_watch_aws_key_id }}
+Environment=AWS_SECRET_ACCESS_KEY={{ cloud_watch_aws_secret_key }}
+Environment=ASPNETCORE_URLS=http://+:5000
+Environment=AppConnection={{ app_db_connection_string }}
+Environment=EphemeralConnection={{ model_db_connection_string }}
+Environment=LambdaFunctionName={{ lambda_function_name }}
+Environment=CorsOrigin={{ cors_origin }}
+
+[Install]
+WantedBy=multi-user.target

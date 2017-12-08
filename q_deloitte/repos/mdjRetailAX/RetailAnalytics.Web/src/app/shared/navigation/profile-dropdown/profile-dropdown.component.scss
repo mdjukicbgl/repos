@@ -1,0 +1,18 @@
+@import '../../../../styles/settings/theme';
+
+.profile {
+  &__dropdown {
+    color: $brand-primary !important;
+  }
+  &__image {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-right: 0.5em;
+    background-image: url('https://placehold.it/30x30');
+  }
+}

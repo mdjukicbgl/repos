@@ -1,0 +1,415 @@
+{  
+    "mappingTypeName":"DateFiscal",
+    "tableName":"stage.fiscal_calendar_dim",
+    "columnSep":"|",
+    "headerRecord":[
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },  
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"calendar_date",
+            "dstName":"calendar_date"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"dim_date_id",
+            "dstName":"dim_date_id"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"is_weekday7",
+            "dstName":"is_weekday7"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"is_working_day",
+            "dstName":"is_working_day"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"is_business_holiday",
+            "dstName":"is_business_holiday"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"is_national_holiday",
+            "dstName":"is_national_holiday"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"fiscal_date_string",
+            "dstName":"fiscal_date_string"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"fiscal_day_of_month",
+            "dstName":"fiscal_day_of_month"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"fiscal_day_with_suffix",
+            "dstName":"fiscal_day_with_suffix"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"fiscal_month_number",
+            "dstName":"fiscal_month_number"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"fiscal_month_name",
+            "dstName":"fiscal_month_name"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"fiscal_month_start_date",
+            "dstName":"fiscal_month_start_date"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"fiscal_month_end_date",
+            "dstName":"fiscal_month_end_date"
+        },
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"fiscal_year_month",
+            "dstName":"fiscal_year_month"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"fiscal_week_number",
+            "dstName":"fiscal_week_number"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"fiscal_continuum_week_number",
+            "dstName":"fiscal_continuum_week_number"
+        },
+        {  
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName":"fiscal_continuum_month_number",
+            "dstName":"fiscal_continuum_month_number"
+        },
+        {  
+            "srcIndex":19,
+            "dstIndex":19,
+            "srcName":"fiscal_continuum_quarter_number",
+            "dstName":"fiscal_continuum_quarter_number"
+        },
+        {  
+            "srcIndex":20,
+            "dstIndex":20,
+            "srcName":"fiscal_continuum_year_week_number",
+            "dstName":"fiscal_continuum_year_week_number"
+        },
+        {  
+            "srcIndex":21,
+            "dstIndex":21,
+            "srcName":"fiscal_continuum_year_week_number_start_date",
+            "dstName":"fiscal_continuum_year_week_number_start_date"
+        },
+        {  
+            "srcIndex":22,
+            "dstIndex":22,
+            "srcName":"fiscal_continuum_year_week_number_end_date",
+            "dstName":"fiscal_continuum_year_week_number_end_date"
+        },
+        {  
+            "srcIndex":23,
+            "dstIndex":23,
+            "srcName":"fiscal_week_day_number",
+            "dstName":"fiscal_week_day_number"
+        },
+        {  
+            "srcIndex":24,
+            "dstIndex":24,
+            "srcName":"fiscal_week_day_name",
+            "dstName":"fiscal_week_day_name"
+        },
+        {  
+            "srcIndex":25,
+            "dstIndex":25,
+            "srcName":"fiscal_quarter_name",
+            "dstName":"fiscal_quarter_name"
+        },
+        {  
+            "srcIndex":26,
+            "dstIndex":26,
+            "srcName":"fiscal_quarter_number",
+            "dstName":"fiscal_quarter_number"
+        },
+        {  
+            "srcIndex":27,
+            "dstIndex":27,
+            "srcName":"fiscal_quarter_day_number",
+            "dstName":"fiscal_quarter_day_number"
+        },
+        {  
+            "srcIndex":28,
+            "dstIndex":28,
+            "srcName":"fiscal_quarter_month_number",
+            "dstName":"fiscal_quarter_month_number"
+        },
+        {  
+            "srcIndex":29,
+            "dstIndex":29,
+            "srcName":"fiscal_quarter_start_date",
+            "dstName":"fiscal_quarter_start_date"
+        },
+        {  
+            "srcIndex":30,
+            "dstIndex":30,
+            "srcName":"fiscal_quarter_end_date",
+            "dstName":"fiscal_quarter_end_date"
+        },
+        {  
+            "srcIndex":31,
+            "dstIndex":31,
+            "srcName":"fiscal_year",
+            "dstName":"fiscal_year"
+        },
+        {  
+            "srcIndex":32,
+            "dstIndex":32,
+            "srcName":"fiscal_year_start_date",
+            "dstName":"fiscal_year_start_date"
+        },
+        {  
+            "srcIndex":33,
+            "dstIndex":33,
+            "srcName":"fiscal_year_end_date",
+            "dstName":"fiscal_year_end_date"
+        },
+        {  
+            "srcIndex":34,
+            "dstIndex":34,
+            "srcName":"fiscal_year_quarter_month_number",
+            "dstName":"fiscal_year_quarter_month_number"
+        },
+        {  
+            "srcIndex":35,
+            "dstIndex":35,
+            "srcName":"row_id",
+            "dstName":"row_id"
+        }
+    ],
+
+    "schema":{
+       "title" : "Channel",
+        "type" : "object",
+        "properties": {
+               "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "calendar_date" : {
+                "type" : "string",
+                "format": "date",
+                "isKey" : true
+            },
+            "dim_date_id" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "is_weekday7" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]
+            },
+            "is_working_day" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]
+            },
+            "is_business_holiday" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]
+            },
+            "is_national_holiday" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]
+            },
+            "fiscal_date_string" : {
+                "type" : "string",
+                "maxLength" : 11,
+                "minLength" : 0
+            },
+            "fiscal_day_of_month" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_day_with_suffix" : {
+                "type" : "string",
+                "maxLength" : 6,
+                "minLength" : 0
+            },
+            "fiscal_month_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_month_name" : {
+                "type" : "string",
+                "maxLength" : 30,
+                "minLength" : 0
+            },
+            "fiscal_month_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_month_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_year_month" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_week_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_continuum_week_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_continuum_month_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_continuum_quarter_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_continuum_year_week_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_continuum_year_week_number_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_continuum_year_week_number_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_week_day_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_week_day_name" : {
+                "type" : "string",
+                "maxLength" : 30,
+                "minLength" : 0
+            },
+            "fiscal_quarter_name" : {
+                "type" : "string",
+                "maxLength" : 6,
+                "minLength" : 0
+            },
+            "fiscal_quarter_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_quarter_day_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_quarter_month_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_quarter_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_quarter_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_year" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "fiscal_year_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_year_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "fiscal_year_quarter_month_number": {
+                "type" : "string",
+                "maxLength" : 8
+            },
+            "row_id": {
+                "type" : "string",
+                "maxLength" : 10
+            }
+
+        },
+        "required": [
+                     "reporting_date",
+                     "reporting_date_period_type",
+                     "calendar_date"
+                     ],
+        "primaryKey": [
+                       "calendar_date"
+                       ]
+    }
+}

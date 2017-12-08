@@ -1,0 +1,89 @@
+@import '../settings/theme';
+@import '../tools/z-index';
+
+#agGrid.ag-material {
+
+  .ag {
+
+    &-menu {
+      border: none;
+      box-shadow: -10px 10px 0 0 rgba(80%, 80%, 80%, 0.75);
+      margin-top: 2.2rem;
+      font-family: $font-family-base;
+      z-index: map-get($zindex, filterOverlay);
+    }
+
+    &-tab-header {
+      display: none;
+    }
+
+    &-filter {
+      width: 180px;
+    }
+
+    &-cell-last-left-pinned,
+    &-pinned-left-header .ag-header-row:last-child {
+      border-right: 1px solid darken($gray-lighter, 10%) !important;
+    }
+
+    &-cell-first-right-pinned,
+    &-pinned-right-header .ag-header-row:first-child {
+      border-left: 1px solid darken($gray-lighter, 10%) !important;
+    }
+
+    &-header-cell-menu-button {
+      float: left;
+      border: 0;
+    }
+
+    &-header-cell-text {
+      float: left;
+      padding-right: 0.5rem;
+    }
+  }
+
+  .nav {
+    background: $white;
+
+    &-item {
+      margin: 0;
+    }
+    &-link {
+      background: $white;
+      border: 0;
+      color: $gray-lighter;
+      &.active {
+        color: $gray;
+      }
+    }
+  }
+
+  .header {
+    background: $gray-lighter;
+    &--title {
+      padding: 0.75rem;
+    }
+    &--icon{
+      padding: 0.75rem;
+    }
+  }
+
+  .clear-button {
+    border: 0;
+    background: $gray-lightest;
+    outline: 0;
+    width: 50%;
+  }
+
+  .filter-button {
+    border: 0;
+    background: $black;
+    color: $white;
+    outline: 0;
+    width: 50%;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}

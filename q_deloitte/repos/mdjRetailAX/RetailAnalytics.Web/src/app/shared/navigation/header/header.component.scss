@@ -1,0 +1,41 @@
+@import '../../../../styles/settings/theme';
+
+.primary-nav {
+  background-color: $brand-secondary;
+
+  &__toggle {
+    margin-top: 5px;
+    border:0;
+  }
+
+  &__brand {
+    margin-left: 70px;
+
+    &--logo {
+      margin-top: 5px;
+    }
+
+    &--link {
+      color: $brand-primary;
+      margin-left: -2px;
+      font-size: 20px;
+    }
+  }
+}
+
+.secondary-nav {
+  background-color: $gray-dark;
+
+  &__link {
+    padding: 1rem;
+    font-size: 16px;
+    color: $white;
+    &:hover {
+      background-color: $gray;
+      color: $white;
+    }
+    &.active {
+      background-color: $nav-default;
+    }
+  }
+}

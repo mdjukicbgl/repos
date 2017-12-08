@@ -1,0 +1,26 @@
+.price-ladder{
+  height: 100%;
+  color: black;
+  &:hover {
+    .fa-pencil {
+      display:inline-block;
+    }
+  }
+
+  .has-error & {
+    color: red;
+  }
+  .muted {
+    color: #bbb;
+    .has-error & {
+      color: red;
+    }
+  }
+}
+
+.fa-pencil {
+  display:none;
+}
+
+
+

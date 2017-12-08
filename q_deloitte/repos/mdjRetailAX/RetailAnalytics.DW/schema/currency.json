@@ -1,0 +1,115 @@
+{  
+    "mappingTypeName":"Currency",
+    "tableName":"stage.currency_dim",
+    "columnSep":"|",
+    "headerRecord":[
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },  
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"currency_bkey",
+            "dstName":"currency_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"currency",
+            "dstName":"currency"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"iso_currency_code",
+            "dstName":"iso_currency_code"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"currency_symbol",
+            "dstName":"currency_symbol"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"is_active",
+            "dstName":"is_active"
+        },
+        {
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName" :"row_id",
+            "dstName" :"row_id"
+        }
+    ],
+
+    "schema":{
+        "title" : "Currency",
+        "type" : "object",
+        "properties": {
+               "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "currency_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "currency" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "iso_currency_code" : {
+                "type" : "string",
+                "maxLength" : 3,
+                "minLength" : 1
+            },
+            "currency_symbol" : {
+                "type" : "string",
+                "maxLength" : 4
+            },
+            "is_active" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+
+        },
+        "required": [
+                     "reporting_date",
+                     "reporting_date_period_type",
+                     "currency_bkey",
+                     "currency",
+                     "iso_currency_code",
+                     "is_active",
+                     "row_id"
+                     ],
+        "primaryKey": [
+                       "currency_bkey"
+                       ]
+    }
+}

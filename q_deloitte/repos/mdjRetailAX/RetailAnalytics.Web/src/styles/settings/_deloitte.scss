@@ -1,0 +1,99 @@
+// Deloitte colors
+$deloitte-primary-green: #86BC25 !default;
+
+$brand-primary: $deloitte-primary-green !default;
+$brand-secondary: #000 !default;
+
+$brand-secondary-90: lighten($brand-secondary, 10%);
+$brand-secondary-80: lighten($brand-secondary, 20%);
+$brand-secondary-70: lighten($brand-secondary, 30%);
+$brand-secondary-60: lighten($brand-secondary, 40%);
+$brand-secondary-50: lighten($brand-secondary, 50%);
+$brand-secondary-40: lighten($brand-secondary, 60%);
+$brand-secondary-30: lighten($brand-secondary, 70%);
+$brand-secondary-20: lighten($brand-secondary, 80%);
+$brand-secondary-10: lighten($brand-secondary, 90%);
+
+// Theme
+$theme-primary: #004f59;
+$theme-secondary: #007680;
+$theme-tertiary: #0097a9;
+
+$theme-primary-90: lighten($theme-primary, 10%);
+$theme-primary-80: lighten($theme-primary, 15%);
+$theme-primary-70: lighten($theme-primary, 25%);
+$theme-primary-60: lighten($theme-primary, 33%);
+$theme-primary-50: lighten($theme-primary, 40%);
+$theme-primary-40: lighten($theme-primary, 45%);
+$theme-primary-30: lighten($theme-primary, 50%);
+$theme-primary-20: lighten($theme-primary, 55%);
+$theme-primary-10: lighten($theme-primary, 60%);
+
+$theme-secondary-90: lighten($theme-secondary, 10%);
+$theme-secondary-80: lighten($theme-secondary, 15%);
+$theme-secondary-70: lighten($theme-secondary, 25%);
+$theme-secondary-60: lighten($theme-secondary, 33%);
+$theme-secondary-50: lighten($theme-secondary, 40%);
+$theme-secondary-40: lighten($theme-secondary, 45%);
+$theme-secondary-30: lighten($theme-secondary, 50%);
+$theme-secondary-20: lighten($theme-secondary, 55%);
+$theme-secondary-10: lighten($theme-secondary, 60%);
+
+$theme-tertiary-90: lighten($theme-tertiary, 10%);
+$theme-tertiary-80: lighten($theme-tertiary, 15%);
+$theme-tertiary-70: lighten($theme-tertiary, 25%);
+$theme-tertiary-60: lighten($theme-tertiary, 33%);
+$theme-tertiary-50: lighten($theme-tertiary, 40%);
+$theme-tertiary-40: lighten($theme-tertiary, 45%);
+$theme-tertiary-30: lighten($theme-tertiary, 50%);
+$theme-tertiary-20: lighten($theme-tertiary, 55%);
+$theme-tertiary-10: lighten($theme-tertiary, 60%);
+
+// Gray
+$gray-dark:                 #373a3c !default;
+$gray:                      #55595c !default;
+$gray-light:                #818a91 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
+
+$white:                     #ffffff !default;
+$black:                     #000000 !default;
+
+// Brand
+$brand-success: $deloitte-primary-green !default;
+$brand-info: $theme-secondary !default;
+$brand-warning: orange !default;
+$brand-danger: red !default;
+
+// Custom Variables
+
+$widget-success: $deloitte-primary-green;
+
+// Grid
+$grid-row: $theme-tertiary-10;
+$grid-row-hover: $theme-tertiary-20;
+
+// Navigation Bar Colors
+$nav-default: #018B8E;
+$nav-hover: #018B8E;
+$nav-active: #018B8E;
+
+// Backgrounds
+
+$dashboard-primary: linear-gradient($nav-default, darken($nav-default,10))  !default;
+$dashboard-secondary: $theme-secondary !default;
+
+$scenario-primary: linear-gradient($nav-default, darken($nav-default,10))  !default;
+$scenario-secondary: #01999b !default;
+
+$workspace-primary: linear-gradient($nav-default, darken($nav-default,10))  !default;
+$workspace-secondary: #01999b !default;
+
+// Styles the active links in the navigation
+$component-active-bg: $nav-default;
+
+// Table Grid Colors
+$table-grid-default: #EBEBEB;
+$table-grid-alt: #F4F5F6;
+$table-grid-hover: darken($table-grid-default, 10);
+$table-grid-active: #0099D4;

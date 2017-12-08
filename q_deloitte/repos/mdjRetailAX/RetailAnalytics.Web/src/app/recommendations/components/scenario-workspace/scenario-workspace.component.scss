@@ -1,0 +1,11 @@
+@import '../../../../styles/settings/theme';
+.hide {
+  display:none !important;
+}
+.scenario-container {
+  background-color: $nav-default;
+}
+.spacer {
+  height: 53px;
+  flex: none;
+}

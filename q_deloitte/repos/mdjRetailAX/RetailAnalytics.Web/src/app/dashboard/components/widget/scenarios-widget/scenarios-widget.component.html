@@ -1,0 +1,28 @@
+<div class="card m-1">
+
+    <div class="card-header card-header--success">
+        {{ widget?.title }}
+    </div>
+
+    <div *ngIf="(isLoadingScenarios$ | async) || (hasLoadingScenariosFailed$ | async); else detail">
+      <div *ngIf="isLoadingScenarios$ | async">
+              <sk-cube-grid color="grey"></sk-cube-grid>
+      </div>
+      <div *ngIf="hasLoadingScenariosFailed$ | async" class="alert alert-danger m-0" role="alert" i18n>
+          {{ 'DASHBOARD.WIDGET_SCENARIOS.ERROR_LOAD_SCENARIOS' | translate }}
+      </div>
+    </div>
+
+    <ng-template #detail>
+      <div class="card-block">
+          <div class="card-text" *ngFor="let group of scenariosGrouped$ | async">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div>{{ group?.scenarios?.length + ' ' + group?.status }}</div>
+                  <div><button type="button" class="btn btn-success" (click)="navigateToScenarios(group?.status)" i18n>{{ 'DASHBOARD.WIDGET_SCENARIOS.VIEW' | translate }}</button></div>
+              </div>
+          </div>
+
+          <hr/> {{ scenariosPerWeek$ | async }} <span i18n>{{ 'DASHBOARD.WIDGET_SCENARIOS.RAN_IN_LAST' | translate }}</span>
+      </div>
+    </ng-template>
+</div>

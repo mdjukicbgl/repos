@@ -1,0 +1,3 @@
+<a *ngIf="!hasIcon && hasLink" class="nav-link sub-nav__link" routerLink="{{hasLink ? link : ''}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{title}}</a>
+<a *ngIf="!hasIcon && !hasLink" class="nav-link sub-nav__link" href="#">{{title}}</a>
+<a *ngIf="hasIcon" class="nav-link sub-nav__link" href="#" onclick="return false;"><i aria-hidden="true" class="fa fa-{{icon}}"></i></a>

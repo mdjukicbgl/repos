@@ -1,0 +1,23 @@
+<div *ngIf="params.value === 'New'" class="pl-0 d-flex">
+  <div style="min-width:100px">{{ 'SCENARIOS.STATUS.NEW' | translate }}</div>
+  <span class="icon-btn-play" (click)="runClick(params.node)"></span>
+</div>
+
+<div *ngIf="params.value === 'Complete'" class="pl-0 d-flex">
+  <div style="min-width:100px">{{ 'SCENARIOS.STATUS.COMPLETE' | translate }}</div>
+  <div (click)="completeClick(params.node)" class="d-flex" style="cursor: pointer; height: 100%;">
+    <span class="icon-selector-active pull-right"></span>
+    <div  class="px-1">{{ 'SCENARIOS.STATUS.VIEW' | translate }}</div>
+  </div>
+  <span class="icon-edit-default pull-right"></span>
+</div>
+
+<div *ngIf="params.value === 'Running'" class="pl-0 d-flex">
+  <div style="min-width:100px">{{ 'SCENARIOS.STATUS.RUNNING' | translate }}</div>
+  <span class="icon-brn-pause pull-right"></span>
+</div>
+
+<div *ngIf="params.value === 'Failed'"  class="pl-0 d-flex">
+  <div style="min-width:100px">{{ 'SCENARIOS.STATUS.FAILED' | translate }} </div>
+  <span class="icon-btn-remove pull-right"></span>
+</div>

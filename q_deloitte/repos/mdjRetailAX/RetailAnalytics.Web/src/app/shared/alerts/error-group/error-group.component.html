@@ -1,0 +1,5 @@
+<div *ngIf="errors?.length > 0" class="alert alert-danger my-1">
+  <ul *ngFor="let err of errors">
+    <li><i class="fa fa-exclamation" aria-hidden="true"></i> {{err}}</li>
+  </ul>
+</div>

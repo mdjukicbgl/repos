@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>Markdown.Data</AssemblyName>
+    <PackageId>Markdown.Data</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Local|AnyCPU'" />
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="3.0.0-beta8" />
+    <PackageReference Include="Dapper" Version="1.50.2" />
+    <PackageReference Include="Dapper.Contrib" Version="1.50.0" />
+    <PackageReference Include="MurmurHash-net-core" Version="1.0.0" />
+    <PackageReference Include="Npgsql" Version="3.2.4.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="1.1.0" />
+    <PackageReference Include="PostgreSQLCopyHelper" Version="1.1.0" />
+    <PackageReference Include="Serilog" Version="2.5.1-dev-00859" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="1.4.1-dev-10155" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.1" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.6.1" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="1.6.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Markdown.Common\Markdown.Common.csproj" />
+    <ProjectReference Include="..\RetailAnalytics\RetailAnalytics.Data\RetailAnalytics.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+    </Reference>
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,20 @@
+@import '../../../../../../styles/settings/theme';
+
+span {
+  font-size: 18px;
+
+  &.icon-selector-active {
+    color: $brand-success;
+    cursor: pointer;
+  }
+  &.icon-btn-pause {
+    color: $brand-info;
+  }
+  &.icon-btn-play {
+    color: $brand-info;
+    cursor: pointer;
+  }
+  &.icon-btn-remove {
+    color: $brand-danger;
+  }
+}

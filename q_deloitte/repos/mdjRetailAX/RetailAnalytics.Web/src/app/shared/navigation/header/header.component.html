@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse primary-nav pl-0">
+  <button class="navbar-toggler navbar-toggler-left primary-nav__toggle my-2" type="button" data-toggle="collapse" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="icon-hamburger"></span>
+  </button>
+  <div class="d-flex justify-content-end">
+    <a routerLink="/dashboard" class="primary-nav__brand mr-auto my-2">
+      <p class="mb-0 primary-nav__brand--link">{{ 'MENU.MARKDOWN' | translate }}</p>
+    </a>
+    <ul class="navbar-nav align-self-center">
+      <li class="nav-item">
+        <app-profile-dropdown></app-profile-dropdown>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="pl-3">
+  <nav class="secondary-nav p-0 nav nav-pills d-flex justify-content-start">
+    <a class="nav-link secondary-nav__link px-2" routerLink="/dashboard" routerLinkActive="active">{{ 'MENU.DASHBOARD' | translate }}</a>
+    <a class="nav-link secondary-nav__link px-2" routerLink="/markdown/scenarios" [class.active]="_router.isActive('/markdown/scenarios', true) || _router.isActive('/markdown/scenario', false)">{{ 'MENU.SCENARIOS' | translate }}</a>
+    <a *ngIf="!getLastScenarioId()" class="nav-link secondary-nav__link px-2" routerLink="/markdown/workspace" routerLinkActive="active">{{ 'MENU.WORKSPACE' | translate }}</a>
+    <a *ngIf="getLastScenarioId()" class="nav-link secondary-nav__link px-2" [routerLink]="['/markdown/workspace', {scenarioId: getLastScenarioId()}]" routerLinkActive="active">{{ 'MENU.WORKSPACE' | translate }}</a>
+    <a class="nav-link secondary-nav__link ml-auto" href="#" onclick="return false;"><i aria-hidden="true" class="fa fa-cog"></i></a>
+  </nav>
+<div>

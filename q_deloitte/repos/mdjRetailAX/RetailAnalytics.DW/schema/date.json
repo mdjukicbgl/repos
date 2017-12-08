@@ -1,0 +1,539 @@
+{  
+    "mappingTypeName":"Date",
+    "tableName":"stage.date_dim",
+    "columnSep":"|",
+    "headerRecord":[
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },  
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"dim_date_id",
+            "dstName":"dim_date_id"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"day_sequence_number",
+            "dstName":"day_sequence_number"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"week_sequence_number_usa",
+            "dstName":"week_sequence_number_usa"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"week_sequence_number_eu_iso",
+            "dstName":"week_sequence_number_eu_iso"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"month_sequence_number",
+            "dstName":"month_sequence_number"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"calendar_date",
+            "dstName":"calendar_date"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"is_weekday7_usa",
+            "dstName":"is_weekday7_usa"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"is_weekday7_eu_iso",
+            "dstName":"is_weekday7_eu_iso"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"calendar_date_eu",
+            "dstName":"calendar_date_eu"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"calendar_date_usa",
+            "dstName":"calendar_date_usa"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"calendar_day_of_month",
+            "dstName":"calendar_day_of_month"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"day_with_suffix",
+            "dstName":"day_with_suffix"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"calendar_month_number",
+            "dstName":"calendar_month_number"
+        },
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"calendar_month_name",
+            "dstName":"calendar_month_name"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"calendar_month_start_date",
+            "dstName":"calendar_month_start_date"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"calendar_month_end_date",
+            "dstName":"calendar_month_end_date"
+        },
+        {  
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName":"calendar_year_month",
+            "dstName":"calendar_year_month"
+        },
+        {  
+            "srcIndex":19,
+            "dstIndex":19,
+            "srcName":"calendar_week_number_usa",
+            "dstName":"calendar_week_number_usa"
+        },
+        {  
+            "srcIndex":20,
+            "dstIndex":20,
+            "srcName":"calendar_week_number_eu",
+            "dstName":"calendar_week_number_eu"
+        },
+        {  
+            "srcIndex":21,
+            "dstIndex":21,
+            "srcName":"calendar_continuum_year_week_number_usa",
+            "dstName":"calendar_continuum_year_week_number_usa"
+        },
+        {  
+            "srcIndex":22,
+            "dstIndex":22,
+            "srcName":"calendar_continuum_year_week_number_eu",
+            "dstName":"calendar_continuum_year_week_number_eu"
+        },
+        {  
+            "srcIndex":23,
+            "dstIndex":23,
+            "srcName":"calendar_continuum_year_week_number_usa_start_date",
+            "dstName":"calendar_continuum_year_week_number_usa_start_date"
+        },
+        {  
+            "srcIndex":24,
+            "dstIndex":24,
+            "srcName":"calendar_continuum_year_week_number_usa_end_date",
+            "dstName":"calendar_continuum_year_week_number_usa_end_date"
+        },
+        {  
+            "srcIndex":25,
+            "dstIndex":25,
+            "srcName":"calendar_continuum_year_week_number_eu_start_date",
+            "dstName":"calendar_continuum_year_week_number_eu_start_date"
+        },
+        {  
+            "srcIndex":26,
+            "dstIndex":26,
+            "srcName":"calendar_continuum_year_week_number_eu_end_date",
+            "dstName":"calendar_continuum_year_week_number_eu_end_date"
+        },
+        {  
+            "srcIndex":27,
+            "dstIndex":27,
+            "srcName":"calendar_iso_week_number",
+            "dstName":"calendar_iso_week_number"
+        },
+        {  
+            "srcIndex":28,
+            "dstIndex":28,
+            "srcName":"calendar_continuum_year_iso_week_number",
+            "dstName":"calendar_continuum_year_iso_week_number"
+        },
+        {  
+            "srcIndex":29,
+            "dstIndex":29,
+            "srcName":"calendar_continuum_year_iso_week_number_start_date",
+            "dstName":"calendar_continuum_year_iso_week_number_start_date"
+        },
+        {  
+            "srcIndex":30,
+            "dstIndex":30,
+            "srcName":"calendar_continuum_year_iso_week_number_end_date",
+            "dstName":"calendar_continuum_year_iso_week_number_end_date"
+        },
+        {  
+            "srcIndex":31,
+            "dstIndex":31,
+            "srcName":"week_day_number_usa",
+            "dstName":"week_day_number_usa"
+        },
+        {  
+            "srcIndex":32,
+            "dstIndex":32,
+            "srcName":"week_day_number_eu_iso",
+            "dstName":"week_day_number_eu_iso"
+        },
+        {  
+            "srcIndex":33,
+            "dstIndex":33,
+            "srcName":"week_day_name",
+            "dstName":"week_day_name"
+        },
+        {  
+            "srcIndex":34,
+            "dstIndex":34,
+            "srcName":"calendar_quarter_name",
+            "dstName":"calendar_quarter_name"
+        },
+        {  
+            "srcIndex":35,
+            "dstIndex":35,
+            "srcName":"calendar_quarter_number",
+            "dstName":"calendar_quarter_number"
+        },
+        {  
+            "srcIndex":36,
+            "dstIndex":36,
+            "srcName":"calendar_quarter_day_number",
+            "dstName":"calendar_quarter_day_number"
+        },
+        {  
+            "srcIndex":37,
+            "dstIndex":37,
+            "srcName":"calendar_quarter_month_number",
+            "dstName":"calendar_quarter_month_number"
+        },
+        {  
+            "srcIndex":38,
+            "dstIndex":38,
+            "srcName":"calendar_quarter_start_date",
+            "dstName":"calendar_quarter_start_date"
+        },
+        {  
+            "srcIndex":39,
+            "dstIndex":39,
+            "srcName":"calendar_quarter_end_date",
+            "dstName":"calendar_quarter_end_date"
+        },
+        {  
+            "srcIndex":40,
+            "dstIndex":40,
+            "srcName":"calendar_year",
+            "dstName":"calendar_year"
+        },
+        {  
+            "srcIndex":41,
+            "dstIndex":41,
+            "srcName":"calendar_year_start_date",
+            "dstName":"calendar_year_start_date"
+        },
+        {  
+            "srcIndex":42,
+            "dstIndex":42,
+            "srcName":"calendar_year_end_date",
+            "dstName":"calendar_year_end_date"
+        },
+        {
+            "srcIndex":43,
+            "dstIndex":43,
+            "srcName" :"row_id",
+            "dstName" :"row_id"
+        }
+    ],
+
+    "schema":{
+        "title" : "Channel",
+        "type" : "object",
+        "properties": {
+               "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "dim_date_id" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "day_sequence_number" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "week_sequence_number_usa" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "week_sequence_number_eu_iso" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "month_sequence_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "calendar_date" : {
+                "type": "string",
+                "format": "date",
+                "isKey" : true
+            },
+            "is_weekday7_usa" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]   
+            },
+            "is_weekday7_eu_iso" : {
+                "type" : "string",
+                "maxLength" : 1,
+                "minLength" : 1,
+                "enum" : ["Y", "N", "y", "n"]  
+            },
+            "calendar_date_eu" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 10
+            },
+            "calendar_date_usa" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 10
+            },
+            "calendar_day_of_month" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "day_with_suffix" : {
+                "type" : "string",
+                "maxLength" : 6,
+                "minLength" : 1
+            },
+            "calendar_month_number" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "calendar_month_name" : {
+                "type" : "string",
+                "maxLength" : 30,
+                "minLength" : 1
+            },
+            "calendar_month_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_month_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_year_month" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "calendar_week_number_usa" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_week_number_eu" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_continuum_year_week_number_usa" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "calendar_continuum_year_week_number_eu" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "calendar_continuum_year_week_number_usa_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_continuum_year_week_number_usa_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_continuum_year_week_number_eu_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_continuum_year_week_number_eu_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_iso_week_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_continuum_year_iso_week_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_continuum_year_iso_week_number_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_continuum_year_iso_week_number_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "week_day_number_usa" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "week_day_number_eu_iso" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "week_day_name" : {
+                "type" : "string",
+                "maxLength" : 30,
+                "minLength" : 1
+            },
+            "calendar_quarter_name" : {
+                "type" : "string",
+                "maxLength" : 6,
+                "minLength" : 1
+            },
+            "calendar_quarter_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_quarter_day_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_quarter_month_number" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 1
+            },
+            "calendar_quarter_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_quarter_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_year" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            },
+            "calendar_year_start_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "calendar_year_end_date" : {
+                "type" : "string",
+                "format": "date"
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+
+        },
+        "required": [
+                     "reporting_date",
+                     "reporting_date_period_type",
+                     "dim_date_id",
+                     "day_sequence_number",
+                     "week_sequence_number_usa",
+                     "week_sequence_number_eu_iso",
+                     "month_sequence_number",
+                     "calendar_date",
+                     "is_weekday7_usa",
+                     "is_weekday7_eu_iso",
+                     "calendar_date_eu",
+                     "calendar_date_usa",
+                     "calendar_day_of_month",
+                     "day_with_suffix",
+                     "calendar_month_number",
+                     "calendar_month_name",
+                     "calendar_month_start_date",
+                     "calendar_month_end_date",
+                     "calendar_year_month",
+                     "calendar_week_number_usa",
+                     "calendar_week_number_eu",
+                     "calendar_continuum_year_week_number_usa",
+                     "calendar_continuum_year_week_number_eu",
+                     "calendar_continuum_year_week_number_usa_start_date",
+                     "calendar_continuum_year_week_number_usa_end_date",
+                     "calendar_continuum_year_week_number_eu_start_date",
+                     "calendar_continuum_year_week_number_eu_end_date",
+                     "calendar_iso_week_number",
+                     "calendar_continuum_year_iso_week_number",
+                     "calendar_continuum_year_iso_week_number_start_date",
+                     "calendar_continuum_year_iso_week_number_end_date",
+                     "week_day_number_usa",
+                     "week_day_number_eu_iso",
+                     "week_day_name",
+                     "calendar_quarter_name",
+                     "calendar_quarter_number",
+                     "calendar_quarter_day_number",
+                     "calendar_quarter_month_number",
+                     "calendar_quarter_start_date",
+                     "calendar_quarter_end_date",
+                     "calendar_year",
+                     "calendar_year_start_date",
+                     "calendar_year_end_date",
+                     "row_id"
+                     ],
+        "primaryKey": [
+                       "calendar_date"
+                       ]
+    }
+}

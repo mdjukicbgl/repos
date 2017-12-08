@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>RetailAnalytics.Data</AssemblyName>
+    <PackageId>RetailAnalytics.Data</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Local|AnyCPU'" />
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.4.9" />
+    <PackageReference Include="Dapper" Version="1.50.2" />
+    <PackageReference Include="SimpleInjector" Version="4.0.3" />
+    <PackageReference Include="SimpleInjector.Extensions.LifetimeScoping" Version="4.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

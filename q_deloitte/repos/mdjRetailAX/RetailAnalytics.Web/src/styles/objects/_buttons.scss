@@ -1,0 +1,14 @@
+.btn {
+  &-rounded {
+    border-radius: 30px;
+  }
+
+  &-circle {
+    border-radius: 50%;
+  }
+
+  &-bordered {
+    border-radius: 30px;
+    border-width: 2px;
+  }
+}

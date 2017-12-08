@@ -1,0 +1,88 @@
+<app-subnav>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.STATUS' | translate" [link]="'/markdown/scenarios'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.SETUP' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.TIME' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+  <app-subnav-link [title]="'SCENARIOS_SUB_MENU.GOALS' | translate" [link]="'/markdown/scenario/new'"></app-subnav-link>
+</app-subnav>
+
+<div class="scenario-container vertical-flex">
+
+    <div class="d-flex justify-content-center flex-row">
+      <div class="text-center pt-2">
+        <h5><b>{{ 'SCENARIOS.SUMMARY.HEADER' | translate }}</b></h5>
+        <p class="text-muted">{{ 'SCENARIOS.SUMMARY.SUB_HEADER' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center flex-row" *ngIf="((scenariosHasFailed$ | async) || (scenariosInitialHasFailed$ | async)); else grid">
+      <div class="alert alert-danger m-3" role="alert">
+        {{ 'SCENARIOS.LIST.ERROR_LOAD_SCENARIOS' | translate }}
+      </div>
+    </div>
+
+    <ng-template #grid>
+      <div class="d-flex flex-column justify-content-end">
+        <div class="align-self-end">
+          <button type="button" (click)="clearState()" class="btn btn-primary btn-sm my-1 mr-1"><i class="fa fa-times"></i> {{ 'SCENARIOS.LIST.CLEAR_SCENARIO_STATE' | translate }}</button>
+          <button type="button" (click)="refreshScenarios()" class="btn btn-primary btn-sm my-1 mr-1"><i class="fa fa-refresh"></i> {{ 'SCENARIOS.LIST.REFRESH' | translate }}</button>
+          <button type="button" routerLink="/markdown/scenario/new" class="btn btn-primary btn-sm my-1 mr-1"><i class="fa fa-plus"></i> {{ 'SCENARIOS.SUMMARY.CREATE_NEW' | translate }}</button>
+        </div>
+      </div>
+
+      <!-- Error message if a scenario fails to save -->
+      <div *ngIf="scenarioSaveHasFailed$ | async">
+        <div class="alert alert-danger" role="alert" style = "text-align: center;">
+          <strong>{{ 'MODAL.SAVE_FAIL_TITLE' | translate }}</strong> {{ 'MODAL.SAVE_FAIL_BODY' | translate }}
+          <i class="fa fa-close" (click)="dismissScenarioSaveHasFailed()"></i>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column justify-content-center vertical-flex">
+        <ag-grid-angular *ngIf="scenarios$" id="agGrid" #agGrid  class="ag-material vertical-flex"
+            [gridOptions]="gridOptions"
+            enableSorting
+            enableFilter
+            enableColResize
+
+            [isFullWidthCell]="isFullWidthCell"
+            [getRowHeight]="getRowHeight"
+            [getNodeChildDetails]="getNodeChildDetails"
+            [fullWidthCellRendererFramework]="getFullWidthCellRenderer()"
+
+            groupHeaderHeight="0"
+            headerHeight="35"
+            rowHeight="35"
+
+            toolPanelSuppressRowGroups
+            toolPanelSuppressValues
+            toolPanelSuppressPivots
+            toolPanelSuppressPivotMode
+
+            suppressDragLeaveHidesColumns
+            suppressRowClickSelection
+
+            (rowClicked)="onRowClicked($event)"
+            (selectionChanged)="onSelectionChanged($event)">
+
+        </ag-grid-angular>
+        <div *ngIf="selectedScenario" class="spacer vertical-flex"></div>
+      </div>
+      </ng-template>
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <p class="modal-title text-center">{{ 'SCENARIOS.LIST.RUN_SCENARIO' | translate }}</p>
+    </div>
+    <div class="modal-body">
+        <p>{{ 'SCENARIOS.LIST.RUN_SCENARIO_QUESTION' | translate }}</p>
+    </div>
+    <div class="modal-footer d-flex">
+        <button type="button" class="btn btn-success" (click)="c('Yes')">{{ 'SCENARIOS.LIST.RUN_SCENARIO_CONFIRM' | translate }}</button>
+        <button type="button" class="btn btn-secondary" (click)="c('No')">{{ 'SCENARIOS.LIST.RUN_SCENARIO_CANCEL' | translate }}</button>
+    </div>
+</ng-template>
+
+
+<app-scenario-summary-footer *ngIf="selectedScenario" [selectedScenario]="selectedScenario" (openRunModal)="openRunModal($event)"></app-scenario-summary-footer>

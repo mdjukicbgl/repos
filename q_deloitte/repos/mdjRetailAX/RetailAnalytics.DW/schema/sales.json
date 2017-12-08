@@ -1,0 +1,286 @@
+{  
+    "mappingTypeName":"Sales",
+    "tableName":"stage.sales_measures",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "isKey":true,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"location_bkey",
+            "dstName":"location_bkey"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "isKey":true,
+            "srcName":"product_bkey1",
+            "dstName":"product_bkey1"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "isKey":true,
+            "srcName":"product_bkey2",
+            "dstName":"product_bkey2"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "isKey":true,
+            "srcName":"product_bkey3",
+            "dstName":"product_bkey3"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "isKey":true,
+            "srcName":"product_bkey4",
+            "dstName":"product_bkey4"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "isKey": true,
+            "srcName":"channel_bkey",
+            "dstName":"channel_bkey"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "isKey": true,
+            "srcName":"year_seasonality_bkey",
+            "dstName":"year_seasonality_bkey"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"iso_currency_code",
+            "dstName":"iso_currency_code"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "isKey": true,     
+            "srcName":"price_status_bkey",
+            "dstName":"price_status_bkey"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"sales_value",
+            "dstName":"sales_value"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"sales_quantity",
+            "dstName":"sales_quantity"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"local_tax_rate",
+            "dstName":"local_tax_rate"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"product_status_bkey",
+            "dstName":"product_status_bkey"
+        },
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"gross_margin",
+            "dstName":"gross_margin"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"sales_cost",
+            "dstName":"sales_cost"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"markdown_sales_value",
+            "dstName":"markdown_sales_value"
+        },
+        {  
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName":"markdown_sales_quantity",
+            "dstName":"markdown_sales_quantity"
+        },
+        {  
+            "srcIndex":19,
+            "dstIndex":19,
+            "srcName":"promotion_sales_value",
+            "dstName":"promotion_sales_value"
+        },
+        {  
+            "srcIndex":20,
+            "dstIndex":20,
+            "srcName":"promotion_sales_quantity",
+            "dstName":"promotion_sales_quantity"
+        },
+        {  
+            "srcIndex":21,
+            "dstIndex":21,
+            "srcName":"retailer_markdown_cost",
+            "dstName":"retailer_markdown_cost"
+        },
+        {
+            "srcIndex":22,
+            "dstIndex":22,
+            "isKey": true,
+            "srcName": "row_id",
+            "dstName": "row_id"
+        }
+
+    ],
+
+    "schema":{
+        "title" : "Sales",
+        "type" : "object",
+        "properties": {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "location_bkey" : {
+                "type" : "string",
+                "maxLength" : 20                
+            },
+            "product_bkey1" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "product_bkey2" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "product_bkey3" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "product_bkey4" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "channel_bkey" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "year_seasonality_bkey" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "iso_currency_code" : {
+                "type" : "string",
+                "maxLength" : 3,
+                "minLength" : 3
+            },
+            "price_status_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "sales_value" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "sales_quantity" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "local_tax_rate" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "product_status_bkey" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            }, 
+            "gross_margin" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "sales_cost" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "markdown_sales_value" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "markdown_sales_quantity" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "promotion_sales_value" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "promotion_sales_quantity" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "retailer_markdown_cost" : {
+                "type" : "string",
+                "minimum": 0
+            },
+            "row_id": {
+                "type": "string",
+                "maxlength": 20
+            }  
+
+        },
+        "required": ["reporting_date",
+                     "reporting_date_period_type",
+                     "location_bkey",
+                     "product_bkey1",
+                     "channel_bkey",
+                     "year_seasonality_bkey",
+                     "iso_currency_code",
+                     "price_status_bkey",
+                     "sales_value",
+                     "sales_quantity",
+                     "local_tax_rate",
+                     "product_status_bkey"
+                    ],
+        "primaryKey": ["row_id",
+                       "reporting_date",
+                       "location_bkey",
+                       "product_bkey1",
+                       "product_bkey2",
+                       "product_bkey3",
+                       "product_bkey4",
+                       "channel_bkey",
+                       "year_seasonality_bkey",
+                       "price_status_bkey"     
+                       ]
+    }
+}

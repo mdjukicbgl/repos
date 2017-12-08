@@ -1,0 +1,234 @@
+{  
+    "mappingTypeName":"Product",
+    "tableName":"stage.product_dim",
+    "columnSep":"|",
+    "headerRecord":[
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"product_bkey1",
+            "dstName":"product_bkey1"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "isKey":true,
+            "srcName":"product_bkey2",
+            "dstName":"product_bkey2"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "isKey":true,
+            "srcName":"product_bkey3",
+            "dstName":"product_bkey3"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "isKey":true,
+            "srcName":"product_bkey4",
+            "dstName":"product_bkey4"
+        },
+        {  
+            "srcIndex":6,
+            "dstIndex":6,
+            "srcName":"product_name",
+            "dstName":"product_name"
+        },
+        {  
+            "srcIndex":7,
+            "dstIndex":7,
+            "srcName":"product_description",
+            "dstName":"product_description"
+        },
+        {  
+            "srcIndex":8,
+            "dstIndex":8,
+            "srcName":"product_sku_code",
+            "dstName":"product_sku_code"
+        },
+        {  
+            "srcIndex":9,
+            "dstIndex":9,
+            "srcName":"product_size",
+            "dstName":"product_size"
+        },
+        {  
+            "srcIndex":10,
+            "dstIndex":10,
+            "srcName":"product_colour_code",
+            "dstName":"product_colour_code"
+        },
+        {  
+            "srcIndex":11,
+            "dstIndex":11,
+            "srcName":"product_colour",
+            "dstName":"product_colour"
+        },
+        {  
+            "srcIndex":12,
+            "dstIndex":12,
+            "srcName":"product_gender",
+            "dstName":"product_gender"
+        },
+        {  
+            "srcIndex":13,
+            "dstIndex":13,
+            "srcName":"product_age_group",
+            "dstName":"product_age_group"
+        },
+        {  
+            "srcIndex":14,
+            "dstIndex":14,
+            "srcName":"brand_name",
+            "dstName":"brand_name"
+        },
+        {  
+            "srcIndex":15,
+            "dstIndex":15,
+            "srcName":"supplier_name",
+            "dstName":"supplier_name"
+        },
+        {  
+            "srcIndex":16,
+            "dstIndex":16,
+            "srcName":"product_status",
+            "dstName":"product_status"
+        },
+        {  
+            "srcIndex":17,
+            "dstIndex":17,
+            "srcName":"product_planned_end_date",
+            "dstName":"product_planned_end_date"
+        },
+        {
+            "srcIndex":18,
+            "dstIndex":18,
+            "srcName" :"row_id",
+            "dstName" :"row_id"
+        }        
+
+    ],
+
+    "schema":{
+        "title" : "Product record",
+        "type" : "object",
+        "properties": 
+            {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "product_bkey1" : {
+                "type" : "string",
+                "isKey":true,
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "product_bkey2" : {
+                "type" : "string",
+                "isKey":true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "product_bkey3" : {
+                "type" : "string",
+                "isKey":true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "product_bkey4" : {
+                "type" : "string",
+                "isKey":true,
+                "maxLength" : 20,
+                "minLength" : 0
+            },
+            "product_name" : {
+                "type" : "string",
+                "maxLength" : 100
+            },
+            "product_description" : {
+                "type" : "string",
+                "maxLength" : 512
+            },
+            "product_sku_code" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "product_size" : {
+                "type" : "string",
+                "maxLength" : 20
+            },
+            "product_colour_code" : {
+                "type" : "string",
+                "maxLength" : 10
+            },
+            "product_colour" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "product_gender" : {
+                "type" : "string",
+                "maxLength" : 10
+            },
+            "product_age_group" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "brand_name" : {
+                "type" : "string",
+                "maxLength" : 100
+            },
+            "supplier_name" : {
+                "type" : "string",
+                "maxLength" : 50
+            },
+            "product_status" : {
+                "type" : "string",
+                "maxLength" : 30
+            },
+            "planned_end_date" : {
+                "type" : "string",
+                "format" : "date"
+            },
+            "row_id": {
+                "type": "string",
+                "maxLength": 10
+            }
+        },
+        "required": [
+                        "reporting_date",
+                        "reporting_date_period_type",
+                        "product_bkey1",
+                        "product_name",
+                        "row_id"
+                    ],
+        "primaryKey": [
+                        "product_bkey1",
+                        "product_bkey2",
+                        "product_bkey3",
+                        "product_bkey4"
+                    ]
+    }
+}

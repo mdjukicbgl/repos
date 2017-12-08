@@ -1,0 +1,23 @@
+@import '../../../../../../styles/settings/theme';
+
+div {
+
+  font-size: 12px;
+  display: flex;
+
+  div{
+    width: 100%;
+
+    span {
+      margin: 0 5px 0 0;
+    }
+    span.value {
+      background: $table-grid-active;
+      border-radius: 20px;
+      padding: 0 5px;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+
+}

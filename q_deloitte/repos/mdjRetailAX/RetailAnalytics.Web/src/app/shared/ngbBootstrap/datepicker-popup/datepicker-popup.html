@@ -1,0 +1,7 @@
+<div class="input-group">
+  <input (ngModelChange)="onUpdateModel($event)" [(ngModel)]="model" [minDate]="minDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" class="hidden-datepicker" >
+  <input class="form-control" [value]="date | localeDate:locale:'shortDate'" [disabled]="true"/>
+  <div class="input-group-addon" (click)="d.toggle()" >
+    <i class="fa fa-calendar"></i>
+  </div>
+</div>
