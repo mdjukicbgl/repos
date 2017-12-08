@@ -1,0 +1,22 @@
+
+
+https://172.20.1.133:8443/job/prd-redshift-updates-140/
+
+---------------------------------------------------------------------------------------------------
+-- This is the Jenkins PRD job which is falling over.....
+---------------------------------------------------------------------------------------------------
+
+--have a look at this job, as per Neil's instructions:
+
+https://172.20.1.133:8443/job/prd-collect-adobe-feed-expectations/
+
+
+ set -e; ssh prd01@172.20.1.171 'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} 
+				  -c "SET wlm_query_slot_count = 2; ANALYZE combined_table_recent; " '
+				  
+				  
+				  
+set -e; ssh markod@172.20.0.174 'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "SET wlm_query_slot_count = 2; select top 10 * from common.country_regions; " '
+
+-- running 2 sql commands.....
+set -e; ssh markod@172.20.0.174 'source ~/bigdataconfig.py; psql -v "ON_ERROR_STOP=1" --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "SET wlm_query_slot_count = 2; select top 10 * from common.country_region; select top 10 * from common.country_regions; " '

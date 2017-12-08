@@ -1,0 +1,111 @@
+330
+-- foreign keys not being applied except for dim_retailer_id as this should be enforced in the ETL process
+-- CREATE TABLE markdown.fact_weekly_sales_markdown
+CREATE TABLE IF NOT EXISTS markdown.fact_weekly_sales_markdown
+(
+       batch_id INTEGER DEFAULT 1 NOT NULL,
+       dim_date_id INTEGER NOT NULL,
+       dim_retailer_id INTEGER NOT NULL,
+       dim_product_id BIGINT NOT NULL,
+       dim_geography_id INTEGER NOT NULL,
+       dim_currency_id SMALLINT NOT NULL,
+       dim_seasonality_id INTEGER NOT NULL,
+       dim_junk_id SMALLINT NOT NULL,
+       dim_price_status_id SMALLINT NOT NULL,
+       dim_channel_id INTEGER NOT NULL,
+       gross_margin DOUBLE PRECISION NULL,
+       markdown_price DOUBLE PRECISION NULL,
+       markdown_cost DOUBLE PRECISION NULL,
+       cost_price DOUBLE PRECISION NULL,
+       system_price DOUBLE PRECISION NULL,
+       selling_price DOUBLE PRECISION NULL,
+       original_selling_price DOUBLE PRECISION NULL,
+       optimisation_original_selling_price DOUBLE PRECISION NULL,
+       provided_selling_price DOUBLE PRECISION NULL,
+       provided_original_selling_price DOUBLE PRECISION NULL,
+       optimisation_selling_price DOUBLE PRECISION NULL,
+       local_tax_rate DOUBLE PRECISION NULL,
+       sales_value DOUBLE PRECISION NULL,
+       sales_quantity DOUBLE PRECISION NULL,
+       store_stock_value DOUBLE PRECISION NULL,
+       store_stock_quantity DOUBLE PRECISION NULL,
+       depot_stock_value DOUBLE PRECISION NULL,
+       depot_stock_quantity DOUBLE PRECISION NULL,
+       clearance_sales_value DOUBLE PRECISION NULL,
+       clearance_sales_quantity DOUBLE PRECISION NULL,
+       promotion_sales_value DOUBLE PRECISION NULL,
+       promotion_sales_quantity DOUBLE PRECISION NULL,
+       store_stock_value_no_negatives DOUBLE PRECISION NULL,
+       store_stock_quantity_no_negatives DOUBLE PRECISION NULL,
+       intake_plus_future_commitment_quantity DOUBLE PRECISION NULL,
+       intake_plus_future_commitment_value DOUBLE PRECISION NULL,
+       total_stock_value DOUBLE PRECISION NULL,
+       total_stock_quantity DOUBLE PRECISION NULL
+);
+550
+-- CREATE TABLE sales.fact_weekly_sales
+CREATE TABLE IF NOT EXISTS sales.fact_weekly_sales
+(
+       batch_id INTEGER DEFAULT 1 NOT NULL,
+       dim_date_id INTEGER DEFAULT 1 NOT NULL,
+       dim_retailer_id INTEGER NOT NULL,
+       dim_product_id BIGINT NOT NULL,
+       dim_geography_id INTEGER NOT NULL,
+       dim_currency_id SMALLINT NOT NULL,
+       dim_seasonality_id INTEGER NOT NULL,
+       dim_price_status_id SMALLINT NOT NULL,
+       dim_channel_id INTEGER NOT NULL,
+       dim_product_status_id SMALLINT NOT NULL,
+       gross_margin DOUBLE PRECISION NULL,
+       sales_value DOUBLE PRECISION NULL,
+       sales_quantity INTEGER NULL,
+       local_tax_rate DOUBLE PRECISION NULL,
+       sales_cost DOUBLE PRECISION NULL,
+       markdown_sales_value DOUBLE PRECISION NULL,
+       markdown_sales_quantity INTEGER NULL,
+       promotion_sales_value DOUBLE PRECISION NULL,
+       promotion_sales_quantity INTEGER NULL,
+       retailer_markdown_cost DOUBLE PRECISION NULL
+);
+drop 640
+-- foreign keys not being applied except for dim_retailer_id as this should be enforced in the ETL process
+-- foreign keys not being applied except for dim_retailer_id as this should be enforced in the ETL process
+CREATE TABLE IF NOT EXISTS sales.fact_daily_price
+(
+       batch_id INTEGER DEFAULT 1 NOT NULL,
+       dim_date_id INTEGER DEFAULT 1 NOT NULL,
+       dim_retailer_id INTEGER NOT NULL,
+       dim_product_id BIGINT NOT NULL,
+       dim_geography_id INTEGER NOT NULL,
+       dim_currency_id SMALLINT NOT NULL,
+       dim_channel_id INTEGER NOT NULL,
+       dim_seasonality_id SMALLINT NOT NULL,
+       dim_price_status_id SMALLINT NOT NULL,
+       system_price DOUBLE PRECISION NULL,
+       selling_price DOUBLE PRECISION NULL,
+       original_selling_price DOUBLE PRECISION NULL,
+       previous_selling_price DOUBLE PRECISION NULL
+);
+CREATE TABLE sales.fact_weekly_stock(
+       batch_id INT NOT NULL,
+       dim_date_id INT NOT NULL,
+       dim_retailer_id INT NOT NULL,
+       dim_product_id BIGINT NOT NULL,
+       dim_geography_id INT NOT NULL,
+       dim_currency_id SMALLINT NOT NULL,
+       stock_value DOUBLE PRECISION NULL,
+       stock_quantity INT NULL,
+       stock_cost DOUBLE PRECISION NULL,
+       cost_price DOUBLE PRECISION NULL,
+       future_commitment_stock_value DOUBLE PRECISION NULL,
+       future_commitment_stock_quantity INT NULL,
+       future_commitment_stock_cost DOUBLE PRECISION NULL,
+       intake_stock_value DOUBLE PRECISION NULL,
+       intake_stock_quantity DOUBLE PRECISION NULL,
+       intake_stock_cost DOUBLE PRECISION NULL,
+       transit_stock_value DOUBLE PRECISION NULL,
+       transit_stock_quantity DOUBLE PRECISION NULL,
+       transit_stock_cost DOUBLE PRECISION NULL
+)
+ 
+ 

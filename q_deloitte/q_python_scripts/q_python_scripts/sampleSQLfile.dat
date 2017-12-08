@@ -1,0 +1,43 @@
+do $$
+begin
+ 
+begin transaction;
+  UPDATE  conformed.dim_channel
+  SET     channel_name            = changed_channel.channel_name,
+          channel_description     = changed_channel.channel_description,
+          channel_code            = changed_channel.channel_code
+  FROM    (
+      
+     ) as changed_channel
+  where   dim_channel.dim_retailer_id         = changed_channel.dim_retailer_id
+  and     dim_channel.channel_bkey            = changed_channel.channel_key;
+ 
+  INSERT
+  INTO  conformed.dim_channel
+  (     dim_retailer_id,
+        channel_bkey,
+        channel_name,
+        channel_description,
+        channel_code
+  )
+  SELECT  dim_retailer_id,
+          channel_key,
+          channel_name,
+          channel_description,
+          channel_code
+  FROM    stage.channel sc
+  WHERE   NOT exists( SELECT  *
+                      FROM    conformed.dim_channel   dc
+                      WHERE   dc.dim_retailer_id = sc.dim_retailer_id
+                      AND     dc.channel_bkey = sc.channel_key);
+ 
+  commit;
+ 
+exception when others then
+    rollback;
+ 
+    raise notice 'Transaction was rolled back';
+ 
+    raise notice '% %', SQLERRM, SQLSTATE;
+end;
+$$ language 'plpgsql';

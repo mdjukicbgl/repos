@@ -1,0 +1,654 @@
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.economistcomprod
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE (referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%')
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%')
+\" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_recent
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_history_19000101_20150831
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_history_20150901_20151231
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_history_20160101_20160214
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+          'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%')
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_history_20160215_20160531
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.combined_table_history_20160601_20160930
+SET referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+post_referrer = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(post_referrer,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+visit_start_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(visit_start_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_page_url = REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(first_hit_page_url,
+           'https://www.economist.com/users/.+%40.+/',
+           'https://www.economist.com/users//'),
+           'https://www.economist.com/users/.+%40.*',
+           'https://www.economist.com/users/'),
+           'user_search_advanced?.*&uid',
+           'user_search_advanced?&uid'),
+           'given_name=.+&family_name=.+&',
+           'given_name=&family_name=&'),
+           'email=.*@.*',
+           'email='),
+first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+url  = REGEXP_REPLACE(url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+WHERE ((referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') )
+AND source = 'economist online' \" "
+
+
+ ${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.econdarwinproduction
+SET first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+where ((first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+   or  (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+   or  (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+   or  (url LIKE '%lastname=%' and url not like '%lastname=&%')
+   or  (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%')
+ )
+  AND source = 'economist online' \" "
+
+
+ ${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.econdarwinproduction_reload
+SET first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_page_url = REGEXP_REPLACE(post_page_url,
+           'lastname=.+&',
+           'lastname=&'),		   
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+where ((first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+   or  (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+   or  (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+   or  (url LIKE '%lastname=%' and url not like '%lastname=&%')
+   or  (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%')
+ )
+  AND source = 'economist online' \" "
+
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.econprodappipad
+SET first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+where ((first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+   or  (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+   or  (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+   or  (url LIKE '%lastname=%' and url not like '%lastname=&%')
+   or  (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%')
+ )
+  AND source = 'economist online' \" " 
+
+  
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c \"
+UPDATE adobe.econprodappipad_reload
+SET first_hit_referrer = REGEXP_REPLACE(first_hit_referrer,
+           'lastname=.+&',
+           'lastname=&'),
+post_pagename_no_url = REGEXP_REPLACE(post_pagename_no_url,
+           'lastname=.+&',
+           'lastname=&'),
+visit_referrer = REGEXP_REPLACE(visit_referrer,
+           'lastname=.+&',
+           'lastname=&')
+where ((first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+   or  (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+   or  (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+   or  (url LIKE '%lastname=%' and url not like '%lastname=&%')
+   or  (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%')
+ )
+  AND source = 'economist online' \" " 
+  
+  

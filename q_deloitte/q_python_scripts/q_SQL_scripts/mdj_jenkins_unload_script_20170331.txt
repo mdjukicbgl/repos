@@ -1,0 +1,104 @@
+# MRD unload
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c 'unload ('select * from mrd.ga_sessions' to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE)'"
+
+
+# MRD unload
+${sshprd01} "source ~/bigdataconfig.py; psql 
+           --host=\${redshifthostname} 
+		   --port=\${redshiftport} 
+		   --username=\${myredshiftusername} 
+		   --dbname=\${myredshiftdbname} 
+		    -c 'unload ('select * from mrd.ga_sessions' to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' 
+			iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' 
+			BZIP2 ESCAPE )'"
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} -c 'unload ('select * from mrd.ga_sessions' to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 DELIMITER '|' ADDQUOTES ESCAPE ALLOWOVERWRITE )'"
+			
+			
+set +e; ssh markod@172.20.0.174 'source ~/bigdataconfig.py; psql -v "ON_ERROR_STOP=1" --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "SET wlm_query_slot_count = 2; select top 10 * from common.country_regions;" '			
+
+
+-- From Google
+unload ('select * from tbl_example') to 's3://s3bucket/tbl_example' 
+CREDENTIALS 'aws_access_key_id=xxx;aws_secret_access_key=xxx' 
+ADDQUOTES DELIMITER '|' ESCAPE ALLOWOVERWRITE;
+
+copy tbl_example2 from 's3://s3bucket/tbl_example' 
+CREDENTIALS 'aws_access_key_id=xxx;aws_secret_access_key=xxx' 
+delimiter '|' removequotes escape;
+
+-- new format
+
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} 
+-c 'unload ('select * from mrd.ga_sessions') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ADDQUOTES DELIMITER '|' ESCAPE ALLOWOVERWRITE '"
+
+This works:
+set -e; ssh markod@172.20.0.174 'source ~/bigdataconfig.py; psql -v "ON_ERROR_STOP=1" --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "SET wlm_query_slot_count = 2; select top 10 * from common.country_region; select top 10 * from common.country_regions; " '
+
+ssh prd01@172.20.1.171 \\'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE " \\'
+
+${sshprd01} 'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c \"unload (\'select top 11 * from mrd.ga_sessions;)\' to \'s3://economist-analytics-euw1-int01/mrd.ga_sessions/\' iam_role \'arn:aws:iam::334086281941:role/prd-redshift-copy-unload\' BZIP2 ESCAPE \" '
+
+
+set -nv; ${sshprd01} \'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE " \'
+
+
+${sshprd01} "\""source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE " "\""
+
++ psql --host=dev01.cqg0uammb0ux.eu-west-1.redshift.amazonaws.com --port=5439 --username=marko --dbname=cbl_marko 
+-c 'unload ('\''select top 11 * from mrd.ga_sessions;'\'') to '\''s3://economist-analytics-euw1-int01/mrd.ga_sessions/'\'' 
+iam_role '\''arn:aws:iam::334086281941:role/prd-redshift-copy-unload'\'' 
+BZIP2 ESCAPE ' '"'
+
+psql: warning: extra command-line argument """ ignored
+
+
+${sshprd01} "\"" source /home/markod/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE " "\""
+
+
+#set -xv; ${sshprd01}  'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c \"unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE \" '
+
+
+set -xv; ${sshprd01}  'source ~/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE; " '
+
+
+[prd-unload] $ /bin/sh -xe /tmp/hudson7870949997431460331.sh
++ set -xv
++ ssh prd01@172.20.1.171 '"' source /var/lib/jenkins/bigdataconfig.py
+bash: -c: line 0: unexpected EOF while looking for matching `"'
+bash: -c: line 1: syntax error: unexpected end of file
+Build step 'Execute shell' marked build as failure
+[ssh-agent] Stopped.
+An attempt to send an e-mail to empty list of recipients, ignored.
+Finished: FAILURE
+
+set -xv; ${sshprd01} "\""source /home/markod/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -c "unload ('select top 11 * from mrd.ga_sessions;') to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE; " "\""
+
+
+set -xv; ${sshprd01} "\""source /home/markod/bigdataconfig.py; psql --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} \
+-c " \
+unload ('select top 11 * from mrd.ga_sessions;') \
+to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' \
+iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' \
+BZIP2 ESCAPE; " "\""
+
+echo <<EOF
+
+/bin/bash \n
+${sshprd01} "\"source ~/bigdataconfig.py;"\"\n
+
+
+
+--host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} \-c "
+unload ('select top 11 * from mrd.ga_sessions')
+to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/'
+iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload'
+BZIP2 ESCAPE;
+" "\"
+EOF 
+
+(echo ${sshprd01} "\"source ~/bigdataconfig.py\;)
+
+-- error from Neil to look at.....
+
+${sshprd01} "/home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_mrd_paid_media_eco_dfp.sql"

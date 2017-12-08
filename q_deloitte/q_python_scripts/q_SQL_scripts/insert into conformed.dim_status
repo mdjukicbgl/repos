@@ -1,0 +1,47 @@
+CREATE TABLE conformed.dim_status
+(
+	batch_id INTEGER DEFAULT 1 NOT NULL ENCODE lzo,
+	dim_status_id INTEGER NOT NULL ENCODE lzo,
+	status_type_bkey VARCHAR(20) NOT NULL ENCODE lzo,
+	status_bkey VARCHAR(20) NOT NULL ENCODE lzo,
+	parent_status_bkey VARCHAR(20) ENCODE lzo,
+	status_type VARCHAR(50) NOT NULL ENCODE lzo,
+	status_name VARCHAR(50) NOT NULL ENCODE lzo,
+	parent_dim_status_id SMALLINT ENCODE lzo,
+	status_hierarchy_level SMALLINT DEFAULT 0 NOT NULL ENCODE lzo,
+	status_breadcrumb VARCHAR(512) DEFAULT ''::character varying NOT NULL ENCODE lzo,
+	is_leaf_node BOOLEAN DEFAULT 0 NOT NULL 
+)
+DISTSTYLE EVEN;
+
+ALTER TABLE conformed.dim_status
+ADD CONSTRAINT pk_dim_status
+PRIMARY KEY (dim_status_id);
+
+ALTER TABLE conformed.dim_status
+	ADD CONSTRAINT fk_dimstatus_dimstatus
+		FOREIGN KEY (parent_dim_status_id) REFERENCES conformed.dim_status(dim_status_id);
+
+ALTER TABLE conformed.dim_status
+ADD CONSTRAINT ak_dim_status_k3k4
+UNIQUE (status_type_bkey, status_bkey);
+
+--truncate table conformed.dim_status
+
+insert into conformed.dim_status
+(
+batch_id,	dim_status_id,	status_type_bkey,	status_bkey,	parent_status_bkey,	status_type,	status_name,	parent_dim_status_id,	status_hierarchy_level,	status_breadcrumb,	is_leaf_node
+)
+values  
+ (1,	0,	0,	0,	NULL,	'Unknown',	'Unknown',	NULL,	1,	'Unknown',	True)
+, (1,	-2,	2,	-2,	NULL,	'Price Status', 'Unknown',	NULL,	1,	'Price Status : Unknown',	True)
+,(1,	3,	2,	3,	NULL,	'Price Status', 'Promotion',	NULL,	1,	'Price Status : Promotion',	True)
+,(1,	2,	2,	2,	NULL,	'Price Status', 'Markdown',	NULL,	1,	'Price Status : Markdown',	True)
+,(1,	1,	2,	1,	NULL,	'Price Status', 'Full Price',	NULL,	1,	'Price Status : Full Price',	True)
+,(1,	-1,	1,	-1,	NULL,	'Product Status', 'Unkown',	NULL,	1,	'Product Status : Unknown',	True)
+
+
+select *
+  from conformed.dim_status
+ order by dim_status_id
+;

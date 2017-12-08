@@ -1,0 +1,95 @@
+header:
+
+reporting_date|reporting_date_period_type|product_key1|product_key2|product_key3|product_key4|geography_type_key|geography_key|seasonality_key|year_seasonality_key|year_seasonality_start_date|year_seasonality_end_date|row_id
+
+Expected:
+reporting_date|reporting_date_period_type|seasonality_bkey|year_seasonality_bkey|seasonality_name|year_seasonality_name|row_id
+
+
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/Downloads : cat FREEHUB-Seasonality-201708300937-4.psv
+
+reporting_date|reporting_date_period_type|product_key1|product_key2|product_key3|product_key4|geography_type_key|geography_key|seasonality_key|year_seasonality_key|year_seasonality_start_date|year_seasonality_end_date|row_id
+
+2017-05-24|0|32000056||||2|4321|0|0|2017-04-30|2017-06-30|1
+2017-05-24|0|32000057||||2|4321|0|0|2017-04-30|2017-06-30|2
+2017-05-24|0|32000065||||2|4378|4|4|2017-04-30|2017-06-30|3
+
+reporting_date|reporting_date_period_type|seasonality_bkey|year_seasonality_bkey|seasonality_name|year_seasonality_name|row_id
+2017-08-30|0|seasonality1|yearseasonality1|summer1|year_summer1|1
+2017-08-30|0|seasonality2|yearseasonality2|summer2|year_summer2|2
+2017-08-30|0|seasonality3|yearseasonality3|summer3|year_summer3|3
+
+##
+## status file
+##
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/Downloads : cat FREEHUB-Statuses-20170604-3.psv
+
+reporting_date|reporting_date_period_type|status_type_bkey|status_bkey|status_name|is_global_status|is_unknown_member|row_id
+2017-06-04|0|4|UNKNOWN|I don't know what this means|Y|N|1
+2017-06-04|0|4|KNOWN|I do know what this means|N|N|2
+
+
+reporting_date|reporting_date_period_type|status_type_bkey|status_bkey|status_name|is_global_status|is_unknown_member|row_id
+2017-08-30|0|statusBkey1|parentStatusBkey1|statusType1|statusName1|parentDimStatusId1|statusHierLevel1|statusBreadcrumb1|Y|1
+2017-08-30|0|statusBkey2|parentStatusBkey2|statusType2|statusName2|parentDimStatusId2|statusHierLevel2|statusBreadcrumb2|N|2
+2017-08-30|0|statusBkey3|parentStatusBkey3|statusType3|statusName3|parentDimStatusId3|statusHierLevel3|statusBreadcrumb3|Y|3
+
+reporting_date|reporting_date_period_type|status_type_bkey|status_bkey|parent_status_bkey|status_type|status_name|parent_dim_status_id|status_hierarchy_level|status_breadcrumb|is_leaf_node|row_id
+2017-08-30|0|statusTypeBkey1|statusBkey1|parentStatusBkey1|statusType1|statusName1|parentDimStatusId1|statusHierarchyLevel1|statusBreadcrumb1|Y|1
+2017-08-30|0|statusTypeBkey2|statusBkey2|parentStatusBkey2|statusType2|statusName2|parentDimStatusId2|statusHierarchyLevel2|statusBreadcrumb2|N|2
+2017-08-30|0|statusTypeBkey3|statusBkey3|parentStatusBkey3|statusType3|statusName3|parentDimStatusId3|statusHierarchyLevel3|statusBreadcrumb3|N|3
+
+##
+## Geography file
+##
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/Downloads : cat FREEHUB-Geography-201706150430-5.psv 
+reporting_date|reporting_date_period_type|geography_type_key|geography_key|geographical_location_name|geographical_location_description|geographical_location_status|geographical_location_county_state|geographical_location_country|geographical_location_region|geographical_location_subregion|longitude|latitude
+2017-05-26|0|2|4321|Bobs depot|Behind Bobs shed|Shut|Cornwall|Burma|Asia|BobAsia|4|5
+
+##
+## new georgraphy file header
+##
+reporting_date|reporting_date_period_type|location_bkey|location_type_bkey|location_type|location_name|location_description|location_subtype|location_status|city_town|county_state|country|region|subregion|logitude_position|latitude_position|trading_start_date|trading_end_date|default_cluster|building_floor_space|stock_allocation_grade|row_id
+2017-08-30|0|1|locationTypeBkey1|locationType1|locationName1|locationDescription1|locationSubtype1|locationStatus1|cityTown1|countyState1|country1|region1|subregion1|52.136436|‎-0.460739|2017-02-04|2050-01-01|defaultCluster1|2500.39|stkAllGrd1|1
+2017-08-30|0|2|locationTypeBkey2|locationType2|locationName2|locationDescription2|locationSubtype2|locationStatus2|cityTown2|countyState2|country2|region2|subregion2|52.0406|‎0.7594|2017-03-24|2050-01-01|defaultCluster2|6532.41|stkAllGrd2|2
+
+##
+## old Product file
+##
+reporting_date|reporting_date_period_type|product_key1|product_key2|product_key3|product_key4|product_name|product_description|product_sku_code|product_size|product_colour_code|product_colour|product_gender|product_age_group|brand_name|supplier_name|product_status
+2017-05-24|0|32000056||||HORSE||56||||||||
+2017-05-24|0|32000057||||MINI Q AND A ANIMALS||57||||||||
+2017-05-24|0|32000058||||TRUCK||58||||||||
+2017-05-24|0|32000059||||FOR ONE OR TWO||59||||||||
+2017-05-24|0|32000060||||MISC. MIRS ADJUSTMENT||60||||||||
+2017-05-24|0|32000061||||ROCK A BYE BRDS: I LOVE T||61||||||||
+2017-05-24|0|32000062||||STICKY EYES LARGE FORMAT||62||||||||
+2017-05-24|0|32000063||||COFFEE TABLE BOOK - HOROSCOPES||63||||||||
+2017-05-24|0|32000064||||WITCH||64||||||||
+2017-05-24|0|32000065||||MISC. MIRS ADJUSTMENT||65||||||||
+2017-05-24|0|32000066||||B.C. CAVE-IN||66||||||||
+2017-05-24|0|32000067||||I LOVE MY PETS||67||||||||
+2017-05-24|0|32000068||||VEGETARIAN||68||||||||
+2017-05-24|0|32000069||||VEHICLE SHAPED TRACTOR||69||||||||
+2017-05-24|0|32000071||||DINOMITE STICKER FLYING||71||||||||
+2017-05-24|0|32000072||||Q&A SERIES - MACHINES||72||||||||
+2017-05-24|0|32000073||||FISH & SEAFOOD||73||||||||
+2017-05-24|0|32000074||||FAIRY FERN||74||||||||
+2017-05-24|0|32000075||||GREATEST EVER COOKBOOK||75||||||||
+2017-05-24|0|32000076||||JOLLY CHRISTMAS||76||||||||
+2017-05-24|0|32000077||||TRUCKS||77||||||||
+2017-05-24|0|32000078||||MISC. MIRS ADJUSTMENT||78||||||||
+2017-05-24|0|32000079||||ULTIMATE BK OF DINOS RED||79||||||||
+2017-05-24|0|32000080||||OLD MACDONALD STICKERS - HENS||80||||||||
+2017-05-24|0|32000081||||PRACTICAL COOKERY: CHICKEN||81||||||||
+
+##
+## new Product file format
+##
+reporting_date|reporting_date_period_type|product_bkey1|product_bkey2|product_bkey3|product_bkey4|product_name|product_description|product_sku_code|product_size|product_colour_code|product_colour|product_gender|product_age_group|brand_name|supplier_name|product_status|product_planned_end_date|row_id
+2017-07-30|0|32000056||||HORSE|horseDescription1|56|Size1|ColCde1|Colour1|Gender1|AgeGroup1|brandName1|supplierName1|Status1|2017-08-15|1
+2017-07-30|0|32000057||||MINI Q AND A ANIMALS|miniDescription2|57|Size2|ColCde2|Colour2|Gender2|AgeGroup2|brandName2|supplierName2|Status2|2017-08-16|2
+
+  --, max_dim_product_id + row_number() over (order by dim_product_id asc) as dim_product_id 
+
+  

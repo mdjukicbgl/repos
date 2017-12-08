@@ -1,0 +1,79 @@
+
+Hi Marko,
+
+I can't explain this one at the moment. A fresh pair of eyes might though!
+
+The Jenkins job prd-redshift-transforms-dfp 
+on the 21st ended up inserting zero records into 
+		mrd.paid_media_ipm_dfp 
+	and mrd.paid_media_eco_dfp. 
+It did the same on the 22nd too but last night's run was fine.
+
+If you check the SQL earlier in the job you can see that the main tables involved 
+do have data populated. 
+The sharepoint schema tables are populated by the job prd-redshift-sharepoint-copy 
+but if you check the timings it runs at a very different time.
+
+I guess that one of the tables was empty when it ran (maybe a transaction issue?). 
+Perhaps there is a safer way to run the final insert so that we don't end up with an empty 
+table if there is an issue. We do the alter table statements to try and switch making 
+the tables live (those table are used by dashboards so I was trying to avoid the scenario 
+of a table being temporarily empty).
+
+-- 
+Best regards,
+
+
+-- copied from https://172.20.1.133:8443/job/prd-redshift-transforms-dfp/configure
+
+set -e
+echo "Inserting / updating mrd.dfp tables"
+${sshprd01} "/home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 upsert_mrd_dfp_orders.sql"
+${sshprd01} "/home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 upsert_mrd_dfp_lineitems.sql"
+echo "Recreating the tables that drive the visuals"
+${sshprd01} "/home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_mrd_paid_media_eco_dfp.sql"
+${sshprd01} "/home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_mrd_paid_media_ipm_dfp.sql"
+
+---------------------------------------------------------------------------------------------------
+-- https://172.20.1.133:8443/view/prd-transforms/job/prd-redshift-sharepoint-copy/configure
+---------------------------------------------------------------------------------------------------
+# copy into a staging table and then insert into the table used in the visuals
+${sshprd01} "set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 copy_sharepoint.sql"
+${sshprd01} "set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 alter_sharepoint_ad_sizes_list.sql"
+${sshprd01} "set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 alter_sharepoint_campaign_content_type.sql"
+${sshprd01} "set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_sharepoint_provisioned_campaign.sql"
+${sshprd01} "set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_sharepoint_provisioned_admin.sql"
+
+---------------------------------------------------------------------------------------------------
+-- copy_sharepoint.sql
+---------------------------------------------------------------------------------------------------
+
+-- there is no _tmp table for admin_list or campaign_list
+-- the data is transformed into mrd.provisioned_campaign_tmp and _admin_tmp
+
+truncate sharepoint.admin_list;
+
+COPY sharepoint.admin_list from 's3://economist-analytics-euw1-prd01/sharepoint/admin_list/staging/sharepoint_admin_list.csv'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/prd-redshift-copy-unload'
+ EMPTYASNULL IGNOREHEADER 1 IGNOREBLANKLINES CSV ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF DATEFORMAT 'auto' TIMEFORMAT 'auto';
+
+ truncate sharepoint.campaign_list;
+
+COPY sharepoint.campaign_list from 's3://economist-analytics-euw1-prd01/sharepoint/campaign_list/staging/sharepoint_campaign_list.csv'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/prd-redshift-copy-unload'
+ EMPTYASNULL IGNOREHEADER 1 IGNOREBLANKLINES CSV ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF DATEFORMAT 'auto' TIMEFORMAT 'auto';
+
+ truncate sharepoint.campaign_content_type_tmp;
+
+COPY sharepoint.campaign_content_type_tmp from 's3://economist-analytics-euw1-prd01/sharepoint/campaign_content_type/staging/sharepoint_campaign_content_types.csv'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/prd-redshift-copy-unload'
+ EMPTYASNULL IGNOREHEADER 1 IGNOREBLANKLINES CSV ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF DATEFORMAT 'auto' TIMEFORMAT 'auto';
+
+ truncate sharepoint.ad_sizes_list_tmp;
+
+COPY sharepoint.ad_sizes_list_tmp from 's3://economist-analytics-euw1-prd01/sharepoint/admin_list/staging/sharepoint_ad_sizes_list.csv'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/prd-redshift-copy-unload'
+ EMPTYASNULL IGNOREHEADER 1 IGNOREBLANKLINES CSV ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF DATEFORMAT 'auto' TIMEFORMAT 'auto';
+
+ 
+ 

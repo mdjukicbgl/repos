@@ -1,0 +1,134 @@
+BEGIN transaction;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_time's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_ga_sessions 
+AS
+   WITH mrd                       
+   AS
+        (
+         SELECT
+                'mrd.ga_sessions'  AS recid
+              , session_time::date AS session_date
+              , COUNT(*)           AS mrd_count
+           FROM
+                mrd.ga_sessions
+       GROUP BY
+                session_time::date
+        )
+      , ga AS
+        (
+         SELECT
+                'ga.sessions'      AS recid
+              , session_time::date AS session_date
+              , COUNT(*)           AS ga_count
+           FROM
+                ga.sessions
+       GROUP BY
+                session_time::date
+        )
+ SELECT
+        recid
+      , session_date
+      , mrd_count
+      , ga_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                         AS recid
+              , mrd.session_date                                  AS session_date
+              , mrd.mrd_count                                     AS mrd_count
+              , ga.ga_count                                       AS ga_count
+              , (mrd.mrd_count::FLOAT / ga.ga_count::FLOAT) * 100 AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    ga
+                 ON
+                    mrd.session_date = ga.session_date
+        )
+  WHERE
+        percentage_to_del >= 20
+    ;
+ 
+ DELETE
+   FROM
+        mrd.ga_sessions
+  WHERE
+        session_time::DATE IN
+        (SELECT DISTINCT session_time::DATE FROM ga.sessions
+        )
+    AND 
+	   0  = (SELECT COUNT(*) FROM #tmp_mrd_ga_sessions)
+;
+ 
+INSERT INTO mrd.ga_sessions
+SELECT
+    profile_id
+  , session_time
+  , country_code
+  , device_category
+  , source_medium
+  , city_name
+  , city_latitude
+  , city_longitude
+  , sessions_total
+  , session_duration
+  , users_total
+  , users_new
+  , page_views_total
+  , EXTERNAL_FILE_ID
+  , EXTERNAL_FILE_ROWNUMBER
+FROM
+    (
+     SELECT *
+          , ROW_NUMBER() Over (
+                  PARTITION BY profile_id
+                             , session_time
+                             , country_code
+                             , device_category
+                             , source_medium
+                             , city_name
+                             , city_latitude
+                             , city_longitude) AS rownum
+       FROM
+            ga.sessions
+    )
+WHERE
+    rownum = 1
+    AND 
+	   0  = (SELECT COUNT(*) FROM #tmp_mrd_ga_sessions)
+;
+
+--add current timezone
+UPDATE
+    mrd.ga_sessions
+SET profile_timezone = profile.profile_timezone
+FROM
+    mrd.ga_profiles profile
+WHERE
+    ga_sessions.profile_id                 = profile.profile_id
+    AND ga_sessions.profile_timezone IS NULL
+;
+
+DELETE
+FROM
+    ga.sessions
+USING mrd.ga_sessions
+WHERE
+    mrd.ga_sessions.profile_id          = ga.sessions.profile_id
+    AND mrd.ga_sessions.session_time    = ga.sessions.session_time
+    AND mrd.ga_sessions.country_code    = ga.sessions.country_code
+    AND mrd.ga_sessions.device_category = ga.sessions.device_category
+    AND mrd.ga_sessions.source_medium   = ga.sessions.source_medium
+    AND mrd.ga_sessions.city_name       = ga.sessions.city_name
+    AND mrd.ga_sessions.city_latitude   = ga.sessions.city_latitude
+    AND mrd.ga_sessions.city_longitude  = ga.sessions.city_longitude
+    AND 
+	   0  = (SELECT COUNT(*) FROM #tmp_mrd_ga_sessions)
+;
+
+SELECT COUNT(*) FROM ga.sessions;
+
+END transaction;

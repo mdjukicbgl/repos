@@ -1,0 +1,13 @@
+
+begin transaction;
+
+DROP TABLE IF EXISTS mdj.attributes
+;
+DROP TABLE IF EXISTS mdj.attributes1
+;
+DROP TABLE IF EXISTS mdj.attributes2
+;
+DROP TABLE IF EXISTS mdj.attributes3
+;
+
+commit;

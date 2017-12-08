@@ -1,0 +1,10 @@
+ 
+begin transaction;
+Ï
+ DROP TABLE mdj.attributes
+;
+
+ DROP TABLE mdj.attributes1
+;
+
+commit;

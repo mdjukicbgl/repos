@@ -1,0 +1,501 @@
+#
+# local environment
+#
+ 
+SHELL=/usr/bin/bash
+EDITOR=/usr/bin/vi
+export SHELL EDITOR
+set -o vi
+export PS1=$LOGNAME@`hostname`:'$PWD : '
+ 
+stty erase ^?
+###stty columns 163
+ 
+umask 0002
+
+#==========================================================================================
+# capture bash history
+# ====================
+ 
+# Append to the history file on shell exit, don't overwrite (so multiple
+# exiting shells don't race to scribble over your saved history)
+shopt -s histappend
+ 
+# Keep lots of history around
+export HISTSIZE=1000000 HISTFILESIZE=1000000
+ 
+# Store history in a different file, so it won't get overwritten if you
+# don't have these settings
+export HISTFILE=~/.bash_history_safe
+ 
+# Write unsaved history immediately before emitting each prompt
+export PROMPT_COMMAND='history -a'
+#==========================================================================================
+ 
+#PATH=$PATH:/users/djuki_ma/private_sand/mediation/CARS/CARS_cdr_subscribe/bin:/usr/local/bin:/home/markod:/home/markod/dbfit/lib
+PATH=$PATH:/usr/local/lib:/Users/mdjukic/Desktop/q_python_scripts/q_python_scripts:/Users/mdjukic
+
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+ 
+###
+### Need to create the following mdj_newer files in /cdrc home dir to partially select active files
+###
+###create newer file such that we can delete everything prior to it: set to 01-Jul-2013 00:01
+###==========================================================================================
+###touch -t1307010001 /cdrc/mdj_newer
+###
+###
+### NOTE: set date below, to ignore the decommissioned FW switches
+###
+###create newer file such that we can delete everything prior to it: set to 31-Jul-2013 11:17
+###==========================================================================================
+###touch -t1307311117 /cdrc/mdj_newer
+###
+ 
+alias b='xbanner'
+alias bs='b start from here $(date +%H:%M:%S)'
+alias diff='diff -y'
+
+alias git_help='echo "#======================================="
+                echo "#IT commands of interest"
+                echo "#======================================"
+                echo "#cd ~/repos/bigdata"
+                echo "#OLD repository --> git clone git@bitbucket.org:redshiftbievolution/testframework.git testframework-local"
+                echo "### C&W --> git clone git@bitbucket.org:redshiftbievolution/redshiftbitest.git"
+                echo "#git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/bigdata"
+                echo ""
+                echo "#git clone https://deloitteproducts.visualstudio.com/_git/RetailAX"
+                echo ""
+                echo "#git config --global user.name "Marko Djukic" "
+                echo "#git config --global user.email markodjukic@cloudbilimited.com "
+				echo "#============================================="
+				echo "# To switch branches"
+				echo "#============================================="
+				echo "#git checkout -b feature/4352"
+				echo "#git status to show new branch"
+                echo ""
+                echo "#The credentials.helper cache command will stop you from having to enter your credentials, everytime you push to git"
+                echo "# Comment from Neil: I am hoping if you enter your creds one more detail it will cache them - let me know!"
+                echo "#git config --global credential.helper cache"
+                echo ""
+                echo "git checkout -- <file>... to discard changes in working directory"
+                echo ""
+                echo "#git add redshift.cfg"
+                echo "#git commit -m <adding redshift.cfg file>"
+                echo "#git push"
+                echo "#see: https://confluence.atlassian.com/display/BITBUCKET/Clone+Your+Git+Repo+and+Add+Source+Files"
+                echo "======================================"
+                echo "= The following command will rename a files to a new label"
+                echo ""
+                echo "#git mv 00012_create_table_sql_server_audit_system.sql 00012_create_table_sql_server_audit_systemdetail.sql"
+                echo "======================================"
+                echo "= The following commands will initialize the mdj_home repostiory, to checkin objects from teh home direcotry"
+                echo ""
+                echo "# git init"
+                echo "# cd $HOME/repos/mdj_home"
+                echo "# git add * "
+                echo "# git commit -m adding_a_comment_here "
+                echo "# git push -u origin master"
+                echo "======================================" 
+                echo "= The following commands will allow you to pull code from the master branch to your local feature branch"
+                echo "= Useful when you want the latest merged code from master"
+                echo "= a simple git pull will not achieve this aim, but these commands will"
+                echo "#git checkout feature/1234"
+                echo "#git fetch origin"
+                echo "#git merge origin/master"               
+                echo "======================================" 
+                echo "" '
+
+#alias ls='ls --color=none'
+alias catfirst='cat $(ls -1t | head -1)'
+alias CD='cd'
+alias check_vtftp='func_vtftp'
+alias cls='clear'
+alias CLS='clear'
+alias fiel='file'
+alias ho='hostname'
+alias la='ls -la'
+alias ll='ls -lt'
+alias lll='ls -lt | grep ^l'
+alias ltd='ls -lt | grep ^d'
+alias ltds='ls -lt | grep ^d | sort -fk9'
+alias ltl='ls -lt | grep ^l'
+alias lth='ls -lt | head -20'
+alias mv_tmuk_senum_2_cdrin='func_mv_tmuk_senum_2_cdrin'
+alias mv_tmuk_cdrin_2_senum='func_mv_tmuk_cdrin_2_senum'
+###alias perl_ul='perl -ne "for (\$c=0; \$c<=120; \$c++) { printf "%s", "#"}; print; "'
+alias perl_ul="perl -le 'for (\$c=0; \$c<=120; \$c++){printf "%s", "_" } print; '"
+alias pswww='/usr/ucb/ps -auxwww'
+alias show_archives='func_archives'
+alias show_banner='banner $(uname -n) $LOGNAME'
+alias show_cdrcrunning='/cdrc/support/joanne/scripts/show_cdrc_process'
+alias show_cdrcnotrunning='/cdrc/support/joanne/scripts/show_cdrc_process | grep -vi running'
+alias show_cdrc='show_cdrc | grep -i running'
+alias show_clientfileprefixes='/cdrc/support/joanne/scripts/config_checker.ksh'
+alias show_config_checker='/cdrc/support/joanne/scripts/config_checker.ksh'
+alias show_config_checker_q_MAN='echo "might want to redirect /cdrc/support/joanne/scripts/config_checker.ksh to an output file'
+alias show_daily='cls; alias | grep daily |nl'
+alias show_Daily='show_daily'
+alias show_daily_backlog_cdr_in='banner cdr_in backlog; (find /cdrc/nes/*/cdr_in/ ! -type d -name "*[0-9]*" -newer /cdrc/mdj_newer -exec ls -lrt {} + ; perl_ul)'
+alias show_daily_backlog_cdr_in_count='banner cdr_in backlog; ls -ltr /cdrc/nes/*/cdr_in/*[0-9]* | cut -d"/" -f4 |sort | uniq -c | sort -n; perl_ul'
+alias show_daily_backlog_cdr_in_q_ALL='banner cdr_in backlog; ls -ltr /cdrc/nes/*/cdr_in/*[0-9]*; perl_ul'
+alias show_daily_backlog_cdr_registry_dir='banner cdr reg_dir backlog; (find /cdrc/nes/*/cdr_registry_dir/* ! -type d -name "*[0-9]*" -newer /cdrc/mdj_newer -exec ls -lrt {} + | nl; perl_ul)'
+alias show_daily_backlog_cdr_registry_dir_count='banner cdr reg_dir backlog; ls -ltr /cdrc/nes/*/cdr_registry_dir/*/*[0-9]* | tr "\." "/" | cut -d"/" -f4,10 |sort | uniq -c | sort -n; perl_ul'
+alias show_daily_backlog_cdr_registry_dir_q_ALL='banner cdr reg_dir backlog; ls -ltr /cdrc/nes/*/cdr_registry_dir/*/*[0-9]* | nl; perl_ul'
+alias show_daily_backlog_cdr_registry_dir_q_MAN='echo "A backlog of no more than an hour should be present for the files returned"'
+alias show_daily_backlog_RDY_files_cdr_in='banner rdy files awaiting dispatch; ls -lrt /cdrc/nes/*/cdr_in/*RDY; perl_ul'
+alias show_daily_backlog_RDY_files_cdr_in_q_MAN='echo "If tiimestamp on RDY files exceeds 30mins, then likely that files are not being dispatched, even though switch is running"'
+alias show_daily_controlfiles='banner control files; (find /cdrc/nes/*/control/ ! -type d -name "control.txt" -newer /cdrc/mdj_newer -exec ls -lrt {} +; perl_ul)'
+alias show_daily_controlfiles_q_ALL='ls -lrt /cdrc/nes/*/control/control.txt'
+alias show_daily_cdrt_control_seq_nos='func_cdrt_control_seq_nos'
+alias show_daily_cdrt_control_seq_nos_q_MAN='echo "show ALL or specific CDRT switch /cdrt/nes/*/collected/control.seq nos, for 999 stoppage for vgw & others"'
+alias show_daily_first_copy_failed='func_daily_first_copy_failed'
+alias show_daily_first_copy_failed_exceptions='func_daily_first_copy_failed_exceptions'
+alias show_fileerrorsTMUK='/cdrc/support/joanne/scripts/QND_AsciiValidater.pl /cdrc/config/TMUK/ifh/TMUK_Converter.cfg '
+alias show_fileerrorsFSG='/cdrc/support/joanne/scripts/QND_AsciiValidater.pl /cdrc/config/FSG/ifh/FSG_Converter.cfg '
+alias show_itocount='grep -i alarm /cdrc/alarm/ITO*.log  | cut -d" " -f1 | sort | uniq -c'
+alias show_LAST_CDR_TIME='banner last cdr time; grep -i last_cdr_time /cdrc/nes/*/control/control.txt | tr " " "/" |sed "s/_TIME:/_TIME\//g"|sort  -rn -t"/" -k9 -k8 -k7 -k10; perl_ul'
+alias show_nf='func_nf'
+alias show_proccomplete_all_switches='func_proccomplete_all_switches'
+alias show_proccomplete_for_switch='func_proccomplete_for_switch'
+alias show_shuttingdown='egrep  "Shutting|Starting" /cdrc/alarm/*log | cut -d"|" -f1,7|sed "s/for .*//g"|sort -t: -k2 |nl'
+alias show_shuttingdowncount='grep -i shutting /cdrc/alarm/*log | cut -d: -f2| cut -d" " -f1 |sort | uniq -c'
+alias show_shuttingdowncount4day='func_shuttingdowncount4day'
+alias show_switches='func_switches'
+alias show_tree='find . -type d | sed "s;[^/]*/;|-->;g;s;-->|; |;g"'
+alias show_while='while true; do ll | nl ; sleep 5; echo; done'
+alias show_xargs_timestamps_in_cdr_file='func_timestamps_in_cdr_file'
+
+alias show_localvars='( set -o posix ; set ) | less'
+ 
+CDPATH=""
+CDPATH=$CDPATH:/Users/mdjukic/virtualenvironment/mynewapp
+CDPATH=$CDPATH:/Users/mdjukic/Desktop/q_python_scripts
+CDPATH=$CDPATH:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL
+CDPATH=$CDPATH:/Users/mdjukic/repos/RetailAX/RetailAnalytics.DW
+CDPATH=$CDPATH:/Users/mdjukic/repos/RetailAX
+CDPATH=$CDPATH:/Users/mdjukic/repos
+CDPATH=$CDPATH:/Users/mdjukic
+
+
+########################################################################################################
+# Folder details
+########################################################################################################
+export LOG_FOLDER=${HOME}/LOG
+export STAGING_FOLDER=${HOME}/STAGING
+export ERROR_FOLDER=${HOME}/ERROR
+export PROCESSED_FOLDER=${HOME}/PROCESSED
+export SCHEMA_FOLDER=${HOME}/SCHEMA
+
+if [ ! -d ${LOG_FOLDER} ];       then mkdir ${LOG_FOLDER}; fi
+if [ ! -d ${STAGING_FOLDER} ];   then mkdir ${STAGING_FOLDER}; fi
+if [ ! -d ${ERROR_FOLDER} ];     then mkdir ${ERROR_FOLDER}; fi
+if [ ! -d ${PROCESSED_FOLDER} ]; then mkdir ${PROCESSED_FOLDER}; fi
+if [ ! -d ${SCHEMA_FOLDER} ];    then mkdir ${SCHEMA_FOLDER}; fi
+
+
+########################################################################################################
+# Redshift environment details.....
+########################################################################################################
+# jdbc:postgresql://mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com:5439/markdown
+
+export DW_HOST="mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com"
+export DW_PORT="5439"
+export DW_DATABASE="markdown"
+export DW_USER="mkdwn"
+export DW_PASS="378dhsdkdnDsj.mDs"
+###export DW_PWD="378dhsdkdnDsj.mDs"
+
+
+export HOST="mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com"
+export PORT="5439"
+export DBNAME="markdown"
+export USER="mkdwn"
+export PASS="378dhsdkdnDsj.mDs"
+###export PWD="378dhsdkdnDsj.mDs"
+
+########################################################################################################
+# SQS message queue details.....
+########################################################################################################
+export SQS_QUEUE="ETLControlStatus.fifo"
+
+########################################################################################################
+# Virtualenv - To begin working with your project, you have to cd into your directory (project)
+# and activate the virtual environment.
+#
+# Useful links:
+# http://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv
+# http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/
+#
+########################################################################################################
+cd ~/virtualenvironment/mynewapp/bin && source activate
+
+########################################################################################################
+# Notice how the prompt of your shell changed to show the active environment. 
+# That is how you can see that you're in your new environment.
+# Any packages you install now using pip or easy_install get installed into
+# mynewapp/lib/python2.7/site-packages.
+#
+# To exit your virtualenv just type “deactivate”.
+
+
+########################################################################################################
+# show cdrc archives for date, passed as parm 1 - YYYYMMDD, and for swithch passed as parm 2
+########################################################################################################
+func_archives() {
+        if [ $# -ne 2 ]
+        then echo
+             echo "** USAGE: show cdrc archives for date, passed as parm 1 - YYYYMMDD, or simply DD and for swithch passed as parm 2"
+             echo "          Wildcard facility available as follows: show_archives 2[0-9] PP_03";
+             echo
+             return 1
+        fi
+ 
+        ll /raw_archive/cdr_in/RAW_*$1/*$2*
+}
+ 
+########################################################################################################
+# list columns in file, passed as parm 1
+# - used for checking against TMUK file format erroers, ie. cycle_se_num etc.
+########################################################################################################
+func_nf() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "USAGE: list columns in file. File to check passed as parm 1"
+             echo "show_nf <filename>"
+             echo
+             return 2
+        fi
+ 
+        awk -F, '{print NF}' $1 | sort | uniq -c
+}
+ 
+########################################################################################################
+# Show all current control.seq counters, for ALL, or specific switch string, passed as parm 1
+########################################################################################################
+func_cdrt_control_seq_nos() {
+        if [ $# -gt 1 ]
+        then echo
+             echo "USAGE: list columns in file. File to check passed as parm 1"
+             echo "show_all_control_sequencenos <switch_name>"
+             echo "  - Wildcard facility available as follows: show_all_control_sequencenos vgw";
+             echo
+             return 2
+        elif [ $# -eq 1 ]
+        then
+             banner control seq files; for i in /cdrt/nes/*$1*/collected/control.seq; do echo $i; cat $i; done | paste - -;perl_ul
+        else
+             banner control seq files; for i in /cdrt/nes/*/collected/control.seq; do echo $i; cat $i; done | paste - -;perl_ul
+        fi
+}
+ 
+########################################################################################################
+# list processing complete audit logs. Day of month passed as parm 1
+########################################################################################################
+func_proccomplete_all_switches() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "USAGE: list PROCESSING COMPLETE status of jobs.  DAY_OF_MONTH passed as parm 1"
+             echo "show_proccomplete_all_switches <DAY_OF_MONTH>"
+             echo
+             return 2
+        fi
+ 
+        ###grep -i "processing complete" /cdrc/alarm/${1}.*.log  | cut -d" " -f1 | sort | uniq -c
+        grep -i 'processing complete' /cdrc/audit/${1}*.log | awk '/ARCHIVE/ {print "\n",$0}; !/ARCHIVE/ {print "",$0}'|sed 's:/cdrc/audit/::; s:AUDIT INFO LOGGED AT ::; s:Sequence:SEQ:; s: Client::'
+ 
+}
+ 
+########################################################################################################
+# list processing complete audit logs. Day of month passed as parm 1
+########################################################################################################
+func_proccomplete_for_switch() {
+        if [ $# -ne 2 ]
+        then echo
+             echo "USAGE: list PROCE_for_switchSSING COMPLETE status of jobs.  SWITCH_NAME_WILDCARD passed as parm 1, DAY_OF_MONTH passed as parm 2"
+             echo "show_proccomplete_for_switch <SWITCH_NAME_WILDCARD> <DAY_OF_MONTH>"
+             echo "eg. show_proccomplete_for_switch SNLD6 15"
+             echo
+             return 2
+        fi
+ 
+        grep -i 'processing complete' /cdrc/audit/${2}*${1}*.log | awk '/ARCHIVE/ {print "\n",$0}; !/ARCHIVE/ {print "",$0}'|sed 's:/cdrc/audit/::; s:AUDIT INFO LOGGED AT ::; s:Sequence:SEQ:; s: Client::'
+ 
+}
+ 
+########################################################################################################
+# mv TMUK error files from: /cdrc/nes/TMUK_<SWITCH_NAME>/cdr_in
+#                       to: /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num
+########################################################################################################
+func_mv_tmuk_cdrin_2_senum() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: mv TMUK error files to problem_files directory, for correction"
+             echo "          directory: /cdrc/nes/<SWITCH_NAME>/cdr_in"
+             echo
+             echo "                    mv_tmuk_cdrin_2_senum <FILENAME_2_MV>";
+             echo
+             return 1
+        fi
+ 
+        if [ ! -f /cdrc/nes/TMUK_${1%%_*}/cdr_in/${1} ]
+        then echo "*** Source file: /cdrc/nes/TMUK_${1%%_*}/cdr_in/${1} is not present"
+        return 2
+        fi
+ 
+        if [ ! -d /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num ]
+        then echo "*** Target directory: /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num is not present"
+        return 3
+        fi
+ 
+        cp    /cdrc/nes/TMUK_${1%%_*}/cdr_in/${1} /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num/${1}_pre_mdj
+       mv  /cdrc/nes/TMUK_${1%%_*}/cdr_in/${1} /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num
+}
+ 
+########################################################################################################
+# mv files from: /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num/<FILE_NAME>
+#            to: /cdrc/nes/TMUK_<SWITCH_NAME>/cdr_in
+# after correction
+########################################################################################################
+func_mv_tmuk_senum_2_cdrin() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: mv TMUK problem_files after correction, back to the respective cdr_in"
+             echo "          directory: /cdrc/nes/<SWITCH_NAME>/cdr_in"
+             echo
+             echo "                    mv_tmuk_senum_2_cdrin <FILENAME_2_MV>";
+             echo
+             return 1
+        fi
+ 
+        if [ ! -d  /cdrc/nes/TMUK_${1%%_*}/cdr_in ]
+        then echo "*** Target Directory  /cdrc/nes/TMUK_${1%%_*}/cdr_in is not present"
+        return 2
+        fi
+ 
+        if [ ! -f /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num/${1} ]
+        then echo "*** Source file: /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num/${1} is not present"
+        return 3
+        fi
+ 
+        mv  /cdrc/support/problem_files/TMUK/extra_characters_cycle_se_num/${1} /cdrc/nes/TMUK_${1%%_*}/cdr_in
+}
+ 
+########################################################################################################
+# show stopped/started switch count for a specific day, passed as parm 1 - DDMMYYYY
+########################################################################################################
+func_shuttingdowncount4day() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: show stopped/started switch count for a specific day, passed as parm 1 - DDMMYYYY"
+             echo
+             return 1
+        fi
+ 
+        banner stopped switches $1
+        ###egrep  "Shutting|Starting" /cdrc/alarm/*log | cut -d"|" -f1|sort -t: -k2 | grep $1 | cut -d_ -f2| sort | uniq -c
+        ###egrep  "Shutting|Starting" /cdrc/alarm/*log | grep $1 | cut -d"|" -f1,7|sed "s/|Shutting.*/_ 1.Stopping/g; s/|Starting.*/_   2.Starting/g" |sort -t: -rk2 | cut -d_ -f2,5 | tr "_" " "| sort | uniq -c
+        egrep  "Shutting|Starting" /cdrc/alarm/*log | grep $1 | cut -d"|" -f1,7|sed "s/|Shutting.*/_    1.Stopping/g; s/|Starting.*/_   2.Starting/g" |sort -t:-rk2 | cut -d_ -f2,3,5,6 |sed "s/TMUK_/TMUK}/" | sed "s/_.*_//" | tr "}" "_" |sort | uniq -c
+        perl_ul
+}
+ 
+########################################################################################################
+# show switche names
+########################################################################################################
+func_switches() {
+ 
+        banner switch names
+        echo "BIR-A --> Birmingham"
+        echo "BRS-A --> Bristol"
+        echo "BRS-D --> Bristol BDP"
+        echo "CDF-A --> Cardiff"
+        echo "CRW-A --> Crawley"
+        echo "DAR-A --> Darlington"
+        echo "FHM-A --> Fareham"
+        echo "LDS-A --> Leeds"
+        echo "LEC-A --> Leicester"
+        echo "LON-A --> London Acton"
+        echo "LON-B --> London Croydon"
+        echo "LON-C --> London Enfield"
+        echo "LON-D --> London Greenwich"
+        echo "LUT-A --> Luton"
+        echo "LVP-A --> Liverpool"
+        echo "MAN-A --> Mansfield"
+        echo "MCR-A --> Manchester"
+        echo "NEW-A --> Newcastle"
+        echo "RDG-A --> Reading"
+        echo "TAN-A --> Tannochside"
+        echo "TAN-B --> Tannochside"
+        echo "YRK-A --> York"
+        perl_ul
+}
+ 
+########################################################################################################
+# convert and show timestamps in TMUK files, filesname passed as parm 1
+########################################################################################################
+func_timestamps_in_cdr_file() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: convert and show timestamps in TMUK files, filesname passed as parm 1"
+             echo
+             return 1
+        fi
+ 
+        banner convert "and show" timstamps
+        awk -F, '{print $16,$17}' $1 | sort -rn | xargs -n2 /cdrc/support/mdj/scripts/mdj_get_date_time.pl | uniq -c
+        perl_ul
+ 
+}
+ 
+########################################################################################################
+# fire up a vtftp session. . . or at least try to do, to see if remote switch is up
+# switch_name is passed as parameter 1
+########################################################################################################
+func_vtftp() {
+        if [ $# -ne 2 ]
+        then echo
+             echo "USAGE: fire up a vtftp remote session. Remote switch is passed as parm 1, user_id is passed as parm 2"
+             echo "check_vtftp <machine_name> <user_id>"
+             echo
+             return 2
+        fi
+ 
+        vtftp -A 600 -l $2 $1
+}
+ 
+########################################################################################################
+# show first copy faileid errors
+########################################################################################################
+ 
+func_daily_first_copy_failed() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: show first copy failed occurrances for a specific day, passed as parm 1 - DDMMYYYY"
+             echo
+             return 1
+        fi
+ 
+        banner first copy failed $1
+        grep -i "copy failed" /cdrc/alarm/*${1}*log | grep -i "first copy" |nl
+        perl_ul
+}
+ 
+########################################################################################################
+# show first copy faileid errors
+########################################################################################################
+ 
+func_daily_first_copy_failed_exceptions() {
+        if [ $# -ne 1 ]
+        then echo
+             echo "** USAGE: show first copy failed exception occurrances for a specific day, passed as parm 1 - DDMMYYYY"
+             echo
+             return 1
+        fi
+ 
+        banner first copy failed except $1
+        grep -i "copy failed" /cdrc/alarm/*${1}*log | grep -iv "first copy" |nl
+        perl_ul
+}
+ 
+########################################################################################################

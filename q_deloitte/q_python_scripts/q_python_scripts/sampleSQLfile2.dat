@@ -1,0 +1,23 @@
+ 
+begin transaction;
+ CREATE TABLE mdj.attributes
+    (
+        clientid                BIGINT ENCODE zstd
+      , subscriberid            BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+
+ CREATE TABLE mdj.attributes1
+    (
+        clientid                BIGINT ENCODE zstd
+      , subscriberid            BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+
+commit;

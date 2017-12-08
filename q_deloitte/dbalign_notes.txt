@@ -1,0 +1,29 @@
+create table mdj.conformed_dim_channel_vw_table
+as 
+select *
+  from conformed.dim_channel
+;
+
+select *
+  from mdj.conformed_dim_channel_vw_table
+  ;
+  
+
+  drop view mdj.vw_conformed_dim_channel
+  ;
+  
+  create view mdj.vw_conformed_dim_channel
+  as
+  select *
+    from mdj.conformed_dim_channel_vw_table
+	;
+	
+drop table mdj.conformed_dim_channel_vw_table
+;
+
+-- cannot drop the table as the view exists
+
+Rollback Views
+Rollback Tables
+Build Tables
+Build Views

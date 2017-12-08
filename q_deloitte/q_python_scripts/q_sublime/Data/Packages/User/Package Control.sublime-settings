@@ -1,0 +1,12 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Laravel 5 Docs Light Color Scheme",
+		"Package Control",
+		"SublimeREPL"
+	]
+}

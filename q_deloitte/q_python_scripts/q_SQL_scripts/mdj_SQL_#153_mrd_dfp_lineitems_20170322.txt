@@ -1,0 +1,149 @@
+BEGIN transaction;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_date's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_dfp_lineitems 
+AS
+   WITH mrd                      
+   AS
+        (
+         SELECT
+                'mrd.dfp_lineitems' AS recid
+              , session_date        AS session_date
+              , COUNT(*)            AS mrd_count
+           FROM
+                mrd.dfp_lineitems
+       GROUP BY
+                session_date
+        )
+      , dfp AS
+        (
+         SELECT
+                'dfp.lineitems'    AS recid
+              , session_date       AS session_date
+              , COUNT(*)           AS dfp_count
+           FROM
+                dfp.lineitems
+       GROUP BY
+                session_date
+        )
+ SELECT
+        recid
+      , session_date
+      , mrd_count
+      , dfp_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                           AS recid
+              , mrd.session_date                                    AS session_date
+              , mrd.mrd_count                                       AS mrd_count
+              , dfp.dfp_count                                       AS dfp_count
+              , (mrd.mrd_count::FLOAT / dfp.dfp_count::FLOAT) * 100 AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    dfp
+                 ON
+                    mrd.session_date      = dfp.session_date
+        )
+  WHERE
+        percentage_to_del >= 20
+ ;
+
+ DELETE
+ FROM
+     mrd.dfp_lineitems
+ WHERE
+     raw_session_date IN (SELECT DISTINCT session_date FROM dfp.lineitems)
+  AND 
+      0 = (SELECT COUNT(*) FROM #tmp_mrd_dfp_lineitems)
+ ;
+ 
+ INSERT INTO mrd.dfp_lineitems
+     (
+         network_code
+       , raw_session_date
+       , session_date
+       , session_hour
+       , product_id
+       , session_date
+       , order_id
+       , line_item_id
+       , creative_id
+       , creative_name
+       , creative_size
+       , order_po_number
+       , ad_server_impressions
+       , ad_server_clicks
+       , ad_server_ctr
+       , adsense_line_item_level_impressions
+       , adsense_line_item_level_clicks
+       , adsense_line_item_level_ctr
+       , EXTERNAL_FILE_ID
+       , EXTERNAL_FILE_ROWNUMBER
+     )
+ SELECT
+     network_code
+   , session_date
+   , DATEADD(hour,5,DATEADD(hour,session_hour,session_date)) AS session_datetime_gmt
+   , session_hour
+   , product_id
+   , session_date
+   , order_id
+   , line_item_id
+   , creative_id
+   , creative_name
+   , creative_size
+   , order_po_number
+   , ad_server_impressions
+   , ad_server_clicks
+   , ad_server_ctr
+   , adsense_line_item_level_impressions
+   , adsense_line_item_level_clicks
+   , adsense_line_item_level_ctr
+   , EXTERNAL_FILE_ID
+   , EXTERNAL_FILE_ROWNUMBER
+ FROM
+     (
+      SELECT *
+           , ROW_NUMBER() Over (
+                   PARTITION BY network_code
+                              , session_date
+                              , session_hour
+                              , product_id
+                              , session_date
+                              , order_id
+                              , line_item_id
+                              , creative_id
+                              , creative_size) AS rownum
+        FROM
+             dfp.lineitems
+     )
+ WHERE
+       rownum = 1
+   AND 
+       0 = (SELECT COUNT(*) FROM #tmp_mrd_dfp_lineitems)
+ ;
+ 
+ DELETE
+ FROM
+     dfp.lineitems
+ USING mrd.dfp_lineitems
+ WHERE
+     mrd.dfp_lineitems.network_code         = dfp.lineitems.network_code
+     AND mrd.dfp_lineitems.raw_session_date = dfp.lineitems.session_date
+     AND mrd.dfp_lineitems.session_hour     = dfp.lineitems.session_hour
+     AND mrd.dfp_lineitems.product_id       = dfp.lineitems.product_id
+     AND mrd.dfp_lineitems.session_date     = dfp.lineitems.session_date
+     AND mrd.dfp_lineitems.order_id         = dfp.lineitems.order_id
+     AND mrd.dfp_lineitems.line_item_id     = dfp.lineitems.line_item_id
+     AND mrd.dfp_lineitems.creative_id      = dfp.lineitems.creative_id
+     AND mrd.dfp_lineitems.creative_size    = dfp.lineitems.creative_size
+     AND 0 = (SELECT COUNT(*) FROM #tmp_mrd_dfp_lineitems)
+ ;
+ 
+ SELECT COUNT(*) FROM dfp.lineitems;
+
+END transaction;

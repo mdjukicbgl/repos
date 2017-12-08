@@ -1,0 +1,8 @@
+{
+"entries": [
+			{"endpoint":"ec2-54-201-101-55.us-west-2.compute.amazonaws.com", 
+  			 "command": "cat ~/q_qwiklabs/supplier.data",
+			 "mandatory":true,
+			 "username": "ec2-user"}
+		   ]
+}

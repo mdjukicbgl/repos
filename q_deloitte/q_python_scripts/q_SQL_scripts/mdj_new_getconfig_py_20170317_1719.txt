@@ -1,0 +1,515 @@
+
+import gspread
+import os
+import yaml
+import sys
+from oauth2client.service_account import ServiceAccountCredentials
+import apiclient
+import formulae
+import logging
+import argparse
+import boto3
+import bigdataconfig
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.info('Getconfig.py Starting.')
+
+def download_secret(s3_bucket,s3_filename,local_filename,aws_profile):
+
+    try:
+       session = boto3.Session(profile_name=aws_profile)
+       s3 = session.client('s3',
+                         region_name=region,
+                         config=boto3.session.Config(
+                             signature_version='s3v4'))
+       s3.download_file(s3_bucket,
+                        s3_filename,
+                        local_filename)
+    except Exception, e:
+       error_line_no = sys.exc_traceback.tb_lineno
+       logging.error('Line number: %s. Error: %s' % (error_line_no,e))
+       sys.exit(1)
+
+def get_formula(inputformularaw, rawfielddict, targetdatatype):
+    inputformularaw = inputformularaw.strip().lower()
+    if inputformularaw[0:1] == '"':
+        return inputformularaw
+    elif '+' in inputformularaw:
+        formula_list = []
+        for i in inputformularaw.split('+'):
+            if '"' in i or "'" in i:
+                formula_list.append(i)
+            else:
+                d = rawfielddict.get(i.strip(), -1)
+                if d == -1:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:SourceFieldNotFound"
+                else:
+                    formula_list.append("('' if x[" + str(d) + "] is None else x[" + str(d) + "])")
+        return ' + '.join(formula_list)
+    elif '(' in inputformularaw:
+        for f in ['epoch_to_timestamp',
+                  'epoch_msec_to_timestamp',
+                  'yyyy_pipe_mm_pipe_dd_to_timestamp',
+                  'ddmonthyyyy_to_timestamp',
+                  'yyyymmddhh_to_timestamp',
+                  'yyyymmdd_with_forwardslash_to_timestamp',
+                  'oracle_date_to_timestamp',
+                  'normalise_language',
+                  'normalise_region',
+                  'lower',
+                  'get_hit_week',
+                  'get_subscription_page_new_de',
+                  'get_subscription_page_new_espr',
+                  'get_subscription_new_de',
+                  'get_registration',
+                  'get_subscription_new_espr',
+                  'get_teg_hit_timezone_offset',
+                  'remove_email']:
+            if (f + '(substring') in inputformularaw:
+                print inputformularaw
+                c = inputformularaw.split('(')[2].split(')')[0].split(',')
+                d = rawfielddict.get(c[0].strip())
+                return ('formulae.' + f + '_substring' + '( x[' + str(d) +
+                         '] , ' + str(c[1]) + ' , ' + str(c[2]) +
+                         ' )')
+            if (f + '(') in inputformularaw:
+                d = rawfielddict.get(inputformularaw.split('(')[1].split(')')[0].strip())
+                if d == -1 or d is None:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    return 'formulae.' + f + '( x[' + str(d) + '] )'
+        for f in ['get_audio',
+                  'get_valid_user_ecom',
+                  'get_valid_user',
+                  'get_valid_visit',
+                  'get_subscription_page_new_ecom',
+                  'get_subscription_page_renew',
+                  'get_subscription_new_ecom',
+                  'get_subscription_renew',
+                  'get_teg_hit_local_datetime',
+                  'get_use_in_reporting']:
+            if (f + '(') in inputformularaw:
+                c = inputformularaw.split('(')[1].split(')')[0].split(',')
+                d1 = rawfielddict.get(c[0].strip())
+                d2 = rawfielddict.get(c[1].strip())
+                if d1 == -1 or d2 == -1 or d1 is None or d2 is None:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    return ('formulae.' + f + '( x[' + str(d1) +
+                     '] , x[' + str(d2) + '] )')
+        for f in ['make_drupal_or_visitor_id',
+                  'get_valid_view']:
+            if (f + '(') in inputformularaw:
+                c = inputformularaw.split('(')[1].split(')')[0].split(',')
+                d1 = rawfielddict.get(c[0].strip())
+                d2 = rawfielddict.get(c[1].strip())
+                d3 = rawfielddict.get(c[2].strip())
+                if (d1 == -1 or d2 == -1 or d3 == -1
+                    or d1 is None or d2 is None or d3 is None):
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    return ('formulae.' + f + '( x[' + str(d1) +
+                     '] , x[' + str(d2) + '] , x[' + str(d3) + '])')
+        for f in ['replace']:
+            if (f + '(') in inputformularaw:
+                c = inputformularaw.split('(')[1].split(')')[0].split(',')
+                d = rawfielddict.get(c[0].strip())
+                if d == -1 or d is None:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    return ('formulae.' + f + '( x[' + str(d) +
+                         '] , ' + str(c[1]) + ' , ' + str(c[2]) +
+                         " )")
+        for f in ['substring']:
+            if (f + '(') in inputformularaw:
+                c = inputformularaw.split('(')[1].split(')')[0].split(',')
+                d = rawfielddict.get(c[0].strip())
+                if d == -1 or d is None:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    if targetdatatype.lower()[0:3] in ['int','num','dec']:
+                        return ('formulae.' + f + '( x[' + str(d) +
+                         '] , ' + str(c[1]) + ' , ' + str(c[2]) +
+                         " ).replace(',','')")
+                    else:
+                        return ('formulae.' + f + '( x[' + str(d) +
+                         '] , ' + str(c[1]) + ' , ' + str(c[2]) +
+                         ' )')
+        for f in ['nullif']:
+            if (f + '(') in inputformularaw:
+                c = inputformularaw.split('(')[1].split(')')[0].split(',')
+                d = rawfielddict.get(c[0])
+                if d == -1 or d is None:
+                    logging.error('FormulaProcessingError:' + str(inputformularaw))
+                    return "ERROR:FormulaProcessingError"
+                else:
+                    return ('formulae.' + f + '( x[' + str(d) +
+                     '] , ' + str(c[1]) + ' )')
+        logging.error('UnsupportedFormula:' + str(inputformularaw))
+        return "ERROR:UnsupportedFormula"
+    else:
+        d = rawfielddict.get(inputformularaw, -1)
+        if d == -1:
+            logging.error('SourceFieldNotFound:' + str(inputformularaw))
+            return "ERROR:SourceFieldNotFound"
+        else:
+            if targetdatatype.lower()[0:3] in ['int','num','dec']:
+                return "('' if x[" + str(d) + "] is None else x[" + str(d) + "].replace(',',''))"
+            else:
+                return "('' if x[" + str(d) + "] is None else x[" + str(d) + "])"
+
+def main(args):
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-p",
+        "--profile",
+        help="The name of the profile in the .aws folder with access to the KMS key",
+        type=str)
+    parser.add_argument(
+        "-f",
+        "--filetype",
+        help="The name of the filetype to process",
+        type=str)
+    parser_args = parser.parse_args(args)
+    if not (vars(parser_args))['profile']:
+        parser.print_help()
+        sys.exit(1)
+    aws_profile = str(parser_args.profile)
+	
+	pipelinelist = 	["Drupal Registration File (gcd.customer_info)",
+                     "Adobe Economist Online (adobe.economistcomprod)",
+                     "Adobe Espresso (adobe.econdarwinproduction)",
+                     "Adobe Digital Editions (adobe.econprodappipad)",
+                     "Sailthru (sailthru.sailthru)",
+                     "Quadrant AR (quadrant.ar)",
+                     "Quadrant TRAD (quadrant.trad)",
+                     "Economist server log (economistdotcom.serverlog)",
+                     "Exit Survey (quadrant.exit_survey)",
+                     "Quadrant Promo (quadrant.promo)",
+                     "Bluekai (bluekai.users)",
+                     "Sailthru Audit (audit.sailthru)",
+                     "Google Analytics Accounts (ga.accounts)",
+                     "Google Analytics Web Properties (ga.webproperties)",
+                     "Google Analytics Profiles (ga.profiles)",
+                     "Google Analytics Page Stats (ga.pagestats)",
+                     "Google Analytics Sessions (ga.sessions)",
+                     "Google Analytics Events (ga.events)",
+                     "DFP Orders (dfp.orders)",
+                     "DFP Line Items (dfp.lineitems)",
+                     "DBM Line Items (dbm.lineitems)",
+                     "DBM Orders (dbm.orders)"]
+					 
+    if (vars(parser_args))['filetype']:
+        filenamesingle = (vars(parser_args))['filetype']
+        ###if len(filenamesingle) > 3:
+		if filenamesingle in pipelinelist:
+            filenamelist = [filenamesingle]
+        else:
+            filenamelist = []
+    else:
+        filenamesingle = None
+        filenamelist = pipelinelist
+		###"Drupal Registration File (gcd.customer_info)",
+        ###            "Adobe Economist Online (adobe.economistcomprod)",
+        ###            "Adobe Espresso (adobe.econdarwinproduction)",
+        ###            "Adobe Digital Editions (adobe.econprodappipad)",
+        ###            "Sailthru (sailthru.sailthru)",
+        ###            "Quadrant AR (quadrant.ar)",
+        ###            "Quadrant TRAD (quadrant.trad)",
+        ###            "Economist server log (economistdotcom.serverlog)",
+        ###            "Exit Survey (quadrant.exit_survey)",
+        ###            "Quadrant Promo (quadrant.promo)",
+        ###            "Bluekai (bluekai.users)",
+        ###            "Sailthru Audit (audit.sailthru)",
+        ###            "Google Analytics Accounts (ga.accounts)",
+        ###            "Google Analytics Web Properties (ga.webproperties)",
+        ###            "Google Analytics Profiles (ga.profiles)",
+        ###            "Google Analytics Page Stats (ga.pagestats)",
+        ###            "Google Analytics Sessions (ga.sessions)",
+        ###            "Google Analytics Events (ga.events)",
+        ###            "DFP Orders (dfp.orders)",
+        ###            "DFP Line Items (dfp.lineitems)",
+        ###            "DBM Line Items (dbm.lineitems)",
+        ###            "DBM Orders (dbm.orders)"]
+
+    global region
+    region = 'eu-west-1'
+
+    scope = ['https://spreadsheets.google.com/feeds']
+    s3_encrypted_bucket = 'economist-analytics-euw1-encrypted'
+    s3_pemfile = '%s/google/ga_serviceaccount_tegdatawarehouse.json' % (bigdataconfig.roleenv.replace(
+                                             'tst','dev'))
+    pemfile = s3_pemfile.split('/')[-1]
+    download_secret(s3_encrypted_bucket,s3_pemfile,pemfile,aws_profile)
+    print 'Google creds collected'
+
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+                      pemfile, scope)
+    gc = gspread.authorize(credentials)
+    os.remove(pemfile)
+
+    for filename in filenamelist:
+
+        logging.info("Processing " + filename)
+        #wks = gc.open(filename).worksheet("Summary")
+        #configdict = {}
+        #names = wks.col_values(1)
+        #vals = wks.col_values(2)
+        #d = "Raw File Details"
+        #configdict[d] = {}
+        #for n in range(0, len(names)):
+        #    if names[n][:13] == "Output Format":
+        #        d = names[n]
+        #        configdict[d] = {}
+        #    if names[n] is not None and names[n] <> "":
+        #        configdict[d][names[n]] = vals[n]
+
+        wks = gc.open(filename).worksheet("RawFile")
+        rawfieldlist = []
+        rawfielddict = {}
+        names = wks.col_values(1)
+        for n in range(1, len(names)):
+            if names[n] is not None and names[n] <> "":
+                rawfieldlist.append(names[n].strip().lower())
+        for n in range(0, len(rawfieldlist)):
+            rawfielddict[rawfieldlist[n]] = n
+
+        wks = gc.open(filename).worksheet("Output File")
+        outputfieldlist = []
+        outputnames = wks.col_values(2)
+        inputnames = wks.col_values(1)
+        targetdatatypes = wks.col_values(3)
+        for n in range(1, len(outputnames)):
+            if outputnames[n] is not None and outputnames[n] <> "":
+                outputfieldlist.append({'outputfieldnumber': n,
+                                        'inputformularaw': inputnames[n],
+                                        'fieldformula'   : get_formula(
+                                                             inputnames[n],
+                                                             rawfielddict,
+                                                             targetdatatypes[n]),
+                                        'outputfieldname': outputnames[n],
+                                        'targetdatatypes': targetdatatypes[n]})
+
+        filecodename = filename.split('(')[1].split(')')[0]
+        yamlfilename = 'filespec/' + filecodename + '.yaml'
+
+        with open(yamlfilename, 'w') as outfile:
+            outfile.write(yaml.dump(outputfieldlist, default_flow_style=False))
+
+        createtablefilename = 'table/' + filecodename + '.sql'
+
+        with open(createtablefilename, 'w') as outfile:
+            outfile.write('CREATE TABLE ' + filecodename + '\n')
+            outfile.write('(')
+            for n in range(0, len(outputfieldlist)):
+                if n > 0:
+                    outfile.write(',')
+                outfile.write(outputfieldlist[n]['outputfieldname'] + ' ' +
+                outputfieldlist[n]['targetdatatypes'] + ' \n')
+
+            outfile.write(',EXTERNAL_FILE_ID BIGINT \n' +
+            ',EXTERNAL_FILE_ROWNUMBER BIGINT \n')
+
+            if 'adobe' in filecodename:
+                outfile.write(') DISTKEY (drupal_or_visitor_id)')
+                outfile.write(' SORTKEY (teg_hit_local_datetime)')
+            else:
+                outfile.write(') DISTSTYLE EVEN')
+
+            outfile.write('; \n')
+
+            outfile.write('GRANT INSERT ON ' + filecodename + ' TO copyrole; \n')
+            outfile.write('GRANT SELECT ON ' + filecodename + ' TO GROUP readonly; \n')
+
+    # GCD
+
+	gcdlist = ["ehd","lca","lcd","lce","lcf","lcg","lcl","lcs","lct",
+                       "loc","lom","lop","lor","los","lot","lpt","mbd","mca",
+                       "mcd","mcg","mcl","mcm","mcy","mmh","mor","mpd","mpl",
+                       "msc","mbg","mbe"]
+    if filenamesingle:
+        ###if len(filenamesingle) == 3:
+		if filenamesingle in gcdlist:
+		
+            filenamelist = [filenamesingle]
+        else:
+            filenamelist = []
+    else:
+        filenamelist = gcdlist
+		###["ehd","lca","lcd","lce","lcf","lcg","lcl","lcs","lct",
+        ###               "loc","lom","lop","lor","los","lot","lpt","mbd","mca",
+        ###               "mcd","mcg","mcl","mcm","mcy","mmh","mor","mpd","mpl",
+        ###               "msc","mbg","mbe"]
+
+    for fileformat in filenamelist:
+
+        logging.info("Processing " + fileformat)
+
+        sheetname = "gcd_" + fileformat
+
+        wks = gc.open("GCD").worksheet(sheetname)
+        rawfieldlist = []
+        rawfielddict = {}
+        inputnames = wks.col_values(1)
+        outputnames = wks.col_values(2)
+        targetdatatypes = wks.col_values(3)
+        isinredshift = wks.col_values(4)
+        for n in range(1, len(inputnames)):
+            if (inputnames[n] is not None and inputnames[n] <> ""
+                and isinredshift[n].upper()[0] == "Y"):
+                rawfieldlist.append(inputnames[n])
+        for n in range(0, len(rawfieldlist)):
+            rawfielddict[rawfieldlist[n]] = n
+
+        outputfieldlist = []
+        f = 0
+        for n in range(1, len(outputnames)):
+            if (outputnames[n] is not None and outputnames[n] <> ""
+                and isinredshift[n].upper()[0] == "Y"):
+                if targetdatatypes[n].lower() in ('timestamp','date'):
+                    formula = "formulae.yyyymmdd_to_timestamp( x[" + str(f) + "] )"
+                else:
+                    formula =  "('' if x[" + str(f) + "] is None else x[" + str(f) + "])"
+                f += 1
+                outputfieldlist.append({'outputfieldnumber': f,
+                                        'inputformularaw': inputnames[n],
+                                        'fieldformula'   : formula,
+                                        'outputfieldname': outputnames[n],
+                                        'targetdatatypes': targetdatatypes[n]})
+
+        filecodename = "gcd." + fileformat
+        yamlfilename = 'filespec/' + filecodename + '.yaml'
+
+        with open(yamlfilename, 'w') as outfile:
+            outfile.write(yaml.dump(outputfieldlist, default_flow_style=False))
+
+        createtablefilename = 'table/' + filecodename + '.sql'
+
+        with open(createtablefilename, 'w') as outfile:
+            outfile.write('CREATE TABLE ' + filecodename + '\n')
+            outfile.write('(')
+            for n in range(0, len(outputfieldlist)):
+                if n > 0:
+                    outfile.write(',')
+                outfile.write(outputfieldlist[n]['outputfieldname'] + ' ' +
+                outputfieldlist[n]['targetdatatypes'] + ' \n')
+
+            outfile.write(',EXTERNAL_FILE_ID BIGINT \n' +
+            ',EXTERNAL_FILE_ROWNUMBER BIGINT \n')
+
+            if 'mcm' in filecodename:
+                outfile.write(') DISTKEY (customerkey)')
+                outfile.write(' SORTKEY (urn)')
+            elif 'mcd' in filecodename:
+                outfile.write(') DISTSTYLE EVEN')
+                outfile.write(' SORTKEY (urn)')
+            else:
+                outfile.write(') DISTSTYLE EVEN')
+
+            outfile.write('; \n')
+
+            outfile.write('GRANT INSERT ON ' + filecodename + ' TO copyrole; \n')
+            outfile.write('GRANT SELECT ON ' + filecodename + ' TO GROUP readonly; \n')
+
+# mdj start
+ 
+   # SFMC
+   
+    sfmclist = ["Attributes","Bounces","ClickImpression","Clicks",
+		                "Conversions","Listmembershipchanges","Lists","NotSent",
+						"Open","SendJobImpression","SendJobs","Sent",
+						"SentImpression","StatusChanges","Subscribers","Unsubs"]
+    if filenamesingle:
+        ###if len(filenamesingle) == 3:
+		if filenamesingle in sfmclist:
+            filenamelist = [filenamesingle]
+        else:
+            filenamelist = []
+    else:
+        filenamelist = sfmclist
+		###["Attributes","Bounces","ClickImpression","Clicks",
+		###               "Conversions","Listmembershipchanges","Lists","NotSent",
+		###				"Open","SendJobImpression","SendJobs","Sent",
+		###				"SentImpression","SentImpression","Subscribers","Unsubs"]
+
+    for fileformat in filenamelist:
+
+        logging.info("Processing " + fileformat)
+
+        sheetname = "SFMC_" + fileformat
+
+        wks = gc.open("SFMC").worksheet(sheetname)
+        rawfieldlist = []
+        rawfielddict = {}
+        inputnames = wks.col_values(1)
+        outputnames = wks.col_values(2)
+        targetdatatypes = wks.col_values(3)
+        isinredshift = wks.col_values(4)
+        for n in range(1, len(inputnames)):
+            if (inputnames[n] is not None and inputnames[n] <> ""
+                and isinredshift[n].upper()[0] == "Y"):
+                rawfieldlist.append(inputnames[n])
+        for n in range(0, len(rawfieldlist)):
+            rawfielddict[rawfieldlist[n]] = n
+
+        outputfieldlist = []
+        f = 0
+        for n in range(1, len(outputnames)):
+            if (outputnames[n] is not None and outputnames[n] <> ""
+                and isinredshift[n].upper()[0] == "Y"):
+                if targetdatatypes[n].lower() in ('timestamp','date'):
+                    formula = "formulae.yyyymmdd_to_timestamp( x[" + str(f) + "] )"
+                else:
+                    formula =  "('' if x[" + str(f) + "] is None else x[" + str(f) + "])"
+                f += 1
+                outputfieldlist.append({'outputfieldnumber': f,
+                                        'inputformularaw': inputnames[n],
+                                        'fieldformula'   : formula,
+                                        'outputfieldname': outputnames[n],
+                                        'targetdatatypes': targetdatatypes[n]})
+
+        filecodename = "sfmc." + fileformat.lower()
+        yamlfilename = 'filespec/' + filecodename + '.yaml'
+
+        with open(yamlfilename, 'w') as outfile:
+            outfile.write(yaml.dump(outputfieldlist, default_flow_style=False))
+
+        createtablefilename = 'table/' + filecodename + '.sql'
+
+        with open(createtablefilename, 'w') as outfile:
+            outfile.write('CREATE TABLE ' + filecodename + '\n')
+            outfile.write('(')
+            for n in range(0, len(outputfieldlist)):
+                if n > 0:
+                    outfile.write(',')
+                outfile.write(outputfieldlist[n]['outputfieldname'] + ' ' +
+                outputfieldlist[n]['targetdatatypes'] + ' \n')
+
+            outfile.write(',EXTERNAL_FILE_ID BIGINT \n' +
+            ',EXTERNAL_FILE_ROWNUMBER BIGINT \n')
+
+            if 'mcm' in filecodename:
+                outfile.write(') DISTKEY (customerkey)')
+                outfile.write(' SORTKEY (urn)')
+            elif 'mcd' in filecodename:
+                outfile.write(') DISTSTYLE EVEN')
+                outfile.write(' SORTKEY (urn)')
+            else:
+                outfile.write(') DISTSTYLE EVEN')
+
+            outfile.write('; \n')
+
+            outfile.write('GRANT INSERT ON ' + filecodename + ' TO copyrole; \n')
+            outfile.write('GRANT SELECT ON ' + filecodename + ' TO GROUP readonly; \n')
+
+# mdj end
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

@@ -1,0 +1,43 @@
+###export BATCH_FLAG_ID='-b 1357'
+
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/Desktop/q_python_scripts/q_python_scripts/SELECT_mdj_stlloaderrors_with_null_userid.sql /Users/mdjukic/Desktop/q_python_scripts/q_python_scripts/UPDATE_mdj_stlloaderrors_with_null_userid_multirecs.sql /Users/mdjukic/Desktop/q_python_scripts/q_python_scripts/DELETE_mdj_stlloaderrors_with_null_userid.sql /Users/mdjukic/Desktop/q_python_scripts/q_python_scripts/SELECT_mdj_stlloaderrors_with_null_userid.sql'  
+
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_channel.sql'
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_seasonality.sql'
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_statuses.sql'
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_sales.sql'
+
+export BATCH_FLAG_ID='-b 1'
+export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_product.sql'
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_geography.sql'
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_hierarchy.sql'
+
+#
+# All Dims defined here to load at once
+#
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_channel.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_seasonality.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_statuses.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_product.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_geography.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_hierarchy.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_sales.sql'
+
+
+###export BATCH_FLAG_ID='-b 1'
+###export TRANSFORM_FLAG_LABELS='-t /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_geography.sql /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL/TransformScripts/dim_channel.sql'
+
+export BATCH_FLAG_ID='-b 1'
+export TRANSFORM_FLAG_LABELS='-t xxxxxxxxxxxxxxxxxxx'
+
+
+###for i in $(ls -1 0010*| sort ); do echo $i; export BATCH_FLAG_ID='-b 1';  export TRANSFORM_FLAG_LABELS="-t $i" ; LoadTransform.py ${BATCH_FLAG_ID} ${TRANSFORM_FLAG_LABELS} ; done
+
+ for i in $(ls -1 059*| sort ); do echo $i; export BATCH_FLAG_ID='-b 1';  export TRANSFORM_FLAG_LABELS="-t $i" ; LoadTransform.py ${BATCH_FLAG_ID} ${TRANSFORM_FLAG_LABELS} ; done

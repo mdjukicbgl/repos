@@ -1,0 +1,144 @@
+BEGIN transaction;
+
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_time's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+ CREATE TABLE #tmp_mrd_ga_pagestats 
+ AS
+ WITH mrd 
+ AS
+     (
+      SELECT
+             'pagestats'        AS recid
+           , session_time::date AS session_date
+           , COUNT(*)           AS mrd_count
+        FROM
+             mrd.ga_pagestats
+    GROUP BY
+             session_time::date
+     )
+   , ga AS
+     (
+      SELECT
+             'pagestats'        AS recid
+           , session_time::date AS session_date
+           , COUNT(*)           AS ga_count
+        FROM
+             ga.pagestats
+    GROUP BY
+             session_time::date
+     )
+ SELECT 
+        recid              AS recid
+      , mrd_session_date   AS mrd_session_date
+	  , ga_session_date    AS ga_session_date
+      , mrd_count          AS mrd_count
+      , ga_count           AS ga_count
+	  , CASE 
+	         WHEN mrd_count::float  = 0 and ga_count::float > 0 THEN 0.0 -- first time, load all ga
+	         WHEN mrd_count::float  > 0 and ga_count::float >= mrd_count::float THEN 0.0  -- equal or more data comes through, load all ga
+		     WHEN mrd_count::float  > ga_count::float THEN ((mrd_count::float - ga_count::float) / mrd_count::float) * 100 -- calc to see if >= 20%
+		     ELSE 0
+		END AS percentage_to_del
+  FROM
+     (
+      SELECT
+			 'pagestats'                                 AS recid
+		   , coalesce(mrd.session_date, ga.session_date) AS mrd_session_date 
+		   , ga.session_date                             AS ga_session_date
+		   , coalesce(mrd.mrd_count, 0)                  AS mrd_count
+		   , ga.ga_count                                 AS ga_count
+ 		   , 0                                           AS percentage_to_del
+        FROM
+             mrd
+      RIGHT JOIN
+                 ga
+              ON
+                 mrd.session_date = ga.session_date
+     )
+ WHERE
+     percentage_to_del >= 20
+ ;
+	
+ DELETE
+   FROM
+        mrd.ga_pagestats
+  WHERE
+        session_time::DATE IN
+        (SELECT DISTINCT session_time::DATE 
+		   FROM ga.pagestats
+        )
+    AND 0 = (SELECT count(*) FROM #tmp_mrd_ga_pagestats )
+		;
+ 
+ INSERT INTO mrd.ga_pagestats
+ SELECT
+        profile_id
+      , session_time
+      , country_code
+      , device_category
+      , site_hostname
+      , page_path
+      , page_title
+      , source_medium
+      , users_total
+      , users_new
+      , page_views_total
+      , page_views_unique
+      , time_on_page
+      , page_exits
+      , page_entrances
+      , page_bounces
+      , EXTERNAL_FILE_ID
+      , EXTERNAL_FILE_ROWNUMBER
+   FROM
+        (
+         SELECT *
+              , ROW_NUMBER() Over (
+                      PARTITION BY profile_id
+                                 , session_time
+                                 , country_code
+                                 , device_category
+                                 , site_hostname
+                                 , page_path
+                                 , page_title
+                                 , source_medium) AS rownum
+           FROM
+                ga.pagestats
+        )
+  WHERE
+        rownum = 1
+    AND 0 = (SELECT count(*) FROM #tmp_mrd_ga_pagestats )
+  ;
+    
+    --add current timezone
+ UPDATE
+        mrd.ga_pagestats
+    SET profile_timezone = profile.profile_timezone
+   FROM
+        mrd.ga_profiles profile
+  WHERE
+        ga_pagestats.profile_id                 = profile.profile_id
+        AND ga_pagestats.profile_timezone IS NULL
+  ;
+ 
+ DELETE
+   FROM
+        ga.pagestats
+  USING mrd.ga_pagestats
+  WHERE
+        mrd.ga_pagestats.profile_id          = ga.pagestats.profile_id
+        AND mrd.ga_pagestats.session_time    = ga.pagestats.session_time
+        AND mrd.ga_pagestats.country_code    = ga.pagestats.country_code
+        AND mrd.ga_pagestats.device_category = ga.pagestats.device_category
+        AND mrd.ga_pagestats.site_hostname   = ga.pagestats.site_hostname
+        AND mrd.ga_pagestats.page_path       = ga.pagestats.page_path
+        AND mrd.ga_pagestats.page_title      = ga.pagestats.page_title
+        AND mrd.ga_pagestats.source_medium   = ga.pagestats.source_medium
+        AND 0 = (SELECT count(*) FROM #tmp_mrd_ga_pagestats )
+   ;
+ 
+ SELECT COUNT(*) FROM ga.pagestats;
+
+END transaction;
+ 

@@ -1,0 +1,134 @@
+#######
+## keys on table:
+## status_type_bkey
+## status_bkey
+
+-------------------------------------------------------------------------------
+
+BEGIN TRANSACTION;
+UPDATE
+    conformed.dim_statuses
+SET status_name        = changed_status.status_name
+  , is_global_status   = changed_status.is_global_status
+  , is_unknown_member  = changed_status.is_unknown_member
+FROM
+    (
+     SELECT
+            sc.dim_retailer_id
+          , sc.channel_key
+          , sc.status_name
+          , sc.is_global_status
+          , sc.is_unknown_member
+       FROM
+            stage.status_dim sc
+           JOIN
+                conformed.dim_status dc
+             ON
+                    sc.dim_retailer_id  = dc.dim_retailer_id
+                AND sc.status_type_bkey = dc.status_type_bkey
+                AND sc.status_bkey      = dc.status_bkey
+                AND (
+                       sc.status_name       <> dc.status_name
+                    OR sc.is_global_status  <> dc.is_global_status
+                    OR sc.is_unknown_member <> dc.is_unknown_member
+                )
+      WHERE
+            sc.batch_id = ##BATCH_ID##
+    )
+    AS changed_status
+WHERE
+        dim_status.dim_retailer_id  = changed_status.dim_retailer_id
+    AND dim_status.channel_bkey     = changed_status.channel_key
+;
+
+-------------------------------------------------------------------------------
+-- stage.status_dim DDL
+-------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS stage.status_dim ( 
+  row_id               bigint DEFAULT "identity"(264668, 0, '1,1'::text) NOT NULL ,
+  batch_id             integer DEFAULT 1 NOT NULL ,
+  status_type_bkey     varchar(20)  NOT NULL ,
+  status_bkey          varchar(20)  NOT NULL ,
+  parent_status_bkey   varchar(20)   ,
+  status_type          varchar(50)  NOT NULL ,
+  status_name          varchar(50)  NOT NULL ,
+  parent_dim_status_id smallint   ,
+  status_hierarchy_level smallint DEFAULT 0 NOT NULL ,
+  status_breadcrumb    varchar(512) DEFAULT ''::character varying NOT NULL ,
+  is_leaf_node         bool DEFAULT 0 NOT NULL 
+ );
+-------------------------------------------------------------------------------
+
+with changed_status AS
+(
+ SELECT
+        sc.dim_status_id
+      , sc.status_name
+      , sc.is_global_status
+      , sc.is_unknown_member
+   FROM
+        stage.status_dim sc
+       JOIN
+            conformed.dim_status dc
+         ON
+                sc.status_type_bkey = dc.status_type_bkey
+            AND sc.status_bkey      = dc.status_bkey
+            AND (
+                   sc.status_name       <> dc.status_name
+                OR sc.is_global_status  <> dc.is_global_status
+                OR sc.is_unknown_member <> dc.is_unknown_member
+            )
+  WHERE
+        sc.batch_id = ##BATCH_ID##
+)
+UPDATE
+    conformed.dim_status
+   SET status_name        = changed_status.status_name
+     , is_global_status   = changed_status.is_global_status
+     , is_unknown_member  = changed_status.is_unknown_member
+  FROM changed_status
+ WHERE
+        dim_status.status_type_bkey = changed_status.status_type_bkey
+    AND dim_status.status_bkey      = changed_status.status_bkey
+;
+-------- start of INSERT SECTION ----
+INSERT INTO conformed.dim_status
+(
+    batch_id
+  , status_type_bkey
+  , status_bkey
+  , parent_status_bkey
+  , status_type
+  , status_name
+  , parent_dim_status_id
+  , status_hierarchy_level
+  , status_breadcrumb
+  , is_leaf_node
+)
+SELECT
+    ##BATCH_ID##
+  , status_type_bkey
+  , status_bkey
+  , parent_status_bkey
+  , status_type
+  , status_name
+  , parent_dim_status_id
+  , status_hierarchy_level
+  , status_breadcrumb
+  , is_leaf_node
+FROM
+    stage.status_dim ss
+WHERE
+    NOT EXISTS
+    (
+     SELECT  *
+       FROM
+            conformed.dim_status ds
+      WHERE
+            ss.status_type_bkey = ds.status_type_bkey
+        AND ss.status_bkey      = ds.status_bkey
+    )
+    AND ss.batch_id = ##BATCH_ID##
+;
+-------- end of INSERT SECTION ----
+

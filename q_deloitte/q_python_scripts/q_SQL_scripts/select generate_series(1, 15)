@@ -1,0 +1,50 @@
+select generate_series(1, 15)
+
+
+SELECT to_char(DATE '2008-01-01'
++ (interval '1 month' * generate_series(0,57)), 'YYYY-MM-DD') AS ym
+order by 1
+
+SELECT to_char(DATE '2008-01-01'
++ (interval '1 day' * generate_series(0,157)), 'YYYY-MM-DD') AS ym
+order by 1
+
+
+- - - - - - - - - - - - - - - -  O u t p u t   S Q L - - - - - - - - - - - - - - -
+
+SELECT
+    extract(quarter from a.ym)
+;
+
+
+select a.ym, extract(epoch from a.ym)
+  from (
+	     SELECT
+            cast(TO_CHAR(DATE '2008-01-01' + (interval '1 day' * generate_series(0,157)), 'YYYY-MM-DD HH24:MI:SS:US') as datetime ) AS ym
+    
+	) a
+;
+--2008-01-01 00:00:00	1199145600
+
+select a.microseconds, extract(epoch from a.microseconds)
+from (
+select
+ to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS:US') as microseconds
+ )a
+ ;
+
+
+select a.ym, extract(epoch from a.ym)
+  from (
+	     SELECT
+            cast(TO_CHAR(sysdate + (interval '1 day' * generate_series(0,157)), 'YYYY-MM-DD HH24:MI:SS:US') as microseconds ) AS ym
+   
+	) a
+order by 1
+;
+
+- - - - - - - - - - - - - - - -  O u t p u t   S Q L - - - - - - - - - - - - - - -
+
+fiscal_year_quarter_month_number CHAR(8) DEFAULT 'YYYYQNMM'::bpchar ENCODE lzo
+
+

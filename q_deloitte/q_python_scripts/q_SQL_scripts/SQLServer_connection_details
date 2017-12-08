@@ -1,0 +1,13 @@
+jdbc:sqlserver://<HOST>:<PORT>;databaseName=<DB>;user=<USER>;password=<PASSWORD>
+
+
+jdbc:sqlserver://v8-md-dev-sql-1.int.deloittecloud.co.uk:1433;databaseName=<DB>;user=markdown-sql-build;password=Exactly-play89
+
+
+v8-md-dev-sql-1.int.deloittecloud.co.uk
+
+1433
+
+user: markdown-sql-build
+
+password: Exactly-play89

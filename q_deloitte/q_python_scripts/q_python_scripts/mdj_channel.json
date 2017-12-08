@@ -1,0 +1,89 @@
+{  
+    "mappingTypeName":"Channel",
+    "tableName":"stage.channel",
+    "columnSep":"|",
+    "headerRecord":[  
+        {  
+            "srcIndex":0,
+            "dstIndex":0,
+            "isKey":true,
+            "srcName":"reporting_date",
+            "dstName":"reporting_date"
+        },
+        {  
+            "srcIndex":1,
+            "dstIndex":1,
+            "srcName":"reporting_date_period_type",
+            "dstName":"reporting_date_period_type"
+        },
+        {  
+            "srcIndex":2,
+            "dstIndex":2,
+            "isKey":true,
+            "srcName":"channel_key",
+            "dstName":"channel_key"
+        },
+        {  
+            "srcIndex":3,
+            "dstIndex":3,
+            "srcName":"channel_name",
+            "dstName":"channel_name"
+        },
+        {  
+            "srcIndex":4,
+            "dstIndex":4,
+            "srcName":"channel_description",
+            "dstName":"channel_description"
+        },
+        {  
+            "srcIndex":5,
+            "dstIndex":5,
+            "srcName":"channel_code",
+            "dstName":"channel_code"
+        }
+    ],
+
+    "schema":{
+        "title" : "Channel",
+        "type" : "object",
+        "properties": {
+            "reporting_date": {
+                "description": "Reporting date",
+                "type" : "string",
+                "format": "date"
+            },
+            "reporting_date_period_type": {
+                "type" : "string",
+                "minLength" : 1,
+                "maxLength" : 1,
+                "enum" : ["0", "1", "2", "3"]
+            },
+            "channel_key" : {
+                "type" : "string",
+                "maxLength" : 20,
+                "minLength" : 1
+            },
+            "channel_name" : {
+                "type" : "string",
+                "maxLength" : 50,
+                "minLength" : 1
+            },
+            "channel_description" : {
+                "type" : "string",
+                "maxLength" : 100,
+                "minLength" : 0
+            },
+            "channel_code" : {
+                "type" : "string",
+                "maxLength" : 10,
+                "minLength" : 0
+            }
+        },
+        "required": ["reporting_date",
+                     "reporting_date_period_type",
+                     "channel_key",
+                     "channel_name"],
+        "primaryKey": ["reporting_date",
+                       "channel_key"]
+    }
+}

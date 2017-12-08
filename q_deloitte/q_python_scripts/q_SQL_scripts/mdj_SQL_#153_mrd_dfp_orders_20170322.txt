@@ -1,0 +1,133 @@
+BEGIN transaction;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_date's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_dfp_orders 
+AS
+   WITH mrd                      
+   AS
+        (
+         SELECT
+                'mrd.dfp_orders' AS recid
+              , network_code     AS network_code
+              , advertiser_id    AS advertiser_id
+              , order_id         AS order_id
+              , line_item_id     AS line_item_id
+              , COUNT(*)         AS mrd_count
+           FROM
+                mrd.dfp_orders
+       GROUP BY
+                network_code 
+			  , advertiser_id
+			  , order_id     
+			  , line_item_id 
+        )
+      , dfp AS
+        (
+         SELECT
+                'dfp.orders'     AS recid
+              , network_code     AS network_code
+              , advertiser_id    AS advertiser_id
+              , order_id         AS order_id
+              , line_item_id     AS line_item_id			  
+              , COUNT(*)         AS dfp_count
+           FROM
+                dfp.orders
+       GROUP BY
+                network_code 
+			  , advertiser_id
+			  , order_id     
+			  , line_item_id 
+        )
+ SELECT
+        recid
+      , network_code 
+	  , advertiser_id
+	  , order_id     
+	  , line_item_id 
+      , mrd_count
+      , dfp_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                           AS recid
+              , mrd.network_code                                    AS network_code
+              , mrd.advertiser_id                                   AS advertiser_id
+              , mrd.order_id                                        AS order_id
+              , mrd.line_item_id                                    AS line_item_id
+              , mrd.mrd_count                                       AS mrd_count
+              , dfp.dfp_count                                       AS dfp_count
+              , (mrd.mrd_count::FLOAT / dfp.dfp_count::FLOAT) * 100 AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    dfp
+                 ON mrd.network_code  = dfp.network_code
+                AND mrd.advertiser_id = dfp.advertiser_id
+				AND mrd.order_id      = dfp.order_id
+                AND mrd.line_item_id  = dfp.line_item_id
+        )
+  WHERE
+        percentage_to_del >= 20
+ ;
+
+delete from mrd.dfp_orders
+using dfp.orders
+where mrd.dfp_orders.network_code = dfp.orders.network_code
+and mrd.dfp_orders.advertiser_id = dfp.orders.advertiser_id
+and mrd.dfp_orders.order_id = dfp.orders.order_id
+and mrd.dfp_orders.line_item_id = dfp.orders.line_item_id;
+
+insert into mrd.dfp_orders
+(network_code
+,product_id
+,product_name
+,advertiser_id
+,advertiser_name
+,order_id
+,order_name
+,line_item_id
+,line_item_name
+,order_po_number
+,order_agency_id
+,order_agency
+,line_item_goal_quantity
+,line_item_contracted_quantity
+,ad_server_impressions)
+select
+network_code
+,product_id
+,product_name
+,advertiser_id
+,advertiser_name
+,order_id
+,order_name
+,line_item_id
+,line_item_name
+,order_po_number
+,order_agency_id
+,order_agency
+,line_item_goal_quantity
+,line_item_contracted_quantity
+,ad_server_impressions
+from
+  (
+  select *, ROW_NUMBER() Over (PARTITION by
+network_code
+,product_id
+,advertiser_id
+,order_id
+,line_item_id) as rownum
+  from dfp.orders
+  )
+where rownum = 1;
+
+delete from dfp.orders
+using mrd.dfp_orders
+where mrd.dfp_orders.network_code = dfp.orders.network_code
+and mrd.dfp_orders.advertiser_id = dfp.orders.advertiser_id
+and mrd.dfp_orders.order_id = dfp.orders.order_id
+and mrd.dfp_orders.line_item_id = dfp.orders.line_item_id;
+
+end transaction;

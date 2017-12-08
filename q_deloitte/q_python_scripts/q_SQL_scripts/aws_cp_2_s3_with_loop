@@ -1,0 +1,85 @@
+
+
+aws s3 cp $i  s3://ra-md-poc-dcuk039/schema/$i
+
+
+
+-- make the change into schema dir an upload from tehre..
+
+for i in $(echo channel.json geography.json hierarchy.json product.json productseasonality.json sales.json statuses.json); do aws s3 cp $i  s3://ra-md-poc-dcuk039/schema/$i ; done
+
+
+
+for i in $( echo salesmarkdown.json); do aws s3 mv s3://ra-md-poc-dcuk039/schema/$i s3://ra-md-poc-dcuk039/schema/markdownsales.json ; done
+
+
+FREEHUB-MarkdownSales-20170815-1112.psv
+
+
+#
+# copy file into s3 bucket import folder.....
+#
+for i in FREEHUB-MarkdownSales-20170815-1001.psv; do aws s3 cp $i s3://ra-md-poc-dcuk039/import/$i; done
+
+
+
+for i in markdownsales.json; do aws s3 cp $i s3://ra-md-poc-dcuk039/schema/$i; done
+
+
+##
+## copy bucket contents for Christian
+##
+
+
+for i in $(echo channel.json geography.json hierarchy.json product.json productseasonality.json sales.json statuses.json markdownsales.json); do aws s3 cp $i  s3://feature5204/schema/$i ; done
+
+
+for i in channel.json currency.json date.json datefiscal.json geography.json pricechanges.json product.json sales.json seasonality.j
+son status.json stock.json; do aws s3 cp $i  s3://feature5204/schema/$i ; done
+ 
+
+
+##
+## copy files to the processed folder
+##
+
+for i in FREEHUB-Channel-20170530-3.psv FREEHUB-Hierarchy-20170530-501.psv FREEHUB-ProductSeasonality-201705241257-4.psv FREEHUB-Geography-201706161045-3.psv FREEHUB-Statuses-20170604-3.psv FREEHUB-Product-201705241257-26.psv FREEHUB-MarkdownSales-20170815-1001.psv ; do aws s3 cp $i  s3://feature5204/processed/$i ; done
+
+
+##
+## Redshift dev db
+##
+mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com
+
+
+##
+## copy json files into s3 schema - post refactoring
+##
+
+for i in channel.json currency.json date.json datefiscal.json geography.json pricechanges.json product.json sales.json seasonality.json status.json stock.json; do aws s3 cp $i  s3://feature5204/schema/$i ; done 
+
+##
+## copy channel.psv files into s3 import - post refactoring
+##
+
+for i in FREEHUB-Channel-20170829-3.psv; do aws s3 cp $i  s3://feature5204/import/$i ; done 
+
+
+##
+## copy seasonality.json files into s3 schema - post refactoring
+##
+
+for i in seasonality.json ; do aws s3 cp $i  s3://feature5204/schema/$i ; done 
+
+##
+## copy seasonality.psv files into s3 import - post refactoring
+##
+
+for i in FREEHUB-Seasonality-201708300937-4.psv; do aws s3 cp $i  s3://feature5204/import/$i ; done 
+
+##
+## Copy all *json files to feature5204 s3 bucket
+##
+
+for i in *.json ; do aws s3 cp $i  s3://feature5204/schema/$i ; done 
+

@@ -1,0 +1,2120 @@
+
+
+-- Template
+---------------------------------------------------------------------------------------------------
+-- 00239_recreate_ga_webproperties_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE ga.webproperties RENAME TO ga_webproperties_old;
+
+CREATE TABLE ga.webproperties
+    (
+        webproperty_id          VARCHAR(32)  ENCODE lzo
+      , internal_webproperty_id BIGINT       ENCODE lzo
+      , account_id              BIGINT       ENCODE lzo
+      , profile_count           SMALLINT     ENCODE lzo
+      , default_profile_Id      BIGINT       ENCODE lzo
+      , industry_vertical       VARCHAR(64)  ENCODE lzo
+      , webproperty_kind        VARCHAR(32)  ENCODE lzo
+      , webproperty_level       VARCHAR(32)  ENCODE lzo
+      , webproperty_name        VARCHAR(255) ENCODE lzo
+      , website_url             VARCHAR(255) ENCODE lzo
+      , date_created            TIMESTAMP    ENCODE lzo
+      , date_updated            TIMESTAMP    ENCODE lzo
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE lzo
+      , PRIMARY KEY (webproperty_id)
+    )
+    DISTSTYLE EVEN SORTKEY(webproperty_id)
+;
+GRANT INSERT ON ga.webproperties TO copyrole;
+GRANT SELECT ON ga.webproperties TO GROUP readonly;
+
+INSERT INTO ga.webproperties
+SELECT * 
+  FROM ga.ga_webproperties_old
+;
+
+DROP TABLE ga.ga_webproperties_old;
+
+---------------------------------------------------------------------------------------------------
+-- 00242_recreate_mrd_dbm_orders.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dbm_orders RENAME TO mrd_dbm_orders_old;
+
+CREATE TABLE mrd.dbm_orders
+    (
+        advertiser_name         VARCHAR(255) ENCODE zstd
+      , advertiser_id           BIGINT       ENCODE zstd
+      , advertiser_status       VARCHAR(16)  ENCODE zstd
+      , advertiser_currency     VARCHAR(4)   ENCODE zstd
+      , advertiser_time_zone    VARCHAR(32)  ENCODE zstd
+      , insertion_order_name    VARCHAR(255) ENCODE zstd
+      , insertion_order_id      BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+      , PRIMARY KEY ( advertiser_id 
+	                , insertion_order_id
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(advertiser_id)
+;
+GRANT SELECT ON mrd.dbm_orders TO GROUP readonly;
+
+INSERT INTO mrd.dbm_orders
+SELECT * 
+  FROM mrd.mrd_dbm_orders_old
+;
+
+DROP TABLE mrd.mrd_dbm_orders_old;
+---------------------------------------------------------------------------------------------------
+-- 00242_recreate_mrd_dbm_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dbm_orders RENAME TO mrd_dbm_orders_old;
+
+CREATE TABLE mrd.dbm_orders
+    (
+        advertiser_name         VARCHAR(255)
+      , advertiser_id           BIGINT
+      , advertiser_status       VARCHAR(16)
+      , advertiser_currency     VARCHAR(4)
+      , advertiser_time_zone    VARCHAR(32)
+      , insertion_order_name    VARCHAR(255)
+      , insertion_order_id      BIGINT
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+      , PRIMARY KEY ( advertiser_id 
+	                , insertion_order_id
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(advertiser_id)
+;
+GRANT SELECT ON mrd.dbm_orders TO GROUP readonly;
+
+INSERT INTO mrd.dbm_orders
+SELECT * 
+  FROM mrd.mrd_dbm_orders_old
+;
+
+DROP TABLE mrd.mrd_dbm_orders_old;
+---------------------------------------------------------------------------------------------------
+-- touch 00243_recreate_mrd_dfp_lineitems.sql
+-- touch 00243_recreate_mrd_dfp_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dfp_lineitems RENAME TO mrd_dfp_lineitems_old;
+
+CREATE TABLE mrd.dfp_lineitems
+    (
+        network_code                        SMALLINT     ENCODE zstd
+      , raw_session_date                    TIMESTAMP    ENCODE zstd
+      , session_date                        TIMESTAMP    ENCODE zstd
+      , session_hour                        SMALLINT     ENCODE zstd
+      , product_id                          BIGINT       ENCODE zstd
+      , advertiser_id                       BIGINT       ENCODE zstd
+      , order_id                            BIGINT       ENCODE zstd
+      , line_item_id                        BIGINT       ENCODE zstd
+      , creative_id                         BIGINT       ENCODE zstd
+      , creative_name                       VARCHAR(255) ENCODE zstd
+      , creative_size                       VARCHAR(64)  ENCODE zstd
+      , order_po_number                     VARCHAR(32)  ENCODE zstd
+      , ad_server_impressions               INTEGER      ENCODE zstd
+      , ad_server_clicks                    INTEGER      ENCODE zstd
+      , ad_server_ctr                       NUMERIC(8,4) ENCODE zstd
+      , adsense_line_item_level_impressions INTEGER      ENCODE zstd
+      , adsense_line_item_level_clicks      INTEGER      ENCODE zstd
+      , adsense_line_item_level_ctr         NUMERIC(8,4) ENCODE zstd
+      , EXTERNAL_FILE_ID                    BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER             BIGINT       ENCODE zstd
+      , PRIMARY KEY ( network_code 
+	                , session_date 
+					, session_hour 
+					, product_id 
+					, advertiser_id 
+					, order_id 
+					, line_item_id 
+					, creative_id 
+					, creative_size
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT SELECT ON mrd.dfp_lineitems TO GROUP readonly;
+
+INSERT INTO mrd.dfp_lineitems
+SELECT * 
+  FROM mrd.mrd_dfp_lineitems_old
+;
+
+DROP TABLE mrd.mrd_dfp_lineitems_old;
+
+---------------------------------------------------------------------------------------------------
+-- 00243_recreate_mrd_dfp_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dfp_lineitems RENAME TO mrd_dfp_lineitems_old;
+
+CREATE TABLE mrd.dfp_lineitems
+    (
+        network_code                        SMALLINT     ENCODE zstd
+      , raw_session_date                    TIMESTAMP    ENCODE zstd
+      , session_date                        TIMESTAMP    ENCODE zstd
+      , session_hour                        SMALLINT     ENCODE zstd
+      , product_id                          BIGINT       ENCODE zstd
+      , advertiser_id                       BIGINT       ENCODE zstd
+      , order_id                            BIGINT       ENCODE zstd
+      , line_item_id                        BIGINT       ENCODE zstd
+      , creative_id                         BIGINT       ENCODE zstd
+      , creative_name                       VARCHAR(255) ENCODE zstd
+      , creative_size                       VARCHAR(64)  ENCODE zstd
+      , order_po_number                     VARCHAR(32)  ENCODE zstd
+      , ad_server_impressions               INTEGER      ENCODE zstd
+      , ad_server_clicks                    INTEGER      ENCODE zstd
+      , ad_server_ctr                       NUMERIC(8,4) ENCODE zstd
+      , adsense_line_item_level_impressions INTEGER      ENCODE zstd
+      , adsense_line_item_level_clicks      INTEGER      ENCODE zstd
+      , adsense_line_item_level_ctr         NUMERIC(8,4) ENCODE zstd
+      , EXTERNAL_FILE_ID                    BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER             BIGINT       ENCODE zstd
+      , PRIMARY KEY ( network_code 
+	                , session_date 
+					, session_hour 
+					, product_id 
+					, advertiser_id 
+					, order_id 
+					, line_item_id 
+					, creative_id 
+					, creative_size
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT SELECT ON mrd.dfp_lineitems TO GROUP readonly;
+
+INSERT INTO mrd.dfp_lineitems
+SELECT * 
+  FROM mrd.mrd_dfp_lineitems_old
+;
+
+DROP TABLE mrd.mrd_dfp_lineitems_old;
+---------------------------------------------------------------------------------------------------
+-- touch 00244_recreate_mrd_dfp_orders.sql
+-- touch 00244_recreate_mrd_dfp_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dfp_orders RENAME TO mrd_dfp_orders_old;
+
+CREATE TABLE mrd.dfp_orders
+    (
+        network_code                  SMALLINT     ENCODE zstd
+      , product_id                    BIGINT       ENCODE zstd
+      , product_name                  VARCHAR(255) ENCODE zstd
+      , advertiser_id                 BIGINT       ENCODE zstd
+      , advertiser_name               VARCHAR(255) ENCODE zstd
+      , order_id                      BIGINT       ENCODE zstd
+      , order_name                    VARCHAR(255) ENCODE zstd
+      , line_item_id                  BIGINT       ENCODE zstd
+      , line_item_name                VARCHAR(255) ENCODE zstd
+      , order_po_number               VARCHAR(64)  ENCODE zstd
+      , order_agency_id               BIGINT       ENCODE zstd
+      , order_agency                  VARCHAR(255) ENCODE zstd
+      , line_item_goal_quantity       BIGINT       ENCODE zstd
+      , line_item_contracted_quantity BIGINT       ENCODE zstd
+      , ad_server_impressions         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ID              BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER       BIGINT       ENCODE zstd
+      , PRIMARY KEY ( network_code 
+	                , product_id 
+					, advertiser_id 
+					, order_id 
+					, line_item_id
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(product_id)
+;
+GRANT SELECT ON mrd.dfp_orders TO GROUP readonly;
+
+INSERT INTO mrd.dfp_orders
+SELECT * 
+  FROM mrd.mrd_dfp_orders_old
+;
+
+DROP TABLE mrd.mrd_dfp_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00244_recreate_mrd_dfp_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.dfp_orders RENAME TO mrd_dfp_orders_old;
+
+CREATE TABLE mrd.dfp_orders
+    (
+        network_code                  SMALLINT
+      , product_id                    BIGINT
+      , product_name                  VARCHAR(255)
+      , advertiser_id                 BIGINT
+      , advertiser_name               VARCHAR(255)
+      , order_id                      BIGINT
+      , order_name                    VARCHAR(255)
+      , line_item_id                  BIGINT
+      , line_item_name                VARCHAR(255)
+      , order_po_number               VARCHAR(64)
+      , order_agency_id               BIGINT
+      , order_agency                  VARCHAR(255)
+      , line_item_goal_quantity       BIGINT
+      , line_item_contracted_quantity BIGINT
+      , ad_server_impressions         BIGINT
+      , EXTERNAL_FILE_ID              BIGINT
+      , EXTERNAL_FILE_ROWNUMBER       BIGINT
+      , PRIMARY KEY ( network_code 
+	                , product_id 
+					, advertiser_id 
+					, order_id 
+					, line_item_id
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(product_id)
+;
+GRANT SELECT ON mrd.dfp_orders TO GROUP readonly;
+
+INSERT INTO mrd.dfp_orders
+SELECT * 
+  FROM mrd.mrd_dfp_orders_old
+;
+
+DROP TABLE mrd.mrd_dfp_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00245_recreate_mrd_ga_accounts.sql
+-- touch 00245_recreate_mrd_ga_accounts_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_accounts RENAME TO mrd_ga_accounts_old;
+
+CREATE TABLE mrd.ga_accounts
+    (
+        account_id              BIGINT       ENCODE zstd
+      , account_name            VARCHAR(255) ENCODE zstd
+      , date_created            TIMESTAMP    ENCODE zstd
+      , date_updated            TIMESTAMP    ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+      , PRIMARY KEY(account_id)
+    )
+    DISTSTYLE EVEN SORTKEY
+    (
+        account_id
+    )
+;
+GRANT SELECT ON mrd.ga_accounts TO GROUP readonly;
+
+INSERT INTO mrd.ga_accounts
+SELECT * 
+  FROM mrd.mrd_ga_accounts_old 
+;
+
+DROP TABLE mrd.mrd_ga_accounts_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00245_recreate_mrd_ga_accounts_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_accounts RENAME TO mrd_ga_accounts_old;
+
+CREATE TABLE mrd.ga_accounts
+    (
+        account_id              BIGINT       ENCODE lzo
+      , account_name            VARCHAR(255) ENCODE lzo
+      , date_created            TIMESTAMP    ENCODE lzo
+      , date_updated            TIMESTAMP    ENCODE lzo
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE lzo
+      , PRIMARY KEY(account_id)
+    )
+    DISTSTYLE EVEN SORTKEY
+    (
+        account_id
+    )
+;
+GRANT SELECT ON mrd.ga_accounts TO GROUP readonly;
+
+INSERT INTO mrd.ga_accounts
+SELECT * 
+  FROM mrd.mrd_ga_accounts_old 
+;
+
+DROP TABLE mrd.mrd_ga_accounts_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00246_recreate_mrd_ga_pagestats.sql
+-- touch 00246_recreate_mrd_ga_pagestats_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_pagestats RENAME TO mrd_ga_pagestats_old;
+
+CREATE TABLE mrd.ga_pagestats
+    (
+        profile_id              BIGINT        ENCODE zstd
+      , session_time            TIMESTAMP     ENCODE zstd
+      , country_code            VARCHAR(2)    ENCODE zstd
+      , device_category         VARCHAR(16)   ENCODE zstd
+      , site_hostname           VARCHAR(255)  ENCODE zstd
+      , page_path               VARCHAR(1024) ENCODE zstd
+      , page_title              VARCHAR(2048) ENCODE zstd
+      , source_medium           VARCHAR(255)  ENCODE zstd
+      , users_total             INTEGER       ENCODE zstd
+      , users_new               INTEGER       ENCODE zstd
+      , page_views_total        INTEGER       ENCODE zstd
+      , page_views_unique       INTEGER       ENCODE zstd
+      , time_on_page            NUMERIC(9,2)  ENCODE zstd
+      , page_exits              INTEGER       ENCODE zstd
+      , page_entrances          INTEGER       ENCODE zstd
+      , page_bounces            INTEGER       ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT        ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT        ENCODE zstd
+      , profile_timezone        VARCHAR(32)   ENCODE zstd
+      , PRIMARY KEY( profile_id 
+	               ,session_time 
+				   ,country_code 
+				   ,device_category 
+				   ,site_hostname 
+				   ,page_path 
+				   ,page_title 
+				   ,source_medium
+				   )
+    )
+    DISTSTYLE EVEN SORTKEY(session_time)
+;
+GRANT SELECT ON mrd.ga_pagestats TO GROUP readonly;
+
+INSERT INTO mrd.ga_pagestats
+SELECT * 
+  FROM mrd.mrd_ga_pagestats_old
+;
+
+DROP TABLE mrd.mrd_ga_pagestats_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00246_recreate_mrd_ga_pagestats_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_pagestats RENAME TO mrd_ga_pagestats_old;
+
+CREATE TABLE mrd.ga_pagestats
+    (
+        profile_id              BIGINT        ENCODE bytedict
+      , session_time            TIMESTAMP     ENCODE lzo
+      , country_code            VARCHAR(2)    ENCODE bytedict
+      , device_category         VARCHAR(16)   ENCODE bytedict
+      , site_hostname           VARCHAR(255)  ENCODE lzo
+      , page_path               VARCHAR(1024) ENCODE lzo
+      , page_title              VARCHAR(2048) ENCODE lzo
+      , source_medium           VARCHAR(255)  ENCODE lzo
+      , users_total             INTEGER       ENCODE lzo
+      , users_new               INTEGER       ENCODE lzo
+      , page_views_total        INTEGER       ENCODE lzo
+      , page_views_unique       INTEGER       ENCODE lzo
+      , time_on_page            NUMERIC(9,2)  ENCODE lzo
+      , page_exits              INTEGER       ENCODE lzo
+      , page_entrances          INTEGER       ENCODE lzo
+      , page_bounces            INTEGER       ENCODE lzo
+      , EXTERNAL_FILE_ID        BIGINT        ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER BIGINT        ENCODE lzo
+      , profile_timezone        VARCHAR(32)   ENCODE lzo
+      , PRIMARY KEY( profile_id 
+	               ,session_time 
+				   ,country_code 
+				   ,device_category 
+				   ,site_hostname 
+				   ,page_path 
+				   ,page_title 
+				   ,source_medium
+				   )
+    )
+    DISTSTYLE EVEN SORTKEY(session_time)
+;
+GRANT SELECT ON mrd.ga_pagestats TO GROUP readonly;
+
+INSERT INTO mrd.ga_pagestats
+SELECT * 
+  FROM mrd.mrd_ga_pagestats_old
+;
+
+DROP TABLE mrd.mrd_ga_pagestats_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00247_recreate_mrd_ga_profiles.sql
+-- touch 00247_recreate_mrd_ga_profiles_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_profiles RENAME TO mrd_ga_profiles_old;
+
+CREATE TABLE mrd.ga_profiles
+    (
+        profile_id                            BIGINT       ENCODE zstd
+      , account_id                            BIGINT       ENCODE zstd
+      , webproperty_id                        VARCHAR(32)  ENCODE zstd
+      , internal_webproperty_id               BIGINT       ENCODE zstd
+      , profile_kind                          VARCHAR(32)  ENCODE zstd
+      , profile_type                          VARCHAR(16)  ENCODE zstd
+      , bot_filtering_enabled                 BOOLEAN      
+      , profile_currency                      VARCHAR(4)   ENCODE zstd
+      , profile_timezone                      VARCHAR(32)  ENCODE zstd
+      , ecommerce_tracking                    BOOLEAN
+      , enhanced_ecommerce_tracking           BOOLEAN
+      , profile_name                          VARCHAR(255) ENCODE zstd
+      , website_url                           VARCHAR(255) ENCODE zstd
+      , default_page                          VARCHAR(255) ENCODE zstd
+      , exclude_query_parameters              VARCHAR(255) ENCODE zstd
+      , strip_site_search_category_parameters BOOLEAN
+      , strip_site_search_query_parameters    BOOLEAN
+      , site_search_category_parameters       VARCHAR(255) ENCODE zstd
+      , site_search_query_parameters          VARCHAR(255) ENCODE zstd
+      , date_created                          TIMESTAMP    ENCODE zstd
+      , date_updated                          TIMESTAMP    ENCODE zstd
+      , EXTERNAL_FILE_ID                      BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER               BIGINT       ENCODE zstd
+      , PRIMARY KEY(profile_id)
+    )
+    DISTSTYLE EVEN SORTKEY(profile_id)
+;
+GRANT SELECT ON mrd.ga_profiles TO GROUP readonly;
+
+INSERT INTO mrd.ga_profiles
+SELECT * 
+  FROM mrd.mrd_ga_profiles_old
+;
+
+DROP TABLE mrd.mrd_ga_profiles_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00247_recreate_mrd_ga_profiles_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_profiles RENAME TO mrd_ga_profiles_old;
+
+CREATE TABLE mrd.ga_profiles
+    (
+        profile_id                            BIGINT       ENCODE lzo
+      , account_id                            BIGINT       ENCODE lzo
+      , webproperty_id                        VARCHAR(32)  ENCODE lzo
+      , internal_webproperty_id               BIGINT       ENCODE lzo
+      , profile_kind                          VARCHAR(32)  ENCODE lzo
+      , profile_type                          VARCHAR(16)  ENCODE lzo
+      , bot_filtering_enabled                 BOOLEAN      
+      , profile_currency                      VARCHAR(4)   ENCODE lzo
+      , profile_timezone                      VARCHAR(32)  ENCODE lzo
+      , ecommerce_tracking                    BOOLEAN
+      , enhanced_ecommerce_tracking           BOOLEAN
+      , profile_name                          VARCHAR(255) ENCODE lzo
+      , website_url                           VARCHAR(255) ENCODE lzo
+      , default_page                          VARCHAR(255) ENCODE lzo
+      , exclude_query_parameters              VARCHAR(255) ENCODE lzo
+      , strip_site_search_category_parameters BOOLEAN
+      , strip_site_search_query_parameters    BOOLEAN
+      , site_search_category_parameters       VARCHAR(255) ENCODE lzo
+      , site_search_query_parameters          VARCHAR(255) ENCODE lzo
+      , date_created                          TIMESTAMP    ENCODE lzo
+      , date_updated                          TIMESTAMP    ENCODE lzo
+      , EXTERNAL_FILE_ID                      BIGINT       ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER               BIGINT       ENCODE lzo
+      , PRIMARY KEY(profile_id)
+    )
+    DISTSTYLE EVEN SORTKEY(profile_id)
+;
+GRANT SELECT ON mrd.ga_profiles TO GROUP readonly;
+
+INSERT INTO mrd.ga_profiles
+SELECT * 
+  FROM mrd.mrd_ga_profiles_old
+;
+
+DROP TABLE mrd.mrd_ga_profiles_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00248_recreate_mrd_ga_sessions.sql
+-- touch 00248_recreate_mrd_ga_sessions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_sessions RENAME TO mrd_ga_sessions_old;
+
+CREATE TABLE mrd.ga_sessions
+    (
+        profile_id              BIGINT       ENCODE zstd
+      , session_time            TIMESTAMP    ENCODE zstd
+      , country_code            VARCHAR(2)   ENCODE zstd
+      , device_category         VARCHAR(16)  ENCODE zstd
+      , source_medium           VARCHAR(255) ENCODE zstd
+      , city_name               VARCHAR(64)  ENCODE zstd
+      , city_latitude           NUMERIC(6,4) ENCODE zstd
+      , city_longitude          NUMERIC(7,4) ENCODE zstd
+      , sessions_total          INTEGER      ENCODE zstd
+      , session_duration        NUMERIC(9,2) ENCODE zstd
+      , users_total             INTEGER      ENCODE zstd
+      , users_new               INTEGER      ENCODE zstd
+      , page_views_total        INTEGER      ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+      , profile_timezone        VARCHAR(32)  ENCODE zstd
+      , PRIMARY KEY ( profile_id 
+	                , session_time 
+					, country_code 
+					, device_category 
+					, source_medium 
+					, city_name 
+					, city_latitude 
+					, city_longitude
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(session_time)
+;
+GRANT SELECT ON mrd.ga_sessions TO GROUP readonly;
+
+INSERT INTO mrd.ga_sessions
+SELECT * 
+  FROM mrd.mrd_ga_sessions_old
+;
+
+DROP TABLE mrd.mrd_ga_sessions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00248_recreate_mrd_ga_sessions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_sessions RENAME TO mrd_ga_sessions_old;
+
+CREATE TABLE mrd.ga_sessions
+    (
+        profile_id              BIGINT       ENCODE lzo
+      , session_time            TIMESTAMP    ENCODE lzo
+      , country_code            VARCHAR(2)   ENCODE bytedict
+      , device_category         VARCHAR(16)  ENCODE lzo
+      , source_medium           VARCHAR(255) ENCODE lzo
+      , city_name               VARCHAR(64)  ENCODE lzo
+      , city_latitude           NUMERIC(6,4) ENCODE lzo
+      , city_longitude          NUMERIC(7,4) ENCODE lzo
+      , sessions_total          INTEGER      ENCODE lzo
+      , session_duration        NUMERIC(9,2) ENCODE lzo
+      , users_total             INTEGER      ENCODE lzo
+      , users_new               INTEGER      ENCODE lzo
+      , page_views_total        INTEGER      ENCODE lzo
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE delta32k
+      , profile_timezone        VARCHAR(32)  ENCODE lzo
+      , PRIMARY KEY ( profile_id 
+	                , session_time 
+					, country_code 
+					, device_category 
+					, source_medium 
+					, city_name 
+					, city_latitude 
+					, city_longitude
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(session_time)
+;
+GRANT SELECT ON mrd.ga_sessions TO GROUP readonly;
+
+INSERT INTO mrd.ga_sessions
+SELECT * 
+  FROM mrd.mrd_ga_sessions_old
+;
+
+DROP TABLE mrd.mrd_ga_sessions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00249_recreate_mrd_ga_webproperties.sql
+-- touch 00249_recreate_mrd_ga_webproperties_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_webproperties RENAME TO mrd_ga_webproperties_old;
+
+CREATE TABLE mrd.ga_webproperties
+    (
+        webproperty_id          VARCHAR(32)  ENCODE zstd
+      , internal_webproperty_id BIGINT       ENCODE zstd
+      , account_id              BIGINT       ENCODE zstd
+      , profile_count           SMALLINT     ENCODE zstd
+      , default_profile_Id      BIGINT       ENCODE zstd
+      , industry_vertical       VARCHAR(64)  ENCODE zstd
+      , webproperty_kind        VARCHAR(32)  ENCODE zstd
+      , webproperty_level       VARCHAR(32)  ENCODE zstd
+      , webproperty_name        VARCHAR(255) ENCODE zstd
+      , website_url             VARCHAR(255) ENCODE zstd
+      , date_created            TIMESTAMP    ENCODE zstd
+      , date_updated            TIMESTAMP    ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+      , PRIMARY KEY(webproperty_id)
+    )
+    DISTSTYLE EVEN SORTKEY(webproperty_id)
+;
+GRANT SELECT ON mrd.ga_webproperties TO GROUP readonly;
+
+INSERT INTO mrd.ga_webproperties
+SELECT * 
+  FROM mrd.mrd_ga_webproperties_old
+;
+
+DROP TABLE mrd.mrd_ga_webproperties_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00249_recreate_mrd_ga_webproperties_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.ga_webproperties RENAME TO mrd_ga_webproperties_old;
+
+CREATE TABLE mrd.ga_webproperties
+    (
+        webproperty_id          VARCHAR(32)  ENCODE lzo
+      , internal_webproperty_id BIGINT       ENCODE lzo
+      , account_id              BIGINT       ENCODE lzo
+      , profile_count           SMALLINT     ENCODE lzo
+      , default_profile_Id      BIGINT       ENCODE lzo
+      , industry_vertical       VARCHAR(64)  ENCODE lzo
+      , webproperty_kind        VARCHAR(32)  ENCODE lzo
+      , webproperty_level       VARCHAR(32)  ENCODE lzo
+      , webproperty_name        VARCHAR(255) ENCODE lzo
+      , website_url             VARCHAR(255) ENCODE lzo
+      , date_created            TIMESTAMP    ENCODE lzo
+      , date_updated            TIMESTAMP    ENCODE lzo
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE lzo
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE lzo
+      , PRIMARY KEY(webproperty_id)
+    )
+    DISTSTYLE EVEN SORTKEY(webproperty_id)
+;
+GRANT SELECT ON mrd.ga_webproperties TO GROUP readonly;
+
+INSERT INTO mrd.ga_webproperties
+SELECT * 
+  FROM mrd.mrd_ga_webproperties_old
+;
+
+DROP TABLE mrd.mrd_ga_webproperties_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00250_recreate_mrd_hub_events.sql
+-- touch 00250_recreate_mrd_hub_events_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_events_tmp RENAME TO mrd_hub_events_tmp_old;
+
+CREATE TABLE mrd.hub_events_tmp
+    (
+        campaign_guid   VARCHAR(100)  ENCODE zstd
+      , session_date    DATE          ENCODE zstd
+      , device_category VARCHAR(16)   ENCODE zstd
+      , event_category  VARCHAR(255)  ENCODE zstd
+      , event_action    VARCHAR(1024) ENCODE zstd
+      , event_label     VARCHAR(512)  ENCODE zstd
+      , total_events    bigint        ENCODE zstd
+      , phase           VARCHAR(10)   ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_events_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_tmp
+SELECT * 
+  FROM mrd.mrd_hub_events_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_events_tmp_old;
+
+
+ALTER TABLE mrd.hub_events RENAME TO mrd_hub_events_old;
+
+CREATE TABLE mrd.hub_events
+    (
+        campaign_guid   VARCHAR(100)  ENCODE zstd
+      , session_date    DATE          ENCODE zstd
+      , device_category VARCHAR(16)   ENCODE zstd
+      , event_category  VARCHAR(255)  ENCODE zstd
+      , event_action    VARCHAR(1024) ENCODE zstd
+      , event_label     VARCHAR(512)  ENCODE zstd
+      , total_events    bigint        ENCODE zstd
+      , phase           VARCHAR(10)   ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events TO copyrole;
+GRANT SELECT ON mrd.hub_events TO GROUP readonly;
+
+INSERT INTO mrd.hub_events
+SELECT * 
+  FROM mrd.mrd_hub_events_old
+;
+
+DROP TABLE mrd.mrd_hub_events_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00250_recreate_mrd_hub_events_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_events_tmp RENAME TO mrd_hub_events_tmp_old;
+
+CREATE TABLE mrd.hub_events_tmp
+    (
+        campaign_guid   VARCHAR(100) 
+      , session_date    DATE
+      , device_category VARCHAR(16)
+      , event_category  VARCHAR(255)
+      , event_action    VARCHAR(1024)
+      , event_label     VARCHAR(512)
+      , total_events    bigint
+      , phase           VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_events_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_tmp
+SELECT * 
+  FROM mrd.mrd_hub_events_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_events_tmp_old;
+
+
+ALTER TABLE mrd.hub_events RENAME TO mrd_hub_events_old;
+
+CREATE TABLE mrd.hub_events
+    (
+        campaign_guid   VARCHAR(100)
+      , session_date    DATE
+      , device_category VARCHAR(16)
+      , event_category  VARCHAR(255)
+      , event_action    VARCHAR(1024)
+      , event_label     VARCHAR(512)
+      , total_events    bigint
+      , phase           VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events TO copyrole;
+GRANT SELECT ON mrd.hub_events TO GROUP readonly;
+
+INSERT INTO mrd.hub_events
+SELECT * 
+  FROM mrd.mrd_hub_events_old
+;
+
+DROP TABLE mrd.mrd_hub_events_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00251_recreate_mrd_hub_events_social.sql
+-- touch 00251_recreate_mrd_hub_events_social_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_events_social_tmp RENAME TO mrd_hub_events_social_tmp_old;
+
+CREATE TABLE mrd.hub_events_social_tmp
+    (
+        campaign_guid   VARCHAR(100) ENCODE zstd
+      , session_date    DATE         ENCODE zstd
+      , device_category VARCHAR(16)  ENCODE zstd
+      , page_title      VARCHAR(512) ENCODE zstd
+      , share_type      VARCHAR(100) ENCODE zstd
+      , total_shares    bigint       ENCODE zstd
+      , phase           VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_social_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_events_social_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_social_tmp
+SELECT * 
+  FROM mrd.mrd_hub_events_social_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_events_social_tmp_old;
+
+
+ALTER TABLE mrd.hub_events_social RENAME TO mrd_hub_events_social_old;
+
+CREATE TABLE mrd.hub_events_social
+    (
+        campaign_guid   VARCHAR(100) ENCODE zstd
+      , session_date    DATE         ENCODE zstd
+      , device_category VARCHAR(16)  ENCODE zstd
+      , page_title      VARCHAR(512) ENCODE zstd
+      , share_type      VARCHAR(100) ENCODE zstd
+      , total_shares    bigint       ENCODE zstd
+      , phase           VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_social TO copyrole;
+GRANT SELECT ON mrd.hub_events_social TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_social
+SELECT * 
+  FROM mrd.mrd_hub_events_social_old
+;
+
+DROP TABLE mrd.mrd_hub_events_social_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00251_recreate_mrd_hub_events_social_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_events_social_tmp RENAME TO mrd_hub_events_social_tmp_old;
+
+CREATE TABLE mrd.hub_events_social_tmp
+    (
+        campaign_guid   VARCHAR(100)
+      , session_date    DATE
+      , device_category VARCHAR(16)
+      , page_title      VARCHAR(512)
+      , share_type      VARCHAR(100)
+      , total_shares    bigint
+      , phase           VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_social_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_events_social_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_social_tmp
+SELECT * 
+  FROM mrd.mrd_hub_events_social_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_events_social_tmp_old;
+
+
+ALTER TABLE mrd.hub_events_social RENAME TO mrd_hub_events_social_old;
+
+CREATE TABLE mrd.hub_events_social
+    (
+        campaign_guid   VARCHAR(100)
+      , session_date    DATE
+      , device_category VARCHAR(16)
+      , page_title      VARCHAR(512)
+      , share_type      VARCHAR(100)
+      , total_shares    bigint
+      , phase           VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_events_social TO copyrole;
+GRANT SELECT ON mrd.hub_events_social TO GROUP readonly;
+
+INSERT INTO mrd.hub_events_social
+SELECT * 
+  FROM mrd.mrd_hub_events_social_old
+;
+
+DROP TABLE mrd.mrd_hub_events_social_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00252_recreate_mrd_hub_sessions.sql
+-- touch 00252_recreate_mrd_hub_sessions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_sessions_tmp RENAME TO mrd_hub_sessions_tmp_old;
+
+CREATE TABLE mrd.hub_sessions_tmp
+    (
+        campaign_guid     VARCHAR(100)  ENCODE zstd
+      , session_date      DATE          ENCODE zstd
+      , region_name       VARCHAR(16)   ENCODE zstd
+      , country_code      VARCHAR(2)    ENCODE zstd
+      , display_name      VARCHAR(64)   ENCODE zstd
+      , device_category   VARCHAR(16)   ENCODE zstd
+      , source_medium     VARCHAR(255)  ENCODE zstd
+      , local_hour_of_day INTEGER       ENCODE zstd
+      , phase             VARCHAR(10)   ENCODE zstd
+      , session_duration  NUMERIC(38,2) ENCODE zstd
+      , sessions_total    BIGINT        ENCODE zstd
+      , page_views_total  BIGINT        ENCODE zstd
+      , users_total       BIGINT        ENCODE zstd
+      , users_new         BIGINT        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_sessions_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_sessions_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_sessions_tmp
+SELECT * 
+  FROM mrd.mrd_hub_sessions_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_sessions_tmp_old;
+
+
+ALTER TABLE mrd.hub_sessions RENAME TO mrd_hub_sessions_old;
+
+CREATE TABLE mrd.hub_sessions
+    (
+        campaign_guid     VARCHAR(100)  ENCODE zstd
+      , session_date      DATE          ENCODE zstd
+      , region_name       VARCHAR(16)   ENCODE zstd
+      , country_code      VARCHAR(2)    ENCODE zstd
+      , display_name      VARCHAR(64)   ENCODE zstd
+      , device_category   VARCHAR(16)   ENCODE zstd
+      , source_medium     VARCHAR(255)  ENCODE zstd
+      , local_hour_of_day INTEGER       ENCODE zstd
+      , phase             VARCHAR(10)   ENCODE zstd
+      , session_duration  NUMERIC(38,2) ENCODE zstd
+      , sessions_total    bigint        ENCODE zstd
+      , page_views_total  bigint        ENCODE zstd
+      , users_total       bigint        ENCODE zstd
+      , users_new         bigint        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_sessions TO copyrole;
+GRANT SELECT ON mrd.hub_sessions TO GROUP readonly;
+
+INSERT INTO mrd.hub_sessions
+SELECT * 
+FROM mrd.mrd_hub_sessions_old
+;
+
+DROP TABLE mrd.mrd_hub_sessions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00252_recreate_mrd_hub_sessions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.hub_sessions_tmp RENAME TO mrd_hub_sessions_tmp_old;
+
+CREATE TABLE mrd.hub_sessions_tmp
+    (
+        campaign_guid     VARCHAR(100)
+      , session_date      DATE
+      , region_name       VARCHAR(16)
+      , country_code      VARCHAR(2)
+      , display_name      VARCHAR(64)
+      , device_category   VARCHAR(16)
+      , source_medium     VARCHAR(255)
+      , local_hour_of_day INTEGER
+      , phase             VARCHAR(10)
+      , session_duration  NUMERIC(38,2)
+      , sessions_total    bigint
+      , page_views_total  bigint
+      , users_total       bigint
+      , users_new         bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_sessions_tmp TO copyrole;
+GRANT SELECT ON mrd.hub_sessions_tmp TO GROUP readonly;
+
+INSERT INTO mrd.hub_sessions_tmp
+SELECT * 
+  FROM mrd.mrd_hub_sessions_tmp_old
+;
+
+DROP TABLE mrd.mrd_hub_sessions_tmp_old;
+
+
+ALTER TABLE mrd.hub_sessions RENAME TO mrd_hub_sessions_old;
+
+CREATE TABLE mrd.hub_sessions
+    (
+        campaign_guid     VARCHAR(100)
+      , session_date      DATE
+      , region_name       VARCHAR(16)
+      , country_code      VARCHAR(2)
+      , display_name      VARCHAR(64)
+      , device_category   VARCHAR(16)
+      , source_medium     VARCHAR(255)
+      , local_hour_of_day INTEGER
+      , phase             VARCHAR(10)
+      , session_duration  NUMERIC(38,2)
+      , sessions_total    bigint
+      , page_views_total  bigint
+      , users_total       bigint
+      , users_new         bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.hub_sessions TO copyrole;
+GRANT SELECT ON mrd.hub_sessions TO GROUP readonly;
+
+INSERT INTO mrd.hub_sessions
+SELECT * 
+FROM mrd.mrd_hub_sessions_old
+;
+
+DROP TABLE mrd.mrd_hub_sessions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00253_recreate_mrd_id_helper.sql
+-- touch 00253_recreate_mrd_id_helper_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.id_helper RENAME TO mrd_id_helper_old;
+
+CREATE TABLE mrd.id_helper
+    (
+        n INT   ENCODE zstd
+      , PRIMARY KEY ( n)
+    )
+    DISTSTYLE ALL SORTKEY(n)
+;
+GRANT SELECT ON mrd.id_helper TO GROUP readonly;
+
+INSERT INTO mrd.id_helper
+SELECT * 
+  FROM mrd.mrd_id_helper_old
+; 
+
+DROP TABLE mrd.mrd_id_helper_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00252_recreate_mrd_hub_sessions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.id_helper RENAME TO mrd_id_helper_old;
+
+CREATE TABLE mrd.id_helper
+    (
+        n INT
+      , PRIMARY KEY ( n)
+    )
+    DISTSTYLE ALL SORTKEY(n)
+;
+GRANT SELECT ON mrd.id_helper TO GROUP readonly;
+
+INSERT INTO mrd.id_helper
+SELECT * 
+  FROM mrd.mrd_id_helper_old
+; 
+
+DROP TABLE mrd.mrd_id_helper_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00254_recreate_mrd_paid_media_ae_dbm.sql
+-- touch 00254_recreate_mrd_paid_media_ae_dbm_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_ae_dbm_tmp RENAME TO mrd_paid_media_ae_dbm_tmp_old;
+
+CREATE TABLE mrd.paid_media_ae_dbm_tmp
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , insertion_order_id BIGINT       ENCODE zstd
+      , session_date       DATE         ENCODE zstd
+      , creative_id        BIGINT       ENCODE zstd
+      , creative_size      VARCHAR(25)  ENCODE zstd
+      , impressions_total  BIGINT       ENCODE zstd
+      , clicks_total       BIGINT       ENCODE zstd
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ae_dbm_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ae_dbm_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ae_dbm_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_ae_dbm_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ae_dbm_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_ae_dbm RENAME TO mrd_paid_media_ae_dbm_old;
+
+CREATE TABLE mrd.paid_media_ae_dbm
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , insertion_order_id BIGINT       ENCODE zstd
+      , session_date       DATE         ENCODE zstd
+      , creative_id        BIGINT       ENCODE zstd
+      , creative_size      VARCHAR(25)  ENCODE zstd
+      , impressions_total  BIGINT       ENCODE zstd
+      , clicks_total       BIGINT       ENCODE zstd
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ae_dbm TO copyrole;
+GRANT SELECT ON mrd.paid_media_ae_dbm TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ae_dbm
+SELECT * 
+  FROM mrd.mrd_paid_media_ae_dbm_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ae_dbm_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00254_recreate_mrd_paid_media_ae_dbm_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_ae_dbm_tmp RENAME TO mrd_paid_media_ae_dbm_tmp_old;
+
+CREATE TABLE mrd.paid_media_ae_dbm_tmp
+    (
+        campaign_guid      VARCHAR(100)
+      , insertion_order_id BIGINT
+      , session_date       DATE
+      , creative_id        BIGINT
+      , creative_size      VARCHAR(25)
+      , impressions_total  BIGINT
+      , clicks_total       BIGINT
+      , phase              VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ae_dbm_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ae_dbm_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ae_dbm_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_ae_dbm_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ae_dbm_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_ae_dbm RENAME TO mrd_paid_media_ae_dbm_old;
+
+CREATE TABLE mrd.paid_media_ae_dbm
+    (
+        campaign_guid      VARCHAR(100)
+      , insertion_order_id BIGINT
+      , session_date       DATE
+      , creative_id        BIGINT
+      , creative_size      VARCHAR(25)
+      , impressions_total  BIGINT
+      , clicks_total       BIGINT
+      , phase              VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ae_dbm TO copyrole;
+GRANT SELECT ON mrd.paid_media_ae_dbm TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ae_dbm
+SELECT * 
+  FROM mrd.mrd_paid_media_ae_dbm_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ae_dbm_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00255_recreate_mrd_paid_media_apps_de.sql
+-- touch 00255_recreate_mrd_paid_media_apps_de_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_apps_de_tmp RENAME TO mrd_paid_media_apps_de_tmp_old
+;
+
+CREATE TABLE mrd.paid_media_apps_de_tmp
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , issue_id           VARCHAR(256) ENCODE zstd
+      , local_date         DATE         ENCODE zstd
+      , ad_position        VARCHAR(50)  ENCODE zstd
+      , total_impressions  BIGINT       ENCODE zstd
+      , total_taps         BIGINT       ENCODE zstd
+      , ad_dwell_time      BIGINT       ENCODE zstd
+      , webview_dwell_time BIGINT       ENCODE zstd
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(local_date)
+;
+GRANT INSERT ON mrd.paid_media_apps_de_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_apps_de_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_apps_de_tmp
+SELECT *  
+  FROM mrd.mrd_paid_media_apps_de_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_apps_de_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_apps_de RENAME TO mrd_paid_media_apps_de_old;
+
+CREATE TABLE mrd.paid_media_apps_de
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , issue_id           VARCHAR(256) ENCODE zstd
+      , local_date         DATE         ENCODE zstd
+      , ad_position        VARCHAR(50)  ENCODE zstd
+      , total_impressions  BIGINT       ENCODE zstd
+      , total_taps         BIGINT       ENCODE zstd
+      , ad_dwell_time      BIGINT       ENCODE zstd
+      , webview_dwell_time BIGINT       ENCODE zstd
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(local_date)
+;
+GRANT INSERT ON mrd.paid_media_apps_de TO copyrole;
+GRANT SELECT ON mrd.paid_media_apps_de TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_apps_de
+SELECT * 
+  FROM mrd.mrd_paid_media_apps_de_old
+;
+
+DROP TABLE mrd.mrd_paid_media_apps_de_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00255_recreate_mrd_paid_media_apps_de_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_apps_de_tmp RENAME TO mrd_paid_media_apps_de_tmp_old;
+
+CREATE TABLE mrd.paid_media_apps_de_tmp
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , issue_id           VARCHAR(256) ENCODE zstd
+      , local_date         DATE         ENCODE zstd
+      , ad_position        VARCHAR(50)  ENCODE zstd
+      , total_impressions  BIGINT       ENCODE zstd
+      , total_taps         BIGINT       ENCODE zstd
+      , ad_dwell_time      BIGINT       ENCODE zstd
+      , webview_dwell_time BIGINT       ENCODE zstd
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(local_date)
+;
+GRANT INSERT ON mrd.paid_media_apps_de_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_apps_de_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_apps_de_tmp
+SELECT *  
+  FROM mrd.mrd_paid_media_apps_de_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_apps_de_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_apps_de RENAME TO mrd_paid_media_apps_de_old;
+
+CREATE TABLE mrd.paid_media_apps_de
+    (
+        campaign_guid      VARCHAR(100) ENCODE zstd
+      , issue_id           VARCHAR(256) ENCODE zstd
+      , local_date         DATE         ENCODE zstd 
+      , ad_position        VARCHAR(50)  ENCODE zstd
+      , total_impressions  BIGINT       ENCODE zstd 
+      , total_taps         BIGINT       ENCODE zstd
+      , ad_dwell_time      BIGINT       ENCODE zstd
+      , webview_dwell_time BIGINT       ENCODE zstd 
+      , phase              VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(local_date)
+;
+GRANT INSERT ON mrd.paid_media_apps_de TO copyrole;
+GRANT SELECT ON mrd.paid_media_apps_de TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_apps_de
+SELECT * 
+  FROM mrd.mrd_paid_media_apps_de_old
+;
+
+DROP TABLE mrd.mrd_paid_media_apps_de_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00256_recreate_mrd_paid_media_eco_dfp_tmp.sql
+-- touch 00256_recreate_mrd_paid_media_eco_dfp_tmp_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_eco_dfp_tmp RENAME TO mrd_paid_media_eco_dfp_tmp_old;
+
+CREATE TABLE mrd.paid_media_eco_dfp_tmp2
+    (
+        campaign_guid         VARCHAR(100)
+      , po_number             VARCHAR(100)
+      , creative_size         VARCHAR(100)
+      , session_date          DATE
+      , phase                 VARCHAR(10)
+      , ad_server_impressions bigint
+      , ad_server_clicks      bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_eco_dfp_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_eco_dfp_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_eco_dfp_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_eco_dfp_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_eco_dfp_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_eco_dfp RENAME TO mrd_paid_media_eco_dfp_old;
+
+CREATE TABLE mrd.paid_media_eco_dfp
+    (
+        campaign_guid         VARCHAR(100)
+      , po_number             VARCHAR(100)
+      , creative_size         VARCHAR(100)
+      , session_date          DATE
+      , phase                 VARCHAR(10)
+      , ad_server_impressions bigint
+      , ad_server_clicks      bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_eco_dfp TO copyrole;
+GRANT SELECT ON mrd.paid_media_eco_dfp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_eco_dfp
+SELECT * 
+  FROM mrd.mrd_paid_media_eco_dfp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_eco_dfp_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00256_recreate_mrd_paid_media_eco_dfp_tmp_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_eco_dfp_tmp RENAME TO mrd_paid_media_eco_dfp_tmp_old;
+
+CREATE TABLE mrd.paid_media_eco_dfp_tmp
+    (
+        campaign_guid         VARCHAR(100)
+      , po_number             VARCHAR(100)
+      , creative_size         VARCHAR(100)
+      , session_date          DATE
+      , phase                 VARCHAR(10)
+      , ad_server_impressions bigint
+      , ad_server_clicks      bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_eco_dfp_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_eco_dfp_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_eco_dfp_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_eco_dfp_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_eco_dfp_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_eco_dfp RENAME TO mrd_paid_media_eco_dfp_old;
+
+CREATE TABLE mrd.paid_media_eco_dfp
+    (
+        campaign_guid         VARCHAR(100)
+      , po_number             VARCHAR(100)
+      , creative_size         VARCHAR(100)
+      , session_date          DATE
+      , phase                 VARCHAR(10)
+      , ad_server_impressions bigint
+      , ad_server_clicks      bigint
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_eco_dfp TO copyrole;
+GRANT SELECT ON mrd.paid_media_eco_dfp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_eco_dfp
+SELECT * 
+  FROM mrd.mrd_paid_media_eco_dfp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_eco_dfp_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00257_recreate_mrd_paid_media_ipm_dfp.sql
+-- touch 00257_recreate_mrd_paid_media_ipm_dfp_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_ipm_dfp_tmp RENAME TO mrd_paid_media_ipm_dfp_tmp_old;
+
+CREATE TABLE mrd.paid_media_ipm_dfp_tmp
+    (
+        campaign_guid                 VARCHAR(100) ENCODE zstd
+      , product_id                    BIGINT       ENCODE zstd
+      , advertiser_id                 BIGINT       ENCODE zstd
+      , order_id                      BIGINT       ENCODE zstd
+      , order_po_number               VARCHAR(64)  ENCODE zstd
+      , line_item_id                  BIGINT       ENCODE zstd
+      , session_date                  DATE         ENCODE zstd
+      , creative_id                   BIGINT       ENCODE zstd
+      , creative_size                 VARCHAR(64)  ENCODE zstd
+      , line_item_goal_quantity       BIGINT       ENCODE zstd
+      , line_item_contracted_quantity BIGINT       ENCODE zstd
+      , ad_server_impressions         BIGINT       ENCODE zstd
+      , ad_server_clicks              BIGINT       ENCODE zstd
+      , phase                         VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)	
+;
+GRANT INSERT ON mrd.paid_media_ipm_dfp_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ipm_dfp_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ipm_dfp_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_ipm_dfp_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ipm_dfp_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_ipm_dfp RENAME TO mrd_paid_media_ipm_dfp_old;
+
+CREATE TABLE mrd.paid_media_ipm_dfp
+    (
+        campaign_guid                 VARCHAR(100) ENCODE zstd
+      , product_id                    BIGINT       ENCODE zstd
+      , advertiser_id                 BIGINT       ENCODE zstd
+      , order_id                      BIGINT       ENCODE zstd
+      , order_po_number               VARCHAR(64)  ENCODE zstd
+      , line_item_id                  BIGINT       ENCODE zstd
+      , session_date                  DATE         ENCODE zstd
+      , creative_id                   BIGINT       ENCODE zstd
+      , creative_size                 VARCHAR(64)  ENCODE zstd
+      , line_item_goal_quantity       BIGINT       ENCODE zstd
+      , line_item_contracted_quantity BIGINT       ENCODE zstd
+      , ad_server_impressions         BIGINT       ENCODE zstd
+      , ad_server_clicks              BIGINT       ENCODE zstd
+      , phase                         VARCHAR(10)  ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ipm_dfp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ipm_dfp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ipm_dfp
+SELECT * 
+  FROM mrd.mrd_paid_media_ipm_dfp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ipm_dfp_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00257_recreate_mrd_paid_media_eco_dfp_tmp_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.paid_media_ipm_dfp_tmp RENAME TO mrd_paid_media_ipm_dfp_tmp_old;
+
+CREATE TABLE mrd.paid_media_ipm_dfp_tmp
+    (
+        campaign_guid                 VARCHAR(100)
+      , product_id                    BIGINT
+      , advertiser_id                 BIGINT
+      , order_id                      BIGINT
+      , order_po_number               VARCHAR(64)
+      , line_item_id                  BIGINT
+      , session_date                  DATE
+      , creative_id                   BIGINT
+      , creative_size                 VARCHAR(64)
+      , line_item_goal_quantity       BIGINT
+      , line_item_contracted_quantity BIGINT
+      , ad_server_impressions         BIGINT
+      , ad_server_clicks              BIGINT
+      , phase                         VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)	
+;
+GRANT INSERT ON mrd.paid_media_ipm_dfp_tmp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ipm_dfp_tmp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ipm_dfp_tmp
+SELECT * 
+  FROM mrd.mrd_paid_media_ipm_dfp_tmp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ipm_dfp_tmp_old;
+
+
+ALTER TABLE mrd.paid_media_ipm_dfp RENAME TO mrd_paid_media_ipm_dfp_old;
+
+CREATE TABLE mrd.paid_media_ipm_dfp
+    (
+        campaign_guid                 VARCHAR(100)
+      , product_id                    BIGINT
+      , advertiser_id                 BIGINT
+      , order_id                      BIGINT
+      , order_po_number               VARCHAR(64)
+      , line_item_id                  BIGINT
+      , session_date                  DATE
+      , creative_id                   BIGINT
+      , creative_size                 VARCHAR(64)
+      , line_item_goal_quantity       BIGINT
+      , line_item_contracted_quantity BIGINT
+      , ad_server_impressions         BIGINT
+      , ad_server_clicks              BIGINT
+      , phase                         VARCHAR(10)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON mrd.paid_media_ipm_dfp TO copyrole;
+GRANT SELECT ON mrd.paid_media_ipm_dfp TO GROUP readonly;
+
+INSERT INTO mrd.paid_media_ipm_dfp
+SELECT * 
+  FROM mrd.mrd_paid_media_ipm_dfp_old
+;
+
+DROP TABLE mrd.mrd_paid_media_ipm_dfp_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00258_recreate_mrd_region_countries.sql
+-- touch 00258_recreate_mrd_region_countries_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.region_countries RENAME TO mrd_region_countries_old;
+
+CREATE TABLE mrd.region_countries
+    (
+        region_name       VARCHAR(16)  ENCODE zstd
+      , display_name      VARCHAR(64)  ENCODE zstd
+      , country_code      VARCHAR(2)   ENCODE zstd
+      , country_latitude  DECIMAL(6,4) ENCODE zstd
+      , country_longitude DECIMAL(7,4) ENCODE zstd
+      , PRIMARY KEY ( country_code )
+    )
+    DISTSTYLE EVEN SORTKEY(country_code)
+;
+GRANT INSERT ON mrd.region_countries TO copyrole;
+GRANT SELECT ON mrd.region_countries TO GROUP readonly;
+GRANT USAGE ON SCHEMA mrd TO copyrole;
+
+INSERT INTO mrd.region_countries
+SELECT * 
+  FROM mrd.mrd_region_countries_old
+;
+
+DROP TABLE mrd.mrd_region_countries_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00258_recreate_mrd_region_countries_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE mrd.region_countries RENAME TO mrd_region_countries_old;
+
+CREATE TABLE mrd.region_countries
+    (
+        region_name       VARCHAR(16)
+      , display_name      VARCHAR(64)
+      , country_code      VARCHAR(2)
+      , country_latitude  DECIMAL(6,4)
+      , country_longitude DECIMAL(7,4)
+      , PRIMARY KEY ( country_code )
+    )
+    DISTSTYLE EVEN SORTKEY(country_code)
+;
+GRANT INSERT ON mrd.region_countries TO copyrole;
+GRANT SELECT ON mrd.region_countries TO GROUP readonly;
+GRANT USAGE ON SCHEMA mrd TO copyrole;
+
+INSERT INTO mrd.region_countries
+SELECT * 
+  FROM mrd.mrd_region_countries_old
+;
+
+DROP TABLE mrd.mrd_region_countries_old;
+
+
+---------------------------------------------------------------------------------------------------
+-- touch 00259_recreate_dbm_lineitems.sql
+-- touch 00259_recreate_dbm_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dbm.lineitems RENAME TO dbm_lineitems_old;
+
+CREATE TABLE dbm.lineitems
+    (
+        session_date                         TIMESTAMP    ENCODE zstd
+      , session_hour                         SMALLINT     ENCODE zstd
+      , country_code                         VARCHAR(2)   ENCODE zstd
+      , device_type                          VARCHAR(16)  ENCODE zstd
+      , insertion_order_id                   BIGINT       ENCODE zstd
+      , creative_id                          BIGINT       ENCODE zstd
+      , dcm_placement_id                     BIGINT       ENCODE zstd
+      , creative_width                       SMALLINT     ENCODE zstd
+      , creative_height                      SMALLINT     ENCODE zstd
+      , impressions_total                    INTEGER      ENCODE zstd
+      , impressions_activeview_eligible      INTEGER      ENCODE zstd
+      , impressions_activeview_measurable    INTEGER      ENCODE zstd
+      , impressions_activeview_notmeasurable INTEGER      ENCODE zstd
+      , impressions_activeview_notviewable   INTEGER      ENCODE zstd
+      , impressions_activeview_viewable      INTEGER      ENCODE zstd
+      , clicks_total                         INTEGER      ENCODE zstd
+      , conversions_total                    NUMERIC(8,4) ENCODE zstd
+      , conversions_postclick                NUMERIC(8,4) ENCODE zstd
+      , conversions_postview                 NUMERIC(8,4) ENCODE zstd
+      , row_ctr                              NUMERIC(8,4) ENCODE zstd
+      , EXTERNAL_FILE_ID                     BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER              BIGINT       ENCODE zstd
+      , PRIMARY KEY ( session_date 
+                    , session_hour 
+                    , country_code 
+                    , device_type 
+                    , creative_id 
+                    , insertion_order_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON dbm.lineitems TO copyrole;
+GRANT SELECT ON dbm.lineitems TO GROUP readonly;
+
+INSERT INTO dbm.lineitems
+SELECT * 
+  FROM dbm.dbm_lineitems_old
+;
+
+DROP TABLE dbm.dbm_lineitems_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00259_recreate_dbm_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dbm.lineitems RENAME TO dbm_lineitems_old;
+
+CREATE TABLE dbm.lineitems
+    (
+        session_date                         TIMESTAMP
+      , session_hour                         SMALLINT
+      , country_code                         VARCHAR(2)
+      , device_type                          VARCHAR(16)
+      , insertion_order_id                   BIGINT
+      , creative_id                          BIGINT
+      , dcm_placement_id                     BIGINT
+      , creative_width                       SMALLINT
+      , creative_height                      SMALLINT
+      , impressions_total                    INTEGER
+      , impressions_activeview_eligible      INTEGER
+      , impressions_activeview_measurable    INTEGER
+      , impressions_activeview_notmeasurable INTEGER
+      , impressions_activeview_notviewable   INTEGER
+      , impressions_activeview_viewable      INTEGER
+      , clicks_total                         INTEGER
+      , conversions_total                    NUMERIC(8,4)
+      , conversions_postclick                NUMERIC(8,4)
+      , conversions_postview                 NUMERIC(8,4)
+      , row_ctr                              NUMERIC(8,4)
+      , EXTERNAL_FILE_ID                     BIGINT
+      , EXTERNAL_FILE_ROWNUMBER              BIGINT
+      , PRIMARY KEY ( session_date 
+                    , session_hour 
+                    , country_code 
+                    , device_type 
+                    , creative_id 
+                    , insertion_order_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON dbm.lineitems TO copyrole;
+GRANT SELECT ON dbm.lineitems TO GROUP readonly;
+
+INSERT INTO dbm.lineitems
+SELECT * 
+  FROM dbm.dbm_lineitems_old
+;
+
+DROP TABLE dbm.dbm_lineitems_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00260_recreate_dbm_orders.sql
+-- touch 00260_recreate_dbm_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dbm.orders RENAME TO dbm_orders_old;
+
+CREATE TABLE dbm.orders
+    (
+        advertiser_name         VARCHAR(255) ENCODE zstd
+      , advertiser_id           BIGINT       ENCODE zstd
+      , advertiser_status       VARCHAR(16)  ENCODE zstd
+      , advertiser_currency     VARCHAR(4)   ENCODE zstd
+      , advertiser_time_zone    VARCHAR(32)  ENCODE zstd
+      , insertion_order_name    VARCHAR(255) ENCODE zstd
+      , insertion_order_id      BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+      , PRIMARY KEY ( advertiser_id 
+                    , insertion_order_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(advertiser_id)
+;
+GRANT INSERT ON dbm.orders TO copyrole;
+GRANT SELECT ON dbm.orders TO GROUP readonly;
+
+INSERT INTO dbm.orders
+SELECT * 
+  FROM dbm.dbm_orders_old
+;
+
+DROP TABLE dbm.dbm_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00260_recreate_dbm_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dbm.orders RENAME TO dbm_orders_old;
+
+CREATE TABLE dbm.orders
+    (
+        advertiser_name         VARCHAR(255)
+      , advertiser_id           BIGINT
+      , advertiser_status       VARCHAR(16)
+      , advertiser_currency     VARCHAR(4)
+      , advertiser_time_zone    VARCHAR(32)
+      , insertion_order_name    VARCHAR(255)
+      , insertion_order_id      BIGINT
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+      , PRIMARY KEY ( advertiser_id 
+                    , insertion_order_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(advertiser_id)
+;
+GRANT INSERT ON dbm.orders TO copyrole;
+GRANT SELECT ON dbm.orders TO GROUP readonly;
+
+INSERT INTO dbm.orders
+SELECT * 
+  FROM dbm.dbm_orders_old
+;
+
+DROP TABLE dbm.dbm_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00261_recreate_dfp_lineitems.sql
+-- touch 00261_recreate_dfp_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dfp.lineitems RENAME TO dfp_lineitems_old;
+
+CREATE TABLE dfp.lineitems
+    (
+        network_code                        SMALLINT     ENCODE zstd
+      , session_date                        TIMESTAMP    ENCODE zstd
+      , session_hour                        SMALLINT     ENCODE zstd
+      , product_id                          BIGINT       ENCODE zstd
+      , advertiser_id                       BIGINT       ENCODE zstd
+      , order_id                            BIGINT       ENCODE zstd
+      , line_item_id                        BIGINT       ENCODE zstd
+      , creative_id                         BIGINT       ENCODE zstd
+      , creative_name                       VARCHAR(255) ENCODE zstd
+      , creative_size                       VARCHAR(64)  ENCODE zstd
+      , order_po_number                     VARCHAR(32)  ENCODE zstd
+      , ad_server_impressions               INTEGER      ENCODE zstd
+      , ad_server_clicks                    INTEGER      ENCODE zstd
+      , ad_server_ctr                       NUMERIC(8,4) ENCODE zstd
+      , adsense_line_item_level_impressions INTEGER      ENCODE zstd
+      , adsense_line_item_level_clicks      INTEGER      ENCODE zstd
+      , adsense_line_item_level_ctr         NUMERIC(8,4) ENCODE zstd
+      , EXTERNAL_FILE_ID                    BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER             BIGINT       ENCODE zstd
+      , PRIMARY KEY ( network_code 
+                    , session_date 
+                    , session_hour 
+                    , product_id 
+                    , advertiser_id 
+                    , order_id 
+                    , line_item_id 
+                    , creative_id 
+                    , creative_size
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON dfp.lineitems TO copyrole;
+GRANT SELECT ON dfp.lineitems TO GROUP readonly;
+
+INSERT INTO dfp.lineitems
+SELECT * 
+  FROM dfp.dfp_lineitems_old
+;
+
+DROP TABLE dfp.dfp_lineitems_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00261_recreate_dfp_lineitems_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dfp.lineitems RENAME TO dfp_lineitems_old;
+
+CREATE TABLE dfp.lineitems
+    (
+        network_code                        SMALLINT
+      , session_date                        TIMESTAMP
+      , session_hour                        SMALLINT
+      , product_id                          BIGINT
+      , advertiser_id                       BIGINT
+      , order_id                            BIGINT
+      , line_item_id                        BIGINT
+      , creative_id                         BIGINT
+      , creative_name                       VARCHAR(255)
+      , creative_size                       VARCHAR(64)
+      , order_po_number                     VARCHAR(32)
+      , ad_server_impressions               INTEGER
+      , ad_server_clicks                    INTEGER
+      , ad_server_ctr                       NUMERIC(8,4)
+      , adsense_line_item_level_impressions INTEGER
+      , adsense_line_item_level_clicks      INTEGER
+      , adsense_line_item_level_ctr         NUMERIC(8,4)
+      , EXTERNAL_FILE_ID                    BIGINT
+      , EXTERNAL_FILE_ROWNUMBER             BIGINT
+      , PRIMARY KEY ( network_code 
+	                ,session_date 
+					,session_hour 
+					,product_id 
+					,advertiser_id 
+					,order_id 
+					,line_item_id 
+					,creative_id 
+					,creative_size
+					)
+    )
+    DISTSTYLE EVEN SORTKEY(session_date)
+;
+GRANT INSERT ON dfp.lineitems TO copyrole;
+GRANT SELECT ON dfp.lineitems TO GROUP readonly;
+
+INSERT INTO dfp.lineitems
+SELECT * 
+  FROM dfp.dfp_lineitems_old
+;
+
+DROP TABLE dfp.dfp_lineitems_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00262_recreate_dfp_orders.sql
+-- touch 00262_recreate_dfp_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dfp.orders RENAME TO dfp_orders_old;
+
+CREATE TABLE dfp.orders
+    (
+        network_code                  SMALLINT     ENCODE zstd
+      , product_id                    BIGINT       ENCODE zstd
+      , product_name                  VARCHAR(255) ENCODE zstd
+      , advertiser_id                 BIGINT       ENCODE zstd
+      , advertiser_name               VARCHAR(255) ENCODE zstd
+      , order_id                      BIGINT       ENCODE zstd
+      , order_name                    VARCHAR(255) ENCODE zstd
+      , line_item_id                  BIGINT       ENCODE zstd
+      , line_item_name                VARCHAR(255) ENCODE zstd
+      , order_po_number               VARCHAR(64)  ENCODE zstd
+      , order_agency_id               BIGINT       ENCODE zstd
+      , order_agency                  VARCHAR(255) ENCODE zstd
+      , line_item_goal_quantity       BIGINT       ENCODE zstd
+      , line_item_contracted_quantity BIGINT       ENCODE zstd
+      , ad_server_impressions         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ID              BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER       BIGINT       ENCODE zstd
+      , PRIMARY KEY ( network_code 
+                    , product_id 
+                    , advertiser_id 
+                    , order_id 
+                    , line_item_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(product_id)
+;
+GRANT INSERT ON dfp.orders TO copyrole;
+GRANT SELECT ON dfp.orders TO GROUP readonly;
+
+INSERT INTO dfp.orders
+SELECT * 
+  FROM dfp.dfp_orders_old
+;
+
+DROP TABLE dfp.dfp_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00262_recreate_dfp_orders_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE dfp.orders RENAME TO dfp_orders_old;
+
+CREATE TABLE dfp.orders
+    (
+        network_code                  SMALLINT
+      , product_id                    BIGINT
+      , product_name                  VARCHAR(255)
+      , advertiser_id                 BIGINT
+      , advertiser_name               VARCHAR(255)
+      , order_id                      BIGINT
+      , order_name                    VARCHAR(255)
+      , line_item_id                  BIGINT
+      , line_item_name                VARCHAR(255)
+      , order_po_number               VARCHAR(64)
+      , order_agency_id               BIGINT
+      , order_agency                  VARCHAR(255)
+      , line_item_goal_quantity       BIGINT
+      , line_item_contracted_quantity BIGINT
+      , ad_server_impressions         BIGINT
+      , EXTERNAL_FILE_ID              BIGINT
+      , EXTERNAL_FILE_ROWNUMBER       BIGINT
+      , PRIMARY KEY ( network_code 
+                    , product_id 
+                    , advertiser_id 
+                    , order_id 
+                    , line_item_id
+                    )
+    )
+    DISTSTYLE EVEN SORTKEY(product_id)
+;
+GRANT INSERT ON dfp.orders TO copyrole;
+GRANT SELECT ON dfp.orders TO GROUP readonly;
+
+INSERT INTO dfp.orders
+SELECT * 
+  FROM dfp.dfp_orders_old
+;
+
+DROP TABLE dfp.dfp_orders_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00263_recreate_common_country_regions.sql
+-- touch 00263_recreate_common_country_regions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE common.country_regions RENAME TO common_country_regions_old;
+
+CREATE TABLE common.country_regions
+    (
+        alpha2_code            VARCHAR(20)  ENCODE zstd
+      , country_name           VARCHAR(256) ENCODE zstd
+      , alpha3_code            VARCHAR(20)  ENCODE zstd
+      , numeric_code           INT          ENCODE zstd
+      , subdivision_codes_link VARCHAR(20)  ENCODE zstd
+      , subregion_id           INT          ENCODE zstd
+      , subregion_code         VARCHAR(20)  ENCODE zstd
+      , subregion_name         VARCHAR(50)  ENCODE zstd
+      , region_id              INT          ENCODE zstd
+      , region_code            VARCHAR(20)  ENCODE zstd
+      , region_name            VARCHAR(50)  ENCODE zstd
+      , globalregion_id        INT          ENCODE zstd
+      , globalregion_code      VARCHAR(20)  ENCODE zstd
+      , globalregion_name      VARCHAR(50)  ENCODE zstd
+      , date_created TIMESTAMP
+      , date_updated TIMESTAMP
+      , PRIMARY KEY (alpha2_code)
+    )
+    DISTSTYLE ALL SORTKEY(alpha2_code)
+;
+GRANT INSERT ON common.country_regions TO copyrole;
+GRANT SELECT ON common.country_regions TO GROUP readonly;
+
+INSERT INTO common.country_regions
+SELECT * 
+  FROM common.common_country_regions_old
+;
+
+DROP TABLE common.common_country_regions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00263_recreate_common_country_regions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE common.country_regions RENAME TO common_country_regions_old;
+
+CREATE TABLE common.country_regions
+    (
+        alpha2_code            VARCHAR(20)
+      , country_name           VARCHAR(256)
+      , alpha3_code            VARCHAR(20)
+      , numeric_code           INT
+      , subdivision_codes_link VARCHAR(20)
+      , subregion_id           INT
+      , subregion_code         VARCHAR(20)
+      , subregion_name         VARCHAR(50)
+      , region_id              INT
+      , region_code            VARCHAR(20)
+      , region_name            VARCHAR(50)
+      , globalregion_id        INT
+      , globalregion_code      VARCHAR(20)
+      , globalregion_name      VARCHAR(50)
+      , date_created TIMESTAMP
+      , date_updated TIMESTAMP
+      , PRIMARY KEY (alpha2_code)
+    )
+    DISTSTYLE ALL SORTKEY(alpha2_code)
+;
+GRANT INSERT ON common.country_regions TO copyrole;
+GRANT SELECT ON common.country_regions TO GROUP readonly;
+
+INSERT INTO common.country_regions
+SELECT * 
+  FROM common.common_country_regions_old
+;
+
+DROP TABLE common.common_country_regions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00264_recreate_common_dim_date.sql
+-- touch 00264_recreate_common_dim_date_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE common.dim_date RENAME TO common_dim_date_old;
+
+CREATE TABLE common.dim_date
+    (
+        date_key                      INTEGER     ENCODE zstd
+      , date_type                     VARCHAR(10) ENCODE zstd
+      , full_date                     DATE        ENCODE zstd
+      , day_of_week_name              VARCHAR(20) ENCODE zstd
+      , day_number_in_epoch           INTEGER     ENCODE zstd
+      , week_number_in_epoch          INTEGER     ENCODE zstd
+      , month_number_in_epoch         INTEGER     ENCODE zstd
+      , day_number_in_calendar_month  INTEGER     ENCODE zstd
+      , day_number_in_calendar_year   INTEGER     ENCODE zstd
+      , day_number_in_fiscal_month    INTEGER     ENCODE zstd
+      , day_number_in_fiscal_year     INTEGER     ENCODE zstd
+      , last_day_in_week_indicator    CHAR(1)     ENCODE zstd
+      , last_day_in_month_indicator   CHAR(1)     ENCODE zstd
+      , calendar_week_ending_date     DATE        ENCODE zstd
+      , calendar_week_number_in_year  INTEGER     ENCODE zstd
+      , calendar_month_name           VARCHAR(20) ENCODE zstd
+      , calendar_month_number_in_year INTEGER     ENCODE zstd
+      , calendar_year_month           CHAR(7)     ENCODE zstd
+      , calendar_quarter              INTEGER     ENCODE zstd
+      , calendar_year_quarter         CHAR(6)     ENCODE zstd
+      , calendar_half_year            CHAR(6)     ENCODE zstd
+      , calendar_year                 CHAR(4)     ENCODE zstd
+      , fiscal_week                   DATE        ENCODE zstd
+      , fiscal_week_number_in_year    INTEGER     ENCODE zstd
+      , fiscal_month                  DATE        ENCODE zstd
+      , fiscal_month_number_in_year   INTEGER     ENCODE zstd
+      , fiscal_year_month             CHAR(7)     ENCODE zstd
+      , fiscal_quarter                INTEGER     ENCODE zstd
+      , fiscal_year_quarter           CHAR(6)     ENCODE zstd
+      , fiscal_half_year              CHAR(6)     ENCODE zstd
+      , fiscal_year                   CHAR(4)     ENCODE zstd
+      , holiday_indicator             CHAR(1)     ENCODE zstd
+      , weekday_indicator             CHAR(1)     ENCODE zstd
+      , PRIMARY KEY (date_key)
+    )
+    DISTSTYLE EVEN SORTKEY(date_key)
+;
+GRANT INSERT ON common.dim_date TO copyrole;
+GRANT SELECT ON common.dim_date TO GROUP readonly;
+
+INSERT INTO common.dim_date
+SELECT * 
+  FROM common.common_dim_date_old
+;
+
+DROP TABLE common.common_dim_date_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00264_recreate_common_country_regions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE common.dim_date RENAME TO common_dim_date_old;
+
+CREATE TABLE common.dim_date
+    (
+        date_key                      INTEGER
+      , date_type                     VARCHAR(10)
+      , full_date                     DATE
+      , day_of_week_name              VARCHAR(20)
+      , day_number_in_epoch           INTEGER
+      , week_number_in_epoch          INTEGER
+      , month_number_in_epoch         INTEGER
+      , day_number_in_calendar_month  INTEGER
+      , day_number_in_calendar_year   INTEGER
+      , day_number_in_fiscal_month    INTEGER
+      , day_number_in_fiscal_year     INTEGER
+      , last_day_in_week_indicator    CHAR(1)
+      , last_day_in_month_indicator   CHAR(1)
+      , calendar_week_ending_date     DATE
+      , calendar_week_number_in_year  INTEGER
+      , calendar_month_name           VARCHAR(20)
+      , calendar_month_number_in_year INTEGER
+      , calendar_year_month           CHAR(7)
+      , calendar_quarter              INTEGER
+      , calendar_year_quarter         CHAR(6)
+      , calendar_half_year            CHAR(6)
+      , calendar_year                 CHAR(4)
+      , fiscal_week                   DATE
+      , fiscal_week_number_in_year    INTEGER
+      , fiscal_month                  DATE
+      , fiscal_month_number_in_year   INTEGER
+      , fiscal_year_month             CHAR(7)
+      , fiscal_quarter                INTEGER
+      , fiscal_year_quarter           CHAR(6)
+      , fiscal_half_year              CHAR(6)
+      , fiscal_year                   CHAR(4)
+      , holiday_indicator             CHAR(1)
+      , weekday_indicator             CHAR(1)
+      , PRIMARY KEY (date_key)
+    )
+    DISTSTYLE EVEN SORTKEY(date_key)
+;
+GRANT INSERT ON common.dim_date TO copyrole;
+GRANT SELECT ON common.dim_date TO GROUP readonly;
+
+INSERT INTO common.dim_date
+SELECT * 
+  FROM common.common_dim_date_old
+;
+
+DROP TABLE common.common_dim_date_old;

@@ -1,0 +1,123 @@
+BEGIN transaction;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all advertiser_id's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_dbm_orders 
+AS
+   WITH mrd                      
+   AS
+        (
+         SELECT
+                'mrd.dbm_orders'   AS recid
+              , advertiser_id      AS advertiser_id
+              , insertion_order_id AS insertion_order_id
+              , COUNT(*)           AS mrd_count
+           FROM
+                mrd.dbm_orders
+       GROUP BY
+                advertiser_id
+              , insertion_order_id
+        )
+      , dbm AS
+        (
+         SELECT
+                'dbm.orders'       AS recid
+              , advertiser_id      AS advertiser_id
+              , insertion_order_id AS insertion_order_id
+              , COUNT(*)           AS dbm_count
+           FROM
+                dbm.orders
+       GROUP BY
+                advertiser_id
+              , insertion_order_id
+        )
+ SELECT
+        recid
+      , advertiser_id
+      , insertion_order_id
+      , mrd_count
+      , dbm_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                           AS recid
+              , mrd.advertiser_id                                   AS advertiser_id
+              , mrd.insertion_order_id                              AS insertion_order_id
+              , mrd.mrd_count                                       AS mrd_count
+              , dbm.dbm_count                                       AS dbm_count
+              , (mrd.mrd_count::FLOAT / dbm.dbm_count::FLOAT) * 100 AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    dbm
+                 ON
+                    mrd.advertiser_id          = dbm.advertiser_id
+                    AND mrd.insertion_order_id = dbm.insertion_order_id
+        )
+  WHERE
+        percentage_to_del >= 20
+ ;
+ 
+ DELETE
+   FROM
+        mrd.dbm_orders
+  USING dbm.orders
+  WHERE
+        mrd.dbm_orders.advertiser_id          = dbm.orders.advertiser_id
+    AND 
+	    mrd.dbm_orders.insertion_order_id = dbm.orders.insertion_order_id
+    AND 
+	    0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_orders)
+    ;
+ 
+ INSERT INTO mrd.dbm_orders
+    (
+        advertiser_name
+      , advertiser_id
+      , advertiser_status
+      , advertiser_currency
+      , advertiser_time_zone
+      , insertion_order_name
+      , insertion_order_id
+      , EXTERNAL_FILE_ID
+      , EXTERNAL_FILE_ROWNUMBER
+    )
+ SELECT
+     advertiser_name
+   , advertiser_id
+   , advertiser_status
+   , advertiser_currency
+   , advertiser_time_zone
+   , insertion_order_name
+   , insertion_order_id
+   , EXTERNAL_FILE_ID
+   , EXTERNAL_FILE_ROWNUMBER
+ FROM
+     (
+      SELECT *
+           , ROW_NUMBER() Over (
+                   PARTITION BY advertiser_id
+                              , insertion_order_id) AS rownum
+        FROM
+             dbm.orders
+     )
+ WHERE
+     rownum = 1
+  AND 
+     0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_orders)
+ ;
+ 
+ DELETE
+ FROM
+     dbm.orders
+ USING mrd.dbm_orders
+ WHERE
+       mrd.dbm_orders.advertiser_id = dbm.orders.advertiser_id
+   AND 
+       mrd.dbm_orders.insertion_order_id = dbm.orders.insertion_order_id
+   AND 
+       0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_orders)
+ ;
+
+END transaction;

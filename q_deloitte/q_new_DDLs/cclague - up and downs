@@ -1,0 +1,14 @@
+cclague 
+[9:25 AM] 
+
+
+ok - at the moment this process isn’t very mature (to put it mildly)
+it’s one of the things I’m pushing for so…
+
+RetailAX/RetailAnalytics.DW/DDL
+
+This is where the source code for the db is - add any new tables here with an appropriate sequence number
+to add a column, update the existing script
+to *really* add a column to an existing table though, do that manually for now - once Darren gets into the build process this will likely change to a series of incremental scripts (something I really don’t want to do) but that’s for next week or maybe the one after
+
+

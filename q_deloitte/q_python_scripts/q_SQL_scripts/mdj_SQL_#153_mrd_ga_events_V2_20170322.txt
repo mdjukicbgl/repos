@@ -1,0 +1,137 @@
+BEGIN TRANSACTION;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_time's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_ga_events 
+AS
+   WITH mrd
+   AS
+        (
+         SELECT
+                'mrd.ga_events'    AS recid
+              , session_time::date AS session_date
+              , COUNT(*)           AS mrd_count
+           FROM
+                mrd.ga_events
+       GROUP BY
+                session_time::date
+        )
+      , ga AS
+        (
+         SELECT
+                'ga.events'        AS recid
+              , session_time::date AS session_date
+              , COUNT(*)           AS ga_count
+           FROM
+                ga.events
+       GROUP BY
+                session_time::date
+        )
+ SELECT
+        recid
+      , session_date
+      , mrd_count
+      , ga_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                         AS recid
+              , mrd.session_date                                  AS session_date
+              , mrd.mrd_count                                     AS mrd_count
+              , ga.ga_count                                       AS ga_count
+              , CASE 
+		             WHEN mrd.mrd_count::float  = 0 and ga.ga_count::float > 0 THEN 98  -- first time, load all ga
+			         WHEN mrd.mrd_count::float  > 0 and ga.ga_count::float >= mrd.mrd_count::float THEN 99  -- equal or more data comes through, load all ga
+			         WHEN mrd.mrd_count::float  > ga.ga_count::float THEN ((mrd.mrd_count::float - ga.ga_count::float) / mrd.mrd_count::float) * 100 -- calc to see if >= 20%
+		             ELSE 0
+			    END AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    ga
+                 ON
+                    mrd.session_date = ga.session_date
+        )
+  WHERE
+        percentage_to_del >= 20
+    ;
+ 
+ DELETE
+   FROM
+        mrd.ga_events
+  WHERE
+        session_time::DATE IN
+        (SELECT DISTINCT session_time::DATE FROM ga.events
+        )
+    AND 
+	    0 = (SELECT COUNT(*) FROM #tmp_mrd_ga_events)
+    ;
+ 
+ INSERT INTO mrd.ga_events
+ SELECT
+        profile_id
+      , session_time
+      , country_code
+      , device_category
+      , browser_size
+      , event_category
+      , event_action
+      , event_label
+      , total_hits
+      , total_events
+      , event_value
+      , EXTERNAL_FILE_ID
+      , EXTERNAL_FILE_ROWNUMBER
+   FROM
+        (
+         SELECT *
+              , ROW_NUMBER() Over (
+                      PARTITION BY profile_id
+                                 , session_time
+                                 , country_code
+                                 , device_category
+                                 , browser_size
+                                 , event_category
+                                 , event_action
+                                 , event_label) AS rownum
+           FROM
+                ga.events
+        )
+  WHERE
+        rownum = 1
+    AND 
+	    0 = (SELECT COUNT(*) FROM #tmp_mrd_ga_events)
+    ;
+
+--add current timezone
+UPDATE
+    mrd.ga_events
+SET profile_timezone = profile.profile_timezone
+FROM
+    mrd.ga_profiles profile
+WHERE
+    ga_events.profile_id = profile.profile_id
+    AND ga_events.profile_timezone IS NULL
+;
+
+DELETE
+FROM
+    ga.events
+USING mrd.ga_events
+WHERE
+    mrd.ga_events.profile_id          = ga.events.profile_id
+    AND mrd.ga_events.session_time    = ga.events.session_time
+    AND mrd.ga_events.country_code    = ga.events.country_code
+    AND mrd.ga_events.device_category = ga.events.device_category
+    AND mrd.ga_events.browser_size    = ga.events.browser_size
+    AND mrd.ga_events.event_category  = ga.events.event_category
+    AND mrd.ga_events.event_action    = ga.events.event_action
+    AND mrd.ga_events.event_label     = ga.events.event_label
+    AND 
+	    0 = (SELECT COUNT(*) FROM #tmp_mrd_ga_events)
+;
+
+SELECT COUNT(*) FROM ga.events;
+
+END transaction;

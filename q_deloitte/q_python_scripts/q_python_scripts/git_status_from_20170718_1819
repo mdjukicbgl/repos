@@ -1,0 +1,516 @@
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git_help
+#=======================================
+#IT commands of interest
+#======================================
+#cd ~/repos/bigdata
+#OLD repository --> git clone git@bitbucket.org:redshiftbievolution/testframework.git testframework-local
+### C&W --> git clone git@bitbucket.org:redshiftbievolution/redshiftbitest.git
+#git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/bigdata
+#git config --global user.name Marko Djukic 
+#git config --global user.email markodjukic@cloudbilimited.com 
+
+#The credentials.helper cache command will stop you from having to enter your credentials, everytime you push to git
+# Comment from Neil: I am hoping if you enter your creds one more detail it will cache them - let me know!
+#git config --global credential.helper cache
+
+#git add redshift.cfg
+#git commit -m <adding redshift.cfg file>
+#git push
+#see: https://confluence.atlassian.com/display/BITBUCKET/Clone+Your+Git+Repo+and+Add+Source+Files
+======================================
+= The following command will rename a files to a new label
+
+#git mv 00012_create_table_sql_server_audit_system.sql 00012_create_table_sql_server_audit_systemdetail.sql
+======================================
+= The following commands will initialize the mdj_home repostiory, to checkin objects from teh home direcotry
+
+# git init
+# cd /Users/mdjukic/repos/mdj_home
+# git add * 
+# git commit -m adding_a_comment_here 
+# git push -u origin master
+======================================
+
+
+1.19 Switching Branches
+Great! Now if you type git branch you""ll see two local branches: 
+a main branch named master and your new branch named clean_up.
+
+You can switch branches using the:
+ git checkout <branch> command. 
+
+Try it now to switch to the clean_up branch:
+
+git checkout clean_up
+
+NOTE: By passing in the -b option when executing the checkout command, a new branch will be created and you will be switched over thereafter.
+
+You can use:
+git checkout -b new_branch
+to checkout and create a branch at the same time. This is the same thing as doing:
+git branch new_branch
+git checkout new_branch
+
+###########################################################################
+# to pull all new code, use git pull
+ git pull https://deloitteproducts.visualstudio.com/_git/RetailAX
+###########################################################################
+
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX : git branch feature/4645
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX : git branch
+  feature/4645
+  help
+  list
+* master
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX : git checkout feature/4645
+Switched to branch 'feature/4645'
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX : git branch
+* feature/4645
+  help
+  list
+  master
+
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git status
+On branch feature/4645
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    LoadTransform.py
+    LoadTransform_Makefile
+    LoadTransform_requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git add ./LoadTransform.py
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git status
+On branch feature/4645
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   LoadTransform.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    LoadTransform_Makefile
+    LoadTransform_requirements.txt
+
+
+
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git commit -m "Python Framework for calling SQL transforms"
+[feature/4645 55ec157] Python Framework for calling SQL transforms
+ 1 file changed, 448 insertions(+)
+ create mode 100755 RetailAnalytics.ETL/LoadTransform.py
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git status
+On branch feature/4645
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    LoadTransform_Makefile
+    LoadTransform_requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git push
+fatal: The current branch feature/4645 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin feature/4645
+
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : lth 
+total 96
+-rwxr-xr-x@  1 mdjukic  1741217763  11802 Jul 18 18:08 LoadTransform.py
+-rw-r--r--   1 mdjukic  1741217763    225 Jul 18 11:18 LoadTransform_requirements.txt
+-rw-rw-r--   1 mdjukic  1741217763    887 Jul 18 11:16 LoadTransform_Makefile
+drwxrwxr-x   6 mdjukic  1741217763    204 Jul 17 17:58 GenerateNewUpdate
+-rw-rw-r--   1 mdjukic  1741217763  16692 Jul 17 17:58 LoadStaging.py
+-rw-rw-r--   1 mdjukic  1741217763    867 Jul 17 17:58 Makefile
+drwxrwxr-x  14 mdjukic  1741217763    476 Jul 17 17:58 TestFiles
+drwxrwxr-x   6 mdjukic  1741217763    204 Jul 17 17:58 TestSQL
+drwxrwxr-x   6 mdjukic  1741217763    204 Jul 17 17:58 UpdateDB
+-rw-rw-r--   1 mdjukic  1741217763     36 Jul 17 17:58 requirements.txt
+drwxrwxr-x   4 mdjukic  1741217763    136 Jul 17 17:58 vendor
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : git status
+On branch feature/4645
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    LoadTransform_Makefile
+    LoadTransform_requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : 
+
+##########################################################################################
+# previous requirements.txt file...in /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL
+##########################################################################################
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : cat requirements.txt
+requests
+boto
+smart_open
+jsonschema
+##########################################################################################
+# previous Makefile...in /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL
+##########################################################################################
+(mynewapp) mdjukic@uk179494:/Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL : cat Makefile
+ACCOUNT_ID = 028272314838
+ROLE_NAME = ra-md-poc-lambda
+FUNCTION_NAME = LoadStaging
+REGION = eu-west-1
+TIMEOUT = 300
+MEMORY_SIZE = 512
+ZIPFILE_NAME = LoadStaging.zip
+HANDLER = LoadStaging.lambda_handler
+
+clean_pyc :
+  find . | grep .pyc$ | xargs rm
+
+install_deps :
+  pip install -r requirements.txt -t lib
+  pip install psycopg2 -t vendor
+
+build : install_deps clean_pyc
+  zip $(ZIPFILE_NAME) -r *
+  zip $(ZIPFILE_NAME) -r lib/*
+  zip $(ZIPFILE_NAME) -r vendor/*
+
+create : build
+  aws lambda create-function --region $(REGION) --function-name $(FUNCTION_NAME) --zip-file fileb://$(ZIPFILE_NAME) --role arn:aws:iam::$(ACCOUNT_ID):role/$(ROLE_NAME)  --handler $(HANDLER) --runtime python2.7 --timeout $(TIMEOUT) --memory-size $(MEMORY_SIZE)
+
+update : build
+  aws lambda update-function-code --region $(REGION) --function-name $(FUNCTION_NAME) --zip-file fileb://$(ZIPFILE_NAME)
+#
+##########################################################################################
+# To run this, to build for the first time, run:
+##########################################################################################
+#
+cd /Users/mdjukic/repos/RetailAX/RetailAnalytics.ETL
+make create --debug
+#
+# the following will be displayed if successful
+#
+aws lambda create-function --region eu-west-1 --function-name LoadTransform --zip-file fileb://LoadTransform.zip --role arn:aws:iam::028272314838:role/ra-md-poc-lambda  --handler LoadTransform.lambda_handler --runtime python2.7 --timeout 300 --memory-size 512
+{
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    }, 
+    "CodeSha256": "4vze58XJooJVRPtuLpjpp2PV/hGoCQLXIMd+6hXY+0g=", 
+    "FunctionName": "LoadTransform", 
+    "CodeSize": 5893867, 
+    "MemorySize": 512, 
+    "FunctionArn": "arn:aws:lambda:eu-west-1:028272314838:function:LoadTransform", 
+    "Version": "$LATEST", 
+    "Role": "arn:aws:iam::028272314838:role/ra-md-poc-lambda", 
+    "Timeout": 300, 
+    "LastModified": "2017-07-19T11:29:41.155+0000", 
+    "Handler": "LoadTransform.lambda_handler", 
+    "Runtime": "python2.7", 
+    "Description": ""
+}
+Successfully remade target file `create'.
+#
+##########################################################################################
+# Config Environment Variables.....
+##########################################################################################
+#
+ERROR_FOLDER=error/
+LOG_FOLDER=log/
+PROCESSED_FOLDER=processed/
+SCHEMA_FOLDER=schema/
+STAGING_FOLDER=staging/
+HOST=mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com
+PORT=5439
+DBNAME=markdown
+USER=mkdwn
+PASS=378dhsdkdnDsj.mDs
+ACCESS_KEY_ID=AKIAI5NP72AY435VHQUA
+SECRET_ACCESS_KEY=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
+
+
+aws lambda update-function-code --region eu-west-1 --function-name LoadTransform --zip-file fileb://LoadTransform.zip
+{
+    "FunctionName": "LoadTransform", 
+    "LastModified": "2017-07-19T16:04:09.520+0000", 
+    "MemorySize": 512, 
+    "Environment": {
+        "Variables": {
+            "LOG_FOLDER": "log/", 
+            "TRANSFORM_FLAG_LABELS": "-t TestSQL/SELECT_stlloaderrors.sql TestSQL/UPDATE_stlloaderrors.sql TestSQL/SELECT_stlloaderrors.sql", 
+            "SCHEMA_FOLDER": "schema/", 
+            "ERROR_FOLDER": "error/", 
+            "PROCESSED_FOLDER": "processed/", 
+            "SECRET_ACCESS_KEY": "99xXfPHoSK5dnHiJfPcywBWe7vSXLLx7xeRI0JN7", 
+            "DBNAME": "markdown", 
+            "STAGING_FOLDER": "staging/", 
+            "HOST": "mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com", 
+            "USER": "mkdwn", 
+            "ACCESS_KEY_ID": "AKIAI5NP72AY435VHQUA", 
+            "BATCH_FLAG_ID": "-b 123456", 
+            "PORT": "5439", 
+            "PASS": "378dhsdkdnDsj.mDs"
+        }
+    }, 
+    "Version": "$LATEST", 
+    "Role": "arn:aws:iam::028272314838:role/ra-md-poc-lambda", 
+    "Timeout": 300, 
+    "Runtime": "python2.7", 
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    }, 
+    "CodeSha256": "vLV/c8/DBZwLjxE2+rRhDpjr7JWy8DUFsRFJkbQgNQc=", 
+    "Description": "Python Framework for loading of SQL transforms", 
+    "VpcConfig": {
+        "SubnetIds": [
+            "subnet-1b4a4f6d", 
+            "subnet-8fe9eeeb"
+        ], 
+        "VpcId": "vpc-9e1626fa", 
+        "SecurityGroupIds": [
+            "sg-39448340"
+        ]
+    }, 
+    "CodeSize": 5894730, 
+    "FunctionArn": "arn:aws:lambda:eu-west-1:028272314838:function:LoadTransform", 
+    "Handler": "LoadTransform.lambda_handler"
+}
+
+
+##########################################################################################
+# Configure lambda test.....
+##########################################################################################
+
+{
+  "key3": "value3",
+  "TRANSFORM_FLAG_LABELS": "TestSQL/SELECT_stlloaderrors.sql",
+  "BATCH_FLAG_ID": "-b 987654"
+}
+
+
+#
+##########################################################################################
+# Exported variables.....
+##########################################################################################
+#
+declare -x DBNAME="markdown"
+declare -x DW_DATABASE="markdown"
+declare -x DW_HOST="mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com"
+declare -x DW_PASS="378dhsdkdnDsj.mDs"
+declare -x DW_PORT="5439"
+declare -x DW_USER="mkdwn"
+
+
+#
+##########################################################################################
+# logging to Cloudwatch.....
+##########################################################################################
+#
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def my_logging_handler(event, context):
+    logger.info('got event{}'.format(event))
+    logger.error('something went wrong')
+    return 'Hello World!' 
+
+
+-t TestSQL/SELECT_stlloaderrors.sql TestSQL/UPDATE_stlloaderrors.sql TestSQL/SELECT_stlloaderrors.sql
+
+
+##########################################################################################
+# aws lambda update-function-code....
+##########################################################################################
+aws lambda update-function-code --region eu-west-1 --function-name LoadTransform --zip-file fileb://LoadTransform.zip
+{
+    "FunctionName": "LoadTransform", 
+    "LastModified": "2017-07-20T15:58:54.647+0000", 
+    "MemorySize": 512, 
+    "Environment": {
+        "Variables": {
+            "LOG_FOLDER": "log/", 
+            "TRANSFORM_FLAG_LABELS": "-t TestSQL/SELECT_stlloaderrors.sql TestSQL/UPDATE_stlloaderrors.sql TestSQL/SELECT_stlloaderrors.sql", 
+            "SCHEMA_FOLDER": "schema/", 
+            "ERROR_FOLDER": "error/", 
+            "PROCESSED_FOLDER": "processed/", 
+            "SECRET_ACCESS_KEY": "99xXfPHoSK5dnHiJfPcywBWe7vSXLLx7xeRI0JN7", 
+            "DBNAME": "markdown", 
+            "STAGING_FOLDER": "staging/", 
+            "HOST": "mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com", 
+            "USER": "mkdwn", 
+            "ACCESS_KEY_ID": "AKIAI5NP72AY435VHQUA", 
+            "BATCH_FLAG_ID": "-b 123456", 
+            "PORT": "5439", 
+            "PASS": "378dhsdkdnDsj.mDs"
+        }
+    }, 
+    "Version": "$LATEST", 
+    "Role": "arn:aws:iam::028272314838:role/ra-md-poc-lambda", 
+    "Timeout": 300, 
+    "Runtime": "python2.7", 
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    }, 
+    "CodeSha256": "DPxr8dTOsgOXIRlOY2GTbi12W9VCNzt5jsWEbXqhzbA=", 
+    "Description": "Python Framework for loading of SQL transforms", 
+    "VpcConfig": {
+        "SubnetIds": [
+            "subnet-1b4a4f6d", 
+            "subnet-8fe9eeeb"
+        ], 
+        "VpcId": "vpc-9e1626fa", 
+        "SecurityGroupIds": [
+            "sg-39448340"
+        ]
+    }, 
+    "CodeSize": 5945753, 
+    "FunctionArn": "arn:aws:lambda:eu-west-1:028272314838:function:LoadTransform", 
+    "Handler": "LoadTransform.lambda_handler"
+}
+
+##########################################################################################
+# comment line used within python scripts
+##########################################################################################
+#
+SELECT 'PROGRESS COUNTER - SELECT STATEMENT RUNNING ON TABLE mdj.mdj_stlloaderrors_with_null_userid';
+
+
+-t TestSQL/SELECT_mdj_stlloaderrors_with_null_userid.sql TestSQL/UPDATE_mdj_stlloaderrors_with_null_userid_multirecs.sql TestSQL/DELETE_mdj_stlloaderrors_with_null_userid.sql TestSQL/SELECT_mdj_stlloaderrors_with_null_userid.sql
+
+#
+##########################################################################################
+# run LoadTransform.py and list log via catfirst...have to be in dir LOG
+##########################################################################################
+#
+LoadTransform.py ${BATCH_FLAG_ID} ${TRANSFORM_FLAG_LABELS}
+catfirst
+
+#
+##########################################################################################
+# regexp..... 
+##########################################################################################
+#
+>>> import re
+>>> regex = re.compile(r".*?var:(.*?);")
+>>> regex.sub(r"\1test", "fksf var:asfkj;")
+'asfkjtest'
+
+#
+##########################################################################################
+# to merge code, from feature branch into Master..... 
+##########################################################################################
+#
+tfs
+--> Code
+ --> Pull Requests
+  --> Make sure you are merging from feature/4645 ( in this example ) into Master
+   --> Enter Title ->  Merge feature/4645 to master - Transform Frameword
+    --> Description -> Python Transform Framework for the processing of Transform files into Redshift
+     --> Reviewers -> [RetailAX]\RetailAX Team
+      --> Work Items -> Select 4656 (Item Should appear under this box, else it is not selected)
+       --> Select -> Create  
+        --> Select Revierers -> In this case, select clague - just have a quiet word with him to the effect
+
+NOTE: Richard will merge the code first thing in the morning, after approval from Chris is forthcoming..
+##########################################################################################
+# Merging feature/4645 which was the development environment for LoadTransform.py into 
+# feature/4352, the new branch upon which to work
+##########################################################################################
+#
+git checkout feature/4352
+# Switched to branch 'feature/4352'
+git merge feature/4645     
+
+Merge made by the 'recursive' strategy.
+ RetailAnalytics.ETL/LoadTransform.py                                                | 595 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ RetailAnalytics.ETL/Makefile                                                        |   6 +-
+ RetailAnalytics.ETL/TestSQL/DELETE_mdj_stlloaderrors_with_null_userid.sql           |   9 ++
+ RetailAnalytics.ETL/TestSQL/INSERT_mdj_stlloaderrors_with_null_userid.sql           |   3 +
+ RetailAnalytics.ETL/TestSQL/SELECT_mdj_stlloaderrors_with_null_userid.sql           |   9 ++
+ RetailAnalytics.ETL/TestSQL/SELECT_stlloaderrors.sql                                |   3 +
+ RetailAnalytics.ETL/TestSQL/SELECT_stlloaderrors_invalid_schema.sql                 |   3 +
+ RetailAnalytics.ETL/TestSQL/UPDATE_mdj_stlloaderrors_with_null_userid.sql           |  29 ++++++
+ RetailAnalytics.ETL/TestSQL/UPDATE_mdj_stlloaderrors_with_null_userid_multirecs.sql |  38 ++++++++
+ RetailAnalytics.ETL/TestSQL/UPDATE_stlloaderrors.sql                                |   6 ++
+ RetailAnalytics.ETL/requirements.txt                                                |  15 +++-
+ 11 files changed, 710 insertions(+), 6 deletions(-)
+ create mode 100644 RetailAnalytics.ETL/LoadTransform.py
+ create mode 100644 RetailAnalytics.ETL/TestSQL/DELETE_mdj_stlloaderrors_with_null_userid.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/INSERT_mdj_stlloaderrors_with_null_userid.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/SELECT_mdj_stlloaderrors_with_null_userid.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/SELECT_stlloaderrors.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/SELECT_stlloaderrors_invalid_schema.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/UPDATE_mdj_stlloaderrors_with_null_userid.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/UPDATE_mdj_stlloaderrors_with_null_userid_multirecs.sql
+ create mode 100644 RetailAnalytics.ETL/TestSQL/UPDATE_stlloaderrors.sql
+
+NOTES, below:
+
+From what I understand, you have one remote foo, containing branch_1 and branch_2. 
+First, we can't do merge operation remotly. 
+We have to track the remote repository, do the operation we want locally (such as merging branches) and then push our new snapshot to the server.
+
+ie:
+
+git clone [repo_adress]
+You are on the master branch.
+
+You can then checkout or create other branches and do your work in it.
+Now suppose we have the two branches branch_1 and branch_2. You want to merge branch_1 into branch_2 and then delete branch_1.
+
+You checkout to branch_2 and then merge branch_1 with it:
+
+
+$ git checkout branch_2
+$ git merge branch_1
+
+From there either the merge is smooth either you've got conflict. Once the merge is done, you can delete the merged branch i.e branch_1 by doing,
+
+##########################################################################################
+# use these variables for testing.....
+##########################################################################################
+
+
+-b 26071144
+-t /Users/mdjukic/Desktop/q_python_scripts/q_TransformScripts/dim_channel.sql
+   /Users/mdjukic/Desktop/q_python_scripts/q_TransformScripts/dim_channel.sql
+
+
+
+git merge feature/4645 
+
+Heeey, yes, I'm pretty good thanks...can't complain.  
+I hope you are well...you are, right??  I hope that your mother is doing well??  Has she seen her great-grandson?? 
+I hope the Yasmin and her boys are all well.  
+
+This past Wednesday, I know, was an awfully import day for you, and a naff WhatsApp msg doesn't quite carry the same cache as a card. 
+I would have made more of an effort, but last time we spoke, you were very clear that you didn't want to do anything at weekends, with the 
+arrival of your grandson, and weekdays are quite busy for you, juggling appointments of one kind and another.  If things change...xxx
+------
+Hi!!  Really good to hear that everybody is well.  That's good news.
+Yes, I'm in London. 
+Dinner sounds like a nice idea, however, I have a better idea...
+Come to Bristol Sat & Sun 12th & 13th August, for the Balloon Fiesta.
+Fancy being spoilt for a weekend??  Of course you do, as I've no doubt, you could do with an enjoyable weekend away.
+You have always liked Bristol, when we have been there previously, 
+and this time should be no different, as we have the balloons to enjoy, 
+plus the Night Glow, and finally the fireworks.
+You can talk my ear off, in a very relaxing environment.
+How about it??
+------
+
+
+
+##########################################################################################
+# use these variables for testing.....
+##########################################################################################
+
+
+./LoadTransform.py ${BATCH_FLAG_ID} ${TRANSFORM_FLAG_LABELS}
+
+catfirst
+
+
+
+
+
+
+
+

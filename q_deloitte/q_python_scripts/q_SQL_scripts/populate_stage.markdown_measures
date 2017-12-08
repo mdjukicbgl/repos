@@ -1,0 +1,130 @@
+
+--truncate table stage.markdown_measures
+
+--select top 11 * from stage.markdown_measures
+
+
+INSERT
+INTO    stage.markdown_measures_temp
+(         
+    --  batch_id
+    --, dim_retailer_id
+    --, 
+      calendar_date
+    , retailer_bkey
+    , product_bkey
+    , geography_bkey
+    , currency_bkey
+    , seasonality_bkey
+    , junk_bkey
+    , price_status_bkey
+    , channel_bkey
+    , gross_margin
+    , markdown_price
+    , markdown_cost
+    , cost_price
+    , system_price
+    , selling_price    
+    , original_selling_price
+    , optimisation_original_selling_price
+    , local_tax_rate
+    , sales_value
+    , sales_quantity
+    , store_stock_value
+    , store_stock_quantity
+    , depot_stock_value
+    , depot_stock_quantity
+    , clearance_sales_value
+    , clearance_sales_quantity
+    , promotion_sales_value
+    , promotion_sales_quantity
+    , store_stock_value_no_negatives
+    , store_stock_quantity_no_negatives
+    , intake_plus_future_commitment_quantity
+    , intake_plus_future_commitment_value
+    , total_stock_value
+    , total_stock_quantity
+)
+
+SELECT top 1000
+          --1 AS batch_id
+        --, 0 AS dim_retailer_id   
+        --, 
+        cast(dte.calendar_date as date)
+        , ret.retailer_bkey
+        , coalesce(prd.product_bkey, '-1')
+        , coalesce(geo.geography_bkey, '-1')
+        , coalesce(curr.iso_currency_code, '-1')
+        , coalesce(seas.seasonality_bkey, '-1')
+        , coalesce(junk.batch_id, '-1') as junk_bkey
+        , coalesce(dps.price_status_bkey, '-1')
+        , coalesce(chan.channel_bkey, '-1')
+        , scanned_margin as gross_margin
+        , markdown_price
+        , markdown_cost
+        , cost_price
+        , full_price as system_price
+        , current_selling_price as selling_price
+        , original_selling_price
+        , optimisation_osp as optimisation_original_selling_price
+        , vat as local_tax_rate
+        , sales_value
+        , sales_volume as sales_quantity
+        , store_stock_value_no_negatives as store_stock_value
+        , store_stock_volume_no_negatives as store_stock_quantity
+        , depot_stock_value
+        , depot_stock_volume as depot_stock_quantity
+        , clearance_sales_value
+        , clearance_sales_quantity
+        , promotion_sales_value
+        , promotion_sales_quantity
+        , store_stock_value as store_stock_value_no_negatives
+        , store_stock_volume as store_stock_quantity_no_negatives
+        , intake_plus_future_commitment_volume as intake_plus_future_commitment_quantity
+        , intake_plus_future_commitment_value
+        , total_stock_value
+        , total_stock_volume as total_stock_quantity
+
+
+FROM
+          sales.fact_weekly_sales_basic mdn
+
+          LEFT OUTER JOIN
+                    conformed.dim_date dte
+          ON
+                    dte.dim_date_id = mdn.dim_date_id
+          LEFT OUTER JOIN
+                    conformed.dim_retailer ret
+          ON
+                    ret.dim_retailer_id = mdn.dim_retailer_id
+          LEFT OUTER JOIN
+                    conformed.dim_product prd
+          ON
+                    prd.dim_product_id = mdn.dim_product_id
+          LEFT OUTER JOIN
+                    conformed.dim_geography geo
+          ON
+                    geo.dim_geography_id = mdn.dim_geography_id
+          LEFT OUTER JOIN
+                    conformed.dim_currency curr
+          ON
+                    curr.dim_currency_id = mdn.dim_currency_id
+          LEFT OUTER JOIN
+                    conformed.dim_seasonality seas
+          ON
+                    seas.dim_seasonality_id = mdn.dim_seasonality_id
+          LEFT OUTER JOIN
+                    sales.dim_junk junk
+          ON
+                    junk.dim_junk_id = mdn.dim_junk_id
+          LEFT OUTER JOIN
+                    markdown.dim_price_status dps
+          ON
+                    dps.dim_price_status_id = mdn.dim_price_status_id
+          LEFT OUTER JOIN
+                    conformed.dim_channel chan
+          ON
+                    chan.dim_channel_id = mdn.dim_channel_id
+;
+
+

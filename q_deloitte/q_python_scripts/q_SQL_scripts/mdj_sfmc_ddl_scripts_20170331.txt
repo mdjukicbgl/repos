@@ -1,0 +1,1018 @@
+
+###. ${HOME}/bigdataconfig.py; /usr/bin/psql -q --host=${redshifthostname} --port=${redshiftport} --username=${myredshiftusername} --dbname=${myredshiftdbname} -f $i
+		
+
+---------------------------------------------------------------------------------------------------
+-- touch 00265_recreate_sfmc_attributes.sql
+-- touch 00265_recreate_sfmc_attributes_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.attributes RENAME TO sfmc_attributes_old;
+
+CREATE TABLE sfmc.attributes
+    (
+        clientid                BIGINT ENCODE zstd
+      , subscriberid            BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.attributes TO copyrole;
+GRANT SELECT ON sfmc.attributes TO GROUP readonly;
+
+INSERT INTO sfmc.attributes
+SELECT * 
+  FROM sfmc.sfmc_attributes_old
+;
+
+DROP TABLE sfmc.sfmc_attributes_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00265_recreate_sfmc_attributes_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.attributes RENAME TO sfmc_attributes_old;
+
+CREATE TABLE sfmc.attributes
+    (
+        clientid                BIGINT
+      , subscriberid            BIGINT
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.attributes TO copyrole;
+GRANT SELECT ON sfmc.attributes TO GROUP readonly;
+
+INSERT INTO sfmc.attributes
+SELECT * 
+  FROM sfmc.sfmc_attributes_old
+;
+
+DROP TABLE sfmc.sfmc_attributes_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00266_recreate_sfmc_bounces.sql
+-- touch 00266_recreate_sfmc_bounces_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.bounces RENAME TO sfmc_bounces_old;
+
+CREATE TABLE sfmc.bounces
+    (
+        clientid                 BIGINT        ENCODE zstd
+      , sendid                   BIGINT        ENCODE zstd
+      , subscriberid             BIGINT        ENCODE zstd
+      , listid                   BIGINT        ENCODE zstd
+      , eventdate                TIMESTAMP     ENCODE zstd
+      , eventtype                VARCHAR(20)   ENCODE zstd
+      , bouncecategory           VARCHAR(50)   ENCODE zstd
+      , smtpcode                 SMALLINT      ENCODE zstd
+      , bouncereason             VARCHAR(8000) ENCODE zstd
+      , batchid                  VARCHAR(100)  ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100)  ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT        ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.bounces TO copyrole;
+GRANT SELECT ON sfmc.bounces TO GROUP readonly;
+
+INSERT INTO sfmc.bounces
+SELECT * 
+  FROM sfmc.sfmc_bounces_old
+;
+
+DROP TABLE sfmc.sfmc_bounces_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00266_recreate_sfmc_bounces_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.bounces RENAME TO sfmc_bounces_old;
+
+CREATE TABLE sfmc.bounces
+    (
+        clientid                 BIGINT 
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , bouncecategory           VARCHAR(50)
+      , smtpcode                 SMALLINT
+      , bouncereason             VARCHAR(8000)
+      , batchid                  VARCHAR(100)
+      , triggeredsendexternalkey VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.bounces TO copyrole;
+GRANT SELECT ON sfmc.bounces TO GROUP readonly;
+
+INSERT INTO sfmc.bounces
+SELECT * 
+  FROM sfmc.sfmc_bounces_old
+;
+
+DROP TABLE sfmc.sfmc_bounces_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00267_recreate_sfmc_clickimpression.sql
+-- touch 00267_recreate_sfmc_clickimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.clickimpression RENAME TO sfmc_clickimpression_old;
+
+CREATE TABLE sfmc.clickimpression
+    (
+        clientid                 BIGINT        ENCODE zstd
+      , sendid                   BIGINT        ENCODE zstd
+      , subscriberid             BIGINT        ENCODE zstd
+      , listid                   BIGINT        ENCODE zstd
+      , eventdate                TIMESTAMP     ENCODE zstd
+      , eventtype                VARCHAR(20)   ENCODE zstd
+      , sendurlid                BIGINT        ENCODE zstd
+      , urlid                    BIGINT        ENCODE zstd
+      , url                      VARCHAR(4000) ENCODE zstd
+      , ALIAS                    VARCHAR(500)  ENCODE zstd
+      , batchid                  BIGINT        ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100)  ENCODE zstd
+      , impressionregionname     VARCHAR(60)   ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT        ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.clickimpression TO copyrole;
+GRANT SELECT ON sfmc.clickimpression TO GROUP readonly;
+
+INSERT INTO sfmc.clickimpression
+SELECT * 
+  FROM sfmc.sfmc_clickimpression_old
+;
+
+DROP TABLE sfmc.sfmc_clickimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00267_recreate_sfmc_clickimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.clickimpression RENAME TO sfmc_clickimpression_old;
+
+CREATE TABLE sfmc.clickimpression
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , sendurlid                BIGINT
+      , urlid                    BIGINT
+      , url                      VARCHAR(4000)
+      , ALIAS                    VARCHAR(500)
+      , batchid                  BIGINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , impressionregionname     VARCHAR(60)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.clickimpression TO copyrole;
+GRANT SELECT ON sfmc.clickimpression TO GROUP readonly;
+
+INSERT INTO sfmc.clickimpression
+SELECT * 
+  FROM sfmc.sfmc_clickimpression_old
+;
+
+DROP TABLE sfmc.sfmc_clickimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00268_recreate_sfmc_clicks.sql
+-- touch 00268_recreate_sfmc_clicks_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.clicks RENAME TO sfmc_clicks_old;
+
+CREATE TABLE sfmc.clicks
+    (
+        clientid                 BIGINT        ENCODE zstd
+      , sendid                   BIGINT        ENCODE zstd
+      , subscriberid             BIGINT        ENCODE zstd
+      , listid                   BIGINT        ENCODE zstd
+      , eventdate                TIMESTAMP     ENCODE zstd
+      , eventtype                VARCHAR(20)   ENCODE zstd
+      , sendurlid                BIGINT        ENCODE zstd
+      , urlid                    BIGINT        ENCODE zstd
+      , url                      VARCHAR(4000) ENCODE zstd
+      , ALIAS                    VARCHAR(500)  ENCODE zstd
+      , batchid                  BIGINT        ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100)  ENCODE zstd
+      , browser                  VARCHAR(100)  ENCODE zstd
+      , emailclient              VARCHAR(100)  ENCODE zstd
+      , operatingsystem          VARCHAR(100)  ENCODE zstd
+      , device                   VARCHAR(100)  ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT        ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.clicks TO copyrole;
+GRANT SELECT ON sfmc.clicks TO GROUP readonly;
+
+INSERT INTO sfmc.clicks
+SELECT * 
+  FROM sfmc.sfmc_clicks_old
+;
+
+DROP TABLE sfmc.sfmc_clicks_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00268_recreate_sfmc_clicks_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.clicks RENAME TO sfmc_clicks_old;
+
+CREATE TABLE sfmc.clicks
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , sendurlid                BIGINT
+      , urlid                    BIGINT
+      , url                      VARCHAR(4000)
+      , ALIAS                    VARCHAR(500)
+      , batchid                  BIGINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , browser                  VARCHAR(100)
+      , emailclient              VARCHAR(100)
+      , operatingsystem          VARCHAR(100)
+      , device                   VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.clicks TO copyrole;
+GRANT SELECT ON sfmc.clicks TO GROUP readonly;
+
+INSERT INTO sfmc.clicks
+SELECT * 
+  FROM sfmc.sfmc_clicks_old
+;
+
+DROP TABLE sfmc.sfmc_clicks_old;
+
+*** upto here
+---------------------------------------------------------------------------------------------------
+-- touch 00269_recreate_sfmc_conversions.sql
+-- touch 00269_recreate_sfmc_conversions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.conversions RENAME TO sfmc_conversions_old;
+
+CREATE TABLE sfmc.conversions
+    (
+        clientid                 BIGINT        ENCODE zstd
+      , sendid                   BIGINT        ENCODE zstd
+      , subscriberid             BIGINT        ENCODE zstd
+      , listid                   BIGINT        ENCODE zstd
+      , eventdate                TIMESTAMP     ENCODE zstd
+      , eventtype                VARCHAR(20)   ENCODE zstd
+      , sendurlid                BIGINT        ENCODE zstd
+      , urlid                    BIGINT        ENCODE zstd
+      , url                      VARCHAR(4000) ENCODE zstd
+      , ALIAS                    VARCHAR(500)  ENCODE zstd
+      , batchid                  SMALLINT      ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100)  ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT        ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT        ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.conversions TO copyrole;
+GRANT SELECT ON sfmc.conversions TO GROUP readonly;
+
+INSERT INTO sfmc.conversions
+SELECT * 
+  FROM sfmc.sfmc_conversions_old
+;
+
+DROP TABLE sfmc.sfmc_conversions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00269_recreate_sfmc_conversions_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.conversions RENAME TO sfmc_conversions_old;
+
+CREATE TABLE sfmc.conversions
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , sendurlid                BIGINT
+      , urlid                    BIGINT
+      , url                      VARCHAR(4000)
+      , ALIAS                    VARCHAR(500)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.conversions TO copyrole;
+GRANT SELECT ON sfmc.conversions TO GROUP readonly;
+
+INSERT INTO sfmc.conversions
+SELECT * 
+  FROM sfmc.sfmc_conversions_old
+;
+
+DROP TABLE sfmc.sfmc_conversions_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00270_recreate_sfmc_listmembershipchanges.sql
+-- touch 00270_recreate_sfmc_listmembershipchanges_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.listmembershipchanges RENAME TO sfmc_listmembershipchanges_old;
+
+CREATE TABLE sfmc.listmembershipchanges
+    (
+        clientid                BIGINT       ENCODE zstd
+      , sendid                  BIGINT       ENCODE zstd
+      , subscriberid            BIGINT       ENCODE zstd
+      , listid                  BIGINT       ENCODE zstd
+      , listname                VARCHAR(500) ENCODE zstd
+      , datejoined              TIMESTAMP    ENCODE zstd
+      , jointype                VARCHAR(20)  ENCODE zstd
+      , dateunsubscribed        TIMESTAMP    ENCODE zstd
+      , unsubscribereason       VARCHAR(100) ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.listmembershipchanges TO copyrole;
+GRANT SELECT ON sfmc.listmembershipchanges TO GROUP readonly;
+
+INSERT INTO sfmc.listmembershipchanges
+SELECT * 
+  FROM sfmc.sfmc_listmembershipchanges_old
+;
+
+DROP TABLE sfmc.sfmc_listmembershipchanges_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00270_recreate_sfmc_listmembershipchanges_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.listmembershipchanges RENAME TO sfmc_listmembershipchanges_old;
+
+CREATE TABLE sfmc.listmembershipchanges
+    (
+        clientid                BIGINT
+      , sendid                  BIGINT
+      , subscriberid            BIGINT
+      , listid                  BIGINT
+      , listname                VARCHAR(500)
+      , datejoined              TIMESTAMP
+      , jointype                VARCHAR(20)
+      , dateunsubscribed        TIMESTAMP
+      , unsubscribereason       VARCHAR(100)
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.listmembershipchanges TO copyrole;
+GRANT SELECT ON sfmc.listmembershipchanges TO GROUP readonly;
+
+INSERT INTO sfmc.listmembershipchanges
+SELECT * 
+  FROM sfmc.sfmc_listmembershipchanges_old
+;
+
+DROP TABLE sfmc.sfmc_listmembershipchanges_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00271_recreate_sfmc_lists.sql
+-- touch 00271_recreate_sfmc_lists_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.lists RENAME TO sfmc_lists_old;
+
+CREATE TABLE sfmc.lists
+    (
+        clientid                BIGINT       ENCODE zstd
+      , listid                  BIGINT       ENCODE zstd
+      , name                    VARCHAR(100) ENCODE zstd
+      , description             VARCHAR(100) ENCODE zstd
+      , datecreated             TIMESTAMP    ENCODE zstd
+      , status                  VARCHAR(20)  ENCODE zstd
+      , listtype                VARCHAR(20)  ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.lists TO copyrole;
+GRANT SELECT ON sfmc.lists TO GROUP readonly;
+
+INSERT INTO sfmc.lists
+SELECT * 
+  FROM sfmc.sfmc_lists_old
+;
+
+DROP TABLE sfmc.sfmc_lists_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00271_recreate_sfmc_lists_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.lists RENAME TO sfmc_lists_old;
+
+CREATE TABLE sfmc.lists
+    (
+        clientid                BIGINT
+      , listid                  BIGINT
+      , name                    VARCHAR(100)
+      , description             VARCHAR(100)
+      , datecreated             TIMESTAMP
+      , status                  VARCHAR(20)
+      , listtype                VARCHAR(20)
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.lists TO copyrole;
+GRANT SELECT ON sfmc.lists TO GROUP readonly;
+
+INSERT INTO sfmc.lists
+SELECT * 
+  FROM sfmc.sfmc_lists_old
+;
+
+DROP TABLE sfmc.sfmc_lists_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00272_recreate_sfmc_notsent.sql
+-- touch 00272_recreate_sfmc_notsent_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.notsent RENAME TO sfmc_notsent_old;
+
+CREATE TABLE sfmc.notsent
+    (
+        clientid                 BIGINT       ENCODE zstd
+      , sendid                   BIGINT       ENCODE zstd
+      , subscriberid             BIGINT       ENCODE zstd
+      , listid                   BIGINT       ENCODE zstd
+      , eventdate                TIMESTAMP    ENCODE zstd
+      , eventtype                VARCHAR(20)  ENCODE zstd
+      , batchid                  SMALLINT     ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100) ENCODE zstd
+      , reason                   VARCHAR(100) ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.notsent TO copyrole;
+GRANT SELECT ON sfmc.notsent TO GROUP readonly;
+
+INSERT INTO sfmc.notsent
+SELECT * 
+  FROM sfmc.sfmc_notsent_old
+;
+
+DROP TABLE sfmc.sfmc_notsent_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00272_recreate_sfmc_notsent_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.notsent RENAME TO sfmc_notsent_old;
+
+CREATE TABLE sfmc.notsent
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , reason                   VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.notsent TO copyrole;
+GRANT SELECT ON sfmc.notsent TO GROUP readonly;
+
+INSERT INTO sfmc.notsent
+SELECT * 
+  FROM sfmc.sfmc_notsent_old
+;
+
+DROP TABLE sfmc.sfmc_notsent_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00273_recreate_sfmc_opens.sql
+-- touch 00273_recreate_sfmc_opens_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.opens RENAME TO sfmc_opens_old;
+
+CREATE TABLE sfmc.opens
+    (
+        clientid                 BIGINT       ENCODE zstd
+      , sendid                   BIGINT       ENCODE zstd
+      , subscriberid             BIGINT       ENCODE zstd
+      , listid                   BIGINT       ENCODE zstd
+      , eventdate                TIMESTAMP    ENCODE zstd
+      , eventtype                VARCHAR(20)  ENCODE zstd
+      , batchid                  SMALLINT     ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100) ENCODE zstd
+      , browser                  VARCHAR(100) ENCODE zstd
+      , emailclient              VARCHAR(100) ENCODE zstd
+      , operatingsystem          VARCHAR(100) ENCODE zstd
+      , device                   VARCHAR(100) ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.opens TO copyrole;
+GRANT SELECT ON sfmc.opens TO GROUP readonly;
+
+INSERT INTO sfmc.opens
+SELECT * 
+  FROM sfmc.sfmc_opens_old
+;
+
+DROP TABLE sfmc.sfmc_opens_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00273_recreate_sfmc_opens_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.opens RENAME TO sfmc_opens_old;
+
+CREATE TABLE sfmc.opens
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , browser                  VARCHAR(100)
+      , emailclient              VARCHAR(100)
+      , operatingsystem          VARCHAR(100)
+      , device                   VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.opens TO copyrole;
+GRANT SELECT ON sfmc.opens TO GROUP readonly;
+
+INSERT INTO sfmc.opens
+SELECT * 
+  FROM sfmc.sfmc_opens_old
+;
+
+DROP TABLE sfmc.sfmc_opens_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00274_recreate_sfmc_sendjobimpression.sql
+-- touch 00274_recreate_sfmc_sendjobimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sendjobimpression RENAME TO sfmc_sendjobimpression_old;
+
+CREATE TABLE sfmc.sendjobimpression
+    (
+        clientid                BIGINT      ENCODE zstd
+      , sendid                  BIGINT      ENCODE zstd
+      , impressionregionid      BIGINT      ENCODE zstd
+      , fixedcontent            BOOLEAN 
+      , impressionregionname    VARCHAR(60) ENCODE zstd
+      , eventdate               TIMESTAMP   ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT      ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT      ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.sendjobimpression TO copyrole;
+GRANT SELECT ON sfmc.sendjobimpression TO GROUP readonly;
+
+INSERT INTO sfmc.sendjobimpression
+SELECT * 
+  FROM sfmc.sfmc_sendjobimpression_old
+;
+
+DROP TABLE sfmc.sfmc_sendjobimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00274_recreate_sfmc_sendjobimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sendjobimpression RENAME TO sfmc_sendjobimpression_old;
+
+CREATE TABLE sfmc.sendjobimpression
+    (
+        clientid                BIGINT
+      , sendid                  BIGINT
+      , impressionregionid      BIGINT
+      , fixedcontent            BOOLEAN
+      , impressionregionname    VARCHAR(60)
+      , eventdate               TIMESTAMP
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.sendjobimpression TO copyrole;
+GRANT SELECT ON sfmc.sendjobimpression TO GROUP readonly;
+
+INSERT INTO sfmc.sendjobimpression
+SELECT * 
+  FROM sfmc.sfmc_sendjobimpression_old
+;
+
+DROP TABLE sfmc.sfmc_sendjobimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00275_recreate_sfmc_sendjobs.sql
+-- touch 00275_recreate_sfmc_sendjobs_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sendjobs RENAME TO sfmc_sendjobs_old;
+
+CREATE TABLE sfmc.sendjobs
+    (
+        clientid                       BIGINT       ENCODE zstd
+      , sendid                         BIGINT       ENCODE zstd
+      , fromname                       VARCHAR(130) ENCODE zstd
+      , fromemail                      VARCHAR(100) ENCODE zstd
+      , schedtime                      TIMESTAMP    ENCODE zstd
+      , senttime                       TIMESTAMP    ENCODE zstd
+      , subject                        VARCHAR(200) ENCODE zstd
+      , emailname                      VARCHAR(100) ENCODE zstd
+      , triggeredsendexternalkey       VARCHAR(100) ENCODE zstd
+      , triggereddefinitionexternalkey VARCHAR(100) ENCODE zstd
+      , jobstatus                      VARCHAR(30)  ENCODE zstd
+      , previewurl                     VARCHAR(300) ENCODE zstd
+      , ismultipart                    VARCHAR(5)   ENCODE zstd
+      , additional                     VARCHAR(50)  ENCODE zstd
+      , EXTERNAL_FILE_ID               BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER        BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.sendjobs TO copyrole;
+GRANT SELECT ON sfmc.sendjobs TO GROUP readonly;
+
+INSERT INTO sfmc.sendjobs
+SELECT * 
+  FROM sfmc.sfmc_sendjobs_old
+;
+
+DROP TABLE sfmc.sfmc_sendjobs_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00275_recreate_sfmc_sendjobs_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sendjobs RENAME TO sfmc_sendjobs_old;
+
+CREATE TABLE sfmc.sendjobs
+    (
+        clientid                       BIGINT
+      , sendid                         BIGINT
+      , fromname                       VARCHAR(130)
+      , fromemail                      VARCHAR(100)
+      , schedtime                      TIMESTAMP
+      , senttime                       TIMESTAMP
+      , subject                        VARCHAR(200)
+      , emailname                      VARCHAR(100)
+      , triggeredsendexternalkey       VARCHAR(100)
+      , triggereddefinitionexternalkey VARCHAR(100)
+      , jobstatus                      VARCHAR(30)
+      , previewurl                     VARCHAR(300)
+      , ismultipart                    VARCHAR(5)
+      , additional                     VARCHAR(50)
+      , EXTERNAL_FILE_ID               BIGINT
+      , EXTERNAL_FILE_ROWNUMBER        BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.sendjobs TO copyrole;
+GRANT SELECT ON sfmc.sendjobs TO GROUP readonly;
+
+INSERT INTO sfmc.sendjobs
+SELECT * 
+  FROM sfmc.sfmc_sendjobs_old
+;
+
+DROP TABLE sfmc.sfmc_sendjobs_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00276_recreate_sfmc_sentimpression.sql
+-- touch 00276_recreate_sfmc_sentimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sentimpression RENAME TO sfmc_sentimpression_old;
+
+CREATE TABLE sfmc.sentimpression
+    (
+        clientid                 BIGINT       ENCODE zstd
+      , sendid                   BIGINT       ENCODE zstd
+      , subscriberid             BIGINT       ENCODE zstd
+      , listid                   BIGINT       ENCODE zstd
+      , eventdate                TIMESTAMP    ENCODE zstd
+      , eventtype                VARCHAR(20)  ENCODE zstd
+      , batchid                  SMALLINT     ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100) ENCODE zstd
+      , impressionregionname     VARCHAR(60)  ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.sentimpression TO copyrole;
+GRANT SELECT ON sfmc.sentimpression TO GROUP readonly;
+
+INSERT INTO sfmc.sentimpression
+SELECT * 
+  FROM sfmc.sfmc_sentimpression_old
+;
+
+DROP TABLE sfmc.sfmc_sentimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00276_recreate_sfmc_sentimpression_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sentimpression RENAME TO sfmc_sentimpression_old;
+
+CREATE TABLE sfmc.sentimpression
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , impressionregionname     VARCHAR(60)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.sentimpression TO copyrole;
+GRANT SELECT ON sfmc.sentimpression TO GROUP readonly;
+
+INSERT INTO sfmc.sentimpression
+SELECT * 
+  FROM sfmc.sfmc_sentimpression_old
+;
+
+DROP TABLE sfmc.sfmc_sentimpression_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00277_recreate_sfmc_sent.sql
+-- touch 00277_recreate_sfmc_sent_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sent RENAME TO sfmc_sent_old;
+
+CREATE TABLE sfmc.sent
+    (
+        clientid                 BIGINT       ENCODE zstd
+      , sendid                   BIGINT       ENCODE zstd
+      , subscriberid             BIGINT       ENCODE zstd
+      , listid                   BIGINT       ENCODE zstd
+      , eventdate                TIMESTAMP    ENCODE zstd
+      , eventtype                VARCHAR(20)  ENCODE zstd
+      , batchid                  SMALLINT     ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100) ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.sent TO copyrole;
+GRANT SELECT ON sfmc.sent TO GROUP readonly;
+
+INSERT INTO sfmc.sent
+SELECT * 
+  FROM sfmc.sfmc_sent_old
+;
+
+DROP TABLE sfmc.sfmc_sent_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00277_recreate_sfmc_sent_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.sent RENAME TO sfmc_sent_old;
+
+CREATE TABLE sfmc.sent
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.sent TO copyrole;
+GRANT SELECT ON sfmc.sent TO GROUP readonly;
+
+INSERT INTO sfmc.sent
+SELECT * 
+  FROM sfmc.sfmc_sent_old
+;
+
+DROP TABLE sfmc.sfmc_sent_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00278_recreate_statuschanges.sql
+-- touch 00278_recreate_statuschanges_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.statuschanges RENAME TO sfmc_statuschanges_old;
+
+CREATE TABLE sfmc.statuschanges
+    (
+        clientid                BIGINT      ENCODE zstd
+      , subscriberid            BIGINT      ENCODE zstd
+      , oldstatus               VARCHAR(10) ENCODE zstd
+      , newstatus               VARCHAR(10) ENCODE zstd
+      , datechanged             TIMESTAMP   ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT      ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT      ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.statuschanges TO copyrole;
+GRANT SELECT ON sfmc.statuschanges TO GROUP readonly;
+
+INSERT INTO sfmc.statuschanges
+SELECT * 
+  FROM sfmc.sfmc_statuschanges_old
+;
+
+DROP TABLE sfmc.sfmc_statuschanges_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00278_recreate_statuschanges_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.statuschanges RENAME TO sfmc_statuschanges_old;
+
+CREATE TABLE sfmc.statuschanges
+    (
+        clientid                BIGINT
+      , subscriberid            BIGINT
+      , oldstatus               VARCHAR(10)
+      , newstatus               VARCHAR(10)
+      , datechanged             TIMESTAMP
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.statuschanges TO copyrole;
+GRANT SELECT ON sfmc.statuschanges TO GROUP readonly;
+
+INSERT INTO sfmc.statuschanges
+SELECT * 
+  FROM sfmc.sfmc_statuschanges_old
+;
+
+DROP TABLE sfmc.sfmc_statuschanges_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00279_recreate_subscribers.sql
+-- touch 00279_recreate_subscribers_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.subscribers RENAME TO sfmc_subscribers_old;
+
+CREATE TABLE sfmc.subscribers
+    (
+        clientid                BIGINT      ENCODE zstd
+      , subscriberid            BIGINT      ENCODE zstd
+      , status                  VARCHAR(20) ENCODE zstd
+      , dateheld                TIMESTAMP   ENCODE zstd
+      , datecreated             TIMESTAMP   ENCODE zstd
+      , dateunsubscribed        TIMESTAMP   ENCODE zstd
+      , EXTERNAL_FILE_ID        BIGINT      ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER BIGINT      ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.subscribers TO copyrole;
+GRANT SELECT ON sfmc.subscribers TO GROUP readonly;
+
+INSERT INTO sfmc.subscribers
+SELECT * 
+  FROM sfmc.sfmc_subscribers_old
+;
+
+DROP TABLE sfmc.sfmc_subscribers_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00279_recreate_subscribers_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.subscribers RENAME TO sfmc_subscribers_old;
+
+CREATE TABLE sfmc.subscribers
+    (
+        clientid                BIGINT
+      , subscriberid            BIGINT
+      , status                  VARCHAR(20)
+      , dateheld                TIMESTAMP
+      , datecreated             TIMESTAMP
+      , dateunsubscribed        TIMESTAMP
+      , EXTERNAL_FILE_ID        BIGINT
+      , EXTERNAL_FILE_ROWNUMBER BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.subscribers TO copyrole;
+GRANT SELECT ON sfmc.subscribers TO GROUP readonly;
+
+INSERT INTO sfmc.subscribers
+SELECT * 
+  FROM sfmc.sfmc_subscribers_old
+;
+
+DROP TABLE sfmc.sfmc_subscribers_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00280_recreate_unsubs.sql
+-- touch 00280_recreate_unsubs_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.unsubs RENAME TO sfmc_unsubs_old;
+
+CREATE TABLE sfmc.unsubs
+    (
+        clientid                 BIGINT       ENCODE zstd
+      , sendid                   BIGINT       ENCODE zstd
+      , subscriberid             BIGINT       ENCODE zstd
+      , listid                   BIGINT       ENCODE zstd
+      , eventdate                TIMESTAMP    ENCODE zstd
+      , eventtype                VARCHAR(20)  ENCODE zstd
+      , batchid                  SMALLINT     ENCODE zstd
+      , triggeredsendexternalkey VARCHAR(100) ENCODE zstd
+      , EXTERNAL_FILE_ID         BIGINT       ENCODE zstd
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT       ENCODE zstd
+    )
+    DISTSTYLE EVEN SORTKEY(clientid)
+;
+GRANT INSERT ON sfmc.unsubs TO copyrole;
+GRANT SELECT ON sfmc.unsubs TO GROUP readonly;
+
+INSERT INTO sfmc.unsubs
+SELECT * 
+  FROM sfmc.sfmc_unsubs_old
+;
+
+DROP TABLE sfmc.sfmc_unsubs_old;
+
+---------------------------------------------------------------------------------------------------
+-- touch 00280_recreate_unsubs_rollback.sql
+---------------------------------------------------------------------------------------------------
+ALTER TABLE sfmc.unsubs RENAME TO sfmc_unsubs_old;
+
+CREATE TABLE sfmc.unsubs
+    (
+        clientid                 BIGINT
+      , sendid                   BIGINT
+      , subscriberid             BIGINT
+      , listid                   BIGINT
+      , eventdate                TIMESTAMP
+      , eventtype                VARCHAR(20)
+      , batchid                  SMALLINT
+      , triggeredsendexternalkey VARCHAR(100)
+      , EXTERNAL_FILE_ID         BIGINT
+      , EXTERNAL_FILE_ROWNUMBER  BIGINT
+    )
+    DISTSTYLE EVEN
+;
+GRANT INSERT ON sfmc.unsubs TO copyrole;
+GRANT SELECT ON sfmc.unsubs TO GROUP readonly;
+
+INSERT INTO sfmc.unsubs
+SELECT * 
+  FROM sfmc.sfmc_unsubs_old
+;
+
+DROP TABLE sfmc.sfmc_unsubs_old;

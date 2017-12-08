@@ -1,0 +1,148 @@
+BEGIN transaction;
+---------------------------------------------------------------------------------------------------
+-- Create temp table holding stats, for all session_date's where percentage_to_del >= 20%.....
+---------------------------------------------------------------------------------------------------
+CREATE TABLE #tmp_mrd_dbm_lineitems 
+AS
+   WITH mrd                
+   AS
+        (
+         SELECT
+                'mrd.dbm_lineitems' AS recid
+              , session_date        AS session_date
+              , COUNT(*)            AS mrd_count
+           FROM
+                mrd.dbm_lineitems
+       GROUP BY
+                session_date
+        )
+      , dbm AS
+        (
+         SELECT
+                'dbm.lineitems' AS recid
+              , session_date    AS session_date
+              , COUNT(*)        AS dbm_count
+           FROM
+                dbm.lineitems
+       GROUP BY
+                session_date
+        )
+ SELECT
+        recid
+      , session_date
+      , mrd_count
+      , dbm_count
+      , percentage_to_del
+   FROM
+        (
+         SELECT
+                mrd.recid                                           AS recid
+              , mrd.session_date                                    AS session_date
+              , mrd.mrd_count                                       AS mrd_count
+              , dbm.dbm_count                                       AS dbm_count
+              , (mrd.mrd_count::FLOAT / dbm.dbm_count::FLOAT) * 100 AS percentage_to_del
+           FROM
+                mrd
+         INNER JOIN
+                    dbm
+                 ON
+                    mrd.session_date = dbm.session_date
+        )
+  WHERE
+        percentage_to_del >= 20
+    ;
+
+DELETE
+FROM
+    mrd.dbm_lineitems
+WHERE
+    raw_session_date IN (SELECT DISTINCT session_date FROM dbm.lineitems)
+    AND 0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_lineitems)
+;
+
+INSERT INTO mrd.dbm_lineitems
+    (
+        raw_session_date
+      , session_date
+      , session_hour
+      , country_code
+      , device_type
+      , insertion_order_id
+      , creative_id
+      , dcm_placement_id
+      , creative_width
+      , creative_height
+      , impressions_total
+      , impressions_activeview_eligible
+      , impressions_activeview_measurable
+      , impressions_activeview_notmeasurable
+      , impressions_activeview_notviewable
+      , impressions_activeview_viewable
+      , clicks_total
+      , conversions_total
+      , conversions_postclick
+      , conversions_postview
+      , row_ctr
+      , EXTERNAL_FILE_ID
+      , EXTERNAL_FILE_ROWNUMBER
+    )
+SELECT
+    session_date
+  , DATEADD(hour,session_hour,session_date) AS session_datetime_gmt
+  , session_hour
+  , country_code
+  , device_type
+  , insertion_order_id
+  , creative_id
+  , dcm_placement_id
+  , creative_width
+  , creative_height
+  , impressions_total
+  , impressions_activeview_eligible
+  , impressions_activeview_measurable
+  , impressions_activeview_notmeasurable
+  , impressions_activeview_notviewable
+  , impressions_activeview_viewable
+  , clicks_total
+  , conversions_total
+  , conversions_postclick
+  , conversions_postview
+  , row_ctr
+  , EXTERNAL_FILE_ID
+  , EXTERNAL_FILE_ROWNUMBER
+FROM
+    (
+     SELECT *
+          , ROW_NUMBER() Over (
+                  PARTITION BY session_date
+                             , session_hour
+                             , country_code
+                             , device_type
+                             , creative_id
+                             , insertion_order_id) AS rownum
+       FROM
+            dbm.lineitems
+    )
+WHERE
+     rownum = 1
+ AND 
+     0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_lineitems)
+;
+
+DELETE
+FROM
+    dbm.lineitems
+USING mrd.dbm_lineitems
+WHERE
+    mrd.dbm_lineitems.raw_session_date       = dbm.lineitems.session_date
+    AND mrd.dbm_lineitems.session_hour       = dbm.lineitems.session_hour
+    AND mrd.dbm_lineitems.country_code       = dbm.lineitems.country_code
+    AND mrd.dbm_lineitems.device_type        = dbm.lineitems.device_type
+    AND mrd.dbm_lineitems.creative_id        = dbm.lineitems.creative_id
+    AND mrd.dbm_lineitems.insertion_order_id = dbm.lineitems.insertion_order_id
+    AND 0 = (SELECT COUNT(*) FROM #tmp_mrd_dbm_lineitems)
+;
+
+SELECT count(*) FROM dbm.lineitems;
+
+END transaction;

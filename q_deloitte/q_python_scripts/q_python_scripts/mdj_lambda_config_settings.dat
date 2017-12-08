@@ -1,0 +1,76 @@
+#
+## Lambda > Functions > LoadStaging  ARN - arn:aws:lambda:eu-west-1:028272314838:function:LoadStaging
+#
+## CODE 
+#
+PORT -> 5439
+ERROR_FOLDER ->  error/
+HOST -> mkd-v4-dev-1.cjdnl11hxvdw.eu-west-1.redshift.amazonaws.com
+DBNAME -> markdown
+USER -> mkdwn
+SCHEMA_FOLDER -> schema/
+STAGING_FOLDER -> staging/
+SECRET_ACCESS_KEY -> 99xXfPHoSK5dnHiJfPcywBWe7vSXLLx7xeRI0JN7
+ACCESS_KEY_ID -> AKIAI5NP72AY435VHQUA
+PWD -> 378dhsdkdnDsj.mDs
+PROCESSED_FOLDER -> processed/
+#
+## need to include LOG
+## LOG -> log
+#
+
+#
+## Configuration
+#
+Runtime -> Python 2.7
+Handler -> Loadstaging.lambda_handler
+Role -> Choose an existing role
+Existing role -> ra-md-poc-lambda
+#
+## Advanced Settings not included here - but may have to be
+#
+
+#
+## Triggers
+#
+S3: ra-md-poc-dcuk039
+Suffix -> psv
+Details:
+Suffix -> psv
+Prefix -> import/
+Event type -> ObjectCreated
+Notification name -> 2e9cf8ad-9037-4b34-ba61-5888fbb267e5
+
+#
+## View Function Policy
+#
+{
+    "Version": "2012-10-17",
+    "Id": "default",
+    "Statement": [
+        {
+            "Sid": "lc-a84ead26-ea4d-4d51-9e57-73eea8bac3f5",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "s3.amazonaws.com"
+            },
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:eu-west-1:028272314838:function:LoadStaging",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceAccount": "028272314838"
+                },
+                "ArnLike": {
+                    "AWS:SourceArn": "arn:aws:s3:::ra-md-poc-dcuk039"
+                }
+            }
+        }
+    ]
+}
+
+#
+## Tags -> N/A
+#
+
+
+

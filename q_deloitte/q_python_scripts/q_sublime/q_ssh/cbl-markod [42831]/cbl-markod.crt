@@ -1,0 +1,96 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 16 (0x10)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=GB, ST=London, L=London, O=CloudBILimited, OU=Reveal, CN=CloudBILimited CA/name=RevealCA/emailAddress=admin@cloudbilimited.co.uk
+        Validity
+            Not Before: Mar  4 09:21:10 2017 GMT
+            Not After : Mar  2 09:21:10 2027 GMT
+        Subject: C=GB, ST=London, L=London, O=CloudBILimited, OU=Reveal, CN=cbl-markod/name=cbl-markod/emailAddress=support@cloudbilimited.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:b6:f8:33:0d:f0:82:7e:3d:2c:a9:a4:62:c2:18:
+                    7a:a7:bb:e7:ab:0d:46:8f:29:df:7f:80:fc:d7:84:
+                    4f:91:b7:ae:44:d3:d0:cb:1e:70:5c:63:d1:8d:dc:
+                    eb:3e:2a:84:d5:a5:37:05:15:43:8f:e1:72:2e:47:
+                    93:52:f6:76:95:d5:b9:18:b9:fa:f6:f1:0d:9c:c4:
+                    21:75:8e:90:80:fe:8e:19:41:da:db:69:5c:78:af:
+                    c4:97:17:c7:fb:41:46:4e:ad:ee:b1:72:40:0f:a4:
+                    e8:05:9f:18:e9:97:70:f6:2a:bb:2d:72:b3:d3:69:
+                    55:c8:31:c0:40:dc:6d:71:62:32:3f:e5:91:29:9f:
+                    63:3d:94:f8:a6:ea:f2:76:5d:c6:36:55:4a:04:8b:
+                    cc:a8:df:e6:a0:e5:67:42:42:a7:ae:d1:68:5c:f4:
+                    27:3f:40:fb:0d:77:b8:c7:5e:b3:eb:ac:de:c4:6d:
+                    b6:75:bd:95:66:02:1e:98:4a:85:9f:67:41:4b:35:
+                    8a:04:01:44:01:5e:fd:ab:d1:f1:29:ad:d4:b2:94:
+                    e3:b0:10:9d:9c:7c:32:2b:bd:bf:96:43:d4:0f:4e:
+                    0d:a3:10:a2:db:b7:1d:a8:1c:0e:58:ac:08:51:6a:
+                    b0:90:1a:c9:5a:75:a6:5e:0d:be:45:93:0e:51:47:
+                    55:81
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                7D:77:76:8B:46:9F:12:28:B6:71:08:D5:33:48:50:CC:9B:53:EE:99
+            X509v3 Authority Key Identifier: 
+                keyid:21:4A:E8:65:EB:A5:B5:E9:05:7F:F3:AC:E3:B8:EC:B5:09:52:B6:BF
+                DirName:/C=GB/ST=London/L=London/O=CloudBILimited/OU=Reveal/CN=CloudBILimited CA/name=RevealCA/emailAddress=admin@cloudbilimited.co.uk
+                serial:D1:72:3F:DD:51:BB:08:DD
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha256WithRSAEncryption
+         3b:ff:1d:da:45:64:d3:b6:f5:1f:c7:88:4e:fc:94:dd:af:7c:
+         5f:25:84:50:02:b5:69:5c:0c:4f:9f:57:93:67:0c:e6:6b:cd:
+         27:e8:a7:73:08:ee:f0:3d:8c:92:7e:78:f8:3c:96:08:0e:07:
+         bd:d9:4e:5a:53:33:09:e3:b4:2b:68:ef:5e:78:71:33:73:df:
+         2f:51:c1:fd:74:d1:6f:b1:0a:18:fb:dc:ca:b1:8d:3c:f1:9d:
+         d8:49:78:55:79:2e:3e:1b:1e:fc:7e:63:26:85:7b:fb:c7:b1:
+         4c:48:83:49:e0:a2:42:e0:b1:cb:b1:13:fa:40:42:a6:0e:0b:
+         09:bc:1d:61:60:bf:4f:5d:64:6b:5e:f6:df:cf:08:22:e4:a4:
+         8e:7a:fe:c9:f1:14:6b:37:3c:e3:f1:ed:6b:77:77:62:97:9b:
+         19:1e:58:41:5a:b9:dd:46:0f:da:dc:c6:2f:86:b0:2a:59:c8:
+         47:83:c9:ae:45:3b:9d:c6:f8:bc:a2:a6:54:b8:0f:ec:1c:aa:
+         8d:d9:00:e4:9d:a5:a6:b3:a1:13:e0:33:02:7f:64:48:9f:3c:
+         5c:1b:cc:55:bd:a9:a4:44:59:ff:20:46:17:8c:b8:2d:a4:18:
+         ce:7b:2e:ca:04:7d:92:3f:e4:fe:f3:68:17:72:66:80:92:f0:
+         eb:54:34:08
+-----BEGIN CERTIFICATE-----
+MIIFSjCCBDKgAwIBAgIBEDANBgkqhkiG9w0BAQsFADCBszELMAkGA1UEBhMCR0Ix
+DzANBgNVBAgTBkxvbmRvbjEPMA0GA1UEBxMGTG9uZG9uMRcwFQYDVQQKEw5DbG91
+ZEJJTGltaXRlZDEPMA0GA1UECxMGUmV2ZWFsMRowGAYDVQQDExFDbG91ZEJJTGlt
+aXRlZCBDQTERMA8GA1UEKRMIUmV2ZWFsQ0ExKTAnBgkqhkiG9w0BCQEWGmFkbWlu
+QGNsb3VkYmlsaW1pdGVkLmNvLnVrMB4XDTE3MDMwNDA5MjExMFoXDTI3MDMwMjA5
+MjExMFowga4xCzAJBgNVBAYTAkdCMQ8wDQYDVQQIEwZMb25kb24xDzANBgNVBAcT
+BkxvbmRvbjEXMBUGA1UEChMOQ2xvdWRCSUxpbWl0ZWQxDzANBgNVBAsTBlJldmVh
+bDETMBEGA1UEAxMKY2JsLW1hcmtvZDETMBEGA1UEKRMKY2JsLW1hcmtvZDEpMCcG
+CSqGSIb3DQEJARYac3VwcG9ydEBjbG91ZGJpbGltaXRlZC5jb20wggEiMA0GCSqG
+SIb3DQEBAQUAA4IBDwAwggEKAoIBAQC2+DMN8IJ+PSyppGLCGHqnu+erDUaPKd9/
+gPzXhE+Rt65E09DLHnBcY9GN3Os+KoTVpTcFFUOP4XIuR5NS9naV1bkYufr28Q2c
+xCF1jpCA/o4ZQdrbaVx4r8SXF8f7QUZOre6xckAPpOgFnxjpl3D2KrstcrPTaVXI
+McBA3G1xYjI/5ZEpn2M9lPim6vJ2XcY2VUoEi8yo3+ag5WdCQqeu0Whc9Cc/QPsN
+d7jHXrPrrN7EbbZ1vZVmAh6YSoWfZ0FLNYoEAUQBXv2r0fEprdSylOOwEJ2cfDIr
+vb+WQ9QPTg2jEKLbtx2oHA5YrAhRarCQGsladaZeDb5Fkw5RR1WBAgMBAAGjggFq
+MIIBZjAJBgNVHRMEAjAAMC0GCWCGSAGG+EIBDQQgFh5FYXN5LVJTQSBHZW5lcmF0
+ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFH13dotGnxIotnEI1TNIUMybU+6ZMIHo
+BgNVHSMEgeAwgd2AFCFK6GXrpbXpBX/zrOO47LUJUra/oYG5pIG2MIGzMQswCQYD
+VQQGEwJHQjEPMA0GA1UECBMGTG9uZG9uMQ8wDQYDVQQHEwZMb25kb24xFzAVBgNV
+BAoTDkNsb3VkQklMaW1pdGVkMQ8wDQYDVQQLEwZSZXZlYWwxGjAYBgNVBAMTEUNs
+b3VkQklMaW1pdGVkIENBMREwDwYDVQQpEwhSZXZlYWxDQTEpMCcGCSqGSIb3DQEJ
+ARYaYWRtaW5AY2xvdWRiaWxpbWl0ZWQuY28udWuCCQDRcj/dUbsI3TATBgNVHSUE
+DDAKBggrBgEFBQcDAjALBgNVHQ8EBAMCB4AwDQYJKoZIhvcNAQELBQADggEBADv/
+HdpFZNO29R/HiE78lN2vfF8lhFACtWlcDE+fV5NnDOZrzSfop3MI7vA9jJJ+ePg8
+lggOB73ZTlpTMwnjtCto7154cTNz3y9Rwf100W+xChj73MqxjTzxndhJeFV5Lj4b
+Hvx+YyaFe/vHsUxIg0ngokLgscuxE/pAQqYOCwm8HWFgv09dZGte9t/PCCLkpI56
+/snxFGs3POPx7Wt3d2KXmxkeWEFaud1GD9rcxi+GsCpZyEeDya5FO53G+LyiplS4
+D+wcqo3ZAOSdpaazoRPgMwJ/ZEifPFwbzFW9qaREWf8gRheMuC2kGM57LsoEfZI/
+5P7zaBdyZoCS8OtUNAg=
+-----END CERTIFICATE-----

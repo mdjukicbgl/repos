@@ -1,0 +1,151 @@
+
+BEGIN TRANSACTION;
+
+DELETE  markdown.dim_price_status
+WHERE   EXISTS( SELECT  *
+                FROM    stage.statuses_dim
+                WHERE   status_type_bkey    = 2
+                AND     dim_retailer_id     = dim_price_status.dim_retailer_id
+                AND     status_bkey         = dim_price_status.price_status_bkey
+                AND     batch_id            = ##BATCH_ID## ) -- 2 = price status
+;
+
+INSERT
+INTO    markdown.dim_price_status
+(       batch_id,
+        dim_retailer_id,
+        price_status_bkey,
+        price_status
+)
+SELECT  ##BATCH_ID##,
+        dim_retailer_id,
+        status_bkey,
+        status_name
+FROM    stage.statuses_dim      ss
+WHERE   NOT EXISTS( SELECT  *
+                    FROM    markdown.dim_price_status   ps
+                    WHERE   ss.dim_retailer_id = ps.dim_retailer_id
+                     )
+AND     ss.batch_id         = ##BATCH_ID##
+;
+#######
+## dim_status DDL
+
+
+- - - - - - - - - - - - - - - -  O u t p u t   S Q L - - - - - - - - - - - - - - -
+
+CREATE TABLE IF NOT EXISTS sales.dim_status
+    (
+      , batch_id                NUMERIC(10, 0)      NOT NULL DEFAULT 1
+      , dim_status_id           int8 identity(1,1)  NOT NULL
+      , status_hierarchy_node   VARCHAR(50)         NOT NULL
+      , parent_dim_status_id    int8
+      , status_hierarchy_level  NUMERIC(5, 0)       NOT NULL DEFAULT 0
+      , status_breadcrumb       VARCHAR(512)        NOT NULL DEFAULT ''::CHARACTER VARYING
+      , is_leaf_node            NUMERIC(1, 0)       NOT NULL DEFAULT 0
+      , PRIMARY KEY (dim_status_id)
+      , FOREIGN KEY (parent_dim_status_id) REFERENCES sales.dim_status (dim_status_id)
+    )
+;
+
+- - - - - - - - A m e n d e d  -  O u t p u t   S Q L - - - - - - - - - - - - - - -
+##
+## Check with Stuart as to the accuracy of this DDL 
+##
+
+CREATE TABLE IF NOT EXISTS conformed.dim_status
+    (
+        batch_id                NUMERIC(10, 0)      NOT NULL DEFAULT 1
+      , dim_status_id           int8 identity(1,1)  NOT NULL
+      , status_type_bkey        VARCHAR(20)         NOT NULL
+      , status_bkey             VARCHAR(20)         NOT NULL
+      , parent_status_bkey      VARCHAR(20)         NOT NULL
+      , status_type
+      , status_name
+      , parent_dim_status_id    INT8
+      , status_hierarchy_level  NUMERIC(5, 0)       NOT NULL DEFAULT 0
+      , status_breadcrumb       VARCHAR(512)        NOT NULL DEFAULT ''::CHARACTER VARYING
+      , is_leaf_node            NUMERIC(1, 0)       NOT NULL DEFAULT 0
+
+      , PRIMARY KEY (dim_status_id)
+      , FOREIGN KEY (parent_dim_status_id) REFERENCES sales.dim_status (dim_status_id)
+    )
+;
+
+- - - - - - - - - - - 5 5 0 1- - - - -  O u t p u t   S Q L - - - - - - - - - - - - - - -
+
+CREATE TABLE IF NOT EXISTS conformed.dim_status
+    (
+        batch_id               INTEGER DEFAULT 1 NOT NULL
+      , dim_status_id          INTEGER NOT NULL
+      , status_type_bkey       VARCHAR(20) NOT NULL
+      , status_bkey            VARCHAR(20) NOT NULL
+      , parent_status_bkey     VARCHAR(20)
+      , status_type            VARCHAR(50) NOT NULL
+      , status_name            VARCHAR(50) NOT NULL
+      , parent_dim_status_id   INTEGER
+      , status_hierarchy_level SMALLINT DEFAULT 0 NOT NULL
+      , status_breadcrumb      VARCHAR(512) DEFAULT ''::CHARACTER VARYING NOT NULL
+      , is_leaf_node bool DEFAULT 0 NOT NULL
+      , CONSTRAINT pk_dim_status PRIMARY KEY ( dim_status_id )
+    )
+    COMPOUND SORTKEY
+    (
+        dim_status_id
+      , status_type_bkey
+      , parent_status_bkey
+      , status_name
+      , status_type
+      , is_leaf_node
+      , status_hierarchy_level
+      , status_breadcrumb
+      , batch_id
+    )
+;
+#######
+## keys on table:
+## status_type_bkey
+## status_bkey
+
+-------------------------------------------------------------------------------
+
+BEGIN TRANSACTION;
+UPDATE
+    conformed.dim_statuses
+SET channel_name        = changed_channel.channel_name
+  , channel_description = changed_channel.channel_description
+  , channel_code        = changed_channel.channel_code
+FROM
+    (
+     SELECT
+            sc.dim_retailer_id
+          , sc.channel_key
+          , sc.channel_name
+          , sc.channel_description
+          , sc.channel_code
+       FROM
+            stage.status_dim sc
+           JOIN
+                conformed.dim_channel dc
+             ON
+                sc.dim_retailer_id = dc.dim_retailer_id
+                AND sc.channel_key = dc.channel_bkey
+                AND
+                (
+                    sc.channel_name           <> dc.channel_name
+                    OR sc.channel_description <> dc.channel_description
+                    OR sc.channel_code        <> dc.channel_code
+                )
+      WHERE
+            sc.batch_id = ##BATCH_ID##
+    )
+    AS changed_channel
+WHERE
+    dim_channel.dim_retailer_id  = changed_channel.dim_retailer_id
+    AND dim_channel.channel_bkey = changed_channel.channel_key
+;
+
+
+
+
+

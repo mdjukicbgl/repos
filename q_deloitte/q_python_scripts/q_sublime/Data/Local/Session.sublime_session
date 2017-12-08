@@ -1,0 +1,2297 @@
+{
+	"folder_history":
+	[
+		"/C/Users/mdjuk/q_python_scripts"
+	],
+	"last_version": 3126,
+	"last_window_id": 12,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 669.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"conne",
+						"connect_s3"
+					],
+					[
+						"cre",
+						"create_bucket"
+					],
+					[
+						"con",
+						"connect_s3"
+					],
+					[
+						"c",
+						"connection"
+					],
+					[
+						"my",
+						"my_decorator"
+					],
+					[
+						"s",
+						"sChildpath"
+					],
+					[
+						"sC",
+						"sChildPath"
+					],
+					[
+						"sPath",
+						"sPath"
+					],
+					[
+						"def",
+						"defs\tMethod"
+					],
+					[
+						"print",
+						"print_directory_contents"
+					],
+					[
+						"__",
+						"__dict__"
+					],
+					[
+						"p",
+						"print"
+					],
+					[
+						"if",
+						"ifmain\tif __name__ == '__main__'"
+					],
+					[
+						"app",
+						"append"
+					],
+					[
+						"t",
+						"try\tTry/Except"
+					]
+				]
+			},
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/Python/Python.sublime-build",
+							""
+						],
+						[
+							"Packages/Python/Python.sublime-build",
+							"Syntax Check"
+						]
+					],
+					[
+						"Packages/Python/Python.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 392.0,
+				"last_filter": "j",
+				"selected_items":
+				[
+					[
+						"j",
+						"Set Syntax: JSON"
+					],
+					[
+						"sspy",
+						"Set Syntax: Python"
+					],
+					[
+						"ssp",
+						"Set Syntax: Python"
+					],
+					[
+						"SSp",
+						"Set Syntax: Python"
+					],
+					[
+						"Snipp",
+						"Snippet: if __name__ == '__main__'"
+					],
+					[
+						"ssyn",
+						"Set Syntax: Python"
+					],
+					[
+						"python ",
+						"Set Syntax: Python"
+					],
+					[
+						" python sy",
+						"Build With: Python - Syntax Check"
+					],
+					[
+						"sspys",
+						"Set Syntax: JavaScript (Rails)"
+					],
+					[
+						"PY",
+						"Set Syntax: Python"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 432.0
+			},
+			"console":
+			{
+				"height": 299.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/C/Users/mdjuk/q_python_scripts/dict.py",
+				"/C/Users/mdjuk/q_python_scripts/list.py",
+				"/C/Users/mdjuk/q_python_scripts/input.py",
+				"/C/Users/mdjuk/q_python_scripts/misctest.py",
+				"/C/Users/mdjuk/q_python_scripts/while.py",
+				"/C/Users/mdjuk/q_python_scripts/list_functions_in_python_module.py",
+				"/C/Users/mdjuk/q_python_scripts/readfile.py",
+				"/C/Users/mdjuk/q_python_scripts/pop.py",
+				"/C/Users/mdjuk/q_python_scripts/set.py",
+				"/C/Users/mdjuk/q_python_scripts/dict2_with_for_loop_and_if_else.py",
+				"/C/Users/mdjuk/q_python_scripts/if.py",
+				"/C/Users/mdjuk/Downloads/mdj2017-04-20-16-32-23-E764BAB89A2252A2.py",
+				"/C/Users/mdjuk/q_python_scripts/cast.py",
+				"/C/Users/mdjuk/q_python_scripts/condition.py",
+				"/C/Users/mdjuk/q_python_scripts/logic.py",
+				"/C/Users/mdjuk/q_python_scripts/comparison.py",
+				"/C/Users/mdjuk/q_sublime/Data/Packages/User/arithmetic.py",
+				"/C/Users/mdjuk/q_python_scripts/nums",
+				"/C/Users/mdjuk/q_python_scripts/test",
+				"/C/Users/mdjuk/q_python_scripts/qinput.py",
+				"/C/Users/mdjuk/q_python_scripts/helloWorld.py",
+				"/C/Users/mdjuk/q_python_scripts/var.py",
+				"/C/Users/mdjuk/q_SQLinForm/z_SQLinFormFXpro_5.1.31.bat",
+				"/C/Users/mdjuk/q_sublime/SQLinFormFXpro_5.1.31.bat",
+				"/C/Users/mdjuk/q_sublime/sublime.py"
+			],
+			"find":
+			{
+				"height": 34.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"sChildpath",
+					"Returns",
+					"Description",
+					"'Subtraction\\t'\n\t\ta\n\t\t'-'\n\t\tb\n\t\t'='\n\t\ta - b\n\t\t",
+					":])\n",
+					"if",
+					"1\n2\n3\n4\n5\n6\n7\n8",
+					"var",
+					"teh",
+					" ",
+					"main"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"sChildPath",
+					"the",
+					","
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 26.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 293.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "Packages/Python/Python.sublime-build",
+			"replace":
+			{
+				"height": 62.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"s",
+						"C:\\Users\\mdjuk\\q_python_scripts\\condition.py"
+					],
+					[
+						"var",
+						"C:\\Users\\mdjuk\\q_python_scripts\\var.py"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": false,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 1126.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"Confir",
+						"ConfigParser"
+					],
+					[
+						"try",
+						"try\tTry/Except"
+					],
+					[
+						"Cong",
+						"ConfigParser"
+					],
+					[
+						"con",
+						"ConfigParser"
+					],
+					[
+						"has",
+						"has_option"
+					],
+					[
+						"can",
+						"candidate"
+					],
+					[
+						"section",
+						"section_name"
+					],
+					[
+						"sa",
+						"SafeConfigParser"
+					],
+					[
+						"Config",
+						"ConfigParser"
+					],
+					[
+						"Sa",
+						"SafeConfigParser"
+					],
+					[
+						"Confi",
+						"ConfigParser"
+					],
+					[
+						"argument",
+						"ArgumentParser"
+					],
+					[
+						"parse_",
+						"parse_args"
+					],
+					[
+						"def",
+						"def\tFunction"
+					],
+					[
+						"boolean",
+						"boolean_switch"
+					],
+					[
+						"constan",
+						"constant_value"
+					],
+					[
+						"simple",
+						"simple_value"
+					],
+					[
+						"par",
+						"parse_args"
+					],
+					[
+						"arg",
+						"ArgumentParser"
+					],
+					[
+						"ar",
+						"ArgumentParser"
+					],
+					[
+						"parse",
+						"parse_args"
+					],
+					[
+						"argu",
+						"ArgumentParser"
+					],
+					[
+						"add",
+						"add_argument"
+					],
+					[
+						"pars",
+						"parse_args"
+					],
+					[
+						"prin",
+						"print_function"
+					],
+					[
+						"column",
+						"column_names"
+					],
+					[
+						"dict",
+						"dict2json"
+					],
+					[
+						"bucket",
+						"bucketName"
+					],
+					[
+						"target",
+						"targetFolder"
+					],
+					[
+						"print",
+						"print_function"
+					],
+					[
+						"pri",
+						"print_function"
+					],
+					[
+						"p",
+						"print_function"
+					],
+					[
+						"__",
+						"__future__"
+					],
+					[
+						"re",
+						"resource"
+					],
+					[
+						"conne",
+						"connect_s3"
+					],
+					[
+						"cre",
+						"create_bucket"
+					],
+					[
+						"c",
+						"connection"
+					],
+					[
+						"my",
+						"my_decorator"
+					],
+					[
+						"s",
+						"sChildpath"
+					],
+					[
+						"sC",
+						"sChildPath"
+					],
+					[
+						"sPath",
+						"sPath"
+					],
+					[
+						"if",
+						"ifmain\tif __name__ == '__main__'"
+					],
+					[
+						"app",
+						"append"
+					],
+					[
+						"t",
+						"try\tTry/Except"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/nums",
+					"settings":
+					{
+						"buffer_size": 1488,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/interview2quest.py",
+					"settings":
+					{
+						"buffer_size": 929,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/interview3quest.py",
+					"settings":
+					{
+						"buffer_size": 1537,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/mdj_test1.py",
+					"settings":
+					{
+						"buffer_size": 1876,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/return2.py",
+					"settings":
+					{
+						"buffer_size": 1148,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "mdj_test2.py"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/lambdaHelloWorld.py",
+					"settings":
+					{
+						"buffer_size": 4036,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/error_capture.py",
+					"settings":
+					{
+						"buffer_size": 1239,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "error_capture.py"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/commandLiveArgs.py",
+					"settings":
+					{
+						"buffer_size": 663,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "commandLiveArgs.py"
+					}
+				},
+				{
+					"contents": "\n#from __future__ import print_function\n#import argparse\n#\n#print(\"argparse-->\", dir(argparse))\n#parser = argparse.ArgumentParser()\n#parser.parse_args()\n#\n# Here is what is happening\n# Running the script without any options result in nothing displayed to stdout - Not so useful\n# The second one start to display the usefulness of the argparse module.  We have done almost nothing,\n# but we geta nice help message\n# The --help option, which can also be shortened to '-h', is the only option we get free(ie. no need to specify it)\n# Specifying anything else, results in an error.  But even then, we do get a useful usage message, \n# also for free.\n\n# Introducing positional parameters\n#from __future__ import print_function\n#import argparse\n#\n#parser = argparse.ArgumentParser()\n#parser.add_argument(\"echo\")\n#args = parser.parse_args()\n#print(\"listing echo-->:\", args.echo)\n\n# We've added the add_argument() method, which is what we use to specify which command-line options\n# the program is willing to accept.\n# In this case, I've named it 'echo', so that it's in line with its function.\n# Calling our program now requires us to specify an option.\n# The parse_args() method, actually retuns some data fro teh options specified, in this case 'echo'\n\nfrom __future__ import print_function\nimport argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"echo\", help=\"echo the string you use here\")\nargs = parser.parse_args()\nprint args.echo\n\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", help=\"display a square of a given number\")\nargs = parser.parse_args()\nprint args.echo\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", help=\"display a square of a given number\")\nargs = parser.parse_args()\nprint(args.square**2)\n\n# Introducing Optional arguments\n# so far, we have been paying with positional parameters.  \n# Let us have a look on how to add optional ones:\n#\nfrom __future__ import print_function\nimport argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--verbosity\", help=\"increase output verbosity\")\nargs = parser.parse_args()\nif args.verbosity:\n\tprint(\"verbosity is turned on\")\nelse:\n\tprint(\"verbosity is turned off\")\n\n\n# processing argparse\nfrom __future__ import print_function\nimport argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument('-a', action=\"store_true\", default=False)\nparser.add_argument('-b', action=\"store\", dest=\"b\")\nparser.add_argument('-c', action=\"store\", dest=\"c\", type=int)\nargs = parser.parse_args()\nprint(args)\n\n#\n# The default action is to store the argument value. \n# In this case, if a type is provided, the value is converted to that type before it is stored. \n# \n# dest - If the dest argument is provided, the value is saved to an attribute of that name \n# on the Namespace object returned when the command line arguments are parsed.\n\n# ARGUMENT ACTIONS\n# There are 6 built-in actions that can be triggered when an argument is encountered:\n#\n# store - Save the value, after optionally converting it to a different type. This is the default action \n# taken if none is specified explicitly.\n#\n# store_const - Save a value defined as part of the argument specification, rather than a value\n# that comes from the arguments being parsed.  This is typically used to implement command line flags that\n# aren't booleans.\n#\n# store_true/store_false - Save the appropriate boolean value.\n# These actions are used to implement boolean switches.\n#\n# append - Save the value to a list.  Multiple values are saved if the arguement is repeated.\n#\n# append_const - Save a value defined in the argument specification to a list.\n#\n# version - Prints version details about the program and then exists.\n#\nfrom __future__ import print_function\nimport argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument('-s', action='store', dest='simple_value', help='Store a simple value')\nparser.add_argument('-c', action='store_const',  dest='constant_value', const='value-to-store', help='Store a constant value')\nparser.add_argument('-t', action='store_true',   dest='boolean_switch',  default=False, help='Set a switch to true')\nparser.add_argument('-f', action='store_false',  dest='boolean_switch', default=False,  help='Set a switch to false')\nparser.add_argument('-a', action='append',       dest='collection',     default=[], help='Add repeated values to list')\nparser.add_argument('-A', action='append_const', dest='const_collection', const='value-1-to-append', default=[],\n\t\t\t\t\thelp='Add different values to list')\nparser.add_argument('-B', action='append_const', dest='const_collection', const='value-2-to-append',\n\t\t\t\t\thelp='Add different values to list')\nparser.add_argument('--version', action='version', version='%(prog)s 1.0')\n\nargs=parser.parse_args()\n\nprint('simple_value\t\t=', args.simple_value)\nprint('constant_value   =', args.constant_value)\nprint('boolean_switch   =', args.boolean_switch)\nprint('collection       =', args.collection)\nprint('const_collection =', args.const_collection) \n\n\n# cloudbi implementation:\n\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\n        \"-p\",\n        \"--profile\",\n        help=\"The name of the profile in the .aws folder with access to the KMS key\",\n        type=str)\n    parser.add_argument(\n        \"-f\",\n        \"--filetype\",\n        help=\"The name of the filetype to process\",\n        type=str)\n    parser_args = parser.parse_args(args)\n    if not (vars(parser_args))['profile']:\n        parser.print_help()\n        sys.exit(1)\n    aws_profile = str(parser_args.profile)\n\n\n#Daily Python Tip\n#\n# OPTION PREFIXES\n# The default syntax for options is based on the UNIX convention of \n# signifying command line switches using a prefix of '-', argparse\n# supports other prefixes, so you can make your program conform to\n# the local platform default ie. use '/' on Windows, or follow a\n# different convention.\n\nfrom __future__ import print_function\nimport argparse\n\nparser = argparse.ArgumentParser(description='Change the option prefix characters', prefix_chars='-+/')\nparser.add_argument('-a', action='store_false', default=None, help='Turn A off')\nparser.add_argument('+a', action='store_true', default=None, help='Turn A on')\nparser.add_argument('//noarg', '++noarg', action='store_true', default=False)\nargs = parser.parse_args()\nprint('arguments-->', args)\n\n# SOURCE OR ARGUMENTS\n# In the examples so far, the list or arguments given to the parser have come from a list passed\n# explicitly, or were taken implicitly from sys.argv.\n# Passing the list explicitly is useful when you are using argparse to process command line-like\n# instructions that do not come from the command line(such as a config file)\n\nfrom __future__ import print_function\nimport argparse\nfrom ConfigParser import ConfigParser\nimport shlex\n\nparser = argparse.ArgumentParser(description='Short sample app')\nparser.add_argument('-a', action='store_true', default=False)\nparser.add_argument('-b', action='store', dest='b')\nparser.add_argument('-c', action='store', dest='c', type=int)\n\nconfig = ConfigParser()\nconfig.read('argparse_witH_shlex.ini')\nconfig_value = config.get('cli', 'options')\nprint('Config  :', config_value)\n\nargument_list = shlex.split(config_value)\nprint('Arg List:', argument_list)\n\nprint('Results :', parser.parse_args(argument_list) )\n\n##### multisection.ini\n######################\n#[bug_tracker]\n#url = http://localhost:8080/bugs/\n#username = dhellmann\n#password = SECRET\n#\n#[wiki]\n#url = http://localhost:8080/wiki/\n#username = dhellmann\n#password = SECRET\n\n\n# simple.ini file\n#################\n#[bug_tracker]\n#url = http://localhost:8080/bugs/\n#username = dhellmann\n#password = SECRET\n\n# READING CONFIGURATION FILES\n# The most common use for a configuration file is to have a user or system administrator edit the file\n# with a regular text editor to set application behaviour defaults, and then have the application read the file, \n# parse it, and act, based upon its contents.\n# Use read() method of SafeConfigParser to read the configuration file.\n\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\n#parser.read('C:\\Users\\mdjuk\\q_python_scripts\\simple.ini')\nparser.read('/home/ec2-user/simple.ini')\n\nprint(parser.get('bug_tracker', 'url'))\nprint(parser.get('bug_tracker', 'username'))\nprint(parser.get('bug_tracker', 'password'))\n\n# use SafeConfigParser to read BOTH config sections\n###################################################\n#[bug_tracker]\n#url = http://localhost:8080/bugs/\n#username = dhellmann\n#password = SECRET\n\n#[bug_tracker2]\n#url = http://localhost:8080/bugs2/\n#username = dhellmann2\n#password = SECRET2\n\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('/home/ec2-user/simple.ini')\n\nprint(parser.get('bug_tracker2', 'url'))\nprint(parser.get('bug_tracker2', 'username'))\nprint(parser.get('bug_tracker2', 'password'))\n##############\n\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('/home/ec2-user/simple.ini')\n\nparser = SafeConfigParser()\nparser.read(filename)\n\nprint(parser.get('bug_tracker', 'url'))\nprint(parser.get('bug_tracker', 'username'))\nprint(parser.get('bug_tracker', 'password'))\n\nurl = parser.get('bug_tracker', 'url')\nusername = parser.get('bug_tracker', 'username')\npassword = parser.get('bug_tracker', 'password')\n\nprint('url--> %s %s %s' %(url, username, password))\n\n# The read() method also accepts a list of filenames. \n# Each name in turn is scanned, and if the file exists, it is opened and read.\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\nimport glob\n\nparser = SafeConfigParser()\ncandidates = ['does_not_exist.ini', 'also_does_not_exist.ini', 'simple.ini', 'multisection.ini']\nfound = parser.read(candidates)\nmissing = set(candidates) - set(found)\nprint('Found config files: ', sorted(found))\nprint('missing Files: ', sorted(missing))\n\n# UNICODE CONFIGURATION DATA\n# Configuration files containing Unicode data should be opened using the 'codecs' module to \n# set the proper encoding value.\n# Changing the password value of the original input to contain Unicode characters and saving\n# the results in UTF-8 encoding gives:\n#\n#[bug_tracker]\n#url = http://localhost:8080/bugs/\n#username = dhellmann\n#password = ßéç®é†\n#\n# The codecs file handle can be passed to readfp(), which uses the readline() method of its argument\n# to get lines from the file and parse them.\n#\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\nimport codecs\n\nparser = SafeConfigParser()\n\n# Open the file with the correct encoding\nwith codecs.open('unicode.ini', 'r', encoding='utf-8') as f: \n\tparser.readfp(f)\n\npassword = parser.get('bug_tracker', 'password')\n\nprint('Password:', password.encode('utf-8'))\nprint('Type    :', type(password))\nprint('repr()   :', repr(password))\n\n# ACCESSING CONFIGURATION SETTINGS\n##################################\n# SafeConfigParser includes methods for examining the structure of the parsed configuration, \n# including listing the sections and options, and getting their values.  \n# The configuration file includes two sections for separate web services:\n#\n#[bug_tracker]\n#url = http://localhost:8080/bugs/\n#username = dhellmann\n#password = SECRET\n#\n#[wiki]\n#url = http://localhost:8080/wiki/\n#username = dhellmann\n#password = SECRET\n\n# And this sample program exercises some of the methods for looking at the configuration data,\n# including sections(), options(), and items()\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('multisection.ini')\n\nfor section_name in parser.sections():\n\tprint('Section:', section_name)\n\tprint('Options:', parser.options(section_name))\n\tfor name, value in parser.items(section_name):\n\t\tprint(' %s = %s' %(name, value))\n\tprint\n\n# TESTING WHETHER VALUES ARE PRESENT\n# To test if a section exists, use has_section(), passing the section name.\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('multisection.ini')\n\nfor candidate in ['wiki', 'bug_tracker', 'dvcs']:\n\tprint('%-12s: %s' %(candidate, parser.has_section(candidate)))\n\n# Use has_option() to test if an option exists within a sector\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('multisection.ini')\n\nfor section in ['wiki', 'none']:\n\tprint('%s section exists: %s' %(section, parser.has_section(section)))\n\tfor candidate in ['username', 'password', 'url', 'description']:\n\t\tprint('%s.%-12s  : %s' %(section, candidate, parser.has_option(section, candidate)))\n\tprint\n\n# VALUE TYPES\n# All section and option names are treated as strings, but option values can be strings, integers,\n# floating-point numbers, or booleans.  There are a range of possible boolean values that are \n# converted true or false.\n# This example file includes one of each:\n#[ints]\n#positive = 1\n#negative = -5\n#\n#[floats]\n#positive = 0.2\n#negative = -3.14\n#\n#[booleans]\n#number_true = 1\n#number_false = 0\n#yn_true = yes\n#yn_false = no\n#tf_true = true\n#tf_false = false\n#onoff_true = on\n#onoff_false = false\n\n# SafeConfigParser does not make any attemp to understad the option type.\n# The application is expected to use teh correct method to fetch the value\n# as the desired type.  \n# get() always returns a string.  \n# Use getint() for integers, getfloat() for floating point numbers, and getboolean() for boolean types.\n\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('types.ini')\n\nprint('Integers:') \nfor name in parser.options('ints'):\n\tstring_value = parser.get('ints', name)\n\tvalue = parser.getint('ints', name)\n\tprint(' %-12s : %-7r --> %d' %(name, string_value, value))\n\nprint('\\nFloats:') \nfor name in parser.options('floats'):\n\tstring_value = parser.get('floats', name)\n\tvalue = parser.getfloat('floats', name)\n\tprint(' %-12s : %-7r --> %0.2f' %(name, string_value, value))\n\n\nprint('\\nBooleans:') \nfor name in parser.options('booleans'):\n\tstring_value = parser.get('booleans', name)\n\tvalue = parser.getboolean('booleans', name)\n\tprint(' %-12s : %-7r --> %s' %(name, string_value, value))\n\n# OPTIONS AS FLAGS\n# Usually the parser requires an explicit value for each option, but with the \n# SafeConfigParser parameter allow_no_value set to True, an option can appear by itself\n# on a line in the input file, and be used as a flag.\n\nfrom __future__ import print_function\nimport ConfigParser\n\n# Require values\ntry:\n\tparser = ConfigParser.SafeConfigParser()\n\tparser.read('allow_no_value.ini')\nexcept ConfigParser.ParsingError as err:\n\tprint('Could not parse: ', err)\nelse:\n\tprint ('parsing.......')\t\n\n# Allow stand-alone option names:\nprint('\\nTrying again with allow_no_value=True')\nparser = ConfigParser.SafeConfigParser(allow_no_value=True)\nparser.read('allow_no_value.ini')\n\nfor flag in ['turn_feature_on', 'turn_other_feature_on']:\n\tprint('')\n\tprint(flag)\n\texists = parser.has_option('flags', flag)\n\tprint('  has_option:', exists)\n\tif exists:\n\t\tprint('       get:', parser.get('flags', flag))\n\n\n# REMOVE SECTIONS\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('multisection.ini')\n\nprint('Read values:\\n')\nfor section in parser.sections():\n    print(section)\n    for name, value in parser.items(section):\n        print('  %s = %r' % (name, value) )\n\nparser.remove_option('bug_tracker', 'password')\nparser.remove_section('wiki')\n        \nprint('\\nModified values:\\n')\nfor section in parser.sections():\n    print(section)\n    for name, value in parser.items(section):\n        print('  %s = %r' % (name, value))\n\n# SAVING CONFIGURATION FILES\n# Once a SafeConfigParser is populated with desired data, it can be saved to a file by calling write() method.\n# This makes it possible to provide a user interface for editing the configuration settings, without\n# having to write any code to manage the file.\n\nfrom __future__ import print_function\nimport ConfigParser\nimport sys\n\nsys.stdout = open('mdj_log', 'w')\n\n\nparser = ConfigParser.SafeConfigParser()\n\nparser.add_section('bug_tracker')\nparser.set('bug_tracker', 'url', 'http://www.bbc.co.uk')\nparser.set('bug_tracker', 'username', 'dhellmann')\nparser.set('bug_tracker', 'password', 'welcome')\n\nparser.write(sys.stdout)\n\nsys.stdout.close()\n\n# WRITING OUT TO FILE USING sys.stdout\n######################################\n###Here's some sample code based on the book Learning Python by Mark Lutz that\n###addresses your question:\n###import sys\n###temp = sys.stdout                 # store original stdout object for later\n###sys.stdout = open('log.txt', 'w') # redirect all prints to this log file\n###print(\"testing123\")               # nothing appears at interactive prompt\n###print(\"another line\")             # again nothing appears. it's written to log file instead\n###sys.stdout.close()                # ordinary file object\n###sys.stdout = temp                 # restore print commands to interactive prompt\n###print(\"back to normal\")           # this shows up in the interactive prompt###\n\n# OPTION SEARCH PATH\n# SafeConfigParser uses a multi-step search process when looking for an option.\n# Before starting the option search, the section name is tested.  If the section does not exist, \n# and the name is not the special value DEFAULT, when NoSectionError is raised.\n# 1. If the option name appears in the vars dictionary passed to get(), the value from vars is returned.\n# 2. If the option name appears in the specified section, the value from that section is returned.\n# 3. If the option name appears in the DEFAULT section, that value is returned.\n# 4. If the option name appears in the defaults dictionary passed to the constructor, that value is returned.\n\n#[DEFAULT]\n#file-only = value from DEFAULT section\n#init-and-file = value from DEFAULT section\n#from-section = value from DEFAULT section\n#from-vars = value from DEFAULT section\n#\n#[sect]\n#section-only = value from section in file\n#from-section = value from section in file\n#from-vars = value from section in file\n\nfrom __future__ import print_function\nimport ConfigParser\n\n# Define the names of the options\noption_names = [\n\t  'from-default'\n\t, 'from-section'\n\t, 'section-only'\n\t, 'file-only'\n\t, 'init-only'\n\t, 'init-and-file'\n\t, 'from-vars'\n\t]\n\n# Initialize the parser with some defaults\nparser = ConfigParser.SafeConfigParser(\n\tdefaults={ 'from-default':'value from defaults passed to init'\n\t         , 'init-only':'value from defaults passed to init'\n\t         , 'init-and-file':'value from defaults passed to init'\n\t         , 'from-section':'value from defaults passed to init'\n\t         , 'from-vars':'value from detaults passed to init'\n\t         }\t\n\t         )\n\nprint('Defaults before loading file:')\ndefaults = parser.defaults()\nfor name in option_names:\n\tif name in defaults:\n\t\tprint('  %-15s = %r' %(name, defaults[name]))\n\n# LOAD THE CONFIGURATION FILE\nparser.read('with-defaults.ini')\n\nprint('\\nDefaults after loading file:')\ndefaults = parser.defaults()\nfor name in option_names:\n\tif name in defaults:\n\t\tprint('  %-15s = %r' %(name, defaults[name]))\n\n# DEFINE SOME LOCAL OVERRIDES\nvars = {'from-vars':'value from vars'}\n\n# SHOW THE VALUES OF ALL OF THE OPTIONS\nprint('\\nOption lookup:')\nfor name in option_names:\n\tvalue = parser.get('sect', name, vars=vars)\n\tprint('  %-15s = %r' %(name, value))\n\n# SHOW ERROR MESSAGES FOR OPTIONS THAT DO NOT EXIST\nprint('\\nError cases:')\ntry:\n\t\tprint('No such option:', parser.get('sect', 'no-option'))\nexcept ConfigParser.NoOptionError as err:\n\t\tprint(str(err))\n\ntry:\n    print('No such section:', parser.get('no-sect', 'no-option'))\nexcept ConfigParser.NoSectionError as err:\n    print(str(err))\n\n# COMBINING VALUES WITH INTERPOLATION\n# SafeConfigParser provides a feature called interpolation that can be used to combine values together.\n# Values containing standard Python format strings trigger the interpolation feature when they are\n# retrieved with get().\n# Options named within the value being fetched are replaced with their values in turn, until no more\n# substitution is necessary\n#\n# The URL examples from earlier in this section can be rewritten to use interpolation to make it easier to \n# change only part of the value.\n# For example, this configuration file separates the protocol, hostname, and port from the URL as \n# separate options.\n#\n\n\n\n#####\n#[bug_tracker]\n#protocol = http\n#server = localhost\n#port = 8080\n#url = %(protocol)s://%(server)s:%(port)s/bugs/\n#username = dhellmann\n#password = SECRET\n#\n# Interpolation is performed by default each time get() is called.\n# Pass a true value in the 'raw' argument to retrieve the original value, without interpolation.\n#\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('interpolation.ini')\n\nprint('Original value       :', parser.get('bug_tracker', 'url'))\nparser.set('bug_tracker', 'port', '9000')\nprint('Altered port value   :', parser.get('bug_tracker', 'url'))\n\nprint('Without interpolation:', parser.get('bug_tracker', 'url', raw=True))\n\n# USING DEFAULTS\n# Values for interpolation do not need to appear in the same section as the original option.\n# Defauls can be mixed with override values\n#   \n#[DEFAULT]\n#url = %(protocol)s://%(server)s:%(port)s/bugs/\n#protocol = http\n#server = bugs.example.com\n#port = 80\n#\n#[bug_tracker]\n#server = localhost\n#port = 8080\n#username = dhellmann\n#password = SECRET\n#\n# The url value comes from the DEFAULT section, and the substitution starts by lookin in 'bug_tracker' \n# and falling back to DEFAULT for pieces not found.\n#\nfrom __future__ import print_function\nfrom ConfigParser import SafeConfigParser\n\nparser = SafeConfigParser()\nparser.read('interpolation_defaults.ini')\n\nprint('URL: ', parser.get('bug_tracker', 'url'))\n\n\n# SUBSTITUTION ERRORS\n# Substitution stops after MAX_INTERPOLATION_DEPTH steps to avoid problems due to recursive references.\n\nfrom __future__ import print_function\nimport ConfigParser\n\nparser = ConfigParser.SafeConfigParser()\n\nparser.add_section('sect')\nparser.set('sect', 'opt', '%(opt)s')\n\ntry:\n\tprint(parser.get('sect', 'opt'))\nexcept ConfigParser.InterpolationDepthError as err:\n\tprint('ERROR:', err)\n\t",
+					"file": "/C/Users/mdjuk/q_python_scripts/argparse.py",
+					"file_size": 22639,
+					"file_write_time": 131432992999633020,
+					"settings":
+					{
+						"buffer_size": 22384,
+						"line_ending": "Windows",
+						"name": "argparse.py"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_json/briefs.json",
+					"settings":
+					{
+						"buffer_size": 103,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "{\"first_name\":\"John\",\"last_name\":\"Smith\",\"age\":30}"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_json/data.json",
+					"settings":
+					{
+						"buffer_size": 139,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"contents": " \tNeil McBride (Cloud BI) \nMay 23, 05:55 BST \nhttps://172.20.1.133:8443/job/prd-redshift-transform-economistdotcom-summary/23/------------------------------------------\nStarted by timer\nBuilding in workspace <https://172.20.1.133:8443/job/prd-redshift-transform-economistdotcom-summary/ws/>\n[ssh-agent] Looking for ssh-agent implementation...\n[ssh-agent] Java/JNR ssh-agent\n[ssh-agent] Skipped registering BouncyCastle, not running on a remote agent\n[ssh-agent] Started.\n[ssh-agent] Unable to read key: null\njava.lang.NullPointerException\nat jenkins.bouncycastle.api.PEMEncodable.decode(PEMEncodable.java:197)\nat com.cloudbees.jenkins.plugins.sshagent.jna.JNRRemoteAgent.addIdentity(JNRRemoteAgent.java:79)\nat com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper$SSHAgentEnvironment.add(SSHAgentBuildWrapper.java:395)\nat com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.preCheckout(SSHAgentBuildWrapper.java:229)\nat jenkins.scm.SCMCheckoutStrategy.preCheckout(SCMCheckoutStrategy.java:76)\nat hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:528)\nat hudson.model.Run.execute(Run.java:1728)\nat hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)\nat hudson.model.ResourceController.execute(ResourceController.java:98)\nat hudson.model.Executor.run(Executor.java:404)\n\n[ssh-agent] Using credentials prd01\n[prd-redshift-transform-economistdotcom-summary] $ /bin/sh -xe /tmp/hudson7603081270681829407.sh\n+ ssh prd01@172.20.1.171 'set -e; /home/prd01/repos/bigdata/redshift/transform/transform.sh prd01 insert_economistdotcom_serverlog_summary.sql'\n\nEnvironment is set to 'prd01'\n\nScript is set to 'insert_economistdotcom_serverlog_summary.sql'\n\n-- delete last few days and then reinsert\nbegin transaction;\nlock economistdotcom.serverlog_summary;\n\ndelete from economistdotcom.serverlog_summary\nwhere timestampgmt >= dateadd(d,-2,current_date) \n;\n insert into economistdotcom.serverlog_summary\n select\n        cast(msec as date)                                                                                                                                                as timestampGMT \n      , regexp_substr(regexp_substr(request_uri, '(^[^\\?]*)'), '(^/(api|audio-edition-podcast|ec-services|graphql)/)|(/(comments|edit|print)$)')                          as category \n      , regexp_replace(regexp_substr( REGEXP_REPLACE ( replace(request_uri, '%2F','/'),'^(/graphql.*%22path_0%22[^/]*)', ''), '^/([^\\?\\%/]*/){0,2}'),'[^/]{32,}/','.../') AS url \n      , upstream_http_x_geoip_country                                                                                                                                     as country \n      , upstream_http_x_geoip_region                                                                                                                                      as region \n      , uatype                                                                                                                                                            as device \n      , status \n      , count(*)                                                         as total \n      , Min(request_time)                                                as first_reponsetime \n      , Max(request_time)                                                as last_repsonsetime \n      , Avg(request_time)                                                as average_responsetime \n      , min(cast(REPLACE(body_bytes_sent,'-',0) as             integer)) as first_body_bytes_sent \n      , Max(cast(REPLACE(body_bytes_sent,'-',0) as             integer)) as last_body_bytes_sent \n      , Avg(cast(REPLACE(body_bytes_sent,'-',0) as             integer)) as average_body_bytes_sent \n      , Max(cast(REPLACE(upstream_http_age, '-',0) as          integer)) as max_upstream_http_age \n      , Avg(cast(REPLACE(upstream_http_age, '-',0) as          integer)) as average_upstream_http_age \n      , Max(cast(REPLACE(upstream_http_x_cache_hits,'-',0) as  integer)) as max_upstream_http_x_cache_hits \n      , Avg(cast(REPLACE(upstream_http_x_cache_hits, '-',0) as integer)) as average_upstream_http_x_cache_hits\n   from \n        economistdotcom.serverlog\n  where msec::date >= Dateadd(d,-2,CURRENT_DATE)\ngroup by\n        cast(msec as date) \n      , regexp_substr(regexp_substr(request_uri, '(^[^\\?]*)'), '(^/(api|audio-edition-podcast|ec-services|graphql)/)|(/(comments|edit|print)$)') \n      , regexp_replace(regexp_substr( REGEXP_REPLACE ( replace(request_uri, '%2F','/'),'^(/graphql.*%22path_0%22[^/]*)', ''), '^/([^\\?\\%/]*/){0,2}'),'[^/]{32,}/','.../') \n      , upstream_http_x_geoip_region \n      , upstream_http_x_geoip_country \n      , upstream_http_x_geoip_region \n      , uatype \n      , status\n;\n\ndelete \n  from economistdotcom.serverlog\n where msec <= dateadd(weeks,-6,current_date)\n;\n\nend transaction;\n\nBEGIN\nLOCK TABLE\nDELETE 68328\nINSERT 0 180813\npsql:/home/prd01/repos/bigdata/redshift/transform/insert_economistdotcom_serverlog_summary.sql:43: ERROR: 1023\nDETAIL: Serializable isolation violation on table - 413037, transactions forming the cycle are: 8619503, 8619241 (pid:12811)\nBuild step 'Execute shell' marked build as failure\n[ssh-agent] Stopped.\n",
+					"settings":
+					{
+						"buffer_size": 5194,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/10PythonTricks.py",
+					"settings":
+					{
+						"buffer_size": 1540,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/s3CreateBucket.py",
+					"settings":
+					{
+						"buffer_size": 1769,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "boto.py"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/s3ListAllBuckets.py",
+					"settings":
+					{
+						"buffer_size": 371,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/s3UploadFiles.py",
+					"settings":
+					{
+						"buffer_size": 5071,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"contents": "copy supplier_remote_load from 'mdj-bucket-001/load/supplier_manifest.json'\nCREDENTIALS 'aws_iam_role=arn:aws:iam::678752479360:role/RedshiftCopyUnload' \ndelimiter '|' \nCOMPUPDATE ON\nssh\n;\n\npsql --host=mdjcluster.comcbtx9pdcp.us-west-2.redshift.amazonaws.com --port=5439 --username=mdj_marko --dbname=mdjdb\n",
+					"settings":
+					{
+						"buffer_size": 307,
+						"line_ending": "Windows",
+						"name": "copy supplier_remote_load from 'mdj-bucket-001/loa"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/Downloads/Activity.py",
+					"settings":
+					{
+						"buffer_size": 1976,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/json1.py",
+					"settings":
+					{
+						"buffer_size": 593,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/dict.py",
+					"settings":
+					{
+						"buffer_size": 1578,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/json2.py",
+					"settings":
+					{
+						"buffer_size": 5003,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/data.json",
+					"settings":
+					{
+						"buffer_size": 769,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/data_out.json",
+					"settings":
+					{
+						"buffer_size": 772,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/json4.py",
+					"settings":
+					{
+						"buffer_size": 2668,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/json5.py",
+					"settings":
+					{
+						"buffer_size": 825,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/cuckoo.py",
+					"settings":
+					{
+						"buffer_size": 5383,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "import datetime"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/mdj_code1.py",
+					"settings":
+					{
+						"buffer_size": 643,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/automate_Redshift.py",
+					"settings":
+					{
+						"buffer_size": 4036,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/daily_tasks.html",
+					"settings":
+					{
+						"buffer_size": 40624,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/come_to_work.html",
+					"settings":
+					{
+						"buffer_size": 4415,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/pickup.html",
+					"settings":
+					{
+						"buffer_size": 10220,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/data_ec2_instances.json",
+					"settings":
+					{
+						"buffer_size": 5212,
+						"encoding": "UTF-8",
+						"line_ending": "Windows",
+						"name": "{"
+					}
+				},
+				{
+					"contents": "\ncontent--> {\n    \"objects\": [\n        {\n            \"pipelineLogUri\": \"s3://mdj-bucket-logs/logs/\", \n            \"name\": \"Default\", \n            \"failureAndRerunMode\": \"CASCADE\", \n            \"resourceRole\": \"DataPipelineDefaultResourceRole\", \n            \"role\": \"DataPipelineDefaultRole\", \n            \"scheduleType\": \"ONDEMAND\", \n            \"id\": \"Default\"\n        }, \n        {\n            \"id\": \"CliActivity\", \n            \"type\": \"ShellCommandActivity\", \n            \"command\": \"(sudo yum -y update aws-cli) && (#{myAWSCLICmd})\", \n            \"name\": \"CliActivity\", \n            \"runsOn\": {\n                \"ref\": \"Ec2Instance\"\n            }\n        }, \n        {\n            \"terminateAfter\": \"50 Minutes\", \n            \"type\": \"Ec2Resource\", \n            \"id\": \"Ec2Instance\", \n            \"name\": \"Ec2Instance\", \n            \"instanceType\": \"t1.micro\"\n        }\n    ], \n    \"values\": {\n        \"myAWSCLICmd\": \"aws s3 ls s3://mdj-bucket-001/\"\n    }, \n    \"parameters\": [\n        {\n            \"descriptionxxx\": \"AWS CLI command\", \n            \"type\": \"String\", \n            \"id\": \"myAWSCLICmd\", \n            \"watermark\": \"aws [options] <command> <subcommand> [parameters]\"\n        }\n    ]\n}\ncol--> [u'objects', u'values', u'parameters']\nrow--> objects\nrow-->item-->%s --> %sobjects{u'pipelineLogUri': u's3://mdj-bucket-logs/logs/', u'name': u'Default', u'failureAndRerunMode': u'CASCADE', u'resourceRole': u'DataPipelineDefaultResourceRole', u'role': u'DataPipelineDefaultRole', u'scheduleType': u'ONDEMAND', u'id': u'Default'}\nrow-->item-->%s --> %sobjects{u'id': u'CliActivity', u'type': u'ShellCommandActivity', u'command': u'(sudo yum -y update aws-cli) && (#{myAWSCLICmd})', u'name': u'CliActivity', u'runsOn': {u'ref': u'Ec2Instance'}}\nrow-->item-->%s --> %sobjects{u'terminateAfter': u'50 Minutes', u'type': u'Ec2Resource', u'id': u'Ec2Instance', u'name': u'Ec2Instance', u'instanceType': u't1.micro'}\nrow--> values\nrow-->item-->%s --> %svaluesmyAWSCLICmd\nrow--> parameters\nrow-->item-->%s --> %sparameters{u'descriptionxxx': u'AWS CLI command', u'type': u'String', u'id': u'myAWSCLICmd', u'watermark': u'aws [options] <command> <subcommand> [parameters]'}\n\n\n    with open(filename, 'r') as f:\n        #objects = ijson.items(f, 'meta.view.columns.item')\n        objects = ijson.items(f, 'objects.item')\n        columns = list(objects)\n        print(\"columns-->\", columns)",
+					"settings":
+					{
+						"buffer_size": 2387,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/json3.py",
+					"settings":
+					{
+						"buffer_size": 1132,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"contents": "#!/bin/env python\n\nfrom ijson import *\n\n# filename = \"mdj_dict.json\"\n\n\n# with open(filename, 'r') as f:\n#     content = f.read()\n\n# print(\"file contents-->\", content)\n\n#parser = ijson.parse(urlopen('http://.../'))\n# lines=[]\nwith open(filename, 'r') as f:\n    \t#objects = ijson.items(f, 'meta.view.columns.item')\n\t\tlines.append(f)\n\t\t\n# print(\"all lines-->\", lines)\n\n\t\tobjects = ijson.items(f, 'objects.item')\n\t\tcolumns = list(objects)\n\t\tprint(\"columns-->\", columns)\n\n# with open(filename, 'r') as f:\n\n# \tprint('<geo>')\n# \tfor prefix, event, value in parser:\n# \t    if (prefix, event) == ('earth', 'map_key'):\n# \t        print('%s' % value)\n# \t        continent = value\n# \t    elif prefix.endswith('.name'):\n# \t        print('<object name=\"%s\"/>' % value)\n# \t    elif (prefix, event) == ('earth.%s' % continent, 'end_map'):\n# \t        print('</%s>' % continent)\n# \tprint('</geo>')\n",
+					"settings":
+					{
+						"buffer_size": 880,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/mdj_misc.py",
+					"settings":
+					{
+						"buffer_size": 482,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/s3DownloadFile.py",
+					"settings":
+					{
+						"buffer_size": 733,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/describeInstances.py",
+					"settings":
+					{
+						"buffer_size": 107,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/mdjuk/q_python_scripts/dict2_with_for_loop_and_if_else.py",
+					"settings":
+					{
+						"buffer_size": 1360,
+						"line_ending": "Windows"
+					}
+				}
+			],
+			"build_system": "Packages/Python/Python.sublime-build",
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/Python/Python.sublime-build",
+							""
+						],
+						[
+							"Packages/Python/Python.sublime-build",
+							"Syntax Check"
+						]
+					],
+					[
+						"Packages/Python/Python.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 237.0,
+				"last_filter": "Package Control: ",
+				"selected_items":
+				[
+					[
+						"Package Control: ",
+						"Package Control: Install Package"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"python",
+						"Set Syntax: Python"
+					],
+					[
+						"sq",
+						"Set Syntax: SQL"
+					],
+					[
+						"py",
+						"Set Syntax: Python"
+					],
+					[
+						"ssh",
+						"Set Syntax: HTML"
+					],
+					[
+						"pip",
+						"Package Control: Advanced Install Package"
+					],
+					[
+						"",
+						"Package Control: List Packages"
+					],
+					[
+						"j",
+						"Set Syntax: JSON"
+					],
+					[
+						"js",
+						"Set Syntax: JSON"
+					],
+					[
+						"sspy",
+						"Set Syntax: Python"
+					],
+					[
+						"ssp",
+						"Set Syntax: Python"
+					],
+					[
+						"SSp",
+						"Set Syntax: Python"
+					],
+					[
+						"Snipp",
+						"Snippet: if __name__ == '__main__'"
+					],
+					[
+						"ssyn",
+						"Set Syntax: Python"
+					],
+					[
+						"python ",
+						"Set Syntax: Python"
+					],
+					[
+						" python sy",
+						"Build With: Python - Syntax Check"
+					],
+					[
+						"sspys",
+						"Set Syntax: JavaScript (Rails)"
+					],
+					[
+						"PY",
+						"Set Syntax: Python"
+					]
+				],
+				"width": 392.0
+			},
+			"console":
+			{
+				"height": 299.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/C/Users/mdjuk/q_python_scripts/simple.ini",
+				"/C/Users/mdjuk/q_python_scripts/multisection.ini",
+				"/C/Users/mdjuk/q_python_scripts/pandas1.py",
+				"/C/Users/mdjuk/q_python_scripts/pandas.py",
+				"/C/Users/mdjuk/q_json/supplier_manifest.json",
+				"/C/Users/mdjuk/q_python_scripts/serverlessFunction.py",
+				"/C/Users/mdjuk/q_python_scripts/while.py",
+				"/C/Users/mdjuk/Downloads/_dummy (1).py",
+				"/C/Users/mdjuk/Downloads/supplier_manifest.json",
+				"/C/Users/mdjuk/q_python_scripts/dict.py",
+				"/C/Users/mdjuk/q_python_scripts/list.py",
+				"/C/Users/mdjuk/q_python_scripts/input.py",
+				"/C/Users/mdjuk/q_python_scripts/misctest.py",
+				"/C/Users/mdjuk/q_python_scripts/list_functions_in_python_module.py",
+				"/C/Users/mdjuk/q_python_scripts/readfile.py",
+				"/C/Users/mdjuk/q_python_scripts/pop.py",
+				"/C/Users/mdjuk/q_python_scripts/set.py",
+				"/C/Users/mdjuk/q_python_scripts/dict2_with_for_loop_and_if_else.py",
+				"/C/Users/mdjuk/q_python_scripts/if.py",
+				"/C/Users/mdjuk/Downloads/mdj2017-04-20-16-32-23-E764BAB89A2252A2.py",
+				"/C/Users/mdjuk/q_python_scripts/cast.py",
+				"/C/Users/mdjuk/q_python_scripts/condition.py",
+				"/C/Users/mdjuk/q_python_scripts/logic.py",
+				"/C/Users/mdjuk/q_python_scripts/comparison.py",
+				"/C/Users/mdjuk/q_sublime/Data/Packages/User/arithmetic.py",
+				"/C/Users/mdjuk/q_python_scripts/nums",
+				"/C/Users/mdjuk/q_python_scripts/test",
+				"/C/Users/mdjuk/q_python_scripts/qinput.py",
+				"/C/Users/mdjuk/q_python_scripts/helloWorld.py",
+				"/C/Users/mdjuk/q_python_scripts/var.py",
+				"/C/Users/mdjuk/q_SQLinForm/z_SQLinFormFXpro_5.1.31.bat",
+				"/C/Users/mdjuk/q_sublime/SQLinFormFXpro_5.1.31.bat",
+				"/C/Users/mdjuk/q_sublime/sublime.py"
+			],
+			"find":
+			{
+				"height": 35.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"XXXX",
+					"render_come_to_work_template",
+					"ijson",
+					"status",
+					"db",
+					"ip",
+					"sChildpath",
+					"Returns",
+					"Description",
+					"'Subtraction\\t'\n\t\ta\n\t\t'-'\n\t\tb\n\t\t'='\n\t\ta - b\n\t\t",
+					":])\n",
+					"if",
+					"1\n2\n3\n4\n5\n6\n7\n8",
+					"var",
+					"teh",
+					" ",
+					"main"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"return",
+					"sChildPath",
+					"the",
+					","
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"selected": 8,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/C/Users/mdjuk/q_python_scripts/nums",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1488,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1384,
+										1384
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 19,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/C/Users/mdjuk/q_python_scripts/interview2quest.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 929,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										929,
+										929
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 17,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/C/Users/mdjuk/q_python_scripts/interview3quest.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1537,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										121,
+										92
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 627.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 18,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/C/Users/mdjuk/q_python_scripts/mdj_test1.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1876,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										327,
+										179
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 114.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 16,
+							"type": "text"
+						},
+						{
+							"buffer": 4,
+							"file": "/C/Users/mdjuk/q_python_scripts/return2.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1148,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										294,
+										294
+									]
+								],
+								"settings":
+								{
+									"auto_name": "mdj_test2.py",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 114.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 13,
+							"type": "text"
+						},
+						{
+							"buffer": 5,
+							"file": "/C/Users/mdjuk/q_python_scripts/lambdaHelloWorld.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 4036,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										3836,
+										3836
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 2679.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 6,
+							"file": "/C/Users/mdjuk/q_python_scripts/error_capture.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1239,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1238,
+										1238
+									]
+								],
+								"settings":
+								{
+									"auto_name": "error_capture.py",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 724.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 7,
+							"type": "text"
+						},
+						{
+							"buffer": 7,
+							"file": "/C/Users/mdjuk/q_python_scripts/commandLiveArgs.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 663,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										662,
+										662
+									]
+								],
+								"settings":
+								{
+									"auto_name": "commandLiveArgs.py",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 228.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 6,
+							"type": "text"
+						},
+						{
+							"buffer": 8,
+							"file": "/C/Users/mdjuk/q_python_scripts/argparse.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 22384,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										22382,
+										21977
+									]
+								],
+								"settings":
+								{
+									"auto_name": "argparse.py",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 12333.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						},
+						{
+							"buffer": 9,
+							"file": "/C/Users/mdjuk/q_json/briefs.json",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 103,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										103,
+										103
+									]
+								],
+								"settings":
+								{
+									"auto_name": "{\"first_name\":\"John\",\"last_name\":\"Smith\",\"age\":30}",
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 12,
+							"type": "text"
+						},
+						{
+							"buffer": 10,
+							"file": "/C/Users/mdjuk/q_json/data.json",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 139,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										139,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 4,
+							"type": "text"
+						},
+						{
+							"buffer": 11,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5194,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4820,
+										4820
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/SQL/SQL.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 809.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 5,
+							"type": "text"
+						},
+						{
+							"buffer": 12,
+							"file": "/C/Users/mdjuk/q_python_scripts/10PythonTricks.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1540,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										93,
+										93
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 741.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 11,
+							"type": "text"
+						},
+						{
+							"buffer": 13,
+							"file": "/C/Users/mdjuk/q_python_scripts/s3CreateBucket.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1769,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1766,
+										1766
+									]
+								],
+								"settings":
+								{
+									"auto_name": "boto.py",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": -0.0,
+								"translation.y": 798.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 10,
+							"type": "text"
+						},
+						{
+							"buffer": 14,
+							"file": "/C/Users/mdjuk/q_python_scripts/s3ListAllBuckets.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 371,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										152,
+										86
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 37,
+							"type": "text"
+						},
+						{
+							"buffer": 15,
+							"file": "/C/Users/mdjuk/q_python_scripts/s3UploadFiles.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5071,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4296,
+										4296
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 2698.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 36,
+							"type": "text"
+						},
+						{
+							"buffer": 16,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 307,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										258,
+										258
+									]
+								],
+								"settings":
+								{
+									"auto_name": "copy supplier_remote_load from 'mdj-bucket-001/loa",
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 8,
+							"type": "text"
+						},
+						{
+							"buffer": 17,
+							"file": "/C/Users/mdjuk/Downloads/Activity.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1976,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										975,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 35,
+							"type": "text"
+						},
+						{
+							"buffer": 18,
+							"file": "/C/Users/mdjuk/q_python_scripts/json1.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 593,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										370,
+										337
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 114.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 33,
+							"type": "text"
+						},
+						{
+							"buffer": 19,
+							"file": "/C/Users/mdjuk/q_python_scripts/dict.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1578,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1578,
+										1578
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 0.0,
+								"translation.y": 513.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 34,
+							"type": "text"
+						},
+						{
+							"buffer": 20,
+							"file": "/C/Users/mdjuk/q_python_scripts/json2.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5003,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4436,
+										4441
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 0.0,
+								"translation.y": 1663.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 9,
+							"type": "text"
+						},
+						{
+							"buffer": 21,
+							"file": "/C/Users/mdjuk/q_python_scripts/data.json",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 769,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										680,
+										680
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 5850.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 32,
+							"type": "text"
+						},
+						{
+							"buffer": 22,
+							"file": "/C/Users/mdjuk/q_python_scripts/data_out.json",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 772,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										769
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+								},
+								"translation.x": 5077.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 31,
+							"type": "text"
+						},
+						{
+							"buffer": 23,
+							"file": "/C/Users/mdjuk/q_python_scripts/json4.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 2668,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1814,
+										1796
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 1919.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 24,
+							"file": "/C/Users/mdjuk/q_python_scripts/json5.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 825,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										494,
+										494
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 456.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						},
+						{
+							"buffer": 25,
+							"file": "/C/Users/mdjuk/q_python_scripts/cuckoo.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5383,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										597,
+										597
+									]
+								],
+								"settings":
+								{
+									"auto_name": "import datetime",
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 2315.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 14,
+							"type": "text"
+						},
+						{
+							"buffer": 26,
+							"file": "/C/Users/mdjuk/q_python_scripts/mdj_code1.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 643,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										391,
+										391
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 15,
+							"type": "text"
+						},
+						{
+							"buffer": 27,
+							"file": "/C/Users/mdjuk/q_python_scripts/automate_Redshift.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 4036,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4036,
+										3442
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 2608.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 25,
+							"type": "text"
+						},
+						{
+							"buffer": 28,
+							"file": "/C/Users/mdjuk/q_python_scripts/daily_tasks.html",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 40624,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										40624,
+										40624
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/HTML/HTML.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 29287.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 24,
+							"type": "text"
+						},
+						{
+							"buffer": 29,
+							"file": "/C/Users/mdjuk/q_python_scripts/come_to_work.html",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 4415,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4415,
+										4415
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/HTML/HTML.sublime-syntax",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 3181.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 23,
+							"type": "text"
+						},
+						{
+							"buffer": 30,
+							"file": "/C/Users/mdjuk/q_python_scripts/pickup.html",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 10220,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										10220,
+										10220
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/HTML/HTML.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 3998.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 22,
+							"type": "text"
+						},
+						{
+							"buffer": 31,
+							"file": "/C/Users/mdjuk/q_python_scripts/data_ec2_instances.json",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5212,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										5098,
+										5098
+									]
+								],
+								"settings":
+								{
+									"auto_name": "{",
+									"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 30,
+							"type": "text"
+						},
+						{
+							"buffer": 32,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 2387,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										2387,
+										2387
+									]
+								],
+								"settings":
+								{
+									"auto_name": "",
+									"syntax": "Packages/Text/Plain text.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 152.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 20,
+							"type": "text"
+						},
+						{
+							"buffer": 33,
+							"file": "/C/Users/mdjuk/q_python_scripts/json3.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1132,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										707,
+										707
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 0.0,
+								"translation.y": 228.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 29,
+							"type": "text"
+						},
+						{
+							"buffer": 34,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 880,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										501,
+										501
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 21,
+							"type": "text"
+						},
+						{
+							"buffer": 35,
+							"file": "/C/Users/mdjuk/q_python_scripts/mdj_misc.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 482,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										482,
+										482
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 28,
+							"type": "text"
+						},
+						{
+							"buffer": 36,
+							"file": "/C/Users/mdjuk/q_python_scripts/s3DownloadFile.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 733,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										731,
+										731
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 27,
+							"type": "text"
+						},
+						{
+							"buffer": 37,
+							"file": "/C/Users/mdjuk/q_python_scripts/describeInstances.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 107,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										107,
+										107
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 26,
+							"type": "text"
+						},
+						{
+							"buffer": 38,
+							"file": "/C/Users/mdjuk/q_python_scripts/dict2_with_for_loop_and_if_else.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1360,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 38,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 27.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 108.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "Packages/Python/Python.sublime-build",
+			"position": "0,0,1,-1,-1,-1,-1,971,31,348,1257",
+			"project": "",
+			"replace":
+			{
+				"height": 64.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"s",
+						"C:\\Users\\mdjuk\\q_python_scripts\\condition.py"
+					],
+					[
+						"var",
+						"C:\\Users\\mdjuk\\q_python_scripts\\var.py"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": false,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 1,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}

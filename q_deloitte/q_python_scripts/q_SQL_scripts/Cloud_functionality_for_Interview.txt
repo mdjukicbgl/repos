@@ -1,0 +1,70 @@
+Cloud computing is computing based on the internet.
+Where in the past, people would run applications or programs from software downloaded on a physical
+computer or server in their building, cloud computing allows people access to the same kinds of applications 
+throughout the internet.
+1. Flexibility
+2. Disaster Recovery
+3. Automatic software updates
+4. Free's up Capital-expenditure
+5. Increased Collaboration 
+6. Work from anywhere
+7. Document control
+8. Security
+9. Competitveness
+10. Environmentally Friendly - elastic sizing
+
+1. Flexibility - ideal for businesses with growing or fluctuating bandwidth demands.
+If your needs increase, it's easy to scale up your cloud capacity, drawing on 
+the service's remote servers.  Likewise, if you need to scale down again, flexibility is
+baked into the service.  This level of agility can give businesses using cloud computing a real 
+advantage over competitors - 
+
+2. Disaster recovery - Businesses of all sizes should be inbesting in robust DR, but for smaller businesses that 
+lack the required cash and expertise, this is often more an ideal than the reality.
+Clould is now helping more 
+
+4. Pay as you go - subscriber model
+
+5. Increased collaboration - Dev teams can access, edit and share documents anytime, from anywhere,
+they're able to do more together.  Cloud-based workflow and file
+sharing apps help make updates in real time and gives them full visibility of their collaborations.
+
+6. Work from anywhere - if you've got an internet connection, you can be at work.  And with most serious cloud
+services offering mobile apps, you're not resticted by which device you have at hand.
+
+7. Document control - The more employees and partners collaborate on documents, the greater the need
+for watertight document control.  Before the cloud, work
+
+8. Security - Lost laptops are a billion dollar business problem.  And potentially greater than the 
+loss of an expensive piece of kit, is the loss of sensitive data inside it.
+Cloud computing gives you greater security when this happens.  Because your data is stored
+in the cloud, you can access it no matter 
+
+F D A F I
+w d s c e
+
+Scale as needed
+Disaster recovery
+Managability & Automatic Software updates
+Free's up Capital-expenditure
+Increased Collaboration
+Work from anywhere
+Document control
+Security
+Competitveness
+Environmentally friendly
+
+1)      Lower Costs – Cloud computing pools  all of the computing resources that can be distributed to applications as needed – optimizing the use of the sum of the computing resources and delivering better efficiency and utilization of the entire shared infrastructure.
+
+2)      Cap-Ex Free Computing – Whether you go with a public cloud or outsourced private cloud computing option, cloud computing delivers a better cash flow by eliminating the capital expense associated with building the server infrastructure.
+
+3)      Deploy Projects Faster – Because servers can be brought up & destroyed in a matter of minutes, the time to deploy a new application drops dramatically with cloud computing.  Rather than installing and networking a new hardware server, the new server can be dialed up and imaged in through a self-serve control console.  Or better yet, with a private cloud, your service provider can dial up a new server with a single call or support ticket.
+
+4)      Scale as Needed – As your applications grow, you can add storage, RAM and CPU capacity as needed.  This means you can buy “just enough” and scale as the application demands grow.
+
+5)      Lower Maintenance Costs driven by 2 factors:  Less hardware and outsourced, shared IT staff.  Because cloud computing uses less physical resources, there is less hardware to power and maintain.  With an outsourced cloud, you don’t need to keep server, storage, network, and virtualization experts on staff full time.  You get economy of scale of those expert resources through your cloud provider.
+
+6)      Resiliency and Redundancy – One of the benefits of a private cloud deployment is that you can get automatic failover between hardware platforms and disaster recovery services to bring up your server set in a separate data center should your primary data center experience an outage.
+
+
+

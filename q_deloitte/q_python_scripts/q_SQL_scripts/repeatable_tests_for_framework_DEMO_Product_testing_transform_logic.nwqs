@@ -1,0 +1,6 @@
+<QuerySet>
+  <Query IsView="False" IsSP="False">
+    <File>repeatable_tests_for_framework_DEMO_Product_empty_dim_product.sql</File>
+    <Name>repeatable_tests_for_framework_DEMO_Product_empty_dim_product</Name>
+  </Query>
+</QuerySet>

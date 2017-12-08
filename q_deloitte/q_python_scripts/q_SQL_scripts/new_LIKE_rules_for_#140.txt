@@ -1,0 +1,393 @@
+-- origin ruleset for #140
+-- columns of interest
+
+referrer
+post_referrer
+visit_start_page_url
+first_hit_page_url
+first_hit_referrer
+post_page_url
+post_pagename_no_url
+url
+visit_referrer
+
+
+
+WHERE (
+   (referrer LIKE '%https://www.economist.com/users/%' and referrer like '%-%%40%' escape '-')
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%')
+OR (referrer like '%email=%' and referrer like '%@%')
+OR (post_referrer LIKE '%https://www.economist.com/users/%' and post_referrer like '%-%%40%' escape '-')
+OR (post_referrer LIKE '%family_name=%' and post_referrer not like '%family_name=&%')
+OR (post_referrer like '%email=%' and post_referrer like '%@%')
+OR (visit_start_page_url LIKE '%https://www.economist.com/users/%' and visit_start_page_url like '%-%%40%' escape '-')
+OR (visit_start_page_url LIKE '%family_name=%' and visit_start_page_url not like '%family_name=&%')
+OR (visit_start_page_url like '%email=%' and visit_start_page_url like '%@%')
+OR (first_hit_page_url LIKE '%https://www.economist.com/users/%' and first_hit_page_url like '%-%%40%' escape '-')
+OR (first_hit_page_url LIKE '%family_name=%' and first_hit_page_url not like '%family_name=&%')
+OR (first_hit_page_url like '%email=%' and first_hit_page_url like '%@%') 
+OR (first_hit_referrer LIKE '%lastname=%' and first_hit_referrer not like '%lastname=&%')
+OR (post_page_url LIKE '%lastname=%' and post_page_url not like '%lastname=&%')
+OR (post_pagename_no_url LIKE '%lastname=%' and post_pagename_no_url not like '%lastname=&%')
+OR (url LIKE '%lastname=%' and url not like '%lastname=&%')
+OR (visit_referrer LIKE '%lastname=%' and visit_referrer not like '%lastname=&%') 
+)
+
+-- new regexp within formulae.py
+            return re.sub('https://www.economist.com/users/.+%2540.+',
+                          'https://www.economist.com/users/DroppedEmailAddress',
+                   
+				   re.sub('https://www.economist.com/users/.+%2540.+/',
+                          'https://www.economist.com/users/DroppedEmailAddress/',
+						  
+                   re.sub('user_search_advanced?.*&uid',
+                          'user_search_advanced?DroppedEmailAddress&uid',
+                   
+				   re.sub('/unsubscribe?.*&h',
+                          '/unsubscribe?DroppedEmailAddress&h',
+                   
+				   re.sub('gcs\\?ss=.*',
+                          'gcs?ss=DroppedEmailAddress',
+                   
+				   re.sub('lastname=[^&](.*?)&',
+                          'lastname=DroppedName&',
+                   
+				   re.sub('family_name=[^&](.*?)&',
+                          'family_name=DroppedName&',
+                   
+				   re.sub('given_name=[^&](.*?)&',
+                          'given_name=DroppedName&',
+                   
+				   re.sub('email=(.+)',
+                          'email=DroppedEmailAddress',
+						  
+                   re.sub('https://www.economist.com/user\\?email.*&cid1',
+                          'https://www.economist.com/user?emailDroppedEmailAddress&cid1',
+                   
+				   re.sub('destination=user%2F3383857%3Femail%(.+)cid1',
+                          'destination=user%2F3383857%3Femail%DroppedEmailAddresscid1',
+                   
+				   re.sub('destination=user%3Femail%(.+)cid1',
+				          'destination=user%3Femail%DroppedEmailAddresscid1',
+                   
+				   re.sub('user_search_advanced%3Fmail%(.+)uid',
+				          'user_search_advanced%3Fmail%DroppedEmailAddressuid',
+                   
+				   re.sub('destination=user%3Femail%(.+)cid1',  -- mdj Duplicate from above
+                          'destination=user%3Femail%DroppedEmailAddresscid1',
+                   
+				   re.sub('destination=search%2Fgcs%3Fss%(.+)',
+                          'destination=search%2Fgcs%3Fss%DroppedEmailAddress',
+						  
+                   re.sub('https://www.economist.com/users/(.+)%40(.+)',
+                          'https://www.economist.com/users/DroppedEmailAddress',
+                   
+				   re.sub('https://www.economist.com/users/(.+)%40(.+)/',
+                          'https://www.economist.com/users/DroppedEmailAddress/',
+                   
+				   re.sub('destination=admin%2Fec%2Fuser_search_advanced%3Fmail%(.+)uid',
+                          'destination=admin%2Fec%2Fuser_search_advanced%3Fmail%DroppedEmailAddressuid',
+                           raw_string))))))))))))))))))
+
+-- origin ruleset for #140
+WHERE (
+
+    re.sub('https://www.economist.com/users/.+%2540.+',
+   (referrer LIKE '%https://www.economist.com/users/%' AND referrer like '%-%%2540%' OR referrer NOT LIKE '%-%%2540/%' escape '-')
+    
+   re.sub('https://www.economist.com/users/.+%2540.+/',
+OR ( referrer LIKE '%https://www.economist.com/users/%' AND referrer like '%-%%2540%' OR referrer LIKE '%-%%2540/%' escape '-')	
+ 
+   re.sub('user_search_advanced?.*&uid',
+OR (referrer LIKE '%user_search_advanced?%&uid%' )
+
+   re.sub('/unsubscribe?.*&h',
+OR (referrer LIKE '%/unsubscribe?%&h%' )
+
+  re.sub('gcs\\?ss=.*',
+OR (referrer LIKE '%gcs\\?ss=%' )  
+
+  re.sub('lastname=[^&](.*?)&',
+OR (referrer LIKE '%lastname=%' and referrer not like '%lastname=&%' )  
+
+   re.sub('family_name=[^&](.*?)&',
+OR (referrer LIKE '%family_name=%' and referrer not like '%family_name=&%' )
+
+   re.sub('given_name=[^&](.*?)&',
+OR (referrer LIKE '%given_name=%' and referrer not like '%given_name=&%' )  
+
+	re.sub('email=(.+)',
+OR (referrer LIKE '%email=%' )
+
+    re.sub('https://www.economist.com/user\\?email.*&cid1',
+OR (referrer LIKE '%https://www.economist.com/user\\?email%&cid1%' )
+
+	re.sub('destination=user%2F3383857%3Femail%(.+)cid1',
+OR (referrer LIKE '%destination=user-%%2F3383857-%%3Femail%-%%cid1%' escape '-')
+
+	re.sub('destination=user%3Femail%(.+)cid1',
+OR (referrer LIKE '%destination=user-%%3Femail-%%%cid1%' escape '-')
+
+	re.sub('user_search_advanced%3Fmail%(.+)uid',
+OR (referrer LIKE '%user_search_advanced-%%3Fmail-%%%uid%' escape '-')
+
+	re.sub('destination=search%2Fgcs%3Fss%(.+)',
+OR (referrer LIKE '%destination=search-%%2Fgcs-%%3Fss-%%%' escape '-')
+     
+    re.sub('https://www.economist.com/users/(.+)%40(.+)',
+OR (referrer LIKE '%https://www.economist.com/users/%' AND referrer like '%-%%40%' OR referrer NOT LIKE '%-%%40/%' escape '-')
+
+    re.sub('https://www.economist.com/users/(.+)%40(.+)/',
+OR ( referrer LIKE '%https://www.economist.com/users/%' AND referrer like '%-%%40%' OR referrer LIKE '%-%%40/%' escape '-')		
+
+    re.sub('destination=admin%2Fec%2Fuser_search_advanced%3Fmail%(.+)uid',
+OR (referrer LIKE '%destination=admin-%%2Fec-%%2Fuser_search_advanced-%%3Fmail-%%%uid%' escape '-')	
+
+
+
+---------------------------------------------------------------------------------------------------
+-- Building Tests
+---------------------------------------------------------------------------------------------------
+-- Test 1
+select 'Test 1' as TestNo, TestString, regexp 
+  from (
+select 'StartOfTexthttps://www.economist.com/users/markodjukic@cloudbilimited.com%2540EndOfText' as TestString
+     , regexp_replace( 'StartOfTexthttps://www.economist.com/users/yyyyyy%2540EndOfText'
+     , 'https://www.economist.com/users/.+%2540.+'
+     , 'https://www.economist.com/users/DroppedEmailAddress'
+	 ) as regexp
+) a	 
+ where ( TestString LIKE '%https://www.economist.com/users/%' 
+   AND   TestString LIKE '%-%%2540%' 
+    OR TestString NOT LIKE '%-%%2540/%' 
+escape '-')	
+
+union all
+
+-- Test 2
+select 'Test 2', TestString, regexp 
+  from (
+select 'StartOfTexthttps://www.economist.com/users/markodjukic@cloudbilimited.com%2540/EndOfText' as TestString
+     , regexp_replace( 'StartOfTexthttps://www.economist.com/users/yyyyyy%2540/EndOfText'
+     , 'https://www.economist.com/users/.+%2540.+'
+     , 'https://www.economist.com/users/DroppedEmailAddress/'
+	 ) as regexp
+) a	 
+ where ( TestString LIKE '%https://www.economist.com/users/%' 
+   AND   TestString LIKE '%-%%2540%' 
+    OR   TestString LIKE '%-%%2540/%' 
+escape '-')	
+
+union all
+
+-- Test 3
+select 'Test 3', TestString, regexp 
+  from (
+select 'StartOfTextuser_search_advanced?markodjukic@cloudbilimited.comMiddleOfText&uidEndOfText' as TestString
+     , regexp_replace( 'StartOfTextuser_search_advanced?markodjukic@cloudbilimited.comMiddleOfText&uidEndOfText'
+     , 'user_search_advanced?.*&uid'
+	 , 'user_search_advanced?DroppedEmailAddress&uid'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%user_search_advanced?%&uid%' )
+
+union all
+
+-- Test 4
+select 'Test 4', TestString, regexp 
+  from (
+select 'StartOfText/unsubscribe?markodjukic@cloudbilimited.comMiddleOfText&hEndOfText' as TestString
+     , regexp_replace( 'StartOfText/unsubscribe?markodjukic@cloudbilimited.comMiddleOfText&hEndOfText'
+     , '/unsubscribe?.*&h'
+	 , '/unsubscribe?DroppedEmailAddress&h'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%/unsubscribe?%&h%' )
+
+union all
+
+-- Test 5 
+select 'Test 5', TestString, regexp 
+  from (
+select 'StartOfTextgcs?ss=markodjukic@cloudbilimited.comEndOfText' as TestString
+     , regexp_replace( 'StartOfTextgcs?ss=markodjukic@cloudbilimited.comEndOfText'
+     , 'gcs\\?ss=.*'
+     , 'gcs\\?ss=DroppedEmailAddress'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%gcs?ss=%' )  
+
+union all
+
+-- Test 6  *** check with Pete wrt (.*?) s/b (.*)?
+select 'Test 6', TestString, regexp 
+  from (
+select 'StartOfTextlastname=Djukic&EndOfText' as TestString
+     , regexp_replace( 'StartOfTextlastname=Djukic&EndOfText'
+     , 'lastname=[^&](.*)?&'
+     , 'lastname=DroppedName&'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%lastname=%' and TestString not like '%lastname=&%' )    
+
+union all
+
+-- Test 7
+select 'Test 7', TestString, regexp 
+  from (
+select 'StartOfTextfamily_name=Djukic&EndOfText' as TestString
+     , regexp_replace( 'StartOfTextfamily_name=Djukic&EndOfText'
+     , 'family_name=[^&](.*)?&'
+	 , 'family_name=DroppedName&'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%family_name=%' and TestString not like '%family_name=&%' )
+   
+union all
+
+-- Test 8
+select 'Test 8', TestString, regexp 
+  from (
+select 'StartOfTextgiven_name=Djukic&EndOfText' as TestString
+     , regexp_replace( 'StartOfTextgiven_name=Djukic&EndOfText'
+     , 'given_name=[^&](.*)?&'
+	 , 'given_name=DroppedName&'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%given_name=%' and TestString not like '%given_name=&%' )
+
+union all
+
+-- Test 9
+select 'Test 9', TestString, regexp 
+  from (
+select 'StartOfTextemail=markodjukic@cloudbilimitedEndOfText' as TestString
+     , regexp_replace( 'StartOfTextemail=markodjukic@cloudbilimitedEndOfText'
+     , 'email=(.+)'
+     , 'email=DroppedEmailAddress'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%email=%' )
+
+union all
+
+-- Test 10
+select 'Test 10', TestString, regexp 
+  from (
+select 'StartOfTexthttps://www.economist.com/user?emailmarkodjukic@cloudbilimited&cid1EndOfText' as TestString
+     , regexp_replace( 'StartOfTexthttps://www.economist.com/user?emailmarkodjukic@cloudbilimited&cid1EndOfText'
+     , 'https://www.economist.com/user\\?email(.+)&cid1'
+	 , 'https://www.economist.com/user\\?emailDroppedEmailAddress&cid1'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%https://www.economist.com/user?email%&cid1%')
+
+union all
+
+-- Test 11
+select 'Test 11', TestString, regexp 
+  from (
+select 'StartOfTextdestination=user%2F3383857%3Femail%markodjukic@cloudbilimitedcid1EndOfText' as TestString
+     , regexp_replace( 'StartOfTextdestination=user%2F3383857%3Femail%markodjukic@cloudbilimitedcid1EndOfText'
+     , 'destination=user%2F3383857%3Femail%(.+)cid1'
+     , 'destination=user%2F3383857%3Femail%DroppedEmailAddresscid1'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%destination=user-%%2F3383857-%%3Femail%-%%cid1%' escape '-')
+
+union all
+
+-- Test 12
+select 'Test 12', TestString, regexp 
+  from (
+select 'StartOfTextdestination=user%3Femail%markodjukic@cloudbilimitedcid1EndOfText' as TestString
+     , regexp_replace( 'StartOfTextdestination=user%3Femail%markodjukic@cloudbilimitedcid1EndOfText'
+     , 'destination=user%3Femail%(.+)cid1'
+	 , 'destination=user%3Femail%DroppedEmailAddresscid1'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%destination=user-%%3Femail-%%%cid1%' escape '-')
+
+union all
+
+-- Test 13
+select 'Test 13', TestString, regexp 
+  from (
+select 'StartOfTextuser_search_advanced%3Fmail%markodjukic@cloudbilimiteduidEndOfText' as TestString
+     , regexp_replace( 'StartOfTextuser_search_advanced%3Fmail%markodjukic@cloudbilimiteduidEndOfText'
+     , 'user_search_advanced%3Fmail%(.+)uid'
+	 , 'user_search_advanced%3Fmail%DroppedEmailAddressuid'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%user_search_advanced-%%3Fmail-%%%uid%' escape '-')
+
+union all
+
+-- Test 14
+select 'Test 14', TestString, regexp 
+  from (
+select 'StartOfTextdestination=search%2Fgcs%3Fss%markodjukic@cloudbilimitedEndOfText' as TestString
+     , regexp_replace( 'StartOfTextdestination=search%2Fgcs%3Fss%markodjukic@cloudbilimitedEndOfText'
+     , 'destination=search%2Fgcs%3Fss%(.+)'
+	 , 'destination=search%2Fgcs%3Fss%DroppedEmailAddress'
+	 ) as regexp
+) a	 
+ where 
+     (TestString LIKE '%destination=search-%%2Fgcs-%%3Fss-%%%' escape '-')
+	 	 
+union all
+
+-- Test 15
+select 'Test 15', TestString, regexp 
+  from (
+select 'StartOfTexthttps://www.economist.com/users/markodjukic@cloudbilimited.com%40EndOfText' as TestString
+     , regexp_replace( 'StartOfTexthttps://www.economist.com/users/yyyyyy%40EndOfText'
+     , 'https://www.economist.com/users/.+%40.+'
+     , 'https://www.economist.com/users/DroppedEmailAddress'
+	 ) as regexp
+) a	 
+ where ( TestString LIKE '%https://www.economist.com/users/%' 
+   AND   TestString LIKE '%-%%40%' 
+    OR TestString NOT LIKE '%-%%40/%' 
+escape '-')	
+
+union all
+
+-- Test 16
+select 'Test 16', TestString, regexp 
+  from (
+select 'StartOfTexthttps://www.economist.com/users/markodjukic@cloudbilimited.com%40/EndOfText' as TestString
+     , regexp_replace( 'StartOfTexthttps://www.economist.com/users/markodjukic@cloudbilimited.com%40/EndOfText'
+     , 'https://www.economist.com/users/.+%40.+'
+     , 'https://www.economist.com/users/DroppedEmailAddress/'
+	 ) as regexp
+) a	 
+ where ( TestString LIKE '%https://www.economist.com/users/%' 
+   AND   TestString LIKE '%-%%40%' 
+    OR   TestString LIKE '%-%%40/%' 
+escape '-')	
+	 
+union all
+
+-- Test 17
+select 'Test 17', TestString, regexp 
+  from (
+select 'StartOfTextdestination=admin%2Fec%2Fuser_search_advanced%3Fmail%markodjukic@cloudbilimited.comuidEndOfText' as TestString
+     , regexp_replace( 'StartOfTextdestination=admin%2Fec%2Fuser_search_advanced%3Fmail%markodjukic@cloudbilimited.comuidEndOfText'
+     , 'destination=admin%2Fec%2Fuser_search_advanced%3Fmail%(.+)uid'
+	 , 'destination=admin%2Fec%2Fuser_search_advanced%3Fmail%DroppedEmailAddressuid'
+	 ) as regexp
+) a	 
+ where (TestString LIKE '%destination=admin-%%2Fec-%%2Fuser_search_advanced-%%3Fmail-%%%uid%' escape '-')	
+ 

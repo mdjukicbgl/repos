@@ -1,0 +1,153 @@
+---------------------------------------------------------------------------------------------------
+-- Tables in scope for UPSERT changes.....
+---------------------------------------------------------------------------------------------------
+mrd.dbm_lineitems 
+mrd.dbm_orders
+mrd.dfp_lineitems
+mrd.dfp_orders
+mrd.ga_accounts
+mrd.ga_events
+mrd.ga_pagestats
+mrd.ga_profiles
+mrd.ga_sessions
+mrd.ga_webproperties
+
+---------------------------------------------------------------------------------------------------
+-- unload data from PRD into respective s3 buckets.....
+---------------------------------------------------------------------------------------------------
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.dbm_lineitems );' ) to 's3://economist-analytics-euw1-int01/mrd.dbm_lineitems/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.dbm_orders );' ) to 's3://economist-analytics-euw1-int01/mrd.dbm_orders/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.dfp_lineitems );' ) to 's3://economist-analytics-euw1-int01/mrd.dfp_lineitems/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.dfp_orders );' ) to 's3://economist-analytics-euw1-int01/mrd.dfp_orders/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_accounts );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_accounts/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_events );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_events/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_pagestats );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_pagestats/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_profiles );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_profiles/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_sessions );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_sessions/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+${sshprd01} "source ~/bigdataconfig.py; psql --host=\${redshifthostname} --port=\${redshiftport} --username=\${myredshiftusername} --dbname=\${myredshiftdbname} \-c \" unload ('select * from (select * from mrd.ga_webproperties );' ) to 's3://economist-analytics-euw1-int01/mrd.ga_webproperties/' iam_role 'arn:aws:iam::334086281941:role/prd-redshift-copy-unload' BZIP2 ESCAPE DELIMITER '\t' ALLOWOVERWRITE; \" "
+
+---------------------------------------------------------------------------------------------------
+-- truncate the following tables....
+---------------------------------------------------------------------------------------------------
+truncate table cbl_marko.mrd.dbm_lineitems;
+truncate table cbl_marko.mrd.dbm_orders;
+truncate table cbl_marko.mrd.dfp_lineitems;
+truncate table cbl_marko.mrd.dfp_orders;
+truncate table cbl_marko.mrd.ga_accounts;
+truncate table cbl_marko.mrd.ga_events;
+truncate table cbl_marko.mrd.ga_pagestats;
+truncate table cbl_marko.mrd.ga_profiles;
+truncate table cbl_marko.mrd.ga_sessions;
+truncate table cbl_marko.mrd.ga_webproperties;
+            
+truncate table cbl_marko.dbm.lineitems;
+truncate table cbl_marko.dbm.orders;
+truncate table cbl_marko.dfp.lineitems;
+truncate table cbl_marko.dfp.orders;
+truncate table cbl_marko.ga.accounts;
+truncate table cbl_marko.ga.events;
+truncate table cbl_marko.ga.pagestats;
+truncate table cbl_marko.ga.profiles;
+truncate table cbl_marko.ga.sessions;
+truncate table cbl_marko.ga.webproperties;
+
+---------------------------------------------------------------------------------------------------
+-- copy data from s3 buckets, and then into my DEV database instance.....
+-- NOTE: Need to connect to copytoRedshift connection, with copyrole account
+--       Amend default database to cbl_marko.....just to be sure
+---------------------------------------------------------------------------------------------------
+COPY cbl_marko.mrd.dbm_lineitems from 's3://economist-analytics-euw1-int01/mrd.dbm_lineitems/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.dbm_orders from 's3://economist-analytics-euw1-int01/mrd.dbm_orders/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.dfp_lineitems from 's3://economist-analytics-euw1-int01/mrd.dfp_lineitems/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.dfp_orders from 's3://economist-analytics-euw1-int01/mrd.dfp_orders/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_accounts from 's3://economist-analytics-euw1-int01/mrd.ga_accounts/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_events from 's3://economist-analytics-euw1-int01/mrd.ga_events/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_pagestats from 's3://economist-analytics-euw1-int01/mrd.ga_pagestats/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_profiles from 's3://economist-analytics-euw1-int01/mrd.ga_profiles/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_sessions from 's3://economist-analytics-euw1-int01/mrd.ga_sessions/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY cbl_marko.mrd.ga_webproperties from 's3://economist-analytics-euw1-int01/mrd.ga_webproperties/'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL BZIP2 IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+---------------------------------------------------------------------------------------------------
+-- If loading errors have occurred, then check stl_load_errors out as follows.....
+---------------------------------------------------------------------------------------------------
+select top 111 *
+  from stl_load_errors
+  order by starttime desc
+;
+
+---------------------------------------------------------------------------------------------------
+-- To dump erroneous file onto disk, for analysis.....
+---------------------------------------------------------------------------------------------------
+aws s3 cp s3://economist-analytics-euw1-int01/mrd.ga_sessions/6412_part_00.bz2 ~
+
+---------------------------------------------------------------------------------------------------
+-- return record count in tables just loaded.....
+---------------------------------------------------------------------------------------------------
+
+SELECT 'cbl_marko.mrd.ga_events', COUNT(*) FROM cbl_marko.mrd.ga_events
+
+UNION ALL
+
+SELECT 'cbl_marko.mrd.ga_pagestats', COUNT(*) FROM cbl_marko.mrd.ga_pagestats
+
+UNION ALL
+
+SELECT 'cbl_marko.mrd.ga_sessions', COUNT(*) FROM cbl_marko.mrd.ga_sessions
+
+UNION ALL
+
+SELECT 'cbl_marko.ga.events', COUNT(*) FROM cbl_marko.ga.events
+
+UNION ALL
+
+SELECT 'cbl_marko.ga.pagestats', COUNT(*) FROM cbl_marko.ga.pagestats
+
+UNION ALL
+
+SELECT 'cbl_marko.ga.sessions', COUNT(*) FROM cbl_marko.ga.sessions
+
+ORDER BY 1
+;
+
+---------------------------------------------------------------------------------------------------
+-- That's all Folks!!!
+---------------------------------------------------------------------------------------------------

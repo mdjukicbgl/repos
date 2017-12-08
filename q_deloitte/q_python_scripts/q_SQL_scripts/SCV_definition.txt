@@ -1,0 +1,168 @@
+Multichannel customer service provides customers with options for communicating
+with a brand across a variety of two-way channels.  this can be email, twitter, live 
+chat, telephone, online form etc
+
+The best multichannel customer service provides a seamless experience.  This means that
+no matter what channel a customer chooses to make an enquiry or bellow a complaint
+down, the response(in terms of speed, tone of voice and outcome) should be the same.
+
+Of course, this makes things very complicated for customer service teams. Consumers
+hop across various channels in order to carry out even the simplest of tasks, whether it's
+buying stuff from an ecommerce site or checking the opening hours of its retail shop.
+
+It's entirely possible that within the same company, all these different channels are run
+by different teams with different agendas and different priorities.  It's therefore entirely
+possible for a customer to skip across every brand channel and have a vastly differente
+experience with each one.
+
+More and more customers expect issues to be resolved via social media, they don't care
+that a branded Twitter account was solely set-up for broadcast marketing.  Customers
+will make contact via their own preferred channel, not yours.  As far as customers are
+concerned, they are dealing with a single company, whether online, in a shop or via social,
+and therefore consistency is expected.
+
+There are few retail experience more galling than purchasing goods online and then
+being told you can't return them to the same retailer's high street store, or having to 
+explain an entire email conversation you've previously had with a different customer service
+representative to the one you're currently talking to on the phone.
+
+And this is where the Single Customer View comes in
+
+A SCV provides businesses with the ability to track customers and their communications
+across every channel.
+
+The obvious benefits of this include:
+- much improved customer service levels
+- better customer retention
+- higher conversion rates
+- and hopefully an improved overall customer lifetime value(CLV)
+
+Organisationally this will also lead to better commmunication between traditionally 
+seperate teams and a more cooperative approach to customer service.
+
+Look at me skilfully avoiding term 'siloes' there.
+
+SCV also means being able to use the huge amount of data being pulled in from all these
+various channels into one place, and being able to use that data in a meaningful way. By
+building a fuller, personlised picture of th ecustomer and their journey, a business will
+have a more insightful guide to improving future sales and make improvements to future
+customer interactions.
+
+---------------------------------------------------------------------------------------------------
+-- http://www.experian.co.uk/blogs/latest-thinking/single-customer-view-2/
+---------------------------------------------------------------------------------------------------
+Multichannel marketing is when a brand has a presence on a number of differnt 
+channels. ie. an email account, 
+              a Facebook page, 
+			  a Twitter page, 
+			  a website 
+			  and a physial store.  
+All channels running smoothly, but separately.
+
+Cross Channel is when those channels are interlinked and co-ordinated.  So:
+			  a query on Facebook can be answered via an email, 
+			  or an email offer is relevant and understood by an in-store representative.
+And in order to do this, the first step is having a SCV.
+
+How is a Single Customer View created
+-------------------------------------
+Achieving a SCV requires a customer's relationships with your brand to be brought together,
+usually by matching name, address, and date of birth, and applying a unique identifier(ofter
+described as a customer PIN) to each profile.
+
+This identifier is then appended to every item of data relating to that customer allowing all data 
+on the individual to be matched and brought together to create a single view or record
+of that customer (hence, Single Customer View)
+
+Of course, customer details and circumstances are constantly changing, so that data itself
+never remains static.  However, the one constant will be the PIN which will mean new and
+updated data will be attributed to that customer's profile as it is gathered.
+
+Additional data and lifestyle segmentation can be applied to an orgainisation's Single Customer View
+records, building deper and broader insights into the customer's lifestyle, behaviours and 
+preferences.
+
+What does a Single Customer View enable brands to do?
+----------------------------------------------------
+A Single Customer View gives you greater insight into your customers and helps you get to
+know them better.  The SCV empowers marketers to market more efficiently and effectively, but
+most of all, it enables brands to provide more and more useful, relevant and enjoyable 
+experiences for their customers.
+
+A SCV gives you greater insight into your customers and helps you get to know them better.  The 
+SCV empowers marketers to market more efficiently and effectively, but most of all, it enables
+brands to provide more and more useful, relevant and enjoyable experiences for their customers.
+
+With a Single Customer View, brands are able to understand a customer's past behaviour, past purchases, 
+interaction preferences, history and even their propensity to purchase new goods and services.
+
+It is also the key ingredient in enabling cross-channel marketing strategies.  Cross channel is 
+crucial because it's what customers expect.  Fully integrated cross-channel marketing provides a seamless
+experience.
+This means that no matter what channel a customer chooses to interact with, their experience
+is consistent and relevant.
+The Single Customer View is the crucial first step towards such a seamless cross-channel approach.  
+Yes, of course there are operational, KPI and organisational issues that need to be considered, but 
+as with most things in marketing, the key to cross-channel is in the data, and the key to the data
+is the Single Customer View.
+
+---------------------------------------------------------------------------------------------------
+-- National Trust.....	
+---------------------------------------------------------------------------------------------------
+MI Trust - Mark joined 7 months ago
+Historically DWH
+--> Operational & Financial Reporting being currently provided
+
+In parallel, a new initiative Single Supported View
+--> provides data for Data Science Team
+ --> who use both Tableau & Power BI
+  --> via AWS Redshift
+   --> Data availability - 3NF, which was found not to work too well
+    --> Injestion of Data for Single Supported View
+	--> Injestion of data in the same way
+	 --> They have Scrum Master
+	  --> A requirement for 3/4 developers one of which is to be AWS Redshift Developer
+       --> Also, a Technical Lead / Solutions Architect is required for DEV OPS
+	    --> Able to communicate with Business as well as users
+
+---------------------------------------------------------------------------------------------------
+-- Cloud Solution Architect
+---------------------------------------------------------------------------------------------------
+Cloud, AWS, Azure - Banking An exciting opportunity has arisen for an experienced 
+Cloud Solution Architect to join a rapidly expanding Bank based in Central London. 
+My client is in the early stages of their Cloud journey, and seek a passionate 
+candidate to help define and maintain their technical strategy. 
+
+You will have a thorough background in high level solution design
+based around Cloud, utilising technologies such as Amazon Web Services (AWS) or
+Azure. You will be working closely with the Head of Solution Architecture to 
+understand the Bank's strategy from both a technical and business perspective, 
+identifying solutions for specific problems or preempting problems that may arise a
+s the IT landscape evolves. 
+As the Team grows, you may have the opportunity to lead a small technical team of 
+engineers to support the technical solutions that you have designed - This is an 
+excellent opportunity for a candidate who wants to work within a fast paced financial 
+environment, and be a key part of the companies ongoing success. 
+		
+
+
+A key part of this role is to work with our technology partners, and our internal 
+modelling and dashboard teams, to deliver the data and deployment capabilities necessary 
+for leveraging the Amazon Web Services (AWS) technology stack. 
+To achieve this, you’ll need to have strong technical understanding of the AWS technology 
+stack, particularly in the context of the data architectures available and how the 
+architectures can be leveraged to build an agile end to end analytics process. 
+
+You’ll also help keep us safe by ensuring the model deployment governance framework is 
+robust and fit for purpose. 
+
+To be brilliant you’ll have significant experience of working in a cloud based data 
+environment with in depth knowledge of data integration technologies, including open source tools. 
+You’ll bring with you experience in implementation of working data architectures using the 
+AWS technology stack. 
+
+If you are comfortable with data analytics deployment processes that will stand you in 
+good stead and we’d love it if you have knowledge of NOSQL and SQL in the context of data 
+integration to support model development. 
+
+It’s fast paced, hard work but great to be part of something special! 

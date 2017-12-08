@@ -1,0 +1,33 @@
+DevOps Architect- Contract - London Square One are looking for a DevOps Architect
+for an initial 4 month contract in London. This is an initial 4 month contract,
+paying market rates. 
+
+The role: Work as part of a DevOps team on a project leveraging Docker and 
+Openshift Container Platform. 
+- Responsible for the installation and configuration of OCP and tooling to support 
+a continuous integration/delivery approach to software development and the delivery 
+of development and test environments using automated system configuration management
+tools. 
+- Assist in the creation and implementation of Production deploy process, 
+CM processes eg branching and merging and Operations processes, taking into 
+account HA and DR solutions. 
+- Resolving automation and environment issues raised by Development and Test teams.
+
+ Requirements: Continuous Integration/Delivery tools/methodology (Jenkins, Ne
+xus, Sonar) System Configuration Mangement Tools (eg Ansible (preferred), Chef,
+Puppet) Unix/Linux Administration (Red Hat Atomic/Red Hat Enterprise Linux prefe
+rred) Cloud technologies, specifically AWS and Openshift Container Platform, Kub
+ernetes Containers, specifically Docker Monitoring software - (eg Sensu, EFK, Za
+bbix) Strong Scripting ability (Python, Ruby, NodeJS, Perl, Unix Shell etc) Soft
+ware Configuration Management (Git, branching and merging strategies) This is an
+ initial 4 month contract, paying market rates. DevOps Architect- Contract - Lon
+don Notwithstanding any guidelines given to years of
+
+
+AWS lambda is a compute service that runs your code in response to events and automatically manages the compute resou
+resources for you, making it easy to build 
+application that respond quickly to new information.  AWS Lambda starts running
+you code within milliseconds of an event such as an image upload, in-app activity,
+website click, or output from a connected device.  You can also use AWS Lambda to
+create new back-end services where compute resources are automatically triggered based on custom requests.
+

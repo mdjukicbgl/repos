@@ -1,0 +1,95 @@
+
+aws s3 cp s3://economist-analytics-euw1-dev01/economistdotcom/serverlog/staging/access-facade.csv.log-201702261488069001.gz s3://economist-analytics-euw1-test-repository/economistdotcom/serverlog/access-facade.csv.log-201702261488069001.gz
+aws s3 cp s3://economist-analytics-euw1-dev01/economistdotcom/serverlog/staging/access-facade.csv.log-201703051488673801.gz s3://economist-analytics-euw1-test-repository/economistdotcom/serverlog/access-facade.csv.log-201703051488673801.gz
+
+
+economist-analytics-euw1-test-repository/load-to-poc copied here as well in case tst01 destructs itself
+
+From Pete: Thursday 16-Mar-2017
+Hi Marko, pls could you copy the economistdotcom.serverlog files from here: 
+economist-analytics-euw1-tst01/load-to-poc
+
+...into the POC cluster, eyeball them and advise Pad? 
+Thanks
+
+
+aws s3 cp s3://economist-analytics-euw1-dev01/economistdotcom/serverlog/staging/access-facade.csv.log-201703051488673801.gz 
+    s3://economist-analytics-euw1-test-repository/xxxxxxxx/economistdotcom/serverlog/access-facade.csv.log-201703051488673801.gz
+	
+---------------------------------------------------------------------------------------------------	
+--copying from here
+---------------------------------------------------------------------------------------------------	
+aws s3 cp s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz  s3://economist-analytics-euw1-test-repository/load-to-poc/part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz
+ 
+aws s3 cp s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz  s3://economist-analytics-euw1-test-repository/load-to-poc/part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz
+
+aws s3 cp s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz  s3://economist-analytics-euw1-test-repository/load-to-poc/part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz
+
+aws s3 cp s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz  s3://economist-analytics-euw1-test-repository/load-to-poc/part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz
+
+		  
+to here
+
+economist-analytics-euw1-test-repository/load-to-poc/part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz
+
+---------------------------------------------------------------------------------------------------	
+
+	
+                           PRE load-to-poc/
+markod@ip-172-20-0-174:/home/markod/repos/bigdata : aws s3 ls  s3://economist-analytics-euw1-tst01/load-to-poc/
+2017-03-16 06:48:44          0
+2017-03-16 06:48:52   19406976 part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz
+2017-03-16 06:49:46   51842895 part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz
+2017-03-16 06:50:40   27335423 part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz
+2017-03-16 06:50:10   30198098 part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz
+
+COPY ga.sessions from s3://<bucket>/<path>
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL GZIP IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF;
+
+ s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz
+ 
+COPY economistdotcom.serverlog from s3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL GZIP IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF; 
+ 
+Errors:
+2017-03-02 11:36:49.542	9fb174580dd2994cb58dc899b4e238f5	
+GET	/?ecdesign=timemachine.2017-02-27	200	0.075	94058	51.179.153.42, 149.126.76.25	172.17.1.35	-	9	1	ec9ee76fec5137c9510c8a86fbae8976	2C5BFFDA851D358C-40000129200080	timemachine	10.00	a	desktop	GB	UK	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36	448290636253041999	285792                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+
+COPY economistdotcom.serverlog from 's3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL GZIP IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+COPY economistdotcom.serverlog from 's3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL GZIP IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+; 
+
+COPY economistdotcom.serverlog from 's3://economist-analytics-euw1-tst01/load-to-poc/part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz'
+ CREDENTIALS 'aws_iam_role=arn:aws:iam::334086281941:role/dev-redshift-copy-unload'
+ EMPTYASNULL GZIP IGNOREBLANKLINES DELIMITER '\t' ACCEPTINVCHARS MAXERROR 10000 COMPUPDATE OFF
+;
+
+select raw_field_value, count(*)
+  from stl_load_errors
+ where filename like '%part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz%'
+    or filename like '%part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz%'
+    or filename like '%part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz%'
+	or filename like '%part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz%'
+group by raw_field_value
+	
+select
+        raw_field_value,
+        count(*)
+from
+        stl_load_errors
+where   filename    like '%part-r-00000-10cdbe4d-e6e3-46fd-9ec3-8e6a40f67b1c.csv.gz%'
+        or filename like '%part-r-00000-461a191b-c9c1-44f3-aae4-09d4105508f1.csv.gz%'
+        or filename like '%part-r-00000-707dbb30-0f57-4086-81ea-781e80e092d6.csv.gz%'
+        or filename like '%part-r-00000-e4098074-bfb0-4095-8ac8-74f01afcedfd.csv.gz%'
+group by
+        raw_field_value 	
+		
