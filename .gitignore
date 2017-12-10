@@ -4,3 +4,10 @@
 # ignore the docs folder
 # Generated files
 q_docs/
+
+
+q_deloitte/._mdj_creds.xlsx
+q_deloitte/mdj_creds.xlsx
+q_deloitte/q_python_scripts/q_creds/._~$mdj_creds.xlsx
+q_deloitte/q_python_scripts/q_creds/~$mdj_creds.xlsx
+
